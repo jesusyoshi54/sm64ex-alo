@@ -28,7 +28,7 @@ NON_MATCHING ?= 1
 COMPILER_N64 ?= gcc
 
 # Accept RM2C level folder output
-RM2C ?= 0
+RM2C ?= 1
 
 # Build for original N64 (no pc code)
 TARGET_N64 = 1
