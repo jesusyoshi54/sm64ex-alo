@@ -208,44 +208,44 @@
         ]
     },
     "instruments": {
-        "inst0": {
+        "Accordion": {
             "release_rate": 19,
             "envelope": "envelope0",
             "sound": "2E_accordion"
         },
-        "inst1": {
+        "Slap Bass": {
             "release_rate": 208,
             "envelope": "envelope1",
             "sound": "1A_slap_bass"
         },
-        "inst2": {
+        "Ele Guitar": {
             "release_rate": 208,
             "envelope": "envelope2",
             "sound": "1C"
         },
-        "inst3": {
+        "Ele Piano": {
             "release_rate": 10,
             "envelope": "envelope3",
             "sound": "26_crystal_rhodes"
         },
-        "inst4": {
+        "Grand Piano": {
             "release_rate": 34,
             "envelope": "envelope4",
             "sound": "44_grand_piano"
         },
-        "inst5": {
+        "French Horn": {
             "release_rate": 53,
             "normal_range_hi": 50,
             "envelope": "envelope5",
             "sound": "16_french_horns",
             "sound_hi": "45_french_horns_lq"
         },
-        "inst6": {
+        "Pan Flute": {
             "release_rate": 43,
             "envelope": "envelope6",
             "sound": "41_pan_flute"
         },
-        "inst7": {
+        "Strings": {
             "release_rate": 15,
             "normal_range_lo": 27,
             "normal_range_hi": 46,
@@ -254,7 +254,7 @@
             "sound": "24_strings_2",
             "sound_hi": "25_strings_3"
         },
-        "inst8": {
+        "Hi-Hat": {
             "release_rate": 19,
             "normal_range_lo": 29,
             "normal_range_hi": 63,
@@ -263,12 +263,12 @@
             "sound": "3C",
             "sound_hi": "3D"
         },
-        "inst9": {
+        "Crash Cymbal": {
             "release_rate": 208,
             "envelope": "envelope10",
             "sound": "2F_sleigh_bells"
         },
-        "inst10": {
+        "Triangle&Cabasa": {
             "release_rate": 208,
             "normal_range_lo": 60,
             "normal_range_hi": 60,
@@ -343,7 +343,7 @@
             {"release_rate": 10, "pan": 82, "envelope": "envelope11", "sound": {"sample": "0C_conga_stick", "tuning": 1.498307}},
             {"release_rate": 10, "pan": 128, "envelope": "envelope11", "sound": "0D_clave"}
         ],
-        "inst11": {
+        "Acoustic Guitar": {
             "release_rate": 19,
             "normal_range_lo": 29,
             "normal_range_hi": 63,
@@ -352,7 +352,7 @@
             "sound": "11_splash_cymbal",
             "sound_hi": "10_cymbal_bell"
         },
-        "inst12": {
+        "Jingles": {
             "release_rate": 208,
             "normal_range_lo": 60,
             "normal_range_hi": 60,
@@ -361,68 +361,68 @@
             "sound": "1F_open_triangle",
             "sound_hi": "20_cabasa"
         },
-        "inst13": {
+        "Celesta": {
             "release_rate": 10,
             "envelope": "envelope16",
             "sound": "42"
         },
-        "inst14": {
+        "Banjo": {
             "release_rate": 100,
             "normal_range_lo": 41,
             "envelope": "envelope17",
             "sound_lo": {"sample": "00", "tuning": 1.781798},
             "sound": "01"
         },
-        "inst15": {
+        "Fiddle": {
             "release_rate": 180,
             "envelope": "envelope2",
             "sound": "02"
         },
-        "inst16": {
+        "Whistle": {
             "release_rate": 76,
             "envelope": "envelope18",
             "sound": "03"
         },
-        "inst17": {
+        "Acoustic Bass": {
             "release_rate": 208,
             "envelope": "envelope6",
             "sound": "05"
         },
-        "inst18": {
+        "Snare Clap": {
             "release_rate": 10,
             "normal_range_lo": 18,
             "envelope": "envelope19",
             "sound_lo": "12",
             "sound": "13"
         },
-        "inst19": {
+        "Pizzicato Strings": {
             "release_rate": 43,
             "normal_range_hi": 47,
             "envelope": "envelope20",
             "sound": "46",
             "sound_hi": "47"
         },
-        "inst20": {
+        "Cello": {
             "release_rate": 119,
             "envelope": "envelope18",
             "sound": "2D"
         },
-        "inst21": {
+        "Choir Ooh": {
             "release_rate": 10,
             "envelope": "envelope1",
             "sound": "22"
         },
-        "inst22": {
+        "Sitar Drone": {
             "release_rate": 90,
             "envelope": "envelope2",
             "sound": "28_sitar_1"
         },
-        "inst23": {
+        "Sitar": {
             "release_rate": 10,
             "envelope": "envelope21",
             "sound": "39_sitar_2"
         },
-        "inst24": {
+        "Drum Snare Split": {
             "release_rate": 10,
             "normal_range_lo": 19,
             "normal_range_hi": 19,
@@ -431,57 +431,57 @@
             "sound": {"sample": "08", "tuning": 2.121321},
             "sound_hi": "38_electric_kick_drum"
         },
-        "inst25": {
+        "Bass+Lead": {
             "release_rate": 208,
             "envelope": "envelope1",
             "sound": "21_sine_bass"
         },
-        "inst26": {
+        "Percussive Organ": {
             "release_rate": 208,
             "envelope": "envelope22",
             "sound": "35_gospel_organ"
         },
-        "inst27": {
+        "Steel Drum": {
             "release_rate": 10,
             "envelope": "envelope23",
             "sound": "48_steel_drum"
         },
-        "inst28": {
+        "Brass": {
             "release_rate": 208,
             "envelope": "envelope24",
             "sound": "19_brass"
         },
-        "inst29": {
+        "Synth Voice": {
             "release_rate": 128,
             "envelope": "envelope25",
             "sound": "1B_organ_2"
         },
-        "inst30": {
+        "Ele Guitar (Clean)": {
             "release_rate": 208,
             "envelope": "envelope26",
             "sound": "1C"
         },
-        "inst31": {
+        "Charang": {
             "release_rate": 10,
             "envelope": "envelope0",
             "sound": "30_rarefaction-lahna"
         },
-        "inst32": {
+        "Overdriven Guitar": {
             "release_rate": 208,
             "envelope": "envelope1",
             "sound": "31_rarefaction-convolution"
         },
-        "inst33": {
+        "Orchestra Hit": {
             "release_rate": 208,
             "envelope": "envelope21",
             "sound": "29_orchestra_hit"
         },
-        "inst34": {
+        "Recorder": {
             "release_rate": 114,
             "envelope": "envelope18",
             "sound": "34_alto_flute"
         },
-        "inst35": {
+        "Drum Sample 18": {
             "release_rate": 10,
             "normal_range_lo": 14,
             "normal_range_hi": 15,
@@ -490,139 +490,139 @@
             "sound": "33_kick_drum_2",
             "sound_hi": {"sample": "32_metal_rimshot", "tuning": 2.828428}
         },
-        "inst36": {
+        "Music Box": {
             "release_rate": 119,
             "envelope": "envelope28",
             "sound": "1D"
         },
-        "inst37": {
+        "Melodic Tom": {
             "release_rate": 34,
             "envelope": "envelope0",
             "sound": "1D"
         },
-        "inst38": {
+        "Steel Guitar": {
             "release_rate": 53,
             "envelope": "envelope29",
             "sound": "04_bright_piano"
         },
-        "inst39": {
+        "Pah": {
             "release_rate": 208,
             "envelope": "envelope0",
             "sound": {"sample": "1D", "tuning": 0.793701}
         },
-        "inst40": {
+        "Organ": {
             "release_rate": 208,
             "envelope": "envelope0",
             "sound": "2E_accordion"
         },
-        "inst41": {
+        "Synth Bass": {
             "release_rate": 208,
             "envelope": "envelope1",
             "sound": "36_sawtooth_synth"
         },
-        "inst42": {
+        "Saw Wave": {
             "release_rate": 208,
             "envelope": "envelope2",
             "sound":"37_square_synth"
         },
-        "inst43": {
+        "Orchestra Hit 2": {
             "release_rate": 208,
             "envelope": "envelope21",
             "sound": "29_orchestra_hit"
         },
-        "inst44": {
+        "Trumpet": {
             "release_rate": 208,
             "envelope": "envelope1",
             "sound": "19_brass"
         },
-        "inst45": {
+        "Timpani": {
             "release_rate": 10,
             "envelope": "envelope30",
             "sound": "18_timpani"
         },
-        "inst46": {
+        "Drump Sample 26": {
             "release_rate": 10,
             "normal_range_lo": 18,
             "envelope": "envelope31",
             "sound_lo":"12_snare_drum_1",
             "sound": "13_snare_drum_2"
         },
-        "inst47": {
+        "Drump Sample 27": {
             "release_rate": 10,
             "normal_range_lo": 18,
             "envelope": "envelope32",
             "sound_lo": "12_snare_drum_1",
             "sound": "13_snare_drum_2"
         },
-        "inst48": {
+        "Xylophone": {
             "release_rate": 119,
             "envelope": "envelope28",
             "sound": "3A_music_box"
         },
-        "inst49": {
+        "Church Organ": {
             "release_rate": 19,
             "normal_range_hi": 50,
             "envelope": "envelope0",
             "sound": {"sample": "1B_organ_2", "tuning": 1.0},
             "sound_hi": "1B_organ_2"
         },
-        "inst50": {
+        "Bells": {
             "release_rate": 208,
             "envelope": "envelope33",
             "sound": "2F_sleigh_bells"
         }
     },
     "instrument_list": [
-        "inst0",
-        "inst1",
-        "inst2",
-        "inst3",
-        "inst4",
-        "inst5",
-        "inst6",
-        "inst7",
-        "inst11",
-        "inst12",
-        "inst8",
-        "inst9",
-        "inst10",
-        "inst13",
-        "inst14",
-        "inst15",
-        "inst16",
-        "inst17",
-        "inst18",
-        "inst19",
-        "inst20",
-        "inst21",
-        "inst22",
-        "inst23",
-        "inst24",
-        "inst25",
-        "inst26",
-        "inst27",
-        "inst28",
-        "inst29",
-        "inst30",
-        "inst31",
-        "inst32",
-        "inst33",
-        "inst34",
-        "inst35",
-        "inst36",
-        "inst37",
-        "inst38",
-        "inst39",
-        "inst40",
-        "inst41",
-        "inst42",
-        "inst43",
-        "inst44",
-        "inst45",
-        "inst46",
-        "inst47",
-        "inst48",
-        "inst49",
-        "inst50"
+        "Accordion",
+        "Slap Bass",
+        "Ele Guitar",
+        "Ele Piano",
+        "Grand Piano",
+        "French Horn",
+        "Pan Flute",
+        "Strings",
+        "Hi-Hat",
+        "Crash Cymbal",
+		"Triangle&Cabasa",
+		"Acoustic Guitar",
+        "Jingles",
+        "Celesta",
+        "Banjo",
+        "Fiddle",
+        "Whistle",
+        "Acoustic Bass",
+        "Snare Clap",
+        "Pizzicato Strings",
+        "Cello",
+        "Choir Ooh",
+        "Sitar Drone",
+        "Sitar",
+        "Drum Snare Split",
+        "Bass+Lead",
+        "Percussive Organ",
+        "Steel Drum",
+        "Brass",
+        "Synth Voice",
+        "Ele Guitar (Clean)",
+        "Charang",
+        "Overdriven Guitar",
+        "Orchestra Hit",
+        "Recorder",
+        "Drum Sample 18",
+        "Music Box",
+        "Melodic Tom",
+        "Steel Guitar",
+        "Pah",
+        "Organ",
+        "Synth Bass",
+        "Saw Wave",
+        "Orchestra Hit 2",
+        "Trumpet",
+        "Timpani",
+        "Drump Sample 26",
+        "Drump Sample 27",
+        "Xylophone",
+        "Church Organ",
+        "Bells"
     ]
 }
