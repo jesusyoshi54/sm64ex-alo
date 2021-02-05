@@ -109,7 +109,7 @@
             "ifdef": ["VERSION_US", "VERSION_EU"],
             "release_rate": 208,
             "envelope": "envelope5",
-            "sound": "0D"
+            "sound": "0D_chain_chomp_bark"
         }
     },
     "instrument_list": [
