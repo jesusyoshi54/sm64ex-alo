@@ -193,7 +193,7 @@ OBJECT_WITH_ACTS(0,2344,-1982,5683,0,0,0,0x110000, bhvCoinFormation,31),
 OBJECT_WITH_ACTS(194,-7798,-1784,9166,0,0,0,0x0, bhvHomingAmp,31),
 OBJECT_WITH_ACTS(194,-9631,-1784,11045,0,0,0,0x0, bhvHomingAmp,31),
 OBJECT_WITH_ACTS(194,-5967,-1784,10996,0,0,0,0x0, bhvHomingAmp,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_lll_1_0xe055f40[15],editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,15,0,0,0,28,editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_lll_1_[] = {

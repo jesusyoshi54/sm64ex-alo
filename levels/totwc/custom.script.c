@@ -168,12 +168,12 @@ OBJECT_WITH_ACTS(206,1153,-3248,-5249,0,0,0,0x0, bhvSnufit,31),
 OBJECT_WITH_ACTS(206,-4572,1012,0,0,0,0,0x0, bhvSnufit,31),
 OBJECT_WITH_ACTS(206,4564,1012,-310,0,0,0,0x0, bhvSnufit,31),
 OBJECT_WITH_ACTS(206,17,-154,-2233,0,0,0,0x0, bhvSnufit,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_totwc_1_0xe01e000[1],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_totwc_1_0xe01e000[1],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_totwc_1_0xe0186f0[4],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_totwc_1_0xe0186f0[4],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_totwc_1_0xe016f80[1],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_totwc_1_0xe016f80[1],editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,4,171,0,0,0,42,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,2,5,171,0,0,0,43,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,4,3,0,0,0,44,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,3,0,0,0,45,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,381,0,0,0,46,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,4,381,0,0,0,47,editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_totwc_1_[] = {

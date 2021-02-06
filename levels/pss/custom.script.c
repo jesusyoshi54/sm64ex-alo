@@ -130,8 +130,8 @@ OBJECT_WITH_ACTS(85,-1656,-4345,-2536,0,0,0,0x0, bhvMrBlizzard,31),
 OBJECT_WITH_ACTS(0,7352,-1223,6117,0,-5,0,0x0, bhvCoinFormation,31),
 OBJECT_WITH_ACTS(212,10433,-45,288,0,0,0,0x0, bhv1Up,31),
 OBJECT_WITH_ACTS(194,12879,-4840,5278,0,0,0,0x0, bhvHomingAmp,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_pss_1_0xe016040[14],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_pss_1_0xe016040[14],editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,4,96,0,0,0,40,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,5,96,0,0,0,41,editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_pss_1_[] = {

@@ -159,9 +159,9 @@ OBJECT_WITH_ACTS(122,1517,-661,-11942,0,0,0,0x10000, bhvFlyGuy,31),
 OBJECT_WITH_ACTS(122,2967,-661,9892,0,0,0,0x10000, bhvFlyGuy,31),
 OBJECT_WITH_ACTS(122,-3691,-661,9844,0,0,0,0x10000, bhvFlyGuy,31),
 OBJECT_WITH_ACTS(212,-338,-2122,-10321,0,0,0,0x0, bhv1Up,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_sa_1_0xe05fa40[15],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_sa_1_0xe052390[2],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_sa_1_0xe052390[2],editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,114,0,0,0,21,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,5,36,0,0,0,22,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,4,36,0,0,0,23,editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_sa_1_[] = {

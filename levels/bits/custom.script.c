@@ -162,10 +162,10 @@ OBJECT_WITH_ACTS(180,12303,1068,-9148,0,0,0,0x0, bhvFireSpitter,31),
 OBJECT_WITH_ACTS(194,8725,-963,9719,0,0,0,0x0, bhvHomingAmp,31),
 OBJECT_WITH_ACTS(0,8,-2384,935,0,0,0,0xf10000, bhvFadingWarp,31),
 OBJECT_WITH_ACTS(31,2,-2384,-1476,0,0,0,0x79790000, bhvDoor,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bits_1_0xe055ff0[12],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bits_1_0xe0562c0[3],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bits_1_0xe0564a0[9],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bits_1_0xe056680[15],editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,5,36,0,0,0,24,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,5,36,0,0,0,25,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,5,36,0,0,0,26,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,5,36,0,0,0,27,editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_bits_1_[] = {

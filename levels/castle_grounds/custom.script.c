@@ -163,10 +163,10 @@ OBJECT_WITH_ACTS(100,-5326,2859,1086,0,0,0,0x0, bhvMips,31),
 OBJECT_WITH_ACTS(220,3655,6917,521,0,0,0,0x0, bhvFlyGuy,31),
 OBJECT_WITH_ACTS(137,7036,3307,6661,0,0,0,0x20000, bhvExclamationBox,31),
 OBJECT_WITH_ACTS(192,-4,910,-1233,0,0,0,0x20000, bhvGoomba,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_castle_grounds_1_0xe05b640[10],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_castle_grounds_1_0xe058ee0[3],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_castle_grounds_1_0xe0560f0[14],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_castle_grounds_1_0xe05dcb0[13],editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,78,0,0,0,11,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,15,0,0,0,12,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,5,93,0,0,0,13,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,63,0,0,0,14,editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_castle_grounds_1_[] = {

@@ -142,9 +142,9 @@ OBJECT_WITH_ACTS(122,4574,1135,964,0,0,0,0x0, bhvFireSpitter,31),
 OBJECT_WITH_ACTS(122,-522,86,6074,0,0,0,0x0, bhvFireSpitter,31),
 OBJECT_WITH_ACTS(122,-518,1885,4279,0,0,0,0x0, bhvFireSpitter,31),
 OBJECT_WITH_ACTS(122,-2774,-365,5597,0,0,0,0x0, bhvFireSpitter,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bitfs_1_0xe016800[13],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bitfs_1_0xe018060[15],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_bitfs_1_0xe018060[15],editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,5,243,0,0,0,18,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,96,0,0,0,19,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,2,4,96,0,0,0,20,editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_bitfs_1_[] = {

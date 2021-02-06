@@ -195,7 +195,7 @@ OBJECT_WITH_ACTS(0,890,-6382,4388,0,0,0,0x0, bhvLargeFishGroup,31),
 OBJECT_WITH_ACTS(0,-2069,-5714,6321,0,0,0,0x0, bhvLargeFishGroup,31),
 OBJECT_WITH_ACTS(0,-1792,-5900,-946,0,0,0,0x0, bhvLargeFishGroup,31),
 OBJECT_WITH_ACTS(195,-5517,-519,-4583,0,120,0,0x40000, bhvBobombBuddy,1),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bob_1_0xe0166f0[8],editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,38,0,0,0,9,editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_bob_1_[] = {

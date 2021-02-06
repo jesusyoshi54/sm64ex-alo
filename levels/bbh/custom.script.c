@@ -207,9 +207,9 @@ OBJECT_WITH_ACTS(129,10527,482,-692,0,0,0,0x0, bhvHiddenObject,31),
 OBJECT_WITH_ACTS(129,10527,482,-492,0,0,0,0x0, bhvHiddenObject,31),
 OBJECT_WITH_ACTS(129,10727,482,-692,0,0,0,0x0, bhvHiddenObject,31),
 OBJECT_WITH_ACTS(129,10727,482,-492,0,0,0,0x0, bhvHiddenObject,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_bbh_1_0xe059f30[1],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bbh_1_0xe059f30[1],editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bbh_1_0xe05f390[11],editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,2,4,96,0,0,0,0,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,5,96,0,0,0,1,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,42,0,0,0,2,editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_bbh_1_[] = {
