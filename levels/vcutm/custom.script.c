@@ -142,7 +142,7 @@ OBJECT_WITH_ACTS(100,318,-4882,4013,0,0,0,0x0, bhvSmallBomp,31),
 OBJECT_WITH_ACTS(100,862,-4882,6747,0,0,0,0x0, bhvSmallBomp,31),
 OBJECT_WITH_ACTS(100,222,-4882,5389,0,0,0,0x0, bhvSmallBomp,31),
 OBJECT_WITH_ACTS(0,-1020,-4882,823,0,0,0,0x0, bhvCoinFormation,31),
-// OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_vcutm_1_0xe065f20[3], editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,6,0,0,0,49, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_vcutm_1_[] = {

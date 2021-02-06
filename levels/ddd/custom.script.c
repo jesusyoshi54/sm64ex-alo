@@ -213,8 +213,8 @@ OBJECT_WITH_ACTS(0,1514,-3000,289,0,0,0,0x0, bhvInitializeChangingWaterLevel,31)
 OBJECT_WITH_ACTS(137,-520,2117,-1839,0,0,0,0x60000, bhvExclamationBox,31),
 OBJECT_WITH_ACTS(137,-1763,174,5281,0,0,0,0x60000, bhvExclamationBox,31),
 OBJECT_WITH_ACTS(124,4720,-578,-2087,0,-106,0,0x870000, bhvMessagePanel,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_ddd_1_0xe027b40[9], editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_ddd_1_0xe026b50[2], editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,4,30,0,0,0,61, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,4,96,0,0,0,62, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_ddd_1_[] = {

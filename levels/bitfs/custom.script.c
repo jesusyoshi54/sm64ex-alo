@@ -181,9 +181,9 @@ OBJECT_WITH_ACTS(0,3039,-3111,-2779,0,0,0,0x110000, bhvCoinFormation,31),
 OBJECT_WITH_ACTS(0,1701,-2661,7315,0,90,0,0x0, bhvCoinFormation,31),
 OBJECT_WITH_ACTS(0,2567,1838,-6709,0,0,0,0x110000, bhvCoinFormation,31),
 OBJECT_WITH_ACTS(0,4559,-961,2967,0,0,0,0x10000, bhvCheckpoint_Flag_MOP,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bitfs_1_0xe0682c0[13], editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bitfs_1_0xe0683b0[4], editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bitfs_1_0xe06a840[8], editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,6,0,0,0,50, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,6,0,0,0,51, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,32,5,288,0,0,0,52, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_bitfs_1_[] = {

@@ -15,7 +15,7 @@ GEO_OPEN_NODE(),
 GEO_CAMERA(1,0,2000,6000,3072,0,60928, geo_camera_main),
 GEO_OPEN_NODE(),
 GEO_DISPLAY_LIST(4,DL_vcutm_2_0xe07cae0),
-// GEO_DISPLAY_LIST(4,DL_vcutm_2_0xe043400), some peak editor shit going on with this one
+// GEO_DISPLAY_LIST(4,DL_vcutm_2_0xe043400),
 GEO_RENDER_OBJ(),
 GEO_ASM(0, geo_envfx_main),
 GEO_ASM(20480, geo_movtex_draw_water_regions),

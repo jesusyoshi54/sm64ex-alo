@@ -6332,6 +6332,15 @@ CALL_NATIVE(bhv_flipswitch_panel_starspawn_loop),
 END_LOOP(),
 };
 
+//too lazy to replace names in scripts
+const BehaviorScript Bhv_Custom_0x130002a0[] = {
+BEGIN(OBJ_LIST_GENACTOR),
+CALL_NATIVE(bhv_flipswitch_panel_starspawn_init),
+BEGIN_LOOP(),
+CALL_NATIVE(bhv_flipswitch_panel_starspawn_loop),
+END_LOOP(),
+};
+
 const BehaviorScript bhvFlipswitch_Panel_MOP[] = {
 BEGIN(OBJ_LIST_SURFACE),
 OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE ),

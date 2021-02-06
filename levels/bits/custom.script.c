@@ -138,10 +138,10 @@ OBJECT_WITH_ACTS(0,-3334,0,0,0,0,0,0x0, bhvCoinFormation,31),
 OBJECT_WITH_ACTS(0,3345,0,0,0,0,0,0x0, bhvCoinFormation,31),
 OBJECT_WITH_ACTS(0,0,0,-3349,0,90,0,0x0, bhvCoinFormation,31),
 OBJECT_WITH_ACTS(0,0,0,3349,0,90,0,0x0, bhvCoinFormation,31),
-// OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bits_1_0x0[0], editor_Scroll_Texture,31),
-// OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_bits_1_0x0[0], editor_Scroll_Texture,31),
-// OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_bits_1_0x0[0], editor_Scroll_Texture,31),
-// OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bits_1_0x0[0], editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,5,120,0,0,0,55, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,4,72,0,0,0,56, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,4,24,0,0,0,57, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,24,0,0,0,58, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_bits_1_[] = {

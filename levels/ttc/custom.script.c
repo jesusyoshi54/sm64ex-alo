@@ -208,7 +208,7 @@ OBJECT_WITH_ACTS(194,9443,4437,815,0,0,0,0x10000, bhvCirclingAmp,31),
 OBJECT_WITH_ACTS(124,6234,4320,-15161,0,0,0,0x5f0000, bhvMessagePanel,31),
 OBJECT_WITH_ACTS(124,-234,160,1187,0,180,0,0x4d0000, bhvMessagePanel,31),
 OBJECT_WITH_ACTS(240,10887,3490,4080,0,0,0,0x0, bhvFlipBlock_MOP,31),
-// OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_ttc_1_0xe09a670[1933], editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,32,5,186,0,0,0,34, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_ttc_1_[] = {

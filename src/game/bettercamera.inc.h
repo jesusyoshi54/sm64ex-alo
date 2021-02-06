@@ -512,6 +512,7 @@ static void newcam_update_values(void) {
     u8 waterflag = 0;
 	newcam_toggle(configEnableCamera);
 	if (!newcam_active){
+		newcam_xlu = 255;
 		gCurrentArea->camera->mode = CAMERA_MODE_8_DIRECTIONS;
 		init_camera(gCurrentArea->camera);
 	}

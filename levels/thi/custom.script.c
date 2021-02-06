@@ -250,12 +250,12 @@ OBJECT_WITH_ACTS(0,-59,-2165,4069,0,-20,0,0x147d0000, bhvWarp,31),
 OBJECT_WITH_ACTS(0,3,-2165,3892,0,-20,0,0x147d0000, bhvWarp,31),
 OBJECT_WITH_ACTS(0,6985,3108,3682,0,180,0,0x8c0000, bhvSpinAirborneWarp,31),
 OBJECT_WITH_ACTS(34,6985,1535,4081,0,180,0,0x32320000, bhvDoor,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_thi_1_0xe0ac520[7], editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_thi_1_0xe0a0a90[6], editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_thi_1_0xe0af310[1], editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_thi_1_0xe0a5860[2], editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_thi_1_0xe0a7b10[7], editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_thi_1_0xe0a1210[230], editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,5,15,0,0,0,28, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,126,0,0,0,29, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,381,0,0,0,30, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,4,84,0,0,0,31, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,102,0,0,0,32, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,5,30,0,0,0,33, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_thi_1_[] = {

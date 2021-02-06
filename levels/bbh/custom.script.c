@@ -243,11 +243,11 @@ OBJECT_WITH_ACTS(124,-14057,-588,11671,0,180,0,0x220000, bhvMessagePanel,31),
 OBJECT_WITH_ACTS(124,-11130,-1488,-2214,0,93,0,0x2b0000, bhvMessagePanel,31),
 OBJECT_WITH_ACTS(124,-7225,311,-8754,0,0,0,0x300000, bhvMessagePanel,31),
 OBJECT_WITH_ACTS(0,-5654,-288,-8324,0,0,0,0x10000, bhvCheckpoint_Flag_MOP,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bbh_1_0xe0a7430[1], editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bbh_1_0xe0a0c20[15], editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bbh_1_0xe0a6f80[10], editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bbh_1_0xe0a1b20[12], editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_bbh_1_0xe0a1b20[6], editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,5,60,0,0,0,8, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,231,0,0,0,9, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,6,0,0,0,10, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,54,0,0,0,11, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,6,0,0,0,12, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_bbh_1_[] = {

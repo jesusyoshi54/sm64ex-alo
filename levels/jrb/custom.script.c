@@ -217,7 +217,7 @@ OBJECT_WITH_ACTS(0,7067,-1073,-12303,0,0,0,0xa5f0000, bhvWarp,31),
 OBJECT_WITH_ACTS(0,-3757,-2873,10203,0,0,0,0xa1f0000, bhvWarp,31),
 OBJECT_WITH_ACTS(0,-3933,-2873,10202,0,0,0,0xa1f0000, bhvWarp,31),
 OBJECT_WITH_ACTS(0,14800,426,9666,0,0,0,0x10000, bhvCheckpoint_Flag_MOP,31),
-OBJECT_WITH_ACTS(0,341,5,36,0,0,0,&VB_jrb_1_0xe0a48b0[767], editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,5,30,0,0,0,27, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_jrb_1_[] = {
