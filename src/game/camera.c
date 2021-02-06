@@ -3062,20 +3062,15 @@ void update_camera(struct Camera *c) {
     c->defMode = gLakituState.defMode;
 
 #ifdef BETTERCAMERA
-    if (c->mode != CAMERA_MODE_NEWCAM)
-    {
+    if (newcam_active){
+		c->mode=CAMERA_MODE_NEWCAM;
+    }else{
 #endif
-    camera_course_processing(c);
+    // camera_course_processing(c);
     stub_camera_3(c);
     sCButtonsPressed = find_c_buttons_pressed(sCButtonsPressed, gPlayer1Controller->buttonPressed,gPlayer1Controller->buttonDown);
 #ifdef BETTERCAMERA
-    }
-
-    if (gMarioState->action == ACT_SHOT_FROM_CANNON && newcam_active)
-    {
-        gMarioState->area->camera->mode = CAMERA_MODE_NEWCAM;
-        gLakituState.mode = CAMERA_MODE_NEWCAM;
-    }
+	}
 #endif
 
     if (c->cutscene != 0) {
