@@ -6359,9 +6359,9 @@ OR_INT(oFlags,OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO
 SET_INT(oInteractType,INTERACT_POLE),
 SET_HITBOX(64,650),
 CALL_NATIVE(bhv_checkpoint_flag_init),
+SET_INT(oIntangibleTimer, -1),
 BEGIN_LOOP(),
 CALL_NATIVE(bhv_checkpoint_flag_loop),
-SET_INT(oIntangibleTimer, 0),
 END_LOOP(),
 };
 

@@ -16,22 +16,25 @@ void bhv_checkpoint_flag_init(void){
 }
 //0 reg, 1 reset
 void bhv_checkpoint_flag_loop(void){
-	if (gMarioStates[0].interactObj == o){
-		//don't set a real checkpoint because we don't have a real
-		//warp node to set it to. Instead abuse the fact that
-		//in game checkopints only set the course num
-		if (o->oBehParams>0){
+	if (o->oBehParams>0){
+		if (o->oDistanceToMario<150.0f){
 			gWarpCheckpoint.actNum=0x0;
 			gWarpCheckpoint.courseNum=COURSE_NONE;
-		} else {
+		}
+	}else{
+		o->oIntangibleTimer=0;
+		if (gMarioStates[0].interactObj == o){
+			//don't set a real checkpoint because we don't have a real
+			//warp node to set it to. Instead abuse the fact that
+			//in game checkopints only set the course num
 			if (o->oAction==0){
 				gWarpCheckpoint.actNum=64;
 				gWarpCheckpoint.courseNum=COURSE_NONE;
 				o->oAction=1;
 				cur_obj_play_sound_1(SOUND_GENERAL_OPEN_CHEST);
 			}
+		}else{
+			o->oAction=0;
 		}
-	}else{
-		o->oAction=0;
 	}
 }
