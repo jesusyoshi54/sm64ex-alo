@@ -6,7 +6,10 @@
 #include "types.h"
 #include "make_const_nonconst.h"
 
-#include "blue_coin_switch/model.inc.c"
+#include "blue_coin_switch/custom.model.inc.h"
+#include "blue_coin_switch/custom.model.inc.c"
+#include "blue_coin_switch/textureNew.inc.c"
+// #include "blue_coin_switch/model.inc.c"
 #include "blue_coin_switch/collision.inc.c"
 UNUSED static const u64 binid_0 = 0;
 
@@ -34,7 +37,10 @@ UNUSED static const u64 binid_5 = 5;
 #include "purple_switch/collision.inc.c"
 UNUSED static const u64 binid_6 = 6;
 
-#include "checkerboard_platform/model.inc.c"
+#include "checkerboard_platform/custom.model.inc.h"
+#include "checkerboard_platform/custom.model.inc.c"
+#include "checkerboard_platform/textureNew.inc.c"
+// #include "checkerboard_platform/model.inc.c"
 #include "checkerboard_platform/collision.inc.c"
 UNUSED static const u64 binid_7 = 7;
 
@@ -52,9 +58,15 @@ UNUSED static const u64 binid_10 = 10;
 
 UNUSED static const u64 binid_11 = 11;
 
-#include "exclamation_box/model.inc.c"
+#include "exclamation_box/custom.model.inc.h"
+#include "exclamation_box/custom.model.inc.c"
+#include "exclamation_box/textureNew.inc.c"
+// #include "exclamation_box/model.inc.c"
 UNUSED static const u64 binid_12 = 12;
 
+// #include "goomba/custom.model.inc.h"
+// #include "goomba/custom.model.inc.c"
+// #include "goomba/textureNew.inc.c"
 #include "goomba/model.inc.c"
 #include "goomba/anims/data.inc.c"
 #include "goomba/anims/table.inc.c"
@@ -69,7 +81,10 @@ UNUSED static const u64 binid_14 = 14;
 #include "metal_box/collision.inc.c"
 UNUSED static const u64 binid_15 = 15;
 
-#include "exclamation_box_outline/model.inc.c"
+#include "exclamation_box_outline/custom.model.inc.h"
+#include "exclamation_box_outline/custom.model.inc.c"
+#include "exclamation_box_outline/textureNew.inc.c"
+// #include "exclamation_box_outline/model.inc.c"
 #include "exclamation_box_outline/collision.inc.c"
 UNUSED static const u64 binid_16 = 16;
 

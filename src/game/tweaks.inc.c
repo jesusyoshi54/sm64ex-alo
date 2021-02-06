@@ -62,6 +62,6 @@
 #define TOAD_STAR_2_DIALOG_AFTER DIALOG_155
 #define TOAD_STAR_3_DIALOG_AFTER DIALOG_156
 //whether coins are 3d or not. Changes bhv scripts and pause menu reds rendering
-#define USE3DCOINS 0
+#define USE3DCOINS 1
 //must be manually set
 #define INCLUDE_MOP 1

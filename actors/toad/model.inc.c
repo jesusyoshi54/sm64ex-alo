@@ -8,13 +8,15 @@ static const Lights1 toad_seg6_lights_06005908 = gdSPDefLights1(
 
 // 0x06005920
 ALIGNED8 static const Texture toad_seg6_texture_06005920[] = {
-#include "actors/toad/toad_face.rgba16.inc.c"
+#include "actors/toad/toad_geo_0x6005920_custom.rgba16.inc.c"
 };
 
 // 0x06006120
 ALIGNED8 static const Texture toad_seg6_texture_06006120[] = {
-#include "actors/toad/toad_head.rgba16.inc.c"
+#include "actors/toad/toad_geo_0x6006120_custom.rgba16.inc.c"
 };
+
+
 
 // 0x06006920
 static const Vtx toad_seg6_vertex_06006920[] = {
