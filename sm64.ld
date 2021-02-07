@@ -128,7 +128,8 @@ SECTIONS
     * just an optimization. */
    BEGIN_SEG(main, .) SUBALIGN(16)
    {
-      BUILD_DIR/asm/entry.o(.text);
+      
+	  BUILD_DIR/asm/entry.o(.text);
       BUILD_DIR/src/game/crash_screen.o(.text);
       BUILD_DIR/src/game/main.o(.text);
       BUILD_DIR/src/game/game_init.o(.text);
@@ -136,7 +137,12 @@ SECTIONS
 #ifdef VERSION_SH
       BUILD_DIR/src/game/rumble_init.o(.text);
 #endif
-      BUILD_DIR/src/game/level_update.o(.text);
+      BUILD_DIR/src/menu/star_select.o(.text);
+      BUILD_DIR/src/menu/level_select_menu.o(.text);
+      BUILD_DIR/src/menu/intro_geo.o(.text);
+      BUILD_DIR/src/menu/file_select.o(.text);
+      BUILD_DIR/src/menu*.o(.text);
+	  BUILD_DIR/src/game/level_update.o(.text);
       BUILD_DIR/src/game/interaction.o(.text);
       BUILD_DIR/src/game/mario.o(.text);
       BUILD_DIR/src/game/mario_step.o(.text);
@@ -457,14 +463,24 @@ SECTIONS
 #endif
 
       /* data */
-      BUILD_DIR/src/game/crash_screen.o(.data*);
+	  BUILD_DIR/src/game/crash_screen.o(.data*);
       BUILD_DIR/src/game/main.o(.data*);
       BUILD_DIR/src/game/game_init.o(.data*);
       BUILD_DIR/src/game/sound_init.o(.data*);
 #ifdef VERSION_SH
       BUILD_DIR/src/game/rumble_init.o(.data*);
 #endif
-      BUILD_DIR/src/game/level_update.o(.data*);
+      /* data, rodata, per file */
+	  BUILD_DIR/src/menu/star_select.o(.data*);
+      BUILD_DIR/src/menu/star_select.o(.rodata*);
+      BUILD_DIR/src/menu/level_select_menu.o(.data*);
+      BUILD_DIR/src/menu/level_select_menu.o(.rodata*);
+      BUILD_DIR/src/menu/intro_geo.o(.data*);
+      BUILD_DIR/src/menu/file_select.o(.data*);
+      BUILD_DIR/src/menu/file_select.o(.rodata*);
+      BUILD_DIR/src/menu*.o(.data*);
+      BUILD_DIR/src/menu*.o(.rodata*);
+	  BUILD_DIR/src/game/level_update.o(.data*);
       BUILD_DIR/src/game/interaction.o(.data*);
       BUILD_DIR/src/game/mario.o(.data*);
       BUILD_DIR/src/game/mario_step.o(.data*);
@@ -674,14 +690,19 @@ SECTIONS
    END_SEG(main)
    BEGIN_NOLOAD(main)
    {
-      BUILD_DIR/src/game/crash_screen.o(.bss*);
+      
+	  BUILD_DIR/src/game/crash_screen.o(.bss*);
       BUILD_DIR/src/game/main.o(.bss*);
       BUILD_DIR/src/game/game_init.o(.bss*);
       BUILD_DIR/src/game/sound_init.o(.bss*);
 #ifdef VERSION_SH
       BUILD_DIR/src/game/rumble_init.o(.bss*);
 #endif
-      BUILD_DIR/src/game/level_update.o(.bss*);
+      BUILD_DIR/src/menu/star_select.o(.bss*);
+      BUILD_DIR/src/menu/intro_geo.o(.bss*);
+      BUILD_DIR/src/menu/file_select.o(.bss*);
+      BUILD_DIR/src/menu*.o(.bss*);
+	  BUILD_DIR/src/game/level_update.o(.bss*);
       BUILD_DIR/src/game/interaction.o(.bss*);
       BUILD_DIR/src/game/mario.o(.bss*);
       BUILD_DIR/src/game/mario_actions_cutscene.o(.bss*);
@@ -923,11 +944,6 @@ SECTIONS
    /* 0x8016F000 21D7D0-255EC0 [386F0] */
    BEGIN_SEG(goddard, SEG_GODDARD)
    {
-      BUILD_DIR/src/menu/level_select_menu.o(.text);
-      BUILD_DIR/src/menu/intro_geo.o(.text);
-      BUILD_DIR/src/menu/file_select.o(.text);
-      BUILD_DIR/src/menu/star_select.o(.text);
-      BUILD_DIR/src/menu*.o(.text);
       BUILD_DIR/libgoddard.a:gd_main.o(.text);
       BUILD_DIR/libgoddard.a:gd_memory.o(.text);
       BUILD_DIR/libgoddard.a:sfx.o(.text);
@@ -944,16 +960,6 @@ SECTIONS
       BUILD_DIR/libgoddard.a:shape_helper.o(.text);
       BUILD_DIR/libgoddard.a:renderer.o(.text);
       BUILD_DIR/libgoddard.a:*.o(.text);
-      /* data, rodata, per file */
-      BUILD_DIR/src/menu/level_select_menu.o(.data*);
-      BUILD_DIR/src/menu/level_select_menu.o(.rodata*);
-      BUILD_DIR/src/menu/intro_geo.o(.data*);
-      BUILD_DIR/src/menu/file_select.o(.data*);
-      BUILD_DIR/src/menu/file_select.o(.rodata*);
-      BUILD_DIR/src/menu/star_select.o(.data*);
-      BUILD_DIR/src/menu/star_select.o(.rodata*);
-      BUILD_DIR/src/menu*.o(.data*);
-      BUILD_DIR/src/menu*.o(.rodata*);
       /* goddard subsystem data */
       BUILD_DIR/libgoddard.a:gd_main.o(.data*);
       BUILD_DIR/libgoddard.a:draw_objects.o(.data*);
@@ -983,10 +989,6 @@ SECTIONS
    END_SEG(goddard)
    BEGIN_NOLOAD(goddard)
    {
-      BUILD_DIR/src/menu/intro_geo.o(.bss*);
-      BUILD_DIR/src/menu/file_select.o(.bss*);
-      BUILD_DIR/src/menu/star_select.o(.bss*);
-      BUILD_DIR/src/menu*.o(.bss*);
       BUILD_DIR/libgoddard.a:gd_main.o(.bss*);
       BUILD_DIR/libgoddard.a:gd_memory.o(.bss*);
       BUILD_DIR/libgoddard.a:sfx.o(.bss*);
