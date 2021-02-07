@@ -28,7 +28,7 @@ NON_MATCHING ?= 1
 COMPILER_N64 ?= gcc
 
 # Accept RM2C level folder output
-RM2C ?= 0
+RM2C ?= 1
 
 # Build for original N64 (no pc code)
 TARGET_N64 = 1
@@ -829,7 +829,7 @@ ifneq ($(SDL1_USED)$(SDL2_USED),00)
     BACKEND_LDFLAGS += `$(SDLCONFIG) --libs`
   endif
 endif
-
+$(info "OPT FLAGS "$(OPT_FLAGS))
 ifeq ($(WINDOWS_BUILD),1)
   CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
   CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv
