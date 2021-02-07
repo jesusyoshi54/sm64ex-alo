@@ -555,7 +555,9 @@ void read_controller_inputs(void) {
     gPlayer3Controller->buttonPressed = gPlayer1Controller->buttonPressed;
     gPlayer3Controller->buttonDown = gPlayer1Controller->buttonDown;
 }
-
+#ifdef BETTERCAMERA
+#include "pc/configfile.h"
+#endif
 // initialize the controller structs to point at the OSCont information.
 void init_controllers(void) {
     s16 port, cont;
@@ -590,8 +592,9 @@ void init_controllers(void) {
 
 #ifdef BETTERCAMERA
     // load bettercam settings from the config file
-	newcam_active = 1;
     newcam_init_settings();
+	newcam_active = 1;
+	configEnableCamera=1;
 #endif
 }
 

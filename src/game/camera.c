@@ -3065,6 +3065,9 @@ void update_camera(struct Camera *c) {
     if (newcam_active){
 		c->mode=CAMERA_MODE_NEWCAM;
     }else{
+		if (c->mode==CAMERA_MODE_NONE){
+			c->mode=CAMERA_MODE_8_DIRECTIONS;
+		}
 #endif
     // camera_course_processing(c);
     stub_camera_3(c);
