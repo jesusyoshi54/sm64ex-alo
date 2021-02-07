@@ -686,7 +686,7 @@ static void newcam_position_cam(void) {
 
     if (newcam_modeflags & NC_FLAG_COLLISION) {
         newcam_collision();
-        newcam_bounding_box();
+        // newcam_bounding_box();
     }
 
 }

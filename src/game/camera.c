@@ -3064,11 +3064,14 @@ void update_camera(struct Camera *c) {
 #ifdef BETTERCAMERA
     if (newcam_active){
 		c->mode=CAMERA_MODE_NEWCAM;
-    }
+    }else{
 #endif
-    camera_course_processing(c);
+    // camera_course_processing(c);
     stub_camera_3(c);
     sCButtonsPressed = find_c_buttons_pressed(sCButtonsPressed, gPlayer1Controller->buttonPressed,gPlayer1Controller->buttonDown);
+#ifdef BETTERCAMERA
+	}
+#endif
     if (c->cutscene != 0) {
         sYawSpeed = 0;
         play_cutscene(c);

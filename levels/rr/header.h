@@ -1,9 +1,15 @@
 #ifndef RR_HEADER_H
 #define RR_HEADER_H
-
 #include "types.h"
-
-// geo
+#include "game/moving_texture.h"
+extern const GeoLayout Geo_rr_1_0x2121700[];
+extern const Gfx DL_rr_1_0xe0650d0[];
+extern const Collision col_rr_1_0xe084a40[];
+extern const LevelScript level_rr_custom_entry[];
+extern const LevelScript local_area_rr_1_[];
+extern const LevelScript local_objects_rr_1_[];
+extern const LevelScript local_warps_rr_1_[];
+extern const LevelScript level_rr_entry[];
 extern const GeoLayout rr_geo_000660[];
 extern const GeoLayout rr_geo_000678[];
 extern const GeoLayout rr_geo_000690[];
@@ -41,8 +47,6 @@ extern const GeoLayout rr_geo_000988[];
 extern const GeoLayout rr_geo_0009A0[];
 extern const GeoLayout rr_geo_0009B8[];
 extern const GeoLayout rr_geo_0009D0[];
-
-// leveldata
 extern const Gfx dl_cruiser_metal_holes[];
 extern const Gfx rr_seg7_dl_07002CC8[];
 extern const Gfx rr_seg7_dl_07002E80[];
@@ -106,8 +110,5 @@ extern const Trajectory rr_seg7_trajectory_0702EC3C[];
 extern const Trajectory rr_seg7_trajectory_0702ECC0[];
 extern const Trajectory rr_seg7_trajectory_0702ED9C[];
 extern const Trajectory rr_seg7_trajectory_0702EEE0[];
-
-// script
 extern const LevelScript level_rr_entry[];
-
 #endif
