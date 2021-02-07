@@ -1666,7 +1666,7 @@ void mario_update_hitbox_and_cap_model(struct MarioState *m) {
     struct MarioBodyState *bodyState = m->marioBodyState;
     s32 flags = update_and_return_cap_flags(m);
 
-    if (flags & MARIO_VANISH_CAP || newcam_xlu < 255) {
+    if (flags & MARIO_VANISH_CAP || (newcam_xlu < 255 &&(gLakituState.mode == CAMERA_MODE_NEWCAM))) {
         bodyState->modelState = MODEL_STATE_NOISE_ALPHA;
     }
 
