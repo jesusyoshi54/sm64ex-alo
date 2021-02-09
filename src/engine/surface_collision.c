@@ -384,11 +384,14 @@ f32 find_floor_height_and_data(f32 xPos, f32 yPos, f32 zPos, struct FloorGeometr
 /**
  * Iterate through the list of floors and find the first floor under a given point.
  */
+
 static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, f32 *pheight) {
     register struct Surface *surf;
     register s32 x1, z1, x2, z2, x3, z3;
     f32 nx, ny, nz, oo, height;
-    struct Surface *floor = NULL;
+    // struct Surface *floor = &sDeathPlane;
+    // *pheight = DEATH_PLANE_HEIGHT;
+	struct Surface *floor = NULL;
     *pheight = FLOOR_LOWER_LIMIT;
 
     // Iterate through the list of floors until there are no more floors.
@@ -455,6 +458,7 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
             break;
         }
     }
+	
 
     return floor;
 }
@@ -524,6 +528,8 @@ f32 find_dynamic_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
 /**
  * Find the highest floor under a given position and return the height.
  */
+
+
 f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
     s16 cellZ, cellX;
 
