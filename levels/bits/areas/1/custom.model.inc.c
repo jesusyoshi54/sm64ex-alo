@@ -51201,7 +51201,7 @@ const Ambient_t Light_bits_1_0xe000008 = {
 
 const Gfx DL_bits_1_0xe0baa50[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -62659,7 +62659,7 @@ gsSPEndDisplayList(),
 
 const Gfx DL_bits_1_0xe0ec3f8[] = {
 gsDPPipeSync(),
-gsDPSetDepthSource(0),
+// gsDPSetDepthSource(0),
 gsSPGeometryMode(0, G_FOG),
 gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
 gsSPGeometryMode(G_LIGHTING, 0),
@@ -62989,7 +62989,7 @@ gsSPGeometryMode(G_FOG, 0),
 gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
 gsSPGeometryMode(0, G_CULL_BACK|G_LIGHTING),
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_NOOP2),
 gsSPEndDisplayList(),
 };

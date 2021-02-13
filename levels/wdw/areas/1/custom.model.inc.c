@@ -58239,7 +58239,7 @@ const Ambient_t Light_wdw_1_0xe000008 = {
 
 const Gfx DL_wdw_1_0xe0cd8e0[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -71428,7 +71428,7 @@ gsSPEndDisplayList(),
 const Gfx DL_wdw_1_0xe1184f0[] = {
 gsDPPipeSync(),
 gsDPSetEnvColor(255, 255, 255, 154),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL1, 0, 0, ENVIRONMENT, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, TEXEL0, 0, 0, ENVIRONMENT),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -71509,7 +71509,6 @@ gsSPVertex(VB_wdw_1_0xe066500, 15, 0),
 gsSP1Triangle(0, 1, 2, 0),
 gsSPTexture(65535, 65535, 0, 0, 0),
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
 gsSPEndDisplayList(),
 };
 
