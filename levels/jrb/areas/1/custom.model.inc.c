@@ -40480,7 +40480,7 @@ gsSPEndDisplayList(),
 
 const Gfx DL_jrb_1_0xe0d0530[] = {
 gsDPPipeSync(),
-gsDPSetDepthSource(0),
+// gsDPSetDepthSource(0),,
 gsSPGeometryMode(0, G_FOG),
 gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
 gsSPGeometryMode(G_LIGHTING, 0),

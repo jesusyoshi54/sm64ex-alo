@@ -20573,7 +20573,7 @@ gsSPEndDisplayList(),
 
 const Gfx DL_castle_grounds_1_0xe0671d0[] = {
 gsDPPipeSync(),
-gsDPSetDepthSource(0),
+// gsDPSetDepthSource(0),,
 gsSPGeometryMode(0, G_FOG),
 gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
 gsSPGeometryMode(G_LIGHTING, 0),
