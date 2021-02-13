@@ -1002,7 +1002,7 @@ gsSPEndDisplayList(),
 
 const Gfx DL_pss_1_0xe008f80[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE,0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE,0),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),

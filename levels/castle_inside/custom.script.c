@@ -83,6 +83,7 @@ RETURN()
 };
 const LevelScript local_objects_castle_inside_1_[] = {
 OBJECT_WITH_ACTS(0,0,906,-6,0,0,0,0x0, bhvInstantActiveWarp,31),
+OBJECT_WITH_ACTS(0,0,906,-6,0,0,0,0x70000, bhvInstantActiveWarp,31),
 OBJECT_WITH_ACTS(0,10162,423,-25,0,0,0,0xb0000, bhvWarp,31),
 OBJECT_WITH_ACTS(0,61,300,-8235,0,0,0,0xa0000, bhvWarp,31),
 OBJECT_WITH_ACTS(0,-9678,-2474,-609,0,0,0,0xc0000, bhvWarp,31),
@@ -113,5 +114,6 @@ WARP_NODE(3,6,1,10,0),
 WARP_NODE(4,6,1,10,0),
 WARP_NODE(5,6,1,10,0),
 WARP_NODE(6,6,1,10,0),
+WARP_NODE(7,6,1,10,0),
 RETURN()
 };
