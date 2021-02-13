@@ -1,11 +1,16 @@
 #ifndef CASTLE_INSIDE_HEADER_H
 #define CASTLE_INSIDE_HEADER_H
-
 #include "types.h"
-#include "game/paintings.h"
 #include "game/moving_texture.h"
-
-// geo
+extern const GeoLayout Geo_castle_inside_1_0x14c1700[];
+extern const Gfx DL_castle_inside_1_0xe03d140[];
+extern const Gfx DL_castle_inside_1_0xe040af8[];
+extern const Collision col_castle_inside_1_0xe03f3f0[];
+extern const LevelScript level_castle_inside_custom_entry[];
+extern const LevelScript local_area_castle_inside_1_[];
+extern const LevelScript local_objects_castle_inside_1_[];
+extern const LevelScript local_warps_castle_inside_1_[];
+extern const LevelScript level_castle_inside_entry[];
 extern const GeoLayout castle_geo_000F00[];
 extern const GeoLayout castle_geo_000F18[];
 extern const GeoLayout castle_geo_000F30[];
@@ -53,8 +58,6 @@ extern const GeoLayout castle_geo_001AF8[];
 extern const GeoLayout castle_geo_001B48[];
 extern const GeoLayout castle_geo_001BB0[];
 extern const GeoLayout castle_geo_001C10[];
-
-// leveldata
 extern const Gfx inside_castle_seg7_dl_070225D8[];
 extern const Gfx inside_castle_seg7_dl_07022610[];
 extern const Gfx inside_castle_seg7_dl_070234C0[];
@@ -150,8 +153,5 @@ extern const Collision inside_castle_seg7_collision_water_level_pillar[];
 extern const Trajectory *const inside_castle_seg7_trajectory_mips[];
 extern const struct MovtexQuadCollection inside_castle_movtex_green_room_water[];
 extern const struct MovtexQuadCollection inside_castle_movtex_moat_water[];
-
-// script
 extern const LevelScript level_castle_inside_entry[];
-
 #endif
