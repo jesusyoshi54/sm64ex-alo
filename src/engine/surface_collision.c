@@ -389,8 +389,6 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
     register struct Surface *surf;
     register s32 x1, z1, x2, z2, x3, z3;
     f32 nx, ny, nz, oo, height;
-    // struct Surface *floor = &sDeathPlane;
-    // *pheight = DEATH_PLANE_HEIGHT;
 	struct Surface *floor = NULL;
     *pheight = FLOOR_LOWER_LIMIT;
 
