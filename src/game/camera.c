@@ -3062,7 +3062,7 @@ void update_camera(struct Camera *c) {
     c->defMode = gLakituState.defMode;
 
 #ifdef BETTERCAMERA
-    if (newcam_active){
+    if (newcam_active && c->mode!=CAMERA_MODE_INSIDE_CANNON){
 		c->mode=CAMERA_MODE_NEWCAM;
     }else{
 		if (!(c->mode!=CAMERA_MODE_INSIDE_CANNON ^ c->mode!=CAMERA_MODE_C_UP)){

@@ -799,7 +799,7 @@ void newcam_loop(struct Camera *c) {
     newcam_rotate_button();
     newcam_zoom_button();
     newcam_position_cam();
-    newcam_find_fixed();
+    // newcam_find_fixed();
     if (gMarioObject)
         newcam_apply_values(c);
     newcam_fade_target_closeup();
