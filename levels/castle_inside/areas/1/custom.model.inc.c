@@ -3645,7 +3645,7 @@ const Ambient_t Light_castle_inside_1_0xe000008 = {
 
 const Gfx DL_castle_inside_1_0xe040d70[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -5177,7 +5177,7 @@ gsSPEndDisplayList(),
 
 const Gfx DL_castle_inside_1_0xe046ba8[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE,0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE,0),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -5297,7 +5297,7 @@ gsDPSetTile(0, 2, 8, 0, 0, 0, 0, 5, 0, 0, 5, 0),
 gsDPSetTileSize(0, 0, 0, 124, 124),
 gsSPVertex(VB_castle_inside_1_0xe03c270, 15, 0),
 gsSP2Triangles(3, 4, 5, 0,6, 7, 8, 0),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPTexture(65535, 65535, 0, 0, 0),
 gsSPEndDisplayList(),
 };

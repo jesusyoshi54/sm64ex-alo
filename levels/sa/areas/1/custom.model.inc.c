@@ -7029,7 +7029,7 @@ const Ambient_t Light_sa_1_0xe000008 = {
 
 const Gfx DL_sa_1_0xe01bdb0[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),

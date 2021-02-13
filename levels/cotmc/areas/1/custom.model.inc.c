@@ -3429,7 +3429,7 @@ const Ambient_t Light_cotmc_1_0xe000008 = {
 
 const Gfx DL_cotmc_1_0xe00c230[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
