@@ -217,7 +217,7 @@ OBJECT_WITH_ACTS(180,2125,6442,385,0,0,0,0x0, bhvFireSpitter,31),
 OBJECT_WITH_ACTS(206,1403,6607,54,0,0,0,0x0, bhvSnufit,31),
 OBJECT_WITH_ACTS(223,510,5857,-1099,0,0,0,0x0, bhvChuckya,31),
 OBJECT_WITH_ACTS(180,-10059,-8492,13411,0,0,0,0x0, bhvFireSpitter,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_ttc_1_0xe023870[23], editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,4,12,9,0,0,1, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_ttc_1_[] = {

@@ -3,7 +3,7 @@
 // static char buf[12];
 
 void bhv_green_switchboard_loop(void) {
-	struct Object *child = o->oUnk1A4;
+	struct Object *child = o->oIntroLakituCloud;
 	f32 dot;
 	f32 dotH;
 	if (cur_obj_is_mario_on_platform()==1){
@@ -52,7 +52,7 @@ void bhv_green_switchboard_loop(void) {
 
 
 void bhv_green_switchboard_init(void) {
-	o->oUnk1A4 = spawn_object(o,0x2C,bhvUnused05A8);
+	o->oIntroLakituCloud = spawn_object(o,0x2C,bhvUnused05A8);
 }
 
 

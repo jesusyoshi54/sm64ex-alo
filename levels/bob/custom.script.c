@@ -224,7 +224,7 @@ OBJECT_WITH_ACTS(124,-5539,-3696,12673,0,0,0,0x340000, bhvMessagePanel,31),
 OBJECT_WITH_ACTS(122,-1616,1389,-3111,0,0,0,0x7000000, bhvStar,31),
 OBJECT_WITH_ACTS(194,-3857,4118,-2386,0,0,0,0x0, bhvHomingAmp,31),
 OBJECT_WITH_ACTS(194,-3747,4118,-3429,0,0,0,0x0, bhvHomingAmp,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_bob_1_0xe02a9c0[9], editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,4,282,9,0,0,0, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_bob_1_[] = {

@@ -226,7 +226,7 @@ OBJECT_WITH_ACTS(0,0,0,0,0,0,0,0x0, bhvStarDoor,31),
 OBJECT_WITH_ACTS(0,0,0,0,0,0,0,0x0, bhvStarDoor,31),
 OBJECT_WITH_ACTS(0,0,0,0,0,0,0,0x0, bhvStarDoor,31),
 OBJECT_WITH_ACTS(0,0,0,0,0,0,0,0x0, bhvStarDoor,31),
-OBJECT_WITH_ACTS(0,341,4,36,0,0,0,&VB_wmotr_1_0xe026780[15], editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,4,12,3,0,0,6, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_wmotr_1_[] = {

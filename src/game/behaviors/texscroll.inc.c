@@ -29,12 +29,12 @@
     // Vtx_tn              n;  /* Use this one for normals */
     // long long int	force_structure_alignment;
 // } Vtx;
-
+extern Vtx *ScrollTargets[];
 #ifndef F3DEX_GBI_2E
-static void shift_UV_NORMAL(Vtx *vert, u16 vertcount, s16 speed, u16 bhv) {
+static void shift_UV_NORMAL(u32 vert, u16 vertcount, s16 speed, u16 bhv) {
     u16 overflownum = 0x1000;
     u32 i;
-    Vtx *verts = segmented_to_virtual(vert);
+    Vtx *verts = segmented_to_virtual(ScrollTargets[vert]);
 	u16 *Varray;
 	s16 correction=0;
 	if (verts[0].n.flag * absi(speed) > overflownum) {
@@ -51,10 +51,10 @@ static void shift_UV_NORMAL(Vtx *vert, u16 vertcount, s16 speed, u16 bhv) {
     verts[0].n.flag++;
 }
 
-static void shift_UV_SINE(Vtx *vert, u16 vertcount, s16 speed, u16 bhv) {
+static void shift_UV_SINE(u32 vert, u16 vertcount, s16 speed, u16 bhv) {
     u32 i;
-    Vtx *verts = segmented_to_virtual(vert);
-	u16 cycle = o->oFaceAngleRoll;
+    Vtx *verts = segmented_to_virtual(ScrollTargets[vert]);
+	u16 cycle = o->oFaceAngleRoll*180/ 0x8000;
 	u16 *Varray;
     for (i = 0; i < vertcount; i++) {
 		Varray = &verts[i].n;
@@ -63,7 +63,7 @@ static void shift_UV_SINE(Vtx *vert, u16 vertcount, s16 speed, u16 bhv) {
     verts[0].n.flag += cycle * 0x20;
 }
 
-static void shift_uv(u8 scrollbhv, Vtx *vert, u16 vertcount, s16 spd, u16 scrolltype) {
+static void shift_uv(u8 scrollbhv, u32 vert, u16 vertcount, s16 spd, u16 scrolltype) {
     switch (scrollbhv) {
         case MODE_SCROLL_UV:
 			shift_UV_NORMAL(vert, vertcount, spd, scrolltype);
@@ -75,62 +75,59 @@ static void shift_uv(u8 scrollbhv, Vtx *vert, u16 vertcount, s16 spd, u16 scroll
     }
 }
 #else
-static void shift_UV_NORMAL(Vtx *vert, u16 vertcount, s16 speed, u16 bhv) {
-    u16 overflownum = 0x1000;
+
+static void shift_UV_NORMAL(u32 vert, u16 vertcount, s16 speed, u16 bhv) {
+	u16 overflownum = 0x1000;
     u16 i;
-    Vtx *verts = &vert;
-	float *VFarray;
+	Vtx *verts = ScrollTargets[vert];
 	u16 correction=0;
-	Vtx_tn TempVert;
+	u16 offset=o->oFaceAnglePitch*180/ 0x8000;
+	vertcount=vertcount+(vertcount-1+offset)/15; // PC has padding between vert arrays that I need to compensate for
 	if (verts[0].n.flag * absi(speed) > overflownum) {
 		correction = overflownum * signum_positive(speed);
 		verts[0].n.flag = 0;
 	}
-	//float pos
 	if (bhv<4){
 		for (i = 0; i < vertcount; i++) {
-			VFarray = &(verts[i].n);
 			if (correction==0){
-				VFarray[bhv] += (float) speed;
+				verts[i].n.ob[bhv] += (float) speed;
 			}else
-				VFarray[bhv] -= (float) correction;
+				verts[i].n.ob[bhv] -= (float) correction;
 		}
 	}
 	else{
 		for (i = 0; i < vertcount; i++) {
-			TempVert = verts[i].n;
 			if (correction==0)
-				TempVert.tc[bhv-4] += speed;
+				verts[i].n.tc[bhv-4] += speed;
 			else
-				TempVert.tc[bhv-4] -= correction;
+				verts[i].n.tc[bhv-4] -= correction;
 		}
 	}
     verts[0].n.flag++;
+	
 }
 
-static void shift_UV_SINE(Vtx *vert, u16 vertcount, s16 speed, u16 bhv) {
+static void shift_UV_SINE(u32 vert, u16 vertcount, s16 speed, u16 bhv) {
     u32 i;
-    Vtx *verts = &vert;
-	u16 cycle = o->oFaceAngleRoll;
-	float *VFarray;
-	Vtx_tn TempVert;
+    Vtx *verts = ScrollTargets[vert];
+	u16 cycle = o->oFaceAngleRoll*180/ 0x8000;
+	u16 offset=o->oFaceAnglePitch*180/ 0x8000;
+	vertcount=vertcount+(vertcount-1+offset)/15; // PC has padding between vert arrays that I need to compensate for
 	//float pos
 	if (bhv<4){
 		for (i = 0; i < vertcount; i++) {
-			VFarray = &verts[i].n;
-			VFarray[bhv] += (float) (sins(verts[0].n.flag) * speed);
+			verts[i].n.ob[bhv] += (float) (sins(verts[0].n.flag) * speed);
 		}
 	}else{
 		for (i = 0; i < vertcount; i++) {
-			TempVert = verts[i].n;
-			TempVert.tc[bhv-4] += sins(verts[0].n.flag) * speed;
+			verts[i].n.tc[bhv-4] += sins(verts[0].n.flag) * speed;
 		}
 	}
     verts[0].n.flag += cycle * 0x20;
 }
 
 
-static void shift_uv(u8 scrollbhv, Vtx *vert, u16 vertcount, s16 spd, u16 scrolltype) {
+static void shift_uv(u8 scrollbhv, u32 vert, u16 vertcount, s16 spd, u16 scrolltype) {
     switch (scrollbhv) {
         case MODE_SCROLL_UV:
 			shift_UV_NORMAL(vert, vertcount, spd, scrolltype);
@@ -142,8 +139,8 @@ static void shift_uv(u8 scrollbhv, Vtx *vert, u16 vertcount, s16 spd, u16 scroll
     }
 }
 #endif
-// format I will use is bparam=addr,z=vert amount,x=spd,y=bhv,ry=type, rz=cycle
+// format I will use is bparam=addr,z=vert amount,x=spd,y=bhv,ry=type, rz=cycle, rx=offset
 void uv_update_scroll() {
-	shift_uv(/*scrolling type*/ o->oFaceAngleYaw, /*pointer to verts*/ o->oBehParams, 
+	shift_uv(/*scrolling type*/ o->oFaceAngleYaw, /*index in vert ptr arr*/ o->oBehParams, 
 	/*number of verts*/ (u16) o->oPosZ, /*speed*/ (s16) o->oPosX, /*type*/ (u16) o->oPosY);
 }
