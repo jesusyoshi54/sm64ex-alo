@@ -174,7 +174,7 @@ gsSPEndDisplayList(),
 };
 
 const Gfx DL_exclamation_box_outline_geo_0x8025968[] = {
-gsDPSetTextureImage(0, 2, 1, exclamation_box_outline_geo__texture_08025168),
+gsDPSetTextureImage(0, 2, 1, exclamation_box_outline_seg8_dl_08025F08__texture_08025A80),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),
 gsSPVertex(VB_exclamation_box_outline_geo_0x8025008, 14, 0),
