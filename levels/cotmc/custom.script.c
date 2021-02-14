@@ -119,10 +119,10 @@ OBJECT_WITH_ACTS(180,500,207,-500,0,0,0,0x0, bhvFireSpitter,31),
 OBJECT_WITH_ACTS(180,500,207,500,0,0,0,0x0, bhvFireSpitter,31),
 OBJECT_WITH_ACTS(180,-500,207,500,0,0,0,0x0, bhvFireSpitter,31),
 OBJECT_WITH_ACTS(180,-500,207,-500,0,0,0,0x0, bhvFireSpitter,31),
-OBJECT_WITH_ACTS(0,32,5,192,0,0,0,63, editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,64,4,48,0,0,0,64, editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,16,5,3,0,0,0,65, editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,16,5,381,0,0,0,66, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,32,5,192,3,0,0,65, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,4,48,9,0,0,66, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,3,6,0,0,67, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,381,0,0,0,68, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_cotmc_1_[] = {

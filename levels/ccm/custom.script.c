@@ -209,8 +209,8 @@ OBJECT_WITH_ACTS(124,18538,-1274,1857,0,-90,0,0x210000, bhvMessagePanel,31),
 OBJECT_WITH_ACTS(124,18147,1935,-6725,0,-90,0,0x2e0000, bhvMessagePanel,31),
 OBJECT_WITH_ACTS(0,17834,2446,-7056,0,-90,0,0x370000, bhvSpinAirborneWarp,31),
 OBJECT_WITH_ACTS(0,18282,1935,-7042,0,0,0,0x10000, bhvCheckpoint_Flag_MOP,31),
-OBJECT_WITH_ACTS(0,8,4,96,0,0,0,13, editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,2,5,6,0,0,0,14, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,4,96,9,0,0,13, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,2,5,6,9,0,0,14, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_ccm_1_[] = {

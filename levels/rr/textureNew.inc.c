@@ -1,8 +1,3 @@
-
-
-
-
-
 ALIGNED8 const u8 rr_1__texture_0E000050[] = {
 #include "levels/rr/rr_1_0xe000050_custom.rgba16.inc.c"
 };

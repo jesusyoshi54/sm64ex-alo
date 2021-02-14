@@ -141,8 +141,8 @@ OBJECT_WITH_ACTS(194,-6,364,1203,0,0,0,0x0, bhvHomingAmp,31),
 OBJECT_WITH_ACTS(194,26,413,-1717,0,0,0,0x0, bhvHomingAmp,31),
 OBJECT_WITH_ACTS(194,-1528,413,827,0,0,0,0x0, bhvHomingAmp,31),
 OBJECT_WITH_ACTS(194,1466,413,878,0,0,0,0x0, bhvHomingAmp,31),
-OBJECT_WITH_ACTS(0,8,4,72,0,0,0,96,editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,16,5,144,0,0,0,97,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,4,72,6,0,0,98,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,144,0,0,0,99,editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_bowser_3_1_[] = {

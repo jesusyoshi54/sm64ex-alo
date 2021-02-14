@@ -166,7 +166,7 @@ OBJECT_WITH_ACTS(195,4109,-2048,8486,0,-90,0,0x30000, bhvBobombBuddy,31),
 OBJECT_WITH_ACTS(195,-514,-1718,-7170,0,191,0,0x130000, bhvBobombBuddy,31),
 OBJECT_WITH_ACTS(0,-2964,951,-11918,0,0,0,0x10000, bhvCheckpoint_Flag_MOP,31),
 OBJECT_WITH_ACTS(195,3230,-1748,2456,0,0,0,0x6f0000, bhvBobombBuddy,31),
-OBJECT_WITH_ACTS(0,16,5,120,0,0,0,21,editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,120,6,0,0,21,editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_bob_1_[] = {
