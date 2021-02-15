@@ -49,6 +49,9 @@ void bhv_green_switchboard_loop(void);
 void bhv_green_switchboard_init(void);
 #endif
 
+void Scroll_F2_Loop(void);
+void SR625_Door_Init(void);
+void SR625_Door_Loop(void);
 void uv_update_scroll(void);
 void bhv_cap_switch_loop(void);
 void bhv_tiny_star_particles_init(void);

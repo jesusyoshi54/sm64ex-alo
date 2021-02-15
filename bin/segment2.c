@@ -10,6 +10,31 @@
 
 // SM64 (US/JP/EU/SH) Segment 02
 
+ALIGNED8 static const Texture vanish_wing_metal_cap_HUD[] = {
+#include "textures/segment2/vanish_wing_metal.rgba16.inc.c"
+};
+ALIGNED8 static const Texture metal_cap_HUD[] = {
+#include "textures/segment2/metal.rgba16.inc.c"
+};
+ALIGNED8 static const Texture wing_cap_HUD[] = {
+#include "textures/segment2/wing.rgba16.inc.c"
+};
+ALIGNED8 static const Texture vanish_cap_HUD[] = {
+#include "textures/segment2/vanish.rgba16.inc.c"
+};
+ALIGNED8 static const Texture vanish_wing_cap_HUD[] = {
+#include "textures/segment2/vanish_wing.rgba16.inc.c"
+};
+ALIGNED8 static const Texture vanish_metal_cap_HUD[] = {
+#include "textures/segment2/vanish_metal.rgba16.inc.c"
+};
+ALIGNED8 static const Texture wing_metal_cap_HUD[] = {
+#include "textures/segment2/wing_metal.rgba16.inc.c"
+};
+
+
+
+
 ALIGNED8 static const Texture texture_hud_char_0[] = {
 #include "textures/segment2/segment2.00000.rgba16.inc.c"
 };
@@ -1833,9 +1858,9 @@ const Texture *const main_hud_lut[] = {
     texture_hud_char_S, texture_hud_char_T, texture_hud_char_U,               0x0,
     texture_hud_char_W,               0x0, texture_hud_char_Y,               0x0,
                   0x0,               0x0,               0x0,               0x0,
-                  0x0,               0x0,               0x0,               0x0,
-                  0x0,               0x0,               0x0,               0x0,
-                  0x0,               0x0, texture_hud_char_multiply, texture_hud_char_coin,
+                  0x0,               0x0,               0x0, /*43*/   vanish_cap_HUD, metal_cap_HUD,
+  vanish_metal_cap_HUD , wing_cap_HUD, vanish_wing_cap_HUD, wing_metal_cap_HUD, vanish_wing_metal_cap_HUD,
+  texture_hud_char_multiply, texture_hud_char_coin,
     texture_hud_char_mario_head, texture_hud_char_star,               0x0,               0x0,
     texture_hud_char_apostrophe, texture_hud_char_double_quote,
 #else
@@ -1985,8 +2010,7 @@ const Texture *const main_font_lut[] = {
                   0x0,               0x0,               0x0,               0x0,
                   0x0, texture_font_char_us_open_parentheses, texture_font_char_us_close_open_parentheses, texture_font_char_us_close_parentheses,
     texture_font_char_us_left_right_arrow, texture_font_char_us_ampersand, texture_font_char_us_ellipsis,               0x0,
-                  0x0,               0x0,               0x0,               0x0,
-                  0x0,               0x0,               0x0,               0x0,
+   0,0,0,0,0,0,0,               0x0,
                   0x0,               0x0, texture_font_char_us_exclamation, texture_font_char_us_percent,
     texture_font_char_us_question, texture_font_char_us_double_quote_open, texture_font_char_us_double_quote_close, texture_font_char_us_tilde,
                   0x0, texture_font_char_us_coin, texture_font_char_us_star_filled, texture_font_char_us_multiply,

@@ -334,8 +334,9 @@
 //idk
 const BehaviorScript Bhv_Custom_0x0040f000[] = {
     BEGIN(OBJ_LIST_DEFAULT),
-    DISABLE_RENDERING(),
-    BREAK(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(Scroll_F2_Loop),
+    END_LOOP(),
 };
 //b3 fight objects
 const BehaviorScript Bhv_Custom_0x00406b00[] = {
@@ -2557,7 +2558,7 @@ const BehaviorScript bhvLllHexagonalMesh[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
-// Used as a custom door, I will stub as normal door for now
+// Need at least one star in the course BP1 describes to be unlocked
 const BehaviorScript bhvLllBowserPuzzlePiece[] = {
     BEGIN(OBJ_LIST_SURFACE),
     SET_INT(oInteractType, INTERACT_DOOR),
@@ -2570,9 +2571,9 @@ const BehaviorScript bhvLllBowserPuzzlePiece[] = {
     SET_FLOAT(oCollisionDistance, 1000),
     SET_HOME(),
     CALL_NATIVE(bhv_door_init),
-    // CALL_NATIVE(bhv_lll_bowser_puzzle_piece_loop),
+    CALL_NATIVE(SR625_Door_Init),
     BEGIN_LOOP(),
-    // CALL_NATIVE(bhv_lll_bowser_puzzle_piece_loop),
+        CALL_NATIVE(SR625_Door_Loop),
         CALL_NATIVE(bhv_door_loop),
     END_LOOP(),
 

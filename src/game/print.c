@@ -297,6 +297,9 @@ s8 char_to_glyph_index(char c) {
     if (c >= '0' && c <= '9') {
         return c - 48;
     }
+    if (c >= 43 && c <= 50) {
+        return c;
+    }
 
     if (c == ' ') {
         return GLYPH_SPACE;

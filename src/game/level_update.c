@@ -914,7 +914,16 @@ void initiate_delayed_warp(void) {
         }
     }
 }
-
+ #include "gfx_dimensions.h"
+ static u8 HUD_Cap_Tex_Flags[] = {
+	 43, /* vanish 2 */
+	 44, /* metal 4 */
+	 45, /* vanish metal 6 */
+	 46, /* wing 8 */
+	 47, /* vanish wing 10 */
+	 48, /* metal wing 12 */
+	 49  /* vanish metal wing 14 */
+ };
 void update_hud_values(void) {
     if (gCurrCreditsEntry == NULL) {
         s16 numHealthWedges = gMarioState->health > 0 ? gMarioState->health >> 8 : 0;
@@ -939,6 +948,11 @@ void update_hud_values(void) {
             }
         }
 
+        if (gMarioState->capTimer > 0) {
+		u8 buf[16];
+		sprintf(buf,"%c %d",HUD_Cap_Tex_Flags[((gMarioState->flags&14)>>1)-1], gMarioState->capTimer/30);
+		print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(22), 30, buf);
+		}
         if (gMarioState->numLives > 100) {
             gMarioState->numLives = 100;
         }

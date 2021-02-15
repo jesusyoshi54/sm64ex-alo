@@ -804,7 +804,7 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
         m->interactObj = o;
         m->usedObj = o;
 
-        starIndex = (o->oBehParams >> 24) & 0x1F;
+        starIndex = (o->oBehParams >> 24) & 0xFF; //allow 8 stars
         save_file_collect_star_or_key(m->numCoins, starIndex);
 
         m->numStars =

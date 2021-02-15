@@ -1620,6 +1620,7 @@ u64 sCapFlickerFrames = 0x4444449249255555;
 /**
  * Updates the cap flags mainly based on the cap timer.
  */
+
 u32 update_and_return_cap_flags(struct MarioState *m) {
     u32 flags = m->flags;
     u32 action;

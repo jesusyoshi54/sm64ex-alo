@@ -15,7 +15,7 @@ It is expected to have many warnings for editor files and for roms with lots of 
 
 ******************************************************************************************
 Objects without references must have behaviors created for them, be given an existing behavior, or be commented out.
-#LLL puzzle piece is a custom door
+
 #Make 2D camera object for 2D levels = bhvPenguinRaceFinishLine
 #Bhv_Custom_0x0040f000 stubbed
 #Bhv_Custom_0x00409330 stubbed
