@@ -6,6 +6,12 @@
 This is an include meant to help with the addition of moving textures for water boxes. Moving textures are hardcoded in vanilla, but in hacks they're procedural. Every hack uses 0x5000 +Type (0 for water, 1 for toxic mist, 2 for mist) to locate the tables for their water boxes. I will replicate this by using a 3 dimensional array of pointers. This wastes a little bit of memory but is way easier to manage.
 To use this, simply place this file inside your source directory after exporting.
 */
+extern u8 bbh_1_Movtex_0[];
+extern u8 bbh_1_Movtex_1[];
+extern u8 bbh_1_Movtex_2[];
+extern u8 ccm_1_Movtex_0[];
+extern u8 ccm_1_Movtex_1[];
+extern u8 ccm_1_Movtex_2[];
 extern u8 castle_inside_1_Movtex_0[];
 extern u8 castle_inside_1_Movtex_1[];
 extern u8 castle_inside_1_Movtex_2[];
@@ -15,12 +21,6 @@ extern u8 castle_inside_2_Movtex_2[];
 extern u8 castle_inside_3_Movtex_0[];
 extern u8 castle_inside_3_Movtex_1[];
 extern u8 castle_inside_3_Movtex_2[];
-extern u8 bbh_1_Movtex_0[];
-extern u8 bbh_1_Movtex_1[];
-extern u8 bbh_1_Movtex_2[];
-extern u8 ccm_1_Movtex_0[];
-extern u8 ccm_1_Movtex_1[];
-extern u8 ccm_1_Movtex_2[];
 extern u8 hmc_1_Movtex_0[];
 extern u8 hmc_1_Movtex_1[];
 extern u8 hmc_1_Movtex_2[];
@@ -107,42 +107,39 @@ extern u8 ttm_1_Movtex_1[];
 extern u8 ttm_1_Movtex_2[];
 
 static void *RM2C_Water_Box_Array[33][8][3] = {
+{ {NULL,NULL,NULL,},{&bbh_1_Movtex_0,&bbh_1_Movtex_1,&bbh_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&ccm_1_Movtex_0,&ccm_1_Movtex_1,&ccm_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&castle_inside_1_Movtex_0,&castle_inside_1_Movtex_1,&castle_inside_1_Movtex_2,},{&castle_inside_2_Movtex_0,&castle_inside_2_Movtex_1,&castle_inside_2_Movtex_2,},{&castle_inside_3_Movtex_0,&castle_inside_3_Movtex_1,&castle_inside_3_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&hmc_1_Movtex_0,&hmc_1_Movtex_1,&hmc_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&ssl_1_Movtex_0,&ssl_1_Movtex_1,&ssl_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&bob_1_Movtex_0,&bob_1_Movtex_1,&bob_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&sl_1_Movtex_0,&sl_1_Movtex_1,&sl_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&wdw_1_Movtex_0,&wdw_1_Movtex_1,&wdw_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&jrb_1_Movtex_0,&jrb_1_Movtex_1,&jrb_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&thi_1_Movtex_0,&thi_1_Movtex_1,&thi_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&ttc_1_Movtex_0,&ttc_1_Movtex_1,&ttc_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&rr_1_Movtex_0,&rr_1_Movtex_1,&rr_1_Movtex_2,},{&rr_2_Movtex_0,&rr_2_Movtex_1,&rr_2_Movtex_2,},{&rr_3_Movtex_0,&rr_3_Movtex_1,&rr_3_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&castle_grounds_1_Movtex_0,&castle_grounds_1_Movtex_1,&castle_grounds_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&bitdw_1_Movtex_0,&bitdw_1_Movtex_1,&bitdw_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&vcutm_1_Movtex_0,&vcutm_1_Movtex_1,&vcutm_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&bitfs_1_Movtex_0,&bitfs_1_Movtex_1,&bitfs_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&sa_1_Movtex_0,&sa_1_Movtex_1,&sa_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&bits_1_Movtex_0,&bits_1_Movtex_1,&bits_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&lll_1_Movtex_0,&lll_1_Movtex_1,&lll_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&ddd_1_Movtex_0,&ddd_1_Movtex_1,&ddd_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&wf_1_Movtex_0,&wf_1_Movtex_1,&wf_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&ending_1_Movtex_0,&ending_1_Movtex_1,&ending_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&castle_courtyard_1_Movtex_0,&castle_courtyard_1_Movtex_1,&castle_courtyard_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&pss_1_Movtex_0,&pss_1_Movtex_1,&pss_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&cotmc_1_Movtex_0,&cotmc_1_Movtex_1,&cotmc_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&totwc_1_Movtex_0,&totwc_1_Movtex_1,&totwc_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&wmotr_1_Movtex_0,&wmotr_1_Movtex_1,&wmotr_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
 { {NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
 { {NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&castle_inside_1_Movtex_0,NULL,&castle_inside_1_Movtex_1,NULL,&castle_inside_1_Movtex_2,},{NULL,NULL,NULL,},{&castle_inside_2_Movtex_0,NULL,&castle_inside_2_Movtex_1,NULL,&castle_inside_2_Movtex_2,},{NULL,NULL,NULL,},{&castle_inside_3_Movtex_0,NULL,&castle_inside_3_Movtex_1,NULL,&castle_inside_3_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&bbh_1_Movtex_0,NULL,&bbh_1_Movtex_1,NULL,&bbh_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&ccm_1_Movtex_0,NULL,&ccm_1_Movtex_1,NULL,&ccm_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
+{ {NULL,NULL,NULL,},{&bowser_3_1_Movtex_0,&bowser_3_1_Movtex_1,&bowser_3_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
 { {NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&hmc_1_Movtex_0,NULL,&hmc_1_Movtex_1,NULL,&hmc_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&ssl_1_Movtex_0,NULL,&ssl_1_Movtex_1,NULL,&ssl_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&bob_1_Movtex_0,NULL,&bob_1_Movtex_1,NULL,&bob_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&sl_1_Movtex_0,NULL,&sl_1_Movtex_1,NULL,&sl_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&wdw_1_Movtex_0,NULL,&wdw_1_Movtex_1,NULL,&wdw_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&jrb_1_Movtex_0,NULL,&jrb_1_Movtex_1,NULL,&jrb_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&thi_1_Movtex_0,NULL,&thi_1_Movtex_1,NULL,&thi_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&ttc_1_Movtex_0,NULL,&ttc_1_Movtex_1,NULL,&ttc_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&rr_1_Movtex_0,NULL,&rr_1_Movtex_1,NULL,&rr_1_Movtex_2,},{NULL,NULL,NULL,},{&rr_2_Movtex_0,NULL,&rr_2_Movtex_1,NULL,&rr_2_Movtex_2,},{NULL,NULL,NULL,},{&rr_3_Movtex_0,NULL,&rr_3_Movtex_1,NULL,&rr_3_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&castle_grounds_1_Movtex_0,NULL,&castle_grounds_1_Movtex_1,NULL,&castle_grounds_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&bitdw_1_Movtex_0,NULL,&bitdw_1_Movtex_1,NULL,&bitdw_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&vcutm_1_Movtex_0,NULL,&vcutm_1_Movtex_1,NULL,&vcutm_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&bitfs_1_Movtex_0,NULL,&bitfs_1_Movtex_1,NULL,&bitfs_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&sa_1_Movtex_0,NULL,&sa_1_Movtex_1,NULL,&sa_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&bits_1_Movtex_0,NULL,&bits_1_Movtex_1,NULL,&bits_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&lll_1_Movtex_0,NULL,&lll_1_Movtex_1,NULL,&lll_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&ddd_1_Movtex_0,NULL,&ddd_1_Movtex_1,NULL,&ddd_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&wf_1_Movtex_0,NULL,&wf_1_Movtex_1,NULL,&wf_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&ending_1_Movtex_0,NULL,&ending_1_Movtex_1,NULL,&ending_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&castle_courtyard_1_Movtex_0,NULL,&castle_courtyard_1_Movtex_1,NULL,&castle_courtyard_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&pss_1_Movtex_0,NULL,&pss_1_Movtex_1,NULL,&pss_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&cotmc_1_Movtex_0,NULL,&cotmc_1_Movtex_1,NULL,&cotmc_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&totwc_1_Movtex_0,NULL,&totwc_1_Movtex_1,NULL,&totwc_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&wmotr_1_Movtex_0,NULL,&wmotr_1_Movtex_1,NULL,&wmotr_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&bowser_3_1_Movtex_0,NULL,&bowser_3_1_Movtex_1,NULL,&bowser_3_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, },
-{ {NULL,NULL,NULL,},{&ttm_1_Movtex_0,NULL,&ttm_1_Movtex_1,NULL,&ttm_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, }
+{ {NULL,NULL,NULL,},{&ttm_1_Movtex_0,&ttm_1_Movtex_1,&ttm_1_Movtex_2,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,},{NULL,NULL,NULL,}, }
 };
 
 void *GetRomhackWaterBox(u32 id){
