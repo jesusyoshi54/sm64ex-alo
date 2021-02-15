@@ -1,17 +1,22 @@
 #ifndef DDD_HEADER_H
 #define DDD_HEADER_H
-
 #include "types.h"
 #include "game/moving_texture.h"
-
-// geo
+extern const GeoLayout Geo_ddd_1_0x2c21700[];
+extern const Gfx DL_ddd_1_0xe0eaf80[];
+extern const Gfx DL_ddd_1_0xe12a178[];
+extern const Gfx DL_ddd_1_0xe12b080[];
+extern const Collision col_ddd_1_0xe116aa8[];
+extern const LevelScript level_ddd_custom_entry[];
+extern const LevelScript local_area_ddd_1_[];
+extern const LevelScript local_objects_ddd_1_[];
+extern const LevelScript local_warps_ddd_1_[];
+extern const LevelScript level_ddd_entry[];
 extern const GeoLayout ddd_geo_000450[];
 extern const GeoLayout ddd_geo_000478[];
 extern const GeoLayout ddd_geo_0004A0[];
 extern const GeoLayout ddd_geo_0004C0[];
 extern const GeoLayout ddd_geo_000570[];
-
-// leveldata
 extern const Gfx ddd_seg7_dl_07004D48[];
 extern const Gfx ddd_seg7_dl_070057E8[];
 extern const Gfx ddd_seg7_dl_07005C40[];
@@ -36,8 +41,5 @@ extern const Collision ddd_seg7_collision_submarine[];
 extern const Collision ddd_seg7_collision_bowser_sub_door[];
 extern const struct MovtexQuadCollection ddd_movtex_area1_water[];
 extern const struct MovtexQuadCollection ddd_movtex_area2_water[];
-
-// script
 extern const LevelScript level_ddd_entry[];
-
 #endif

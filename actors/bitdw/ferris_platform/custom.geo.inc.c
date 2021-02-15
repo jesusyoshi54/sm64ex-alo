@@ -1,0 +1,7 @@
+const GeoLayout geo_bitdw_000588[]= {
+GEO_CULLING_RADIUS(600),
+GEO_OPEN_NODE(),
+GEO_DISPLAY_LIST(1,DL_geo_bitdw_000588_0x700bb58),
+GEO_CLOSE_NODE(),
+GEO_END(),
+};

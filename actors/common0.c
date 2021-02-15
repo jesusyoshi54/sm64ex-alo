@@ -52,7 +52,10 @@ UNUSED static const u64 binid_10 = 10;
 
 UNUSED static const u64 binid_11 = 11;
 
-#include "exclamation_box/model.inc.c"
+// #include "exclamation_box/model.inc.c"
+#include "custom_04036f60/custom.model.inc.h"
+#include "custom_04036f60/custom.model.inc.c"
+#include "custom_04036f60/textureNew.inc.c"
 UNUSED static const u64 binid_12 = 12;
 
 #include "goomba/model.inc.c"

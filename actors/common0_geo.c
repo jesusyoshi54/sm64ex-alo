@@ -21,7 +21,9 @@
 #include "flyguy/geo.inc.c"
 #include "breakable_box/geo.inc.c"
 #include "bowling_ball/geo.inc.c"
-#include "exclamation_box/geo.inc.c"
+// exclamation box
+#include "custom_04036f60/custom.model.inc.h"
+#include "custom_04036f60/custom.geo.inc.c"
 #include "goomba/geo.inc.c"
 #include "bobomb/geo.inc.c"
 #include "metal_box/geo.inc.c"

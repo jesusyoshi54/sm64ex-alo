@@ -1,0 +1,7 @@
+const GeoLayout custom_DL_0404cfc0[]= {
+GEO_CULLING_RADIUS(4096),
+GEO_OPEN_NODE(),
+GEO_DISPLAY_LIST(1,DL_custom_DL_0404cfc0_0x405bd80),
+GEO_CLOSE_NODE(),
+GEO_END(),
+};

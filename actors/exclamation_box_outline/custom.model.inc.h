@@ -1,0 +1,10 @@
+#ifndef exclamation_box_outline_exclamation_box_outline_model_HEADER_H
+#define exclamation_box_outline_exclamation_box_outline_model_HEADER_H
+#include "types.h"
+extern Vtx VB_exclamation_box_outline_seg8_dl_08025F08_0x8025e80[];
+extern const u8 exclamation_box_outline_seg8_dl_08025F08__texture_08025A80[];
+extern const Light_t Light_exclamation_box_outline_seg8_dl_08025F08_0x8025a70;
+extern const Ambient_t Light_exclamation_box_outline_seg8_dl_08025F08_0x8025a68;
+extern const Gfx DL_exclamation_box_outline_seg8_dl_08025F08_0x8025f08[];
+extern const Gfx DL_exclamation_box_outline_seg8_dl_08025F08_0x8025ec0[];
+#endif

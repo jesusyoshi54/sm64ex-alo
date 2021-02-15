@@ -1,0 +1,7 @@
+const GeoLayout geo_bbh_0005B0[]= {
+GEO_CULLING_RADIUS(700),
+GEO_OPEN_NODE(),
+GEO_DISPLAY_LIST(4,DL_geo_bbh_0005B0_0x7022038),
+GEO_CLOSE_NODE(),
+GEO_END(),
+};

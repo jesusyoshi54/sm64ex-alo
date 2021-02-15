@@ -331,6 +331,23 @@
     BC_B(0x37), \
     BC_PTR(dropletParams)
 
+//idk
+const BehaviorScript Bhv_Custom_0x0040f000[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    DISABLE_RENDERING(),
+    BREAK(),
+};
+//b3 fight objects
+const BehaviorScript Bhv_Custom_0x00406b00[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    DISABLE_RENDERING(),
+    BREAK(),
+};
+const BehaviorScript Bhv_Custom_0x00409330[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    DISABLE_RENDERING(),
+    BREAK(),
+};
 
 const BehaviorScript bhvStarDoor[] = {
     BEGIN(OBJ_LIST_SURFACE),

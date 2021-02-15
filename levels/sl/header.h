@@ -1,17 +1,22 @@
 #ifndef SL_HEADER_H
 #define SL_HEADER_H
-
 #include "types.h"
 #include "game/moving_texture.h"
-
-// geo
+extern const GeoLayout Geo_sl_1_0x1a41700[];
+extern const Gfx DL_sl_1_0xe0e60a0[];
+extern const Gfx DL_sl_1_0xe1222d0[];
+extern const Gfx DL_sl_1_0xe123288[];
+extern const Collision col_sl_1_0xe10f788[];
+extern const LevelScript level_sl_custom_entry[];
+extern const LevelScript local_area_sl_1_[];
+extern const LevelScript local_objects_sl_1_[];
+extern const LevelScript local_warps_sl_1_[];
+extern const LevelScript level_sl_entry[];
 extern const GeoLayout sl_geo_000360[];
 extern const GeoLayout sl_geo_000378[];
 extern const GeoLayout sl_geo_000390[];
 extern const GeoLayout sl_geo_0003A8[];
 extern const GeoLayout sl_geo_000484[];
-
-// leveldata
 extern const Gfx sl_seg7_dl_07005478[];
 extern const Gfx sl_seg7_dl_070056B0[];
 extern const Gfx sl_seg7_dl_070073D0[];
@@ -33,8 +38,5 @@ extern const Collision sl_seg7_collision_pound_explodes[];
 extern const Collision sl_seg7_area_2_collision[];
 extern const MacroObject sl_seg7_area_2_macro_objs[];
 extern const struct MovtexQuadCollection sl_movtex_water[];
-
-// script
 extern const LevelScript level_sl_entry[];
-
 #endif

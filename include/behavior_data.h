@@ -3,6 +3,9 @@
 
 #include "types.h"
 
+extern const BehaviorScript Bhv_Custom_0x0040f000[];
+extern const BehaviorScript Bhv_Custom_0x00406b00[];
+extern const BehaviorScript Bhv_Custom_0x00409330[];
 extern const BehaviorScript editor_Scroll_Texture[];
 extern const BehaviorScript RM_Scroll_Texture[];
 extern const BehaviorScript bhvStarDoor[];

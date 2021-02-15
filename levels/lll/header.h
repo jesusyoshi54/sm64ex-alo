@@ -1,10 +1,17 @@
 #ifndef LLL_HEADER_H
 #define LLL_HEADER_H
-
 #include "types.h"
 #include "game/moving_texture.h"
-
-// geo
+extern const GeoLayout Geo_lll_1_0x2ac1700[];
+extern const Gfx DL_lll_1_0xe0f9410[];
+extern const Gfx DL_lll_1_0xe12cec0[];
+extern const Gfx DL_lll_1_0xe12f880[];
+extern const Collision col_lll_1_0xe121128[];
+extern const LevelScript level_lll_custom_entry[];
+extern const LevelScript local_area_lll_1_[];
+extern const LevelScript local_objects_lll_1_[];
+extern const LevelScript local_warps_lll_1_[];
+extern const LevelScript level_lll_entry[];
 extern const GeoLayout lll_geo_0009E0[];
 extern const GeoLayout lll_geo_0009F8[];
 extern const GeoLayout lll_geo_000A10[];
@@ -47,8 +54,6 @@ extern const GeoLayout lll_geo_000DE8[];
 extern const GeoLayout lll_geo_000E00[];
 extern const GeoLayout lll_geo_000EA8[];
 extern const GeoLayout lll_geo_000EC0[];
-
-// leveldata
 extern const Gfx lll_seg7_dl_070134E0[];
 extern const Gfx lll_seg7_dl_070137C0[];
 extern const Gfx lll_seg7_dl_070138F8[];
@@ -124,8 +129,5 @@ extern const Gfx lll_dl_lava_floor[];
 extern const struct MovtexQuadCollection lll_movtex_volcano_floor_lava[];
 extern Movtex lll_movtex_tris_lavafall_volcano[];
 extern const Gfx lll_dl_lavafall_volcano[];
-
-// script
 extern const LevelScript level_lll_entry[];
-
 #endif
