@@ -17,7 +17,7 @@ It is expected to have many warnings for editor files and for roms with lots of 
 Objects without references must have behaviors created for them, be given an existing behavior, or be commented out.
 
 #Make 2D camera object for 2D levels = bhvPenguinRaceFinishLine
-#Bhv_Custom_0x0040f000 stubbed
+#Bhv_Custom_0x0040f000 is an F2 scroll
 #Bhv_Custom_0x00409330 stubbed
 #Bhv_Custom_0x00406b00 stubbed
 
@@ -37,8 +37,6 @@ Objects without references must have behaviors created for them, be given an exi
  Level sa Area 1 has object  Bhv_Custom_0x0040f000 with no known label.
  Level lll Area 1 has object  Bhv_Custom_0x0040f000 with no known label.
  Level ddd Area 1 has object  Bhv_Custom_0x0040f000 with no known label.
- Level wf Area 1 has object  Bhv_Custom_0x0040f000 with no known label.
- Level ending Area 1 has object  Bhv_Custom_0x0040f000 with no known label.
  Level cotmc Area 1 has object  Bhv_Custom_0x0040f000 with no known label.
  Level totwc Area 1 has object  Bhv_Custom_0x0040f000 with no known label.
  Level bowser_1 Area 1 has object  Bhv_Custom_0x0040f000 with no known label.

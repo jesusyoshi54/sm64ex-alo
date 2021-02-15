@@ -19,7 +19,7 @@ static const Vtx sa_vertex_07002E80[] = {
 };
 
 // 0x07002F80 - 0x07002FD0
-static const Gfx sa_dl_07002F80[] = {
+static Gfx sa_dl_07002F80[] = {
     gsSPVertex(sa_vertex_07002E80, 16, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  1, 0x0),
     gsSP2Triangles( 4,  5,  6, 0x0,  4,  7,  5, 0x0),
@@ -29,7 +29,7 @@ static const Gfx sa_dl_07002F80[] = {
 };
 
 // 0x07002FD0 - 0x07003000
-const Gfx sa_seg7_dl_07002FD0[] = {
+Gfx sa_seg7_dl_07002FD0[] = {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_LIGHTING),
     gsSPDisplayList(sa_dl_07002F80),

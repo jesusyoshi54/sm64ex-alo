@@ -20135,7 +20135,7 @@ const Ambient_t Light_castle_grounds_2_0xe057ca8 = {
 {127, 127, 127}, 0, {127, 127, 127}, 0
 };
 
-const Gfx DL_castle_grounds_2_0xe0ecb60[] = {
+Gfx DL_castle_grounds_2_0xe0ecb60[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPTexture(65535, 65535, 0, 0, 1),
@@ -26550,7 +26550,7 @@ gsSPTexture(65535, 65535, 0, 0, 0),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_castle_grounds_2_0xe104dd0[] = {
+Gfx DL_castle_grounds_2_0xe104dd0[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE,0 ),
 gsSPTexture(65535, 65535, 0, 0, 1),

@@ -55,7 +55,7 @@ Movtex castle_grounds_movtex_tris_waterfall[] = {
 };
 
 // 0x07010F30 - 0x07010FC0
-const Gfx castle_grounds_dl_waterfall[] = {
+Gfx castle_grounds_dl_waterfall[] = {
     gsSP2Triangles( 0,  1,  5, 0x0,  0,  5,  4, 0x0),
     gsSP2Triangles( 1,  2,  6, 0x0,  1,  6,  5, 0x0),
     gsSP2Triangles( 2,  3,  6, 0x0,  3,  7,  6, 0x0),

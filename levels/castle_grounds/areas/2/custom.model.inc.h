@@ -1210,8 +1210,8 @@ extern const u8 castle_grounds_2__texture_0E0804F0[];
 extern const u8 castle_grounds_2__texture_0E080CF0[];
 extern const Light_t Light_castle_grounds_2_0xe057ca0;
 extern const Ambient_t Light_castle_grounds_2_0xe057ca8;
-extern const Gfx DL_castle_grounds_2_0xe0ecb60[];
+extern Gfx DL_castle_grounds_2_0xe0ecb60[];
 extern const u8 castle_grounds_2__texture_0E05FCF0[];
 extern const u8 castle_grounds_2__texture_0E07FCF0[];
-extern const Gfx DL_castle_grounds_2_0xe104dd0[];
+extern Gfx DL_castle_grounds_2_0xe104dd0[];
 #endif

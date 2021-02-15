@@ -7,10 +7,10 @@
 #include "make_const_nonconst.h"
 #include "textureNew.inc.c"
 #include "custom.model.inc.c"
-const Gfx intro_seg7_dl_0700B3A0[] = {
+Gfx intro_seg7_dl_0700B3A0[] = {
 gsSPDisplayList(DL_intro_seg7_0x7009e80)
 };
-const Gfx intro_seg7_dl_0700C6A0[] = {
+Gfx intro_seg7_dl_0700C6A0[] = {
 gsSPEndDisplayList()
 };
 // 0x0700C790

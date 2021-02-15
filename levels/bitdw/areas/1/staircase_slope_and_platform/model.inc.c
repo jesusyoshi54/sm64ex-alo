@@ -237,7 +237,7 @@ static const Vtx bitdw_seg7_vertex_07009F10[] = {
 };
 
 // 0x07009F90 - 0x0700A058
-static const Gfx bitdw_seg7_dl_07009F90[] = {
+static Gfx bitdw_seg7_dl_07009F90[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09007000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -257,7 +257,7 @@ static const Gfx bitdw_seg7_dl_07009F90[] = {
 };
 
 // 0x0700A058 - 0x0700A188
-static const Gfx bitdw_seg7_dl_0700A058[] = {
+static Gfx bitdw_seg7_dl_0700A058[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, bitdw_seg7_texture_07001000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -285,7 +285,7 @@ static const Gfx bitdw_seg7_dl_0700A058[] = {
 };
 
 // 0x0700A188 - 0x0700A2B8
-static const Gfx bitdw_seg7_dl_0700A188[] = {
+static Gfx bitdw_seg7_dl_0700A188[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09000800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -314,7 +314,7 @@ static const Gfx bitdw_seg7_dl_0700A188[] = {
 };
 
 // 0x0700A2B8 - 0x0700A310
-static const Gfx bitdw_seg7_dl_0700A2B8[] = {
+static Gfx bitdw_seg7_dl_0700A2B8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09004800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -326,7 +326,7 @@ static const Gfx bitdw_seg7_dl_0700A2B8[] = {
 };
 
 // 0x0700A310 - 0x0700A368
-static const Gfx bitdw_seg7_dl_0700A310[] = {
+static Gfx bitdw_seg7_dl_0700A310[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09001800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -338,7 +338,7 @@ static const Gfx bitdw_seg7_dl_0700A310[] = {
 };
 
 // 0x0700A368 - 0x0700A3F8
-const Gfx bitdw_seg7_dl_0700A368[] = {
+Gfx bitdw_seg7_dl_0700A368[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_LIGHTING),

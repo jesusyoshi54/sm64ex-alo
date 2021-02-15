@@ -47,7 +47,7 @@ static const Vtx ssl_seg7_vertex_0701FBD8[] = {
 };
 
 // 0x0701FC18 - 0x0701FCE0
-static const Gfx ssl_seg7_dl_0701FC18[] = {
+static Gfx ssl_seg7_dl_0701FC18[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, generic_09000000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -67,7 +67,7 @@ static const Gfx ssl_seg7_dl_0701FC18[] = {
 };
 
 // 0x0701FCE0 - 0x0701FD60
-const Gfx ssl_seg7_dl_0701FCE0[] = {
+Gfx ssl_seg7_dl_0701FCE0[] = {
     gsDPPipeSync(),
     gsDPSetEnvColor(255, 255, 255, 100),
     gsDPSetCombineMode(G_CC_MODULATERGBFADEA, G_CC_MODULATERGBFADEA),

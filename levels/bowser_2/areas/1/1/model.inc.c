@@ -122,7 +122,7 @@ static const Vtx bowser_2_seg7_vertex_070015E0[] = {
 };
 
 // 0x070016A0 - 0x07001788
-static const Gfx bowser_2_seg7_dl_070016A0[] = {
+static Gfx bowser_2_seg7_dl_070016A0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, bowser_2_seg7_texture_07000000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -145,7 +145,7 @@ static const Gfx bowser_2_seg7_dl_070016A0[] = {
 };
 
 // 0x07001788 - 0x07001930
-static const Gfx bowser_2_seg7_dl_07001788[] = {
+static Gfx bowser_2_seg7_dl_07001788[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fire_09005800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -180,7 +180,7 @@ static const Gfx bowser_2_seg7_dl_07001788[] = {
 };
 
 // 0x07001930 - 0x070019F0
-const Gfx bowser_2_seg7_dl_07001930[] = {
+Gfx bowser_2_seg7_dl_07001930[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),

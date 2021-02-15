@@ -78,20 +78,20 @@ Movtex ttm_movtex_tris_puddle_waterfall[] = {
 };
 
 // 0x07017260 - 0x07017288
-const Gfx ttm_dl_waterfall[] = {
+Gfx ttm_dl_waterfall[] = {
     gsSP2Triangles( 0,  1,  3, 0x0,  3,  1,  4, 0x0),
     gsSP2Triangles( 1,  2,  4, 0x0,  4,  2,  5, 0x0),
     gsSPEndDisplayList(),
 };
 
 // 0x07017288 - 0x070172A0
-const Gfx ttm_dl_bottom_waterfall[] = {
+Gfx ttm_dl_bottom_waterfall[] = {
     gsSP2Triangles( 0,  1,  2, 0x0,  2,  1,  3, 0x0),
     gsSPEndDisplayList(),
 };
 
 // 0x070172A0 - 0x070172D8
-const Gfx ttm_dl_puddle_waterfall[] = {
+Gfx ttm_dl_puddle_waterfall[] = {
     gsSP2Triangles( 0,  1,  4, 0x0,  4,  1,  5, 0x0),
     gsSP2Triangles( 1,  2,  5, 0x0,  5,  2,  6, 0x0),
     gsSP2Triangles( 2,  3,  6, 0x0,  6,  3,  7, 0x0),

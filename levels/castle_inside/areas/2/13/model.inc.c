@@ -983,7 +983,7 @@ static const Vtx inside_castle_seg7_vertex_07054AB0[] = {
 };
 
 // 0x07054AF0 - 0x07054B78
-static const Gfx inside_castle_seg7_dl_07054AF0[] = {
+static Gfx inside_castle_seg7_dl_07054AF0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_09004000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -999,7 +999,7 @@ static const Gfx inside_castle_seg7_dl_07054AF0[] = {
 };
 
 // 0x07054B78 - 0x070555E8
-static const Gfx inside_castle_seg7_dl_07054B78[] = {
+static Gfx inside_castle_seg7_dl_07054B78[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_09005000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1214,7 +1214,7 @@ static const Gfx inside_castle_seg7_dl_07054B78[] = {
 };
 
 // 0x070555E8 - 0x070557A8
-static const Gfx inside_castle_seg7_dl_070555E8[] = {
+static Gfx inside_castle_seg7_dl_070555E8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_09003000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1253,7 +1253,7 @@ static const Gfx inside_castle_seg7_dl_070555E8[] = {
 };
 
 // 0x070557A8 - 0x070558A0
-static const Gfx inside_castle_seg7_dl_070557A8[] = {
+static Gfx inside_castle_seg7_dl_070557A8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_09007000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1276,7 +1276,7 @@ static const Gfx inside_castle_seg7_dl_070557A8[] = {
 };
 
 // 0x070558A0 - 0x070558D0
-static const Gfx inside_castle_seg7_dl_070558A0[] = {
+static Gfx inside_castle_seg7_dl_070558A0[] = {
     gsSPLight(&inside_castle_seg7_lights_07051BB8.l, 1),
     gsSPLight(&inside_castle_seg7_lights_07051BB8.a, 2),
     gsSPVertex(inside_castle_seg7_vertex_07054AB0, 4, 0),
@@ -1285,7 +1285,7 @@ static const Gfx inside_castle_seg7_dl_070558A0[] = {
 };
 
 // 0x070558D0 - 0x070559C0
-const Gfx inside_castle_seg7_dl_070558D0[] = {
+Gfx inside_castle_seg7_dl_070558D0[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),

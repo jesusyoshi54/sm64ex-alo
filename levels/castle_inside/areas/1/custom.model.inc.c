@@ -13778,7 +13778,7 @@ const Ambient_t Light_castle_inside_1_0xe000008 = {
 {127, 127, 127}, 0, {127, 127, 127}, 0
 };
 
-const Gfx DL_castle_inside_1_0xe0a5830[] = {
+Gfx DL_castle_inside_1_0xe0a5830[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPTexture(65535, 65535, 0, 0, 1),
@@ -18239,7 +18239,7 @@ gsSPTexture(65535, 65535, 0, 0, 0),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_castle_inside_1_0xe0be8e0[] = {
+Gfx DL_castle_inside_1_0xe0be8e0[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE,0 ),
 gsSPTexture(65535, 65535, 0, 0, 1),
@@ -18749,7 +18749,7 @@ gsSPTexture(65535, 65535, 0, 0, 0),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_castle_inside_1_0xe0c1210[] = {
+Gfx DL_castle_inside_1_0xe0c1210[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 gsSPTexture(65535, 65535, 0, 0, 1),

@@ -870,7 +870,7 @@ static const Vtx rr_seg7_vertex_07013D78[] = {
 #endif
 
 // 0x07013E68 - 0x070142C0
-static const Gfx rr_seg7_dl_07013E68[] = {
+static Gfx rr_seg7_dl_07013E68[] = {
 #ifdef VERSION_JP
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09007000),
     gsDPLoadSync(),
@@ -1045,7 +1045,7 @@ static const Gfx rr_seg7_dl_07013E68[] = {
 };
 
 // 0x070142C0 - 0x07014350
-static const Gfx rr_seg7_dl_070142C0[] = {
+static Gfx rr_seg7_dl_070142C0[] = {
 #ifdef VERSION_JP
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09000800),
     gsDPLoadSync(),
@@ -1076,7 +1076,7 @@ static const Gfx rr_seg7_dl_070142C0[] = {
 };
 
 // 0x07014350 - 0x07014490
-static const Gfx rr_seg7_dl_07014350[] = {
+static Gfx rr_seg7_dl_07014350[] = {
 #ifdef VERSION_JP
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09008000),
     gsDPLoadSync(),
@@ -1133,7 +1133,7 @@ static const Gfx rr_seg7_dl_07014350[] = {
 };
 
 // 0x07014490 - 0x07014508
-static const Gfx rr_seg7_dl_07014490[] = {
+static Gfx rr_seg7_dl_07014490[] = {
 #ifdef VERSION_JP
     gsSPVertex(rr_seg7_vertex_07013C88, 15, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  4, 0x0),
@@ -1154,7 +1154,7 @@ static const Gfx rr_seg7_dl_07014490[] = {
 };
 
 // 0x07014508 - 0x07014590
-const Gfx rr_seg7_dl_07014508[] = {
+Gfx rr_seg7_dl_07014508[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_LIGHTING),

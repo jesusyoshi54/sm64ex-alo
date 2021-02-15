@@ -360,7 +360,7 @@ static const Vtx sl_seg7_vertex_07009E80[] = {
 };
 
 // 0x07009F30 - 0x07009FE0
-static const Gfx sl_seg7_dl_07009F30[] = {
+static Gfx sl_seg7_dl_07009F30[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snow_09003000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -379,7 +379,7 @@ static const Gfx sl_seg7_dl_07009F30[] = {
 };
 
 // 0x07009FE0 - 0x0700A058
-static const Gfx sl_seg7_dl_07009FE0[] = {
+static Gfx sl_seg7_dl_07009FE0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snow_09006000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -393,7 +393,7 @@ static const Gfx sl_seg7_dl_07009FE0[] = {
 };
 
 // 0x0700A058 - 0x0700A418
-static const Gfx sl_seg7_dl_0700A058[] = {
+static Gfx sl_seg7_dl_0700A058[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snow_09002000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -467,7 +467,7 @@ static const Gfx sl_seg7_dl_0700A058[] = {
 };
 
 // 0x0700A418 - 0x0700A450
-static const Gfx sl_seg7_dl_0700A418[] = {
+static Gfx sl_seg7_dl_0700A418[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sl_seg7_texture_07000000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -477,7 +477,7 @@ static const Gfx sl_seg7_dl_0700A418[] = {
 };
 
 // 0x0700A450 - 0x0700A5A0
-static const Gfx sl_seg7_dl_0700A450[] = {
+static Gfx sl_seg7_dl_0700A450[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sl_seg7_texture_07002000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -508,7 +508,7 @@ static const Gfx sl_seg7_dl_0700A450[] = {
 };
 
 // 0x0700A5A0 - 0x0700A620
-const Gfx sl_seg7_dl_0700A5A0[] = {
+Gfx sl_seg7_dl_0700A5A0[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),

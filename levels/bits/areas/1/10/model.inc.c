@@ -93,7 +93,7 @@ static const Vtx bits_seg7_vertex_07009438[] = {
 };
 
 // 0x070094F8 - 0x07009690
-static const Gfx bits_seg7_dl_070094F8[] = {
+static Gfx bits_seg7_dl_070094F8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09001800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -127,7 +127,7 @@ static const Gfx bits_seg7_dl_070094F8[] = {
 };
 
 // 0x07009690 - 0x07009700
-const Gfx bits_seg7_dl_07009690[] = {
+Gfx bits_seg7_dl_07009690[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_LIGHTING),

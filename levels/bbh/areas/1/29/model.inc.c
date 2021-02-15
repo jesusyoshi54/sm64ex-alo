@@ -17,7 +17,7 @@ static const Vtx bbh_seg7_vertex_07017498[] = {
 };
 
 // 0x07017518 - 0x07017570
-static const Gfx bbh_seg7_dl_07017518[] = {
+static Gfx bbh_seg7_dl_07017518[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spooky_09006000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -30,7 +30,7 @@ static const Gfx bbh_seg7_dl_07017518[] = {
 };
 
 // 0x07017570 - 0x070175E0
-const Gfx bbh_seg7_dl_07017570[] = {
+Gfx bbh_seg7_dl_07017570[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_SHADING_SMOOTH),

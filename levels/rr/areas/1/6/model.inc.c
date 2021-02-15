@@ -526,7 +526,7 @@ static const Vtx rr_seg7_vertex_070075C0[] = {
 };
 
 // 0x070076B0 - 0x07007868
-static const Gfx rr_seg7_dl_070076B0[] = {
+static Gfx rr_seg7_dl_070076B0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09001800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -564,7 +564,7 @@ static const Gfx rr_seg7_dl_070076B0[] = {
 };
 
 // 0x07007868 - 0x070079B0
-static const Gfx rr_seg7_dl_07007868[] = {
+static Gfx rr_seg7_dl_07007868[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09008000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -594,7 +594,7 @@ static const Gfx rr_seg7_dl_07007868[] = {
 };
 
 // 0x070079B0 - 0x07007CB0
-static const Gfx rr_seg7_dl_070079B0[] = {
+static Gfx rr_seg7_dl_070079B0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09007000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -658,7 +658,7 @@ static const Gfx rr_seg7_dl_070079B0[] = {
 };
 
 // 0x07007CB0 - 0x07007D88
-static const Gfx rr_seg7_dl_07007CB0[] = {
+static Gfx rr_seg7_dl_07007CB0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09004800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -679,7 +679,7 @@ static const Gfx rr_seg7_dl_07007CB0[] = {
 };
 
 // 0x07007D88 - 0x07007E60
-static const Gfx rr_seg7_dl_07007D88[] = {
+static Gfx rr_seg7_dl_07007D88[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09000800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -701,7 +701,7 @@ static const Gfx rr_seg7_dl_07007D88[] = {
 };
 
 // 0x07007E60 - 0x07007EF0
-const Gfx rr_seg7_dl_07007E60[] = {
+Gfx rr_seg7_dl_07007E60[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_LIGHTING),

@@ -19,19 +19,19 @@ static const Vtx ttm_seg7_vertex_07012308[] = {
 };
 
 // 0x07012388 - 0x070123A0
-const Gfx ttm_seg7_dl_07012388[] = {
+Gfx ttm_seg7_dl_07012388[] = {
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
     gsSPEndDisplayList(),
 };
 
 // 0x070123A0 - 0x070123B8
-const Gfx ttm_seg7_dl_070123A0[] = {
+Gfx ttm_seg7_dl_070123A0[] = {
     gsSP2Triangles( 4,  5,  6, 0x0,  4,  6,  7, 0x0),
     gsSPEndDisplayList(),
 };
 
 // 0x070123B8 - 0x07012410
-const Gfx ttm_seg7_dl_070123B8[] = {
+Gfx ttm_seg7_dl_070123B8[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
@@ -46,7 +46,7 @@ const Gfx ttm_seg7_dl_070123B8[] = {
 };
 
 // 0x07012410 - 0x07012430
-const Gfx ttm_seg7_dl_07012410[] = {
+Gfx ttm_seg7_dl_07012410[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
@@ -54,7 +54,7 @@ const Gfx ttm_seg7_dl_07012410[] = {
 };
 
 // 0x07012430 - 0x07012450
-static const Gfx ttm_seg7_painting_dl_07012430[] = {
+static Gfx ttm_seg7_painting_dl_07012430[] = {
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_CLAMP, 6, G_TX_NOLOD),
     gsDPSetTileSize(0, 0, 0, (64 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
@@ -529,7 +529,7 @@ UNUSED static const u64 ttm_unused_0 = 0x0;
 
 
 // 0x07012E98 - 0x07012EF8
-static const Gfx ttm_seg7_painting_dl_07012E98[] = {
+static Gfx ttm_seg7_painting_dl_07012E98[] = {
     gsSPDisplayList(ttm_seg7_dl_070123B8),
     gsSPVertex(ttm_seg7_vertex_07012308, 8, 0),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ttm_seg7_texture_07004000),

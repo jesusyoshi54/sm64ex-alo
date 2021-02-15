@@ -1424,7 +1424,7 @@ static const Vtx lll_seg7_vertex_07021DB0[] = {
 };
 
 // 0x07021E20 - 0x070223C0
-static const Gfx lll_seg7_dl_07021E20[] = {
+static Gfx lll_seg7_dl_07021E20[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, lll_seg7_texture_0700DC00),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1535,7 +1535,7 @@ static const Gfx lll_seg7_dl_07021E20[] = {
 };
 
 // 0x070223C0 - 0x070229B8
-static const Gfx lll_seg7_dl_070223C0[] = {
+static Gfx lll_seg7_dl_070223C0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fire_09005800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1646,7 +1646,7 @@ static const Gfx lll_seg7_dl_070223C0[] = {
 };
 
 // 0x070229B8 - 0x07022AE0
-static const Gfx lll_seg7_dl_070229B8[] = {
+static Gfx lll_seg7_dl_070229B8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, lll_seg7_texture_0700E400),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1673,7 +1673,7 @@ static const Gfx lll_seg7_dl_070229B8[] = {
 };
 
 // 0x07022AE0 - 0x07022DF0
-static const Gfx lll_seg7_dl_07022AE0[] = {
+static Gfx lll_seg7_dl_07022AE0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, lll_seg7_texture_0700EC00),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1734,7 +1734,7 @@ static const Gfx lll_seg7_dl_07022AE0[] = {
 };
 
 // 0x07022DF0 - 0x070235C8
-static const Gfx lll_seg7_dl_07022DF0[] = {
+static Gfx lll_seg7_dl_07022DF0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, lll_seg7_texture_0700F400),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 16 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -1889,7 +1889,7 @@ static const Gfx lll_seg7_dl_07022DF0[] = {
 };
 
 // 0x070235C8 - 0x070236E8
-const Gfx lll_seg7_dl_070235C8[] = {
+Gfx lll_seg7_dl_070235C8[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),

@@ -21,7 +21,7 @@ static const Vtx hmc_seg7_vertex_07023C88[] = {
 };
 
 // 0x07023D48 - 0x07023E10
-static const Gfx hmc_seg7_dl_07023D48[] = {
+static Gfx hmc_seg7_dl_07023D48[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hmc_seg7_texture_07004800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -41,7 +41,7 @@ static const Gfx hmc_seg7_dl_07023D48[] = {
 };
 
 // 0x07023E10 - 0x07023EB8
-const Gfx hmc_seg7_dl_07023E10[] = {
+Gfx hmc_seg7_dl_07023E10[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),

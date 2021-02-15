@@ -430,7 +430,7 @@ static const Vtx jrb_seg7_vertex_0700E658[] = {
 };
 
 // 0x0700E6E8 - 0x0700E8C8
-static const Gfx jrb_seg7_dl_0700E6E8[] = {
+static Gfx jrb_seg7_dl_0700E6E8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, water_09005800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -473,7 +473,7 @@ static const Gfx jrb_seg7_dl_0700E6E8[] = {
 };
 
 // 0x0700E8C8 - 0x0700E998
-static const Gfx jrb_seg7_dl_0700E8C8[] = {
+static Gfx jrb_seg7_dl_0700E8C8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, water_0900A000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -497,7 +497,7 @@ static const Gfx jrb_seg7_dl_0700E8C8[] = {
 };
 
 // 0x0700E998 - 0x0700ECB8
-static const Gfx jrb_seg7_dl_0700E998[] = {
+static Gfx jrb_seg7_dl_0700E998[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, water_09000800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -561,7 +561,7 @@ static const Gfx jrb_seg7_dl_0700E998[] = {
 };
 
 // 0x0700ECB8 - 0x0700EE28
-static const Gfx jrb_seg7_dl_0700ECB8[] = {
+static Gfx jrb_seg7_dl_0700ECB8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, water_0900A800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -594,7 +594,7 @@ static const Gfx jrb_seg7_dl_0700ECB8[] = {
 };
 
 // 0x0700EE28 - 0x0700EF00
-static const Gfx jrb_seg7_dl_0700EE28[] = {
+static Gfx jrb_seg7_dl_0700EE28[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, water_09002800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -616,7 +616,7 @@ static const Gfx jrb_seg7_dl_0700EE28[] = {
 };
 
 // 0x0700EF00 - 0x0700EF98
-const Gfx jrb_seg7_dl_0700EF00[] = {
+Gfx jrb_seg7_dl_0700EF00[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),

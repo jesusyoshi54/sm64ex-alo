@@ -10,7 +10,7 @@ ALIGNED8 const u8 ttc_yellow_triangle[] = {
 };
 
 // 0x07016790 - 0x07016808
-const Gfx ttc_dl_surface_treadmill_begin[] = {
+Gfx ttc_dl_surface_treadmill_begin[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
@@ -29,7 +29,7 @@ const Gfx ttc_dl_surface_treadmill_begin[] = {
 };
 
 // 0x07016808 - 0x07016840
-const Gfx ttc_dl_surface_treadmill_end[] = {
+Gfx ttc_dl_surface_treadmill_end[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_1CYCLE),
@@ -76,7 +76,7 @@ Movtex ttc_movtex_tris_small_surface_treadmill[] = {
 };
 
 // 0x070169C8 - 0x07016A20
-const Gfx ttc_dl_surface_treadmill[] = {
+Gfx ttc_dl_surface_treadmill[] = {
     gsSP2Triangles( 0,  1,  6, 0x0,  1,  7,  6, 0x0),
     gsSP2Triangles( 1,  2,  7, 0x0,  2,  8,  7, 0x0),
     gsSP2Triangles( 2,  3,  8, 0x0,  3,  9,  8, 0x0),

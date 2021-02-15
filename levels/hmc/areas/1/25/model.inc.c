@@ -125,7 +125,7 @@ static const Vtx hmc_seg7_vertex_0701EEB8[] = {
 };
 
 // 0x0701EF78 - 0x0701F0D0
-static const Gfx hmc_seg7_dl_0701EF78[] = {
+static Gfx hmc_seg7_dl_0701EF78[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09001000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -156,7 +156,7 @@ static const Gfx hmc_seg7_dl_0701EF78[] = {
 };
 
 // 0x0701F0D0 - 0x0701F1B0
-static const Gfx hmc_seg7_dl_0701F0D0[] = {
+static Gfx hmc_seg7_dl_0701F0D0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09003000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -177,7 +177,7 @@ static const Gfx hmc_seg7_dl_0701F0D0[] = {
 };
 
 // 0x0701F1B0 - 0x0701F288
-const Gfx hmc_seg7_dl_0701F1B0[] = {
+Gfx hmc_seg7_dl_0701F1B0[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2),

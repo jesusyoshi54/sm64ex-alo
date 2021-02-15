@@ -43,7 +43,7 @@ static const Vtx jrb_seg7_vertex_07007908[] = {
 };
 
 // 0x070079E8 - 0x07007AC8
-static const Gfx jrb_seg7_dl_070079E8[] = {
+static Gfx jrb_seg7_dl_070079E8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, water_09001800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -65,7 +65,7 @@ static const Gfx jrb_seg7_dl_070079E8[] = {
 };
 
 // 0x07007AC8 - 0x07007B70
-const Gfx jrb_seg7_dl_07007AC8[] = {
+Gfx jrb_seg7_dl_07007AC8[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),

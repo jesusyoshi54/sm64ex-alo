@@ -1,5 +1,5 @@
 // 0x0700BE10 - 0x0700BE88
-const Gfx cotmc_dl_water_begin[] = {
+Gfx cotmc_dl_water_begin[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_XLU_INTER2),
@@ -18,7 +18,7 @@ const Gfx cotmc_dl_water_begin[] = {
 };
 
 // 0x0700BE88 - 0x0700BED0
-const Gfx cotmc_dl_water_end[] = {
+Gfx cotmc_dl_water_end[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_1CYCLE),
@@ -50,7 +50,7 @@ Movtex cotmc_movtex_tris_water[] = {
 };
 
 // 0x0700BF60 - 0x0700BFA8
-const Gfx cotmc_dl_water[] = {
+Gfx cotmc_dl_water[] = {
     gsSP2Triangles( 0,  1,  2, 0x0,  2,  1,  3, 0x0),
     gsSP2Triangles( 4,  5,  7, 0x0, 10, 11, 12, 0x0),
     gsSP2Triangles(12, 11, 13, 0x0,  7,  5,  8, 0x0),

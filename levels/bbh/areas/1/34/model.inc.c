@@ -225,7 +225,7 @@ static const Vtx bbh_seg7_vertex_0701B2A8[] = {
 };
 
 // 0x0701B328 - 0x0701B380
-static const Gfx bbh_seg7_dl_0701B328[] = {
+static Gfx bbh_seg7_dl_0701B328[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spooky_09004800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -238,7 +238,7 @@ static const Gfx bbh_seg7_dl_0701B328[] = {
 };
 
 // 0x0701B380 - 0x0701B558
-static const Gfx bbh_seg7_dl_0701B380[] = {
+static Gfx bbh_seg7_dl_0701B380[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spooky_09008800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -281,7 +281,7 @@ static const Gfx bbh_seg7_dl_0701B380[] = {
 };
 
 // 0x0701B558 - 0x0701B620
-static const Gfx bbh_seg7_dl_0701B558[] = {
+static Gfx bbh_seg7_dl_0701B558[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spooky_09003800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -301,7 +301,7 @@ static const Gfx bbh_seg7_dl_0701B558[] = {
 };
 
 // 0x0701B620 - 0x0701B678
-static const Gfx bbh_seg7_dl_0701B620[] = {
+static Gfx bbh_seg7_dl_0701B620[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spooky_09005000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -313,7 +313,7 @@ static const Gfx bbh_seg7_dl_0701B620[] = {
 };
 
 // 0x0701B678 - 0x0701B6D0
-static const Gfx bbh_seg7_dl_0701B678[] = {
+static Gfx bbh_seg7_dl_0701B678[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spooky_09009000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -325,7 +325,7 @@ static const Gfx bbh_seg7_dl_0701B678[] = {
 };
 
 // 0x0701B6D0 - 0x0701B7A8
-const Gfx bbh_seg7_dl_0701B6D0[] = {
+Gfx bbh_seg7_dl_0701B6D0[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_SHADING_SMOOTH),

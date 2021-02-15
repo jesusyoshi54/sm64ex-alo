@@ -15,7 +15,7 @@ static const Vtx bits_seg7_vertex_07002800[] = {
 };
 
 // 0x070028C0 - 0x07002918
-static const Gfx bits_seg7_dl_070028C0[] = {
+static Gfx bits_seg7_dl_070028C0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_metal_hole),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -27,7 +27,7 @@ static const Gfx bits_seg7_dl_070028C0[] = {
 };
 
 // 0x07002918 - 0x07002988
-const Gfx bits_seg7_dl_07002918[] = {
+Gfx bits_seg7_dl_07002918[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
     gsSPClearGeometryMode(G_LIGHTING),

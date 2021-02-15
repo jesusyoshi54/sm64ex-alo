@@ -39,7 +39,7 @@ static const Vtx bob_seg7_vertex_0700E628[] = {
 };
 
 // 0x0700E6C8 - 0x0700E768
-static const Gfx bob_seg7_dl_0700E6C8[] = {
+static Gfx bob_seg7_dl_0700E6C8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, generic_09006000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -57,7 +57,7 @@ static const Gfx bob_seg7_dl_0700E6C8[] = {
 };
 
 // 0x0700E768 - 0x0700E810
-const Gfx bob_seg7_dl_0700E768[] = {
+Gfx bob_seg7_dl_0700E768[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),

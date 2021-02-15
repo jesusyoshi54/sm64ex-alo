@@ -1630,7 +1630,7 @@ static const Vtx ttm_seg7_vertex_0701BE00[] = {
 };
 
 // 0x0701BEE0 - 0x0701C008
-static const Gfx ttm_seg7_dl_0701BEE0[] = {
+static Gfx ttm_seg7_dl_0701BEE0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mountain_09006800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1662,7 +1662,7 @@ static const Gfx ttm_seg7_dl_0701BEE0[] = {
 };
 
 // 0x0701C008 - 0x0701C688
-static const Gfx ttm_seg7_dl_0701C008[] = {
+static Gfx ttm_seg7_dl_0701C008[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mountain_0900B800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1795,7 +1795,7 @@ static const Gfx ttm_seg7_dl_0701C008[] = {
 };
 
 // 0x0701C688 - 0x0701C6F8
-static const Gfx ttm_seg7_dl_0701C688[] = {
+static Gfx ttm_seg7_dl_0701C688[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mountain_0900A800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1811,7 +1811,7 @@ static const Gfx ttm_seg7_dl_0701C688[] = {
 };
 
 // 0x0701C6F8 - 0x0701D708
-static const Gfx ttm_seg7_dl_0701C6F8[] = {
+static Gfx ttm_seg7_dl_0701C6F8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mountain_09008800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -2133,7 +2133,7 @@ static const Gfx ttm_seg7_dl_0701C6F8[] = {
 };
 
 // 0x0701D708 - 0x0701D798
-static const Gfx ttm_seg7_dl_0701D708[] = {
+static Gfx ttm_seg7_dl_0701D708[] = {
     gsSPLight(&ttm_seg7_lights_070173F8.l, 1),
     gsSPLight(&ttm_seg7_lights_070173F8.a, 2),
     gsSPVertex(ttm_seg7_vertex_0701BE00, 14, 0),
@@ -2148,7 +2148,7 @@ static const Gfx ttm_seg7_dl_0701D708[] = {
 };
 
 // 0x0701D798 - 0x0701D888
-const Gfx ttm_seg7_dl_0701D798[] = {
+Gfx ttm_seg7_dl_0701D798[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),

@@ -187,7 +187,7 @@ OBJECT_WITH_ACTS(118,7685,367,-1330,0,0,0,0x0, bhvHiddenBlueCoin,31),
 OBJECT_WITH_ACTS(118,6675,371,-1880,0,0,0,0x0, bhvHiddenBlueCoin,31),
 OBJECT_WITH_ACTS(118,6190,570,-2889,0,0,0,0x0, bhvHiddenBlueCoin,31),
 OBJECT_WITH_ACTS(0,4,5,401,0,0,0,92, editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,0,32512,8448,0,0,0,0xe0d5e90, Bhv_Custom_0x0040f000,31),
+OBJECT_WITH_ACTS(0,0,32512,8448,0,0,0,0, Bhv_Custom_0x0040f000,31),
 RETURN()
 };
 const LevelScript local_warps_wf_1_[] = {

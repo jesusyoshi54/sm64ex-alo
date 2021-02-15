@@ -33,7 +33,7 @@ const s16 flying_carpet_static_vertex_data[] = {
 };
 
 // 0x070192F0 - 0x07019360
-const Gfx dl_flying_carpet_begin[] = {
+Gfx dl_flying_carpet_begin[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -51,7 +51,7 @@ const Gfx dl_flying_carpet_begin[] = {
 };
 
 // 0x07019360 - 0x070193C8
-const Gfx dl_flying_carpet_model_half[] = {
+Gfx dl_flying_carpet_model_half[] = {
     gsSP2Triangles( 0,  1,  3, 0x0,  3,  1,  4, 0x0),
     gsSP2Triangles( 1,  2,  4, 0x0,  4,  2,  5, 0x0),
     gsSP2Triangles( 3,  4,  6, 0x0,  6,  4,  7, 0x0),
@@ -62,7 +62,7 @@ const Gfx dl_flying_carpet_model_half[] = {
 };
 
 // 0x070193C8 - 0x070193F0
-const Gfx dl_flying_carpet_end[] = {
+Gfx dl_flying_carpet_end[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),

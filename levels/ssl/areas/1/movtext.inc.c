@@ -57,12 +57,12 @@ const struct MovtexQuadCollection ssl_movtex_toxbox_quicksand_mist[] = {
 };
 
 // 0x070127E0
-const Gfx ssl_dl_quicksand_begin[] = {
+Gfx ssl_dl_quicksand_begin[] = {
     gsSPBranchList(ssl_dl_quicksand_pit_begin),
 };
 
 // 0x070127E8
-const Gfx ssl_dl_quicksand_end[] = {
+Gfx ssl_dl_quicksand_end[] = {
     gsSPBranchList(ssl_dl_quicksand_pit_end),
 };
 
@@ -85,7 +85,7 @@ Movtex ssl_movtex_tris_pyramid_quicksand[] = {
 };
 
 // 0x070128B8 - 0x07012900
-const Gfx ssl_dl_pyramid_quicksand[] = {
+Gfx ssl_dl_pyramid_quicksand[] = {
     gsSP2Triangles( 0,  4,  1, 0x0,  1,  4,  5, 0x0),
     gsSP2Triangles( 1,  6,  2, 0x0,  2,  6,  7, 0x0),
     gsSP2Triangles( 2,  8,  3, 0x0,  3,  8,  9, 0x0),
@@ -116,7 +116,7 @@ Movtex ssl_movtex_tris_pyramid_corners_quicksand[] = {
 };
 
 // 0x07012A08 - 0x07012A50
-const Gfx ssl_dl_pyramid_corners_quicksand[] = {
+Gfx ssl_dl_pyramid_corners_quicksand[] = {
     gsSP2Triangles( 0, 11, 12, 0x0,  0, 12,  4, 0x0),
     gsSP2Triangles( 1,  5, 13, 0x0,  1, 13,  6, 0x0),
     gsSP2Triangles( 2,  7, 14, 0x0,  2, 14,  8, 0x0),
@@ -146,7 +146,7 @@ Movtex ssl_movtex_tris_sides_quicksand[] = {
 };
 
 // 0x07012B48 - 0x07012BD0
-const Gfx ssl_dl_sides_quicksand[] = {
+Gfx ssl_dl_sides_quicksand[] = {
     gsSP2Triangles( 2,  1,  5, 0x0,  1,  4,  5, 0x0),
     gsSP2Triangles( 0,  3,  1, 0x0,  1,  3,  4, 0x0),
     gsSP2Triangles( 4,  7,  5, 0x0,  5,  7,  8, 0x0),

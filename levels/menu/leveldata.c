@@ -65,7 +65,7 @@ static const Vtx vertex_menu_save_button_front[] = {
 };
 
 // 0x07003158 - 0x070031A0
-static const Gfx dl_tex_block_menu_save_button_base[] = {
+static Gfx dl_tex_block_menu_save_button_base[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_SHADING_SMOOTH),
@@ -78,7 +78,7 @@ static const Gfx dl_tex_block_menu_save_button_base[] = {
 };
 
 // 0x070031A0 - 0x07003218
-static const Gfx dl_vertex_menu_save_button_borders[] = {
+static Gfx dl_vertex_menu_save_button_borders[] = {
     gsSPLight(&lights_menu_save_button.l, 1),
     gsSPLight(&lights_menu_save_button.a, 2),
     gsSPVertex(vertex_menu_save_button_borders, 16, 0),
@@ -93,7 +93,7 @@ static const Gfx dl_vertex_menu_save_button_borders[] = {
 };
 
 // 0x07003218 - 0x07003258
-static const Gfx dl_vertex_menu_save_button_front[] = {
+static Gfx dl_vertex_menu_save_button_front[] = {
     gsSPVertex(vertex_menu_save_button_front, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  1,  3,  2, 0x0),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
@@ -112,7 +112,7 @@ Vtx vertex_menu_save_button_back[] = {
 };
 
 // 0x07003298 - 0x070032E0
-static const Gfx dl_tex_block_menu_save_button_back[] = {
+static Gfx dl_tex_block_menu_save_button_back[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_SHADING_SMOOTH),
@@ -125,7 +125,7 @@ static const Gfx dl_tex_block_menu_save_button_back[] = {
 };
 
 // 0x070032E0 - 0x07003330
-static const Gfx dl_vertex_menu_save_button_back[] = {
+static Gfx dl_vertex_menu_save_button_back[] = {
     gsSPLight(&lights_menu_save_button.l, 1),
     gsSPLight(&lights_menu_save_button.a, 2),
     gsSPVertex(vertex_menu_save_button_back, 4, 0),
@@ -138,7 +138,7 @@ static const Gfx dl_vertex_menu_save_button_back[] = {
 };
 
 // 0x07003330 - 0x07003380
-const Gfx dl_menu_mario_save_button_base[] = {
+Gfx dl_menu_mario_save_button_base[] = {
     gsSPDisplayList(dl_tex_block_menu_save_button_base),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_stone),
     gsDPLoadSync(),
@@ -152,7 +152,7 @@ const Gfx dl_menu_mario_save_button_base[] = {
 };
 
 // 0x07003380 - 0x070033D0
-const Gfx dl_menu_mario_new_button_base[] = {
+Gfx dl_menu_mario_new_button_base[] = {
     gsSPDisplayList(dl_tex_block_menu_save_button_base),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_stone),
     gsDPLoadSync(),
@@ -166,7 +166,7 @@ const Gfx dl_menu_mario_new_button_base[] = {
 };
 
 // 0x070033D0 - 0x07003400
-const Gfx dl_menu_save_button_back[] = {
+Gfx dl_menu_save_button_back[] = {
     gsSPDisplayList(dl_tex_block_menu_save_button_back),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_dark_stone),
     gsDPLoadSync(),
@@ -176,7 +176,7 @@ const Gfx dl_menu_save_button_back[] = {
 };
 
 // 0x07003400 - 0x07003450
-const Gfx dl_menu_save_button_fade_back[] = {
+Gfx dl_menu_save_button_fade_back[] = {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_SHADING_SMOOTH),
     gsSPLight(&lights_menu_save_button.l, 1),
@@ -297,7 +297,7 @@ static const Vtx vertex_menu_main_button_group4[] = {
 };
 
 // 0x07006038 - 0x07006150
-static const Gfx dl_vertex_menu_main_button[] = {
+static Gfx dl_vertex_menu_main_button[] = {
     gsSPLight(&lights_menu_main_button.l, 1),
     gsSPLight(&lights_menu_main_button.a, 2),
     gsSPVertex(vertex_menu_main_button_group1, 16, 0),
@@ -397,7 +397,7 @@ Vtx vertex_menu_main_button_dynamic_group4[] = {
 };
 
 // 0x07006038 - 0x07006150
-static const Gfx dl_vertex_menu_main_button_dynamic[] = {
+static Gfx dl_vertex_menu_main_button_dynamic[] = {
     gsSPLight(&lights_menu_main_button.l, 1),
     gsSPLight(&lights_menu_main_button.a, 2),
     gsSPVertex(vertex_menu_main_button_dynamic_group1, 16, 0),
@@ -424,7 +424,7 @@ static const Gfx dl_vertex_menu_main_button_dynamic[] = {
 #endif
 
 // 0x07006150 - 0x07006198
-static const Gfx dl_tex_block_menu_main_button[] = {
+static Gfx dl_tex_block_menu_main_button[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_SHADING_SMOOTH),
@@ -437,7 +437,7 @@ static const Gfx dl_tex_block_menu_main_button[] = {
 };
 
 // 0x07006198 - 0x070061C8
-const Gfx dl_menu_main_button[] = {
+Gfx dl_menu_main_button[] = {
     gsSPDisplayList(dl_vertex_menu_main_button),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
@@ -447,7 +447,7 @@ const Gfx dl_menu_main_button[] = {
 };
 
 // 0x070061C8 - 0x070061F8
-const Gfx dl_menu_erase_button[] = {
+Gfx dl_menu_erase_button[] = {
     gsSPDisplayList(dl_tex_block_menu_main_button),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_erase),
     gsDPLoadSync(),
@@ -457,7 +457,7 @@ const Gfx dl_menu_erase_button[] = {
 };
 
 // 0x070061F8 - 0x07006228
-const Gfx dl_menu_copy_button[] = {
+Gfx dl_menu_copy_button[] = {
     gsSPDisplayList(dl_tex_block_menu_main_button),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_copy),
     gsDPLoadSync(),
@@ -467,7 +467,7 @@ const Gfx dl_menu_copy_button[] = {
 };
 
 // 0x07006228 - 0x07006258
-const Gfx dl_menu_file_button[] = {
+Gfx dl_menu_file_button[] = {
     gsSPDisplayList(dl_tex_block_menu_main_button),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_file),
     gsDPLoadSync(),
@@ -477,7 +477,7 @@ const Gfx dl_menu_file_button[] = {
 };
 
 // 0x07006258 - 0x07006288
-const Gfx dl_menu_score_button[] = {
+Gfx dl_menu_score_button[] = {
     gsSPDisplayList(dl_tex_block_menu_main_button),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_score),
     gsDPLoadSync(),
@@ -487,7 +487,7 @@ const Gfx dl_menu_score_button[] = {
 };
 
 // 0x07006288 - 0x070062B8
-const Gfx dl_menu_sound_button[] = {
+Gfx dl_menu_sound_button[] = {
     gsSPDisplayList(dl_tex_block_menu_main_button),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_sound),
     gsDPLoadSync(),
@@ -497,7 +497,7 @@ const Gfx dl_menu_sound_button[] = {
 };
 
 // 0x070062B8 - 0x070062E8
-const Gfx dl_menu_generic_button[] = {
+Gfx dl_menu_generic_button[] = {
     gsSPDisplayList(dl_tex_block_menu_main_button),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_stone),
     gsDPLoadSync(),
@@ -507,7 +507,7 @@ const Gfx dl_menu_generic_button[] = {
 };
 
 #ifdef WIDESCREEN
-const Gfx dl_menu_main_button_dynamic[] = {
+Gfx dl_menu_main_button_dynamic[] = {
     gsSPDisplayList(dl_vertex_menu_main_button_dynamic),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
@@ -516,7 +516,7 @@ const Gfx dl_menu_main_button_dynamic[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx dl_menu_erase_button_dynamic[] = {
+Gfx dl_menu_erase_button_dynamic[] = {
     gsSPDisplayList(dl_tex_block_menu_main_button),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_erase),
     gsDPLoadSync(),
@@ -525,7 +525,7 @@ const Gfx dl_menu_erase_button_dynamic[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx dl_menu_copy_button_dynamic[] = {
+Gfx dl_menu_copy_button_dynamic[] = {
     gsSPDisplayList(dl_tex_block_menu_main_button),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_copy),
     gsDPLoadSync(),
@@ -534,7 +534,7 @@ const Gfx dl_menu_copy_button_dynamic[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx dl_menu_file_button_dynamic[] = {
+Gfx dl_menu_file_button_dynamic[] = {
     gsSPDisplayList(dl_tex_block_menu_main_button),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_file),
     gsDPLoadSync(),
@@ -543,7 +543,7 @@ const Gfx dl_menu_file_button_dynamic[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx dl_menu_score_button_dynamic[] = {
+Gfx dl_menu_score_button_dynamic[] = {
     gsSPDisplayList(dl_tex_block_menu_main_button),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_score),
     gsDPLoadSync(),
@@ -552,7 +552,7 @@ const Gfx dl_menu_score_button_dynamic[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx dl_menu_sound_button_dynamic[] = {
+Gfx dl_menu_sound_button_dynamic[] = {
     gsSPDisplayList(dl_tex_block_menu_main_button),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_sound),
     gsDPLoadSync(),
@@ -561,7 +561,7 @@ const Gfx dl_menu_sound_button_dynamic[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx dl_menu_generic_button_dynamic[] = {
+Gfx dl_menu_generic_button_dynamic[] = {
     gsSPDisplayList(dl_tex_block_menu_main_button),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_stone),
     gsDPLoadSync(),
@@ -590,7 +590,7 @@ ALIGNED8 static const Texture texture_menu_grabbing_hand[] = {
 };
 
 // 0x07007328 - 0x070073A0
-static const Gfx dl_menu_hand[] = {
+static Gfx dl_menu_hand[] = {
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
     gsDPSetRenderMode(G_RM_AA_TEX_EDGE, G_RM_AA_TEX_EDGE2),
     gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
@@ -608,14 +608,14 @@ static const Gfx dl_menu_hand[] = {
 };
 
 // 0x070073A0 - 0x070073B8
-const Gfx dl_menu_idle_hand[] = {
+Gfx dl_menu_idle_hand[] = {
     gsDPPipeSync(),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_idle_hand),
     gsSPBranchList(dl_menu_hand),
 };
 
 // 0x070073B8 - 0x070073D0
-const Gfx dl_menu_grabbing_hand[] = {
+Gfx dl_menu_grabbing_hand[] = {
     gsDPPipeSync(),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_grabbing_hand),
     gsSPBranchList(dl_menu_hand),
@@ -1857,7 +1857,7 @@ const Texture *const menu_font_lut[] = {
 };
 
 // 0x0700D108 - 0x0700D160
-const Gfx dl_menu_ia8_text_begin[] = {
+Gfx dl_menu_ia8_text_begin[] = {
     gsDPPipeSync(),
     gsDPSetTexturePersp(G_TP_NONE),
     gsDPSetCombineMode(G_CC_FADEA, G_CC_FADEA),
@@ -1872,7 +1872,7 @@ const Gfx dl_menu_ia8_text_begin[] = {
 };
 
 // 0x0700D160 - 0x0700D1A0
-const Gfx dl_menu_ia8_text_end[] = {
+Gfx dl_menu_ia8_text_end[] = {
     gsDPPipeSync(),
     gsDPSetTexturePersp(G_TP_PERSP),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
@@ -1937,7 +1937,7 @@ static const Vtx vertex_menu_course_lower[] = {
 };
 
 // 0x0700F228 - 0x0700F2F8
-const Gfx dl_menu_rgba16_wood_course[] = {
+Gfx dl_menu_rgba16_wood_course[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
     gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
@@ -1945,7 +1945,7 @@ const Gfx dl_menu_rgba16_wood_course[] = {
 #ifdef VERSION_EU
     gsSPEndDisplayList(),
 };
-const Gfx dl_menu_rgba16_wood_course_end[] = {
+Gfx dl_menu_rgba16_wood_course_end[] = {
 #else
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_course_upper),
 #endif
@@ -1972,19 +1972,19 @@ const Gfx dl_menu_rgba16_wood_course_end[] = {
 
 #ifdef VERSION_EU
 // 0x0700FEF0 - 0x0700FF00
-const Gfx dl_menu_texture_course_upper[] = {
+Gfx dl_menu_texture_course_upper[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_course_upper),
     gsSPEndDisplayList(),
 };
 
 // 0x0700FF00 - 0x0700FF10
-const Gfx dl_menu_texture_niveau_upper[] = {
+Gfx dl_menu_texture_niveau_upper[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_niveau_upper),
     gsSPEndDisplayList(),
 };
 
 // 0x0700FF10 - 0x0700FF20
-const Gfx dl_menu_texture_kurs_upper[] = {
+Gfx dl_menu_texture_kurs_upper[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture_menu_kurs_upper),
     gsSPEndDisplayList(),
 };

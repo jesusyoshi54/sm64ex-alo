@@ -51,7 +51,7 @@ static const Vtx ttc_seg7_vertex_0700B0D0[] = {
 };
 
 // 0x0700B110 - 0x0700B1D8
-static const Gfx ttc_seg7_dl_0700B110[] = {
+static Gfx ttc_seg7_dl_0700B110[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, machine_09002800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -73,7 +73,7 @@ static const Gfx ttc_seg7_dl_0700B110[] = {
 };
 
 // 0x0700B1D8 - 0x0700B238
-const Gfx ttc_seg7_dl_0700B1D8[] = {
+Gfx ttc_seg7_dl_0700B1D8[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),

@@ -7556,7 +7556,7 @@ const Ambient_t Light_bowser_1_1_0xe000008 = {
 {127, 127, 127}, 0, {127, 127, 127}, 0
 };
 
-const Gfx DL_bowser_1_1_0xe036d70[] = {
+Gfx DL_bowser_1_1_0xe036d70[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPTexture(65535, 65535, 0, 0, 1),
@@ -8843,7 +8843,7 @@ gsSPGeometryMode(0, G_CULL_BACK|G_LIGHTING),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_bowser_1_1_0xe03e6e8[] = {
+Gfx DL_bowser_1_1_0xe03e6e8[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
 gsSPTexture(65535, 65535, 0, 0, 1),
@@ -9947,7 +9947,7 @@ gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_bowser_1_1_0xe044350[] = {
+Gfx DL_bowser_1_1_0xe044350[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 gsSPTexture(65535, 65535, 0, 0, 1),

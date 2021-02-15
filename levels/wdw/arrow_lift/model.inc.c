@@ -43,7 +43,7 @@ static const Vtx wdw_seg7_vertex_07012D50[] = {
 };
 
 // 0x07012DC0 - 0x07012E08
-static const Gfx wdw_seg7_dl_07012DC0[] = {
+static Gfx wdw_seg7_dl_07012DC0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wdw_seg7_texture_07001800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -55,7 +55,7 @@ static const Gfx wdw_seg7_dl_07012DC0[] = {
 };
 
 // 0x07012E08 - 0x07012E88
-static const Gfx wdw_seg7_dl_07012E08[] = {
+static Gfx wdw_seg7_dl_07012E08[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, grass_09004000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -71,7 +71,7 @@ static const Gfx wdw_seg7_dl_07012E08[] = {
 };
 
 // 0x07012E88 - 0x07012F18
-const Gfx wdw_seg7_dl_07012E88[] = {
+Gfx wdw_seg7_dl_07012E88[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_SHADING_SMOOTH),

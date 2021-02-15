@@ -52,7 +52,7 @@ static const Vtx dl_castle_aquarium_light_vertex_group_3[] = {
     {{{  2355,    307,    819}, 0, {     0,      0}, {0xbb, 0xc7, 0xff, 0x80}}},
 };
 
-static const Gfx dl_castle_aquarium_light_model[] = {
+static Gfx dl_castle_aquarium_light_model[] = {
     gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, texture_castle_light),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -79,7 +79,7 @@ static const Gfx dl_castle_aquarium_light_model[] = {
 };
 
 // 0x07038240 - 0x070382B0
-const Gfx dl_castle_aquarium_light[] = {
+Gfx dl_castle_aquarium_light[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK),

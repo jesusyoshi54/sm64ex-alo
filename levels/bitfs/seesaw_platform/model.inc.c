@@ -31,7 +31,7 @@ static const Vtx bitfs_seg7_vertex_07011D18[] = {
 };
 
 // 0x07011D98 - 0x07011E28
-const Gfx bitfs_seg7_dl_07011D98[] = {
+Gfx bitfs_seg7_dl_07011D98[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09001800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -47,7 +47,7 @@ const Gfx bitfs_seg7_dl_07011D98[] = {
 };
 
 // 0x07011E28 - 0x07011E98
-const Gfx bitfs_seg7_dl_07011E28[] = {
+Gfx bitfs_seg7_dl_07011E28[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_LIGHTING),

@@ -17,7 +17,7 @@ static const Vtx dl_castle_lobby_wing_cap_light_vertex_group[] = {
     {{{ -1279,    -50,    819}, 0, {   836,    990}, {0xff, 0xff, 0xff, 0x80}}},
 };
 
-static const Gfx dl_castle_lobby_wing_cap_light_model[] = {
+static Gfx dl_castle_lobby_wing_cap_light_model[] = {
     gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, texture_castle_light),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -33,7 +33,7 @@ static const Gfx dl_castle_lobby_wing_cap_light_model[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx dl_castle_lobby_wing_cap_light[] = {
+Gfx dl_castle_lobby_wing_cap_light[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK),

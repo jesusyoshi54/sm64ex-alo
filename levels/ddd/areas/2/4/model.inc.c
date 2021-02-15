@@ -46,7 +46,7 @@ static const Vtx ddd_seg7_vertex_07008E78[] = {
 };
 
 // 0x07008EE8 - 0x07008F80
-static const Gfx ddd_seg7_dl_07008EE8[] = {
+static Gfx ddd_seg7_dl_07008EE8[] = {
     gsSPVertex(ddd_seg7_vertex_07008CB8, 14, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  5, 0x0),
     gsSP2Triangles( 3,  6,  4, 0x0,  7,  8,  9, 0x0),
@@ -62,7 +62,7 @@ static const Gfx ddd_seg7_dl_07008EE8[] = {
 };
 
 // 0x07008F80 - 0x07008FD0
-const Gfx ddd_seg7_dl_07008F80[] = {
+Gfx ddd_seg7_dl_07008F80[] = {
     gsDPPipeSync(),
     gsDPSetEnvColor(255, 255, 255, 98),
     gsDPSetCombineMode(G_CC_SHADEFADEA, G_CC_SHADEFADEA),

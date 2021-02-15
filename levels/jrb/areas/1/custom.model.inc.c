@@ -35240,7 +35240,7 @@ const Ambient_t Light_jrb_1_0xe000008 = {
 {127, 127, 127}, 0, {127, 127, 127}, 0
 };
 
-const Gfx DL_jrb_1_0xe0e2080[] = {
+Gfx DL_jrb_1_0xe0e2080[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPTexture(65535, 65535, 0, 0, 1),
@@ -44439,7 +44439,7 @@ gsSPGeometryMode(0, G_CULL_BACK|G_LIGHTING),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_jrb_1_0xe115838[] = {
+Gfx DL_jrb_1_0xe115838[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
 gsSPTexture(65535, 65535, 0, 0, 1),
@@ -46278,7 +46278,7 @@ gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_jrb_1_0xe11e0e0[] = {
+Gfx DL_jrb_1_0xe11e0e0[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 gsSPTexture(65535, 65535, 0, 0, 1),

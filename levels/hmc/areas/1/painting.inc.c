@@ -32,7 +32,7 @@ static const Vtx hmc_seg7_vertex_07024228[] = {
 
 // Unused
 // 0x07024268 - 0x070242A0
-const Gfx hmc_seg7_dl_07024268[] = {
+Gfx hmc_seg7_dl_07024268[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPLight(&hmc_seg7_lights_070241B8.l, 1),
@@ -44,7 +44,7 @@ const Gfx hmc_seg7_dl_07024268[] = {
 
 // Unused
 // 0x070242A0 - 0x070242D0
-const Gfx hmc_seg7_dl_070242A0[] = {
+Gfx hmc_seg7_dl_070242A0[] = {
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
@@ -53,7 +53,7 @@ const Gfx hmc_seg7_dl_070242A0[] = {
 };
 
 // 0x070242D0 - 0x070242F0
-static const Gfx hmc_seg7_painting_dl_070242D0[] = {
+static Gfx hmc_seg7_painting_dl_070242D0[] = {
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, 5, G_TX_NOLOD),
     gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
@@ -506,7 +506,7 @@ ALIGNED8 static const u8 hmc_seg7_texture_07024CE0[] = {
 };
 
 // 0x070254E0 - 0x07025518
-static const Gfx hmc_seg7_painting_dl_070254E0[] = {
+static Gfx hmc_seg7_painting_dl_070254E0[] = {
     gsDPPipeSync(),
     gsSPLight(&hmc_seg7_lights_070241D0.l, 1),
     gsSPLight(&hmc_seg7_lights_070241D0.a, 2),

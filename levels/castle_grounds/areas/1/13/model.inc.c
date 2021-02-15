@@ -3,7 +3,7 @@ ALIGNED8 static const u8 castle_grounds_seg7_us_texture_0700EAE8[] = {
 };
 
 // 0x0700F2E8
-const Gfx castle_grounds_seg7_us_dl_0700F2E8[] = {
+Gfx castle_grounds_seg7_us_dl_0700F2E8[] = {
     gsDPPipeSync(),
     gsDPSetTexturePersp(G_TP_NONE),
     gsDPSetCombineMode(G_CC_FADEA, G_CC_FADEA),

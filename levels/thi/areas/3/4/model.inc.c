@@ -15,7 +15,7 @@ static const Vtx thi_seg7_vertex_07009DF0[] = {
 };
 
 // 0x07009EB0 - 0x07009F58
-static const Gfx thi_seg7_dl_07009EB0[] = {
+static Gfx thi_seg7_dl_07009EB0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, grass_09000000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -32,7 +32,7 @@ static const Gfx thi_seg7_dl_07009EB0[] = {
 };
 
 // 0x07009F58 - 0x07009FC8
-const Gfx thi_seg7_dl_07009F58[] = {
+Gfx thi_seg7_dl_07009F58[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
     gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK),

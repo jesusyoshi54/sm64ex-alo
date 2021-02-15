@@ -270,7 +270,7 @@ static const Vtx ccm_seg7_vertex_0700D0E8[] = {
 };
 
 // 0x0700D128 - 0x0700D1E0
-static const Gfx ccm_seg7_dl_0700D128[] = {
+static Gfx ccm_seg7_dl_0700D128[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ccm_seg7_texture_07000900),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -290,7 +290,7 @@ static const Gfx ccm_seg7_dl_0700D128[] = {
 };
 
 // 0x0700D1E0 - 0x0700D2A8
-static const Gfx ccm_seg7_dl_0700D1E0[] = {
+static Gfx ccm_seg7_dl_0700D1E0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snow_09005800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -311,7 +311,7 @@ static const Gfx ccm_seg7_dl_0700D1E0[] = {
 };
 
 // 0x0700D2A8 - 0x0700D348
-static const Gfx ccm_seg7_dl_0700D2A8[] = {
+static Gfx ccm_seg7_dl_0700D2A8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snow_09000000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -329,7 +329,7 @@ static const Gfx ccm_seg7_dl_0700D2A8[] = {
 };
 
 // 0x0700D348 - 0x0700D4D8
-static const Gfx ccm_seg7_dl_0700D348[] = {
+static Gfx ccm_seg7_dl_0700D348[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snow_09006800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -366,7 +366,7 @@ static const Gfx ccm_seg7_dl_0700D348[] = {
 };
 
 // 0x0700D4D8 - 0x0700D540
-static const Gfx ccm_seg7_dl_0700D4D8[] = {
+static Gfx ccm_seg7_dl_0700D4D8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ccm_seg7_texture_07000000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -379,7 +379,7 @@ static const Gfx ccm_seg7_dl_0700D4D8[] = {
 };
 
 // 0x0700D540 - 0x0700D578
-static const Gfx ccm_seg7_dl_0700D540[] = {
+static Gfx ccm_seg7_dl_0700D540[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snow_09007000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -389,7 +389,7 @@ static const Gfx ccm_seg7_dl_0700D540[] = {
 };
 
 // 0x0700D578 - 0x0700D658
-const Gfx ccm_seg7_dl_0700D578[] = {
+Gfx ccm_seg7_dl_0700D578[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
     gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK),

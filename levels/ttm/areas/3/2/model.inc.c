@@ -28,7 +28,7 @@ static const Vtx ttm_seg7_vertex_07024B90[] = {
 };
 
 // 0x07024C00 - 0x07024C78
-static const Gfx ttm_seg7_dl_07024C00[] = {
+static Gfx ttm_seg7_dl_07024C00[] = {
     gsSPVertex(ttm_seg7_vertex_07024AB0, 14, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  4, 0x0),
     gsSP2Triangles( 0,  5,  3, 0x0,  2,  6,  0, 0x0),
@@ -41,7 +41,7 @@ static const Gfx ttm_seg7_dl_07024C00[] = {
 };
 
 // 0x07024C78 - 0x07024CA8
-const Gfx ttm_seg7_dl_07024C78[] = {
+Gfx ttm_seg7_dl_07024C78[] = {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_LIGHTING),
     gsSPDisplayList(ttm_seg7_dl_07024C00),

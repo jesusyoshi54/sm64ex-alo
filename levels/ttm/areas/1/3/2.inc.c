@@ -29,7 +29,7 @@ static const Vtx ttm_seg7_vertex_0700A9C0[] = {
 };
 
 // 0x0700AA40 - 0x0700AAB8
-static const Gfx ttm_seg7_dl_0700AA40[] = {
+static Gfx ttm_seg7_dl_0700AA40[] = {
     gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, ttm_seg7_texture_07000000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -44,7 +44,7 @@ static const Gfx ttm_seg7_dl_0700AA40[] = {
 };
 
 // 0x0700AAB8 - 0x0700AB08
-static const Gfx ttm_seg7_dl_0700AAB8[] = {
+static Gfx ttm_seg7_dl_0700AAB8[] = {
     gsSPVertex(ttm_seg7_vertex_0700A9C0, 8, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  2,  1,  3, 0x0),
     gsSP2Triangles( 2,  3,  4, 0x0,  0,  5,  1, 0x0),
@@ -54,7 +54,7 @@ static const Gfx ttm_seg7_dl_0700AAB8[] = {
 };
 
 // 0x0700AB08 - 0x0700AB70
-const Gfx ttm_seg7_dl_0700AB08[] = {
+Gfx ttm_seg7_dl_0700AB08[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),

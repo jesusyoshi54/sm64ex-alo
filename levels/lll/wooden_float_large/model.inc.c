@@ -27,7 +27,7 @@ static const Vtx lll_seg7_vertex_07018D88[] = {
 };
 
 // 0x07018E48 - 0x07018EA0
-static const Gfx lll_seg7_dl_07018E48[] = {
+static Gfx lll_seg7_dl_07018E48[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, lll_seg7_texture_07000000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -40,7 +40,7 @@ static const Gfx lll_seg7_dl_07018E48[] = {
 };
 
 // 0x07018EA0 - 0x07018EF8
-static const Gfx lll_seg7_dl_07018EA0[] = {
+static Gfx lll_seg7_dl_07018EA0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, lll_seg7_texture_07001000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -52,7 +52,7 @@ static const Gfx lll_seg7_dl_07018EA0[] = {
 };
 
 // 0x07018EF8 - 0x07018F70
-const Gfx lll_seg7_dl_07018EF8[] = {
+Gfx lll_seg7_dl_07018EF8[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_SHADING_SMOOTH),

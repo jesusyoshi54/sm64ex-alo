@@ -262,7 +262,7 @@ static const Vtx rr_seg7_vertex_0700D708[] = {
 };
 
 // 0x0700D768 - 0x0700DAD8
-static const Gfx rr_seg7_dl_0700D768[] = {
+static Gfx rr_seg7_dl_0700D768[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09004800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -330,7 +330,7 @@ static const Gfx rr_seg7_dl_0700D768[] = {
 };
 
 // 0x0700DAD8 - 0x0700DBA8
-static const Gfx rr_seg7_dl_0700DAD8[] = {
+static Gfx rr_seg7_dl_0700DAD8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09000800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -351,7 +351,7 @@ static const Gfx rr_seg7_dl_0700DAD8[] = {
 };
 
 // 0x0700DBA8 - 0x0700DBD8
-static const Gfx rr_seg7_dl_0700DBA8[] = {
+static Gfx rr_seg7_dl_0700DBA8[] = {
     gsSPVertex(rr_seg7_vertex_0700D708, 6, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  4, 0x0),
     gsSP2Triangles( 0,  2,  5, 0x0,  0,  5,  3, 0x0),
@@ -359,7 +359,7 @@ static const Gfx rr_seg7_dl_0700DBA8[] = {
 };
 
 // 0x0700DBD8 - 0x0700DC58
-const Gfx rr_seg7_dl_0700DBD8[] = {
+Gfx rr_seg7_dl_0700DBD8[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_LIGHTING),

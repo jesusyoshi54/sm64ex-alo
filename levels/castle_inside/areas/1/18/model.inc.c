@@ -423,7 +423,7 @@ static const Vtx inside_castle_seg7_vertex_070365A8[] = {
 };
 
 // 0x07036698 - 0x07036780
-static const Gfx inside_castle_seg7_dl_07036698[] = {
+static Gfx inside_castle_seg7_dl_07036698[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_09005000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -448,7 +448,7 @@ static const Gfx inside_castle_seg7_dl_07036698[] = {
 };
 
 // 0x07036780 - 0x070367C8
-static const Gfx inside_castle_seg7_dl_07036780[] = {
+static Gfx inside_castle_seg7_dl_07036780[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_09008000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -460,7 +460,7 @@ static const Gfx inside_castle_seg7_dl_07036780[] = {
 };
 
 // 0x070367C8 - 0x07036850
-static const Gfx inside_castle_seg7_dl_070367C8[] = {
+static Gfx inside_castle_seg7_dl_070367C8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_09004000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -476,7 +476,7 @@ static const Gfx inside_castle_seg7_dl_070367C8[] = {
 };
 
 // 0x07036850 - 0x070369B8
-static const Gfx inside_castle_seg7_dl_07036850[] = {
+static Gfx inside_castle_seg7_dl_07036850[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_09003000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -508,7 +508,7 @@ static const Gfx inside_castle_seg7_dl_07036850[] = {
 };
 
 // 0x070369B8 - 0x07036CB8
-static const Gfx inside_castle_seg7_dl_070369B8[] = {
+static Gfx inside_castle_seg7_dl_070369B8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_09001000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -571,7 +571,7 @@ static const Gfx inside_castle_seg7_dl_070369B8[] = {
 };
 
 // 0x07036CB8 - 0x07036D88
-static const Gfx inside_castle_seg7_dl_07036CB8[] = {
+static Gfx inside_castle_seg7_dl_07036CB8[] = {
     gsSPLight(&inside_castle_seg7_lights_07035340.l, 1),
     gsSPLight(&inside_castle_seg7_lights_07035340.a, 2),
     gsSPVertex(inside_castle_seg7_vertex_070363D8, 14, 0),
@@ -592,7 +592,7 @@ static const Gfx inside_castle_seg7_dl_07036CB8[] = {
 };
 
 // 0x07036D88 - 0x07036E68
-const Gfx inside_castle_seg7_dl_07036D88[] = {
+Gfx inside_castle_seg7_dl_07036D88[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_SHADING_SMOOTH),

@@ -38,7 +38,7 @@ static const Vtx cotmc_seg7_vertex_0700A2E0[] = {
 };
 
 // 0x0700A3D0 - 0x0700A4B8
-static const Gfx cotmc_seg7_dl_0700A3D0[] = {
+static Gfx cotmc_seg7_dl_0700A3D0[] = {
     gsSPVertex(cotmc_seg7_vertex_0700A1E0, 16, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  0, 0x0),
     gsSP2Triangles( 5,  3,  0, 0x0,  5,  0,  2, 0x0),
@@ -58,7 +58,7 @@ static const Gfx cotmc_seg7_dl_0700A3D0[] = {
 };
 
 // 0x0700A4B8 - 0x0700A508
-const Gfx cotmc_seg7_dl_0700A4B8[] = {
+Gfx cotmc_seg7_dl_0700A4B8[] = {
     gsDPPipeSync(),
     gsDPSetEnvColor(255, 255, 255, 180),
     gsDPSetCombineMode(G_CC_SHADEFADEA, G_CC_SHADEFADEA),

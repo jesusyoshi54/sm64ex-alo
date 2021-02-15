@@ -49,7 +49,7 @@ static const Vtx vcutm_seg7_vertex_070095E8[] = {
 };
 
 // 0x07009628 - 0x070096E0
-static const Gfx vcutm_seg7_dl_07009628[] = {
+static Gfx vcutm_seg7_dl_07009628[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, vcutm_seg7_texture_07001800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -71,7 +71,7 @@ static const Gfx vcutm_seg7_dl_07009628[] = {
 };
 
 // 0x070096E0 - 0x07009750
-const Gfx vcutm_seg7_dl_070096E0[] = {
+Gfx vcutm_seg7_dl_070096E0[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_SHADING_SMOOTH),

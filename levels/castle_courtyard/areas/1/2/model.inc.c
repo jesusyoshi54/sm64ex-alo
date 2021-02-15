@@ -87,7 +87,7 @@ static const Vtx castle_courtyard_seg7_vertex_070054D0[] = {
 };
 
 // 0x07005550 - 0x07005698
-static const Gfx castle_courtyard_seg7_dl_07005550[] = {
+static Gfx castle_courtyard_seg7_dl_07005550[] = {
     gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, outside_0900BC00),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -118,7 +118,7 @@ static const Gfx castle_courtyard_seg7_dl_07005550[] = {
 };
 
 // 0x07005698 - 0x07005708
-const Gfx castle_courtyard_seg7_dl_07005698[] = {
+Gfx castle_courtyard_seg7_dl_07005698[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsSPClearGeometryMode(G_LIGHTING),

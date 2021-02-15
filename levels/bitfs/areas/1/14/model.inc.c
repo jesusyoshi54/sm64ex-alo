@@ -298,7 +298,7 @@ static const Vtx bitfs_seg7_vertex_0700A4A0[] = {
 };
 
 // 0x0700A520 - 0x0700A9D0
-static const Gfx bitfs_seg7_dl_0700A520[] = {
+static Gfx bitfs_seg7_dl_0700A520[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09001800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -390,7 +390,7 @@ static const Gfx bitfs_seg7_dl_0700A520[] = {
 };
 
 // 0x0700A9D0 - 0x0700AA00
-static const Gfx bitfs_seg7_dl_0700A9D0[] = {
+static Gfx bitfs_seg7_dl_0700A9D0[] = {
     gsSPVertex(bitfs_seg7_vertex_0700A4A0, 8, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
     gsSP2Triangles( 4,  5,  6, 0x0,  4,  6,  7, 0x0),
@@ -398,7 +398,7 @@ static const Gfx bitfs_seg7_dl_0700A9D0[] = {
 };
 
 // 0x0700AA00 - 0x0700AA78
-const Gfx bitfs_seg7_dl_0700AA00[] = {
+Gfx bitfs_seg7_dl_0700AA00[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_LIGHTING),

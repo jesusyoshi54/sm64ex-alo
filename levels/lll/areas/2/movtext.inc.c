@@ -13,7 +13,7 @@ Movtex lll_movtex_tris_lava_floor[] = {
 };
 
 // 0x070287A8 - 0x070287F0
-const Gfx lll_dl_lava_floor[] = {
+Gfx lll_dl_lava_floor[] = {
     gsSP2Triangles( 0,  3,  1, 0x0,  1,  3,  4, 0x0),
     gsSP2Triangles( 1,  4,  2, 0x0,  2,  4,  5, 0x0),
     gsSP2Triangles( 3,  6,  4, 0x0,  4,  6,  7, 0x0),
@@ -64,7 +64,7 @@ Movtex lll_movtex_tris_lavafall_volcano[] = {
 };
 
 // 0x070288C8 - 0x07028960
-const Gfx lll_dl_lavafall_volcano[] = {
+Gfx lll_dl_lavafall_volcano[] = {
     gsSP2Triangles(15, 14,  9, 0x0,  4,  9,  3, 0x0),
     gsSP2Triangles( 9, 14,  8, 0x0,  9,  8,  3, 0x0),
     gsSP2Triangles(14, 13,  8, 0x0,  8, 13,  7, 0x0),

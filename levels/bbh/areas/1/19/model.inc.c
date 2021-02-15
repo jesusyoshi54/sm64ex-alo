@@ -248,7 +248,7 @@ static const Vtx bbh_seg7_vertex_07011CF0[] = {
 };
 
 // 0x07011DF0 - 0x07011E48
-static const Gfx bbh_seg7_dl_07011DF0[] = {
+static Gfx bbh_seg7_dl_07011DF0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spooky_0900A000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -261,7 +261,7 @@ static const Gfx bbh_seg7_dl_07011DF0[] = {
 };
 
 // 0x07011E48 - 0x07011EA0
-static const Gfx bbh_seg7_dl_07011E48[] = {
+static Gfx bbh_seg7_dl_07011E48[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spooky_09008800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -273,7 +273,7 @@ static const Gfx bbh_seg7_dl_07011E48[] = {
 };
 
 // 0x07011EA0 - 0x07012078
-static const Gfx bbh_seg7_dl_07011EA0[] = {
+static Gfx bbh_seg7_dl_07011EA0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spooky_09003800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -314,7 +314,7 @@ static const Gfx bbh_seg7_dl_07011EA0[] = {
 };
 
 // 0x07012078 - 0x070120E0
-static const Gfx bbh_seg7_dl_07012078[] = {
+static Gfx bbh_seg7_dl_07012078[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spooky_09005000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -327,7 +327,7 @@ static const Gfx bbh_seg7_dl_07012078[] = {
 };
 
 // 0x070120E0 - 0x070121A8
-static const Gfx bbh_seg7_dl_070120E0[] = {
+static Gfx bbh_seg7_dl_070120E0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spooky_09002800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -348,7 +348,7 @@ static const Gfx bbh_seg7_dl_070120E0[] = {
 };
 
 // 0x070121A8 - 0x07012220
-static const Gfx bbh_seg7_dl_070121A8[] = {
+static Gfx bbh_seg7_dl_070121A8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spooky_09009000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -362,7 +362,7 @@ static const Gfx bbh_seg7_dl_070121A8[] = {
 };
 
 // 0x07012220 - 0x07012318
-const Gfx bbh_seg7_dl_07012220[] = {
+Gfx bbh_seg7_dl_07012220[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_SHADING_SMOOTH),

@@ -446,13 +446,13 @@ extern const u8 bowser_1_1__texture_0E00E850[];
 extern const u8 bowser_1_1__texture_0E00F850[];
 extern const Light_t Light_bowser_1_1_0xe000000;
 extern const Ambient_t Light_bowser_1_1_0xe000008;
-extern const Gfx DL_bowser_1_1_0xe036d70[];
+extern Gfx DL_bowser_1_1_0xe036d70[];
 extern const u8 bowser_1_1__texture_0E003050[];
 extern const u8 bowser_1_1__texture_0E00A850[];
 extern const u8 bowser_1_1__texture_0E00B850[];
-extern const Gfx DL_bowser_1_1_0xe03e6e8[];
+extern Gfx DL_bowser_1_1_0xe03e6e8[];
 extern const u8 bowser_1_1__texture_0E004850[];
 extern const u8 bowser_1_1__texture_0E00D850[];
 extern const u8 bowser_1_1__texture_0E00F050[];
-extern const Gfx DL_bowser_1_1_0xe044350[];
+extern Gfx DL_bowser_1_1_0xe044350[];
 #endif

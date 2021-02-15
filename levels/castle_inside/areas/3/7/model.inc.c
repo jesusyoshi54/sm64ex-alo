@@ -15,7 +15,7 @@ static const Vtx inside_castle_seg7_vertex_07064C40[] = {
 };
 
 // 0x07064D00 - 0x07064D58
-static const Gfx inside_castle_seg7_dl_07064D00[] = {
+static Gfx inside_castle_seg7_dl_07064D00[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_09008800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -27,7 +27,7 @@ static const Gfx inside_castle_seg7_dl_07064D00[] = {
 };
 
 // 0x07064D58 - 0x07064DC8
-const Gfx inside_castle_seg7_dl_07064D58[] = {
+Gfx inside_castle_seg7_dl_07064D58[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
     gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK),

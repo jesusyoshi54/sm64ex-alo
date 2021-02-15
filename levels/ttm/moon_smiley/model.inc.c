@@ -7,7 +7,7 @@ static const Vtx ttm_seg7_vertex_0702AC00[] = {
 };
 
 // 0x0702AC40 - 0x0702AC78
-static const Gfx ttm_seg7_dl_0702AC40[] = {
+static Gfx ttm_seg7_dl_0702AC40[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mountain_0900B000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -17,7 +17,7 @@ static const Gfx ttm_seg7_dl_0702AC40[] = {
 };
 
 // 0x0702AC78 - 0x0702ACE8
-const Gfx ttm_seg7_dl_0702AC78[] = {
+Gfx ttm_seg7_dl_0702AC78[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
     gsSPClearGeometryMode(G_LIGHTING),

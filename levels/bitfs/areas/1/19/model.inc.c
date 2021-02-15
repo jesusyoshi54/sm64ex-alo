@@ -9,7 +9,7 @@ static const Vtx bitfs_seg7_vertex_0700ECF0[] = {
 };
 
 // 0x0700ED50 - 0x0700ED90
-static const Gfx bitfs_seg7_dl_0700ED50[] = {
+static Gfx bitfs_seg7_dl_0700ED50[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09000800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -20,7 +20,7 @@ static const Gfx bitfs_seg7_dl_0700ED50[] = {
 };
 
 // 0x0700ED90 - 0x0700EE10
-const Gfx bitfs_seg7_dl_0700ED90[] = {
+Gfx bitfs_seg7_dl_0700ED90[] = {
     gsDPPipeSync(),
     gsDPSetEnvColor(255, 255, 255, 100),
     gsDPSetCombineMode(G_CC_MODULATERGBFADE, G_CC_MODULATERGBFADE),

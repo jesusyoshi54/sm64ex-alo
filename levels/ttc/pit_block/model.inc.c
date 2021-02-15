@@ -37,7 +37,7 @@ static const Vtx ttc_seg7_vertex_07010E80[] = {
 };
 
 // 0x07010F80 - 0x07010FD8
-static const Gfx ttc_seg7_dl_07010F80[] = {
+static Gfx ttc_seg7_dl_07010F80[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, machine_09007000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -50,7 +50,7 @@ static const Gfx ttc_seg7_dl_07010F80[] = {
 };
 
 // 0x07010FD8 - 0x07011040
-static const Gfx ttc_seg7_dl_07010FD8[] = {
+static Gfx ttc_seg7_dl_07010FD8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, machine_09003000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -63,7 +63,7 @@ static const Gfx ttc_seg7_dl_07010FD8[] = {
 };
 
 // 0x07011040 - 0x07011108
-const Gfx ttc_seg7_dl_07011040[] = {
+Gfx ttc_seg7_dl_07011040[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),

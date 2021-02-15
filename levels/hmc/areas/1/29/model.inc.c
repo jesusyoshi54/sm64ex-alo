@@ -218,7 +218,7 @@ static const Vtx hmc_seg7_vertex_07020A98[] = {
 };
 
 // 0x07020B18 - 0x07020BD8
-static const Gfx hmc_seg7_dl_07020B18[] = {
+static Gfx hmc_seg7_dl_07020B18[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09006800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -238,7 +238,7 @@ static const Gfx hmc_seg7_dl_07020B18[] = {
 };
 
 // 0x07020BD8 - 0x07020C60
-static const Gfx hmc_seg7_dl_07020BD8[] = {
+static Gfx hmc_seg7_dl_07020BD8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09009800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -253,7 +253,7 @@ static const Gfx hmc_seg7_dl_07020BD8[] = {
 };
 
 // 0x07020C60 - 0x07020D50
-static const Gfx hmc_seg7_dl_07020C60[] = {
+static Gfx hmc_seg7_dl_07020C60[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09008800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -275,7 +275,7 @@ static const Gfx hmc_seg7_dl_07020C60[] = {
 };
 
 // 0x07020D50 - 0x07020EA0
-static const Gfx hmc_seg7_dl_07020D50[] = {
+static Gfx hmc_seg7_dl_07020D50[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09007800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -305,7 +305,7 @@ static const Gfx hmc_seg7_dl_07020D50[] = {
 };
 
 // 0x07020EA0 - 0x07020F90
-static const Gfx hmc_seg7_dl_07020EA0[] = {
+static Gfx hmc_seg7_dl_07020EA0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09004800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -327,7 +327,7 @@ static const Gfx hmc_seg7_dl_07020EA0[] = {
 };
 
 // 0x07020F90 - 0x07020FD0
-static const Gfx hmc_seg7_dl_07020F90[] = {
+static Gfx hmc_seg7_dl_07020F90[] = {
     gsSPVertex(hmc_seg7_vertex_07020A98, 8, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  1, 0x0),
     gsSP2Triangles( 0,  4,  5, 0x0,  0,  6,  4, 0x0),
@@ -336,7 +336,7 @@ static const Gfx hmc_seg7_dl_07020F90[] = {
 };
 
 // 0x07020FD0 - 0x070210E0
-const Gfx hmc_seg7_dl_07020FD0[] = {
+Gfx hmc_seg7_dl_07020FD0[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),

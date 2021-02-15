@@ -185,7 +185,7 @@ static const Vtx castle_grounds_seg7_vertex_07009F88[] = {
 };
 
 // 0x07009FD8 - 0x0700A140
-static const Gfx castle_grounds_seg7_dl_07009FD8[] = {
+static Gfx castle_grounds_seg7_dl_07009FD8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, outside_09007800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -218,7 +218,7 @@ static const Gfx castle_grounds_seg7_dl_07009FD8[] = {
 };
 
 // 0x0700A140 - 0x0700A260
-static const Gfx castle_grounds_seg7_dl_0700A140[] = {
+static Gfx castle_grounds_seg7_dl_0700A140[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, outside_09001000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -246,7 +246,7 @@ static const Gfx castle_grounds_seg7_dl_0700A140[] = {
 };
 
 // 0x0700A260 - 0x0700A290
-static const Gfx castle_grounds_seg7_dl_0700A260[] = {
+static Gfx castle_grounds_seg7_dl_0700A260[] = {
     gsSPVertex(castle_grounds_seg7_vertex_07009F88, 5, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  1,  0,  3, 0x0),
     gsSP2Triangles( 1,  4,  2, 0x0,  4,  1,  3, 0x0),
@@ -254,7 +254,7 @@ static const Gfx castle_grounds_seg7_dl_0700A260[] = {
 };
 
 // 0x0700A290 - 0x0700A328
-const Gfx castle_grounds_seg7_dl_0700A290[] = {
+Gfx castle_grounds_seg7_dl_0700A290[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_LIGHTING),

@@ -149,7 +149,7 @@ static const Vtx ccm_seg7_vertex_07010320[] = {
 };
 
 // 0x07010390 - 0x07010480
-static const Gfx ccm_seg7_dl_07010390[] = {
+static Gfx ccm_seg7_dl_07010390[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snow_09003000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -175,7 +175,7 @@ static const Gfx ccm_seg7_dl_07010390[] = {
 };
 
 // 0x07010480 - 0x07010518
-static const Gfx ccm_seg7_dl_07010480[] = {
+static Gfx ccm_seg7_dl_07010480[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snow_09006000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -194,7 +194,7 @@ static const Gfx ccm_seg7_dl_07010480[] = {
 };
 
 // 0x07010518 - 0x07010610
-static const Gfx ccm_seg7_dl_07010518[] = {
+static Gfx ccm_seg7_dl_07010518[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snow_09002000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -220,7 +220,7 @@ static const Gfx ccm_seg7_dl_07010518[] = {
 };
 
 // 0x07010610 - 0x07010660
-static const Gfx ccm_seg7_dl_07010610[] = {
+static Gfx ccm_seg7_dl_07010610[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snow_09002800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -232,7 +232,7 @@ static const Gfx ccm_seg7_dl_07010610[] = {
 };
 
 // 0x07010660 - 0x070106D8
-const Gfx ccm_seg7_dl_07010660[] = {
+Gfx ccm_seg7_dl_07010660[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),

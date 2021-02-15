@@ -3,9 +3,9 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_ending_1_0x2ee1700[];
-extern const Gfx DL_ending_1_0xe0dfc20[];
-extern const Gfx DL_ending_1_0xe10f360[];
-extern const Gfx DL_ending_1_0xe110c18[];
+extern Gfx DL_ending_1_0xe0dfc20[];
+extern Gfx DL_ending_1_0xe10f360[];
+extern Gfx DL_ending_1_0xe110c18[];
 extern const Collision col_ending_1_0xe101398[];
 extern struct MovtexQuadCollection ending_1_Movtex_0[];
 extern struct MovtexQuadCollection ending_1_Movtex_1[];
@@ -16,10 +16,10 @@ extern const LevelScript local_objects_ending_1_[];
 extern const LevelScript local_warps_ending_1_[];
 extern const LevelScript level_ending_entry[];
 extern const GeoLayout ending_geo_000050[];
-extern const Gfx dl_cake_end_screen[];
-extern const Gfx dl_cake_end_screen_eu_070296F8[];
-extern const Gfx dl_cake_end_screen_eu_07029768[];
-extern const Gfx dl_cake_end_screen_eu_070297D8[];
-extern const Gfx dl_cake_end_screen[];
+extern Gfx dl_cake_end_screen[];
+extern Gfx dl_cake_end_screen_eu_070296F8[];
+extern Gfx dl_cake_end_screen_eu_07029768[];
+extern Gfx dl_cake_end_screen_eu_070297D8[];
+extern Gfx dl_cake_end_screen[];
 extern const LevelScript level_ending_entry[];
 #endif

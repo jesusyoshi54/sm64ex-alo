@@ -19,7 +19,7 @@ static const Vtx inside_castle_seg7_vertex_07023CB0[] = {
 };
 
 // 0x07023DB0 - 0x07023FE0
-const Gfx inside_castle_seg7_dl_07023DB0[] = {
+Gfx inside_castle_seg7_dl_07023DB0[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetCombineMode(G_CC_TRILERP, G_CC_DECALRGB2),

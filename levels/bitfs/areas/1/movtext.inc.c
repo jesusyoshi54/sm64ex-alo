@@ -34,13 +34,13 @@ Movtex bitfs_movtex_tris_lava_floor[] = {
 };
 
 // 0x07015BA8 - 0x07015BC0
-const Gfx bitfs_dl_lava_sections[] = {
+Gfx bitfs_dl_lava_sections[] = {
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
     gsSPEndDisplayList(),
 };
 
 // 0x07015BC0 - 0x07015C08
-const Gfx bitfs_dl_lava_floor[] = {
+Gfx bitfs_dl_lava_floor[] = {
     gsSP2Triangles( 0,  3,  1, 0x0,  1,  3,  4, 0x0),
     gsSP2Triangles( 1,  4,  2, 0x0,  2,  4,  5, 0x0),
     gsSP2Triangles( 3,  6,  4, 0x0,  4,  6,  7, 0x0),

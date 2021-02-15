@@ -1,5 +1,5 @@
 // 0x070285F0 - 0x07028660
-const Gfx ssl_dl_pyramid_sand_pathway_floor_begin[] = {
+Gfx ssl_dl_pyramid_sand_pathway_floor_begin[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_INTER2),
@@ -17,7 +17,7 @@ const Gfx ssl_dl_pyramid_sand_pathway_floor_begin[] = {
 };
 
 // 0x07028660 - 0x070286A0
-const Gfx ssl_dl_pyramid_sand_pathway_floor_end[] = {
+Gfx ssl_dl_pyramid_sand_pathway_floor_end[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_1CYCLE),
@@ -28,7 +28,7 @@ const Gfx ssl_dl_pyramid_sand_pathway_floor_end[] = {
 };
 
 // 0x070286A0 - 0x07028718
-const Gfx ssl_dl_pyramid_sand_pathway_begin[] = {
+Gfx ssl_dl_pyramid_sand_pathway_begin[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_XLU_INTER2),
@@ -47,7 +47,7 @@ const Gfx ssl_dl_pyramid_sand_pathway_begin[] = {
 };
 
 // 0x07028718 - 0x07028760
-const Gfx ssl_dl_pyramid_sand_pathway_end[] = {
+Gfx ssl_dl_pyramid_sand_pathway_end[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_1CYCLE),
@@ -74,7 +74,7 @@ Movtex ssl_movtex_tris_pyramid_sand_pathway_front[] = {
 };
 
 // 0x070287B8 - 0x070287F0
-const Gfx ssl_dl_pyramid_sand_pathway_front_end[] = {
+Gfx ssl_dl_pyramid_sand_pathway_front_end[] = {
     gsSP2Triangles( 0,  1,  4, 0x0,  4,  1,  5, 0x0),
     gsSP2Triangles( 1,  2,  5, 0x0,  5,  2,  6, 0x0),
     gsSP2Triangles( 2,  3,  6, 0x0,  6,  3,  7, 0x0),
@@ -109,7 +109,7 @@ Movtex ssl_movtex_tris_pyramid_sand_pathway_side[] = {
 };
 
 // 0x07028888 - 0x070288B0
-const Gfx ssl_dl_pyramid_sand_pathway_side_end[] = {
+Gfx ssl_dl_pyramid_sand_pathway_side_end[] = {
     gsSP2Triangles( 0,  1,  3, 0x0,  1,  4,  3, 0x0),
     gsSP2Triangles( 1,  2,  4, 0x0,  2,  5,  4, 0x0),
     gsSPEndDisplayList(),

@@ -438,7 +438,7 @@ static const Vtx rr_seg7_vertex_07004428[] = {
 };
 
 // 0x07004468 - 0x07004950
-static const Gfx rr_seg7_dl_07004468[] = {
+static Gfx rr_seg7_dl_07004468[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09001800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -536,7 +536,7 @@ static const Gfx rr_seg7_dl_07004468[] = {
 };
 
 // 0x07004950 - 0x07004A98
-static const Gfx rr_seg7_dl_07004950[] = {
+static Gfx rr_seg7_dl_07004950[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, sky_09007000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -567,7 +567,7 @@ static const Gfx rr_seg7_dl_07004950[] = {
 };
 
 // 0x07004A98 - 0x07004B10
-const Gfx rr_seg7_dl_07004A98[] = {
+Gfx rr_seg7_dl_07004A98[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_LIGHTING),

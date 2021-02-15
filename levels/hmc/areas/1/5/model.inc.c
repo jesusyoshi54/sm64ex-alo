@@ -1234,7 +1234,7 @@ static const Vtx hmc_seg7_vertex_0700CF38[] = {
 };
 
 // 0x0700CF78 - 0x0700D1C8
-static const Gfx hmc_seg7_dl_0700CF78[] = {
+static Gfx hmc_seg7_dl_0700CF78[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09006800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1284,7 +1284,7 @@ static const Gfx hmc_seg7_dl_0700CF78[] = {
 };
 
 // 0x0700D1C8 - 0x0700D3D8
-static const Gfx hmc_seg7_dl_0700D1C8[] = {
+static Gfx hmc_seg7_dl_0700D1C8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09009800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1330,7 +1330,7 @@ static const Gfx hmc_seg7_dl_0700D1C8[] = {
 };
 
 // 0x0700D3D8 - 0x0700D8D8
-static const Gfx hmc_seg7_dl_0700D3D8[] = {
+static Gfx hmc_seg7_dl_0700D3D8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09000000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1428,7 +1428,7 @@ static const Gfx hmc_seg7_dl_0700D3D8[] = {
 };
 
 // 0x0700D8D8 - 0x0700D9A8
-static const Gfx hmc_seg7_dl_0700D8D8[] = {
+static Gfx hmc_seg7_dl_0700D8D8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09003800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1449,7 +1449,7 @@ static const Gfx hmc_seg7_dl_0700D8D8[] = {
 };
 
 // 0x0700D9A8 - 0x0700DD30
-static const Gfx hmc_seg7_dl_0700D9A8[] = {
+static Gfx hmc_seg7_dl_0700D9A8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09008800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1521,7 +1521,7 @@ static const Gfx hmc_seg7_dl_0700D9A8[] = {
 };
 
 // 0x0700DD30 - 0x0700DED8
-static const Gfx hmc_seg7_dl_0700DD30[] = {
+static Gfx hmc_seg7_dl_0700DD30[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09007800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1557,7 +1557,7 @@ static const Gfx hmc_seg7_dl_0700DD30[] = {
 };
 
 // 0x0700DED8 - 0x0700DF10
-static const Gfx hmc_seg7_dl_0700DED8[] = {
+static Gfx hmc_seg7_dl_0700DED8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hmc_seg7_texture_07000000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1567,7 +1567,7 @@ static const Gfx hmc_seg7_dl_0700DED8[] = {
 };
 
 // 0x0700DF10 - 0x0700DF48
-static const Gfx hmc_seg7_dl_0700DF10[] = {
+static Gfx hmc_seg7_dl_0700DF10[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hmc_seg7_texture_07001000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1577,7 +1577,7 @@ static const Gfx hmc_seg7_dl_0700DF10[] = {
 };
 
 // 0x0700DF48 - 0x0700E330
-static const Gfx hmc_seg7_dl_0700DF48[] = {
+static Gfx hmc_seg7_dl_0700DF48[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09001800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -1658,7 +1658,7 @@ static const Gfx hmc_seg7_dl_0700DF48[] = {
 };
 
 // 0x0700E330 - 0x0700E428
-static const Gfx hmc_seg7_dl_0700E330[] = {
+static Gfx hmc_seg7_dl_0700E330[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09004800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -1681,14 +1681,14 @@ static const Gfx hmc_seg7_dl_0700E330[] = {
 };
 
 // 0x0700E428 - 0x0700E448
-static const Gfx hmc_seg7_dl_0700E428[] = {
+static Gfx hmc_seg7_dl_0700E428[] = {
     gsSPVertex(hmc_seg7_vertex_0700CF38, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  1, 0x0),
     gsSPEndDisplayList(),
 };
 
 // 0x0700E448 - 0x0700E5B0
-const Gfx hmc_seg7_dl_0700E448[] = {
+Gfx hmc_seg7_dl_0700E448[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),

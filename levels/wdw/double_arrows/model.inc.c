@@ -17,7 +17,7 @@ static const Vtx wdw_seg7_vertex_070127C8[] = {
 };
 
 // 0x070128A8 - 0x07012908
-static const Gfx wdw_seg7_dl_070128A8[] = {
+static Gfx wdw_seg7_dl_070128A8[] = {
     gsSPVertex(wdw_seg7_vertex_070127C8, 14, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  5, 0x0),
     gsSP2Triangles( 4,  6,  5, 0x0,  4,  7,  6, 0x0),
@@ -28,7 +28,7 @@ static const Gfx wdw_seg7_dl_070128A8[] = {
 };
 
 // 0x07012908 - 0x07012938
-const Gfx wdw_seg7_dl_07012908[] = {
+Gfx wdw_seg7_dl_07012908[] = {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_LIGHTING),
     gsSPDisplayList(wdw_seg7_dl_070128A8),

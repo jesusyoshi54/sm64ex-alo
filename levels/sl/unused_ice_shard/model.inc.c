@@ -12,7 +12,7 @@ static const Vtx sl_seg7_vertex_0700A928[] = {
 };
 
 // 0x0700A958 - 0x0700A980
-static const Gfx sl_seg7_dl_0700A958[] = {
+static Gfx sl_seg7_dl_0700A958[] = {
     gsSPLight(&sl_seg7_lights_0700A910.l, 1),
     gsSPLight(&sl_seg7_lights_0700A910.a, 2),
     gsSPVertex(sl_seg7_vertex_0700A928, 3, 0),
@@ -21,7 +21,7 @@ static const Gfx sl_seg7_dl_0700A958[] = {
 };
 
 // 0x0700A980 - 0x0700A9B0
-const Gfx sl_seg7_dl_0700A980[] = {
+Gfx sl_seg7_dl_0700A980[] = {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_CULL_BACK | G_SHADING_SMOOTH),
     gsSPDisplayList(sl_seg7_dl_0700A958),

@@ -13,7 +13,7 @@ static const Vtx ccm_seg7_vertex_0700F6F8[] = {
 };
 
 // 0x0700F738 - 0x0700F780
-static const Gfx ccm_seg7_dl_0700F738[] = {
+static Gfx ccm_seg7_dl_0700F738[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snow_09000800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -25,7 +25,7 @@ static const Gfx ccm_seg7_dl_0700F738[] = {
 };
 
 // 0x0700F780 - 0x0700F800
-const Gfx ccm_seg7_dl_0700F780[] = {
+Gfx ccm_seg7_dl_0700F780[] = {
     gsDPPipeSync(),
     gsDPSetEnvColor(255, 255, 255, 90),
     gsDPSetCombineMode(G_CC_MODULATERGBFADE, G_CC_MODULATERGBFADE),

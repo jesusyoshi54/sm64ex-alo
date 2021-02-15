@@ -34,7 +34,7 @@ static const Vtx thi_seg7_vertex_07007AB0[] = {
 };
 
 // 0x07007B80 - 0x07007C20
-static const Gfx thi_seg7_dl_07007B80[] = {
+static Gfx thi_seg7_dl_07007B80[] = {
     gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, grass_0900B800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -52,7 +52,7 @@ static const Gfx thi_seg7_dl_07007B80[] = {
 };
 
 // 0x07007C20 - 0x07007C90
-const Gfx thi_seg7_dl_07007C20[] = {
+Gfx thi_seg7_dl_07007C20[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK),

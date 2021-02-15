@@ -11,7 +11,7 @@ static const Vtx castle_grounds_seg7_vertex_0700BAB8[] = {
 };
 
 // 0x0700BB38 - 0x0700BB80
-static const Gfx castle_grounds_seg7_dl_0700BB38[] = {
+static Gfx castle_grounds_seg7_dl_0700BB38[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, outside_09005800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -22,7 +22,7 @@ static const Gfx castle_grounds_seg7_dl_0700BB38[] = {
 };
 
 // 0x0700BB80 - 0x0700BBF0
-const Gfx castle_grounds_seg7_dl_0700BB80[] = {
+Gfx castle_grounds_seg7_dl_0700BB80[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGBA, G_CC_MODULATERGBA),
     gsSPClearGeometryMode(G_LIGHTING),

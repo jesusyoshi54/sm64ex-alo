@@ -588,7 +588,7 @@ static const Vtx cotmc_seg7_vertex_07009B20[] = {
 };
 
 // 0x07009B50 - 0x0700A160
-static const Gfx cotmc_seg7_dl_07009B50[] = {
+static Gfx cotmc_seg7_dl_07009B50[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cotmc_seg7_texture_07001800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -720,7 +720,7 @@ static const Gfx cotmc_seg7_dl_07009B50[] = {
 };
 
 // 0x0700A160 - 0x0700A1E0
-const Gfx cotmc_seg7_dl_0700A160[] = {
+Gfx cotmc_seg7_dl_0700A160[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),

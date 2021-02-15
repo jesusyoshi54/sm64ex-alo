@@ -102,7 +102,7 @@ static const Vtx castle_courtyard_seg7_vertex_07004EA8[] = {
 };
 
 // 0x07004ED8 - 0x07004FB0
-static const Gfx castle_courtyard_seg7_dl_07004ED8[] = {
+static Gfx castle_courtyard_seg7_dl_07004ED8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, outside_09007800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -124,7 +124,7 @@ static const Gfx castle_courtyard_seg7_dl_07004ED8[] = {
 };
 
 // 0x07004FB0 - 0x07005060
-static const Gfx castle_courtyard_seg7_dl_07004FB0[] = {
+static Gfx castle_courtyard_seg7_dl_07004FB0[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, outside_09001000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
@@ -142,14 +142,14 @@ static const Gfx castle_courtyard_seg7_dl_07004FB0[] = {
 };
 
 // 0x07005060 - 0x07005078
-static const Gfx castle_courtyard_seg7_dl_07005060[] = {
+static Gfx castle_courtyard_seg7_dl_07005060[] = {
     gsSPVertex(castle_courtyard_seg7_vertex_07004EA8, 3, 0),
     gsSP1Triangle( 0,  1,  2, 0x0),
     gsSPEndDisplayList(),
 };
 
 // 0x07005078 - 0x07005110
-const Gfx castle_courtyard_seg7_dl_07005078[] = {
+Gfx castle_courtyard_seg7_dl_07005078[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsSPClearGeometryMode(G_LIGHTING),

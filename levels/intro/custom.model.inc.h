@@ -119,5 +119,5 @@ extern const u8 intro_seg7__texture_07002850[];
 extern const u8 intro_seg7__texture_07003050[];
 extern const Light_t Light_intro_seg7_0x7000000;
 extern const Ambient_t Light_intro_seg7_0x7000008;
-extern const Gfx DL_intro_seg7_0x7009e80[];
+extern Gfx DL_intro_seg7_0x7009e80[];
 #endif

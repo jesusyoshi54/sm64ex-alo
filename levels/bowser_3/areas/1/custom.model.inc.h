@@ -1191,9 +1191,9 @@ extern const u8 bowser_3_1__texture_0E01A050[];
 extern const u8 bowser_3_1__texture_0E01B850[];
 extern const Light_t Light_bowser_3_1_0xe000000;
 extern const Ambient_t Light_bowser_3_1_0xe000008;
-extern const Gfx DL_bowser_3_1_0xe098900[];
+extern Gfx DL_bowser_3_1_0xe098900[];
 extern const u8 bowser_3_1__texture_0E005050[];
 extern const u8 bowser_3_1__texture_0E019850[];
 extern const u8 bowser_3_1__texture_0E01B050[];
-extern const Gfx DL_bowser_3_1_0xe0b7c00[];
+extern Gfx DL_bowser_3_1_0xe0b7c00[];
 #endif

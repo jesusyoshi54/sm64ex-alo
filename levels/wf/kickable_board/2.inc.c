@@ -7,7 +7,7 @@ static const Vtx wf_seg7_vertex_0700F680[] = {
 };
 
 // 0x0700F6C0 - 0x0700F758
-const Gfx wf_seg7_dl_0700F6C0[] = {
+Gfx wf_seg7_dl_0700F6C0[] = {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),

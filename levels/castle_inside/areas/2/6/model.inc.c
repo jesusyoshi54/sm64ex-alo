@@ -21,7 +21,7 @@ static const Vtx inside_castle_seg7_vertex_0704A1D0[] = {
 };
 
 // 0x0704A290 - 0x0704A2E0
-static const Gfx inside_castle_seg7_dl_0704A290[] = {
+static Gfx inside_castle_seg7_dl_0704A290[] = {
     gsSPLight(&inside_castle_seg7_lights_0704A1B8.l, 1),
     gsSPLight(&inside_castle_seg7_lights_0704A1B8.a, 2),
     gsSPVertex(inside_castle_seg7_vertex_0704A1D0, 12, 0),
@@ -32,7 +32,7 @@ static const Gfx inside_castle_seg7_dl_0704A290[] = {
 };
 
 // 0x0704A2E0 - 0x0704A368
-const Gfx inside_castle_seg7_dl_0704A2E0[] = {
+Gfx inside_castle_seg7_dl_0704A2E0[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
