@@ -1,18 +1,21 @@
 #ifndef THI_HEADER_H
 #define THI_HEADER_H
-
 #include "types.h"
 #include "game/moving_texture.h"
-
-// geo
+extern const GeoLayout Geo_thi_1_0x1e61700[];
+extern const Gfx DL_thi_1_0xe04e890[];
+extern const Collision col_thi_1_0xe065368[];
+extern const LevelScript level_thi_custom_entry[];
+extern const LevelScript local_area_thi_1_[];
+extern const LevelScript local_objects_thi_1_[];
+extern const LevelScript local_warps_thi_1_[];
+extern const LevelScript level_thi_entry[];
 extern const GeoLayout thi_geo_0005B0[];
 extern const GeoLayout thi_geo_0005C8[];
 extern const GeoLayout thi_geo_0005F0[];
 extern const GeoLayout thi_geo_000608[];
 extern const GeoLayout thi_geo_0006D4[];
 extern const GeoLayout thi_geo_00079C[];
-
-// leveldata
 extern const Gfx thi_seg7_dl_07005260[];
 extern const Gfx thi_seg7_dl_07006968[];
 extern const Gfx thi_seg7_dl_07007008[];
@@ -35,8 +38,5 @@ extern const Collision thi_seg7_collision_top_trap[];
 extern const Trajectory thi_seg7_trajectory_koopa[];
 extern const struct MovtexQuadCollection thi_movtex_area1_water[];
 extern const struct MovtexQuadCollection thi_movtex_area2_water[];
-
-// script
 extern const LevelScript level_thi_entry[];
-
 #endif

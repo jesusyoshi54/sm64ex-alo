@@ -1,10 +1,15 @@
 #ifndef CCM_HEADER_H
 #define CCM_HEADER_H
-
 #include "types.h"
 #include "game/moving_texture.h"
-
-// geo
+extern const GeoLayout Geo_ccm_1_0x1361700[];
+extern const Gfx DL_ccm_1_0xe0076c0[];
+extern const Collision col_ccm_1_0xe009780[];
+extern const LevelScript level_ccm_custom_entry[];
+extern const LevelScript local_area_ccm_1_[];
+extern const LevelScript local_objects_ccm_1_[];
+extern const LevelScript local_warps_ccm_1_[];
+extern const LevelScript level_ccm_entry[];
 extern const GeoLayout ccm_geo_0003D0[];
 extern const GeoLayout ccm_geo_0003F0[];
 extern const GeoLayout ccm_geo_00040C[];
@@ -15,8 +20,6 @@ extern const GeoLayout ccm_geo_0004BC[];
 extern const GeoLayout ccm_geo_0004E4[];
 extern const GeoLayout ccm_geo_00051C[];
 extern const GeoLayout ccm_geo_0005E8[];
-
-// leveldata
 extern const Gfx ccm_seg7_dl_0700B090[];
 extern const Gfx ccm_seg7_dl_0700B1D8[];
 extern const Gfx ccm_seg7_dl_0700C380[];
@@ -53,8 +56,5 @@ extern const Gfx ccm_seg7_dl_070207F0[];
 extern const Collision ccm_seg7_area_2_collision[];
 extern const MacroObject ccm_seg7_area_2_macro_objs[];
 extern const Trajectory ccm_seg7_trajectory_penguin_race[];
-
-// script
 extern const LevelScript level_ccm_entry[];
-
 #endif
