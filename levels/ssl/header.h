@@ -1,10 +1,18 @@
 #ifndef SSL_HEADER_H
 #define SSL_HEADER_H
-
 #include "types.h"
 #include "game/moving_texture.h"
-
-// geo
+extern const GeoLayout Geo_ssl_1_0x1404f70[];
+extern const Gfx DL_ssl_1_0xe00ebe0[];
+extern const Collision col_ssl_1_0xe012ec0[];
+extern struct MovtexQuadCollection ssl_1_Movtex_0[];
+extern struct MovtexQuadCollection ssl_1_Movtex_1[];
+extern struct MovtexQuadCollection ssl_1_Movtex_2[];
+extern const LevelScript level_ssl_custom_entry[];
+extern const LevelScript local_area_ssl_1_[];
+extern const LevelScript local_objects_ssl_1_[];
+extern const LevelScript local_warps_ssl_1_[];
+extern const LevelScript level_ssl_entry[];
 extern const GeoLayout ssl_geo_0005C0[];
 extern const GeoLayout ssl_geo_0005D8[];
 extern const GeoLayout ssl_geo_000618[];
@@ -16,8 +24,6 @@ extern const GeoLayout ssl_geo_000794[];
 extern const GeoLayout ssl_geo_0007AC[];
 extern const GeoLayout ssl_geo_0007CC[];
 extern const GeoLayout ssl_geo_00088C[];
-
-// leveldata
 extern const u8 ssl_pyramid_sand[];
 extern const u8 ssl_quicksand[];
 extern const Gfx ssl_dl_quicksand_pit_begin[];
@@ -81,8 +87,5 @@ extern const Gfx ssl_dl_pyramid_sand_pathway_front_end[];
 extern Movtex ssl_movtex_tris_pyramid_sand_pathway_floor[];
 extern Movtex ssl_movtex_tris_pyramid_sand_pathway_side[];
 extern const Gfx ssl_dl_pyramid_sand_pathway_side_end[];
-
-// script
 extern const LevelScript level_ssl_entry[];
-
 #endif

@@ -1,9 +1,37 @@
 #ifndef RR_HEADER_H
 #define RR_HEADER_H
-
 #include "types.h"
-
-// geo
+#include "game/moving_texture.h"
+extern const GeoLayout Geo_rr_1_0x15667e0[];
+extern const Gfx DL_rr_1_0xe028300[];
+extern const Gfx DL_rr_1_0xe031078[];
+extern const Collision col_rr_1_0xe031200[];
+extern struct MovtexQuadCollection rr_1_Movtex_0[];
+extern struct MovtexQuadCollection rr_1_Movtex_1[];
+extern struct MovtexQuadCollection rr_1_Movtex_2[];
+extern const GeoLayout Geo_rr_2_0x15666d0[];
+extern const Gfx DL_rr_2_0xe004ed0[];
+extern const Collision col_rr_2_0xe005f10[];
+extern struct MovtexQuadCollection rr_2_Movtex_0[];
+extern struct MovtexQuadCollection rr_2_Movtex_1[];
+extern struct MovtexQuadCollection rr_2_Movtex_2[];
+extern const GeoLayout Geo_rr_3_0x15665c0[];
+extern const Gfx DL_rr_3_0xe00b520[];
+extern const Collision col_rr_3_0xe00d510[];
+extern struct MovtexQuadCollection rr_3_Movtex_0[];
+extern struct MovtexQuadCollection rr_3_Movtex_1[];
+extern struct MovtexQuadCollection rr_3_Movtex_2[];
+extern const LevelScript level_rr_custom_entry[];
+extern const LevelScript local_area_rr_1_[];
+extern const LevelScript local_objects_rr_1_[];
+extern const LevelScript local_warps_rr_1_[];
+extern const LevelScript local_area_rr_2_[];
+extern const LevelScript local_objects_rr_2_[];
+extern const LevelScript local_warps_rr_2_[];
+extern const LevelScript local_area_rr_3_[];
+extern const LevelScript local_objects_rr_3_[];
+extern const LevelScript local_warps_rr_3_[];
+extern const LevelScript level_rr_entry[];
 extern const GeoLayout rr_geo_000660[];
 extern const GeoLayout rr_geo_000678[];
 extern const GeoLayout rr_geo_000690[];
@@ -41,8 +69,6 @@ extern const GeoLayout rr_geo_000988[];
 extern const GeoLayout rr_geo_0009A0[];
 extern const GeoLayout rr_geo_0009B8[];
 extern const GeoLayout rr_geo_0009D0[];
-
-// leveldata
 extern const Gfx dl_cruiser_metal_holes[];
 extern const Gfx rr_seg7_dl_07002CC8[];
 extern const Gfx rr_seg7_dl_07002E80[];
@@ -106,8 +132,5 @@ extern const Trajectory rr_seg7_trajectory_0702EC3C[];
 extern const Trajectory rr_seg7_trajectory_0702ECC0[];
 extern const Trajectory rr_seg7_trajectory_0702ED9C[];
 extern const Trajectory rr_seg7_trajectory_0702EEE0[];
-
-// script
 extern const LevelScript level_rr_entry[];
-
 #endif

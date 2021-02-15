@@ -1,10 +1,19 @@
 #ifndef TTM_HEADER_H
 #define TTM_HEADER_H
-
 #include "types.h"
 #include "game/moving_texture.h"
-
-// geo
+extern const GeoLayout Geo_ttm_1_0x14d8cf0[];
+extern const Gfx DL_ttm_1_0xe017ef0[];
+extern const Gfx DL_ttm_1_0xe01caf0[];
+extern const Collision col_ttm_1_0xe01ccc0[];
+extern struct MovtexQuadCollection ttm_1_Movtex_0[];
+extern struct MovtexQuadCollection ttm_1_Movtex_1[];
+extern struct MovtexQuadCollection ttm_1_Movtex_2[];
+extern const LevelScript level_ttm_custom_entry[];
+extern const LevelScript local_area_ttm_1_[];
+extern const LevelScript local_objects_ttm_1_[];
+extern const LevelScript local_warps_ttm_1_[];
+extern const LevelScript level_ttm_entry[];
 extern const GeoLayout ttm_geo_000710[];
 extern const GeoLayout ttm_geo_000730[];
 extern const GeoLayout ttm_geo_000748[];
@@ -35,8 +44,6 @@ extern const GeoLayout ttm_geo_000D4C[];
 extern const GeoLayout ttm_geo_000D84[];
 extern const GeoLayout ttm_geo_000DBC[];
 extern const GeoLayout ttm_geo_000DF4[];
-
-// leveldata
 extern const Gfx ttm_seg7_dl_0700A120[];
 extern const Gfx ttm_seg7_dl_0700A2E0[];
 extern const Gfx ttm_seg7_dl_0700A8C0[];
@@ -107,8 +114,5 @@ extern const Collision ttm_seg7_collision_podium_warp[];
 extern const MacroObject ttm_seg7_area_2_macro_objs[];
 extern const MacroObject ttm_seg7_area_3_macro_objs[];
 extern const MacroObject ttm_seg7_area_4_macro_objs[];
-
-// script
 extern const LevelScript level_ttm_entry[];
-
 #endif
