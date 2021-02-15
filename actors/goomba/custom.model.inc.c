@@ -337,7 +337,7 @@ Vtx VB_goomba_geo_0x801bd40[] = {
 };
 
 const Gfx DL_goomba_geo_0x801d760[] = {
-gsMoveWd(G_MW_NUMLIGHT, 0, 2147483712),
+gsSPNumLights(NUMLIGHTS_1),
 gsSPEndDisplayList(),
 };
 

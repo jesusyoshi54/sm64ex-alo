@@ -13,7 +13,7 @@ ALIGNED8 static const Texture breakable_box_seg8_texture_08011A90[] = {
 
 // 0x08012290
 ALIGNED8 static const Texture breakable_box_seg8_texture_08012290[] = {
-#include "actors/breakable_box/cork_box_surface.rgba16.inc.c"
+#include "actors/breakable_box/breakable_box_geo_0x8012290_custom.rgba16.inc.c"
 };
 
 // 0x08012A90

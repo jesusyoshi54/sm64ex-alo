@@ -58,7 +58,9 @@ UNUSED static const u64 binid_11 = 11;
 #include "custom_04036f60/textureNew.inc.c"
 UNUSED static const u64 binid_12 = 12;
 
-#include "goomba/model.inc.c"
+#include "goomba/custom.model.inc.h"
+#include "goomba/custom.model.inc.c"
+#include "goomba/textureNew.inc.c"
 #include "goomba/anims/data.inc.c"
 #include "goomba/anims/table.inc.c"
 UNUSED static const u64 binid_13 = 13;

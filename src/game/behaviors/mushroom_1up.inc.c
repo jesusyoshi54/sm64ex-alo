@@ -5,7 +5,7 @@ void bhv_1up_interact(void) {
 
     if (obj_check_if_collided_with_object(o, gMarioObject) == 1) {
         play_sound(SOUND_GENERAL_COLLECT_1UP, gGlobalSoundSource);
-        gMarioState->numLives++;
+        gMarioState->health = 0x880; //1 ups heal to full HP in SR6.25
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
 #ifdef RUMBLE_FEEDBACK
         queue_rumble_data(5, 80);

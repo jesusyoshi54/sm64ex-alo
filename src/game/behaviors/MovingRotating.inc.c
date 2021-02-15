@@ -20,6 +20,7 @@ ZMINUS,
 ZMINUS,
 LOOP
 };
+
 static u8 MoveRotatePath3[] = {
 XPLUS,
 XPLUS,
@@ -29,11 +30,34 @@ XMINUS,
 XMINUS,
 LOOP
 };
+//custom paths to SR6.25
+static u8 MoveRotatePath4[] = {
+XMINUS,
+XMINUS,
+XMINUS,
+XPLUS,
+XPLUS,
+XPLUS,
+LOOP
+};
+static u8 MoveRotatePath5[] = {
+XMINUS,
+XPLUS,
+LOOP
+};
+static u8 MoveRotatePath6[] = {
+XPLUS,
+XMINUS,
+LOOP
+};
 
 static u8 *Paths[] = {
 	&MoveRotatePath1,
 	&MoveRotatePath2,
-	&MoveRotatePath3
+	&MoveRotatePath3,
+	&MoveRotatePath4,
+	&MoveRotatePath5,
+	&MoveRotatePath6
 };
 
 //speeds are 8 in each dir
