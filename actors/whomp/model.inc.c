@@ -11,7 +11,7 @@ ALIGNED8 static const Texture whomp_seg6_texture_0601C360[] = {
 
 // 0x0601D360
 ALIGNED8 static const Texture whomp_seg6_texture_0601D360[] = {
-#include "actors/whomp/whomp_face.rgba16.inc.c"
+#include "actors/whomp/whomp_geo_0x601d360_custom.rgba16.inc.c"
 };
 
 // 0x0601D360

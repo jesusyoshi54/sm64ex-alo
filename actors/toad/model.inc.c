@@ -13,7 +13,7 @@ ALIGNED8 static const Texture toad_seg6_texture_06005920[] = {
 
 // 0x06006120
 ALIGNED8 static const Texture toad_seg6_texture_06006120[] = {
-#include "actors/toad/toad_head.rgba16.inc.c"
+#include "actors/toad/toad_geo_0x6006120_custom.rgba16.inc.c"
 };
 
 // 0x06006920

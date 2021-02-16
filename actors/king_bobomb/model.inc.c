@@ -72,12 +72,12 @@ ALIGNED8 static const Texture king_bobomb_seg5_texture_05006478[] = {
 
 // 0x05008478
 ALIGNED8 static const Texture king_bobomb_seg5_texture_05008478[] = {
-#include "actors/king_bobomb/king_bob-omb_left_side.rgba16.inc.c"
+#include "actors/king_bobomb/king_bobomb_geo_0x5008478_custom.rgba16.inc.c"
 };
 
 // 0x05009478
 ALIGNED8 static const Texture king_bobomb_seg5_texture_05009478[] = {
-#include "actors/king_bobomb/king_bob-omb_right_side.rgba16.inc.c"
+#include "actors/king_bobomb/king_bobomb_geo_0x5009478_custom.rgba16.inc.c"
 };
 
 // 0x0500A478
