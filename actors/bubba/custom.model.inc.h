@@ -1,0 +1,50 @@
+#ifndef bubba_bubba_model_HEADER_H
+#define bubba_bubba_model_HEADER_H
+#include "types.h"
+extern Vtx VB_bubba_geo_0x5004450[];
+extern Vtx VB_bubba_geo_0x50044c0[];
+extern Vtx VB_bubba_geo_0x50045b0[];
+extern Vtx VB_bubba_geo_0x5004620[];
+extern Vtx VB_bubba_geo_0x5004680[];
+extern Vtx VB_bubba_geo_0x5004780[];
+extern Vtx VB_bubba_geo_0x5004870[];
+extern Vtx VB_bubba_geo_0x5004940[];
+extern Vtx VB_bubba_geo_0x50049d0[];
+extern Vtx VB_bubba_geo_0x5004f78[];
+extern Vtx VB_bubba_geo_0x5004fe8[];
+extern Vtx VB_bubba_geo_0x50050d8[];
+extern Vtx VB_bubba_geo_0x5005148[];
+extern Vtx VB_bubba_geo_0x50051a8[];
+extern Vtx VB_bubba_geo_0x50052a8[];
+extern Vtx VB_bubba_geo_0x5005368[];
+extern Vtx VB_bubba_geo_0x5005438[];
+extern Vtx VB_bubba_geo_0x50054c8[];
+extern u8 bubba_geo__texture_05000008[];
+extern u8 bubba_geo__texture_05001408[];
+extern u8 bubba_geo__texture_05001C08[];
+extern u8 bubba_geo__texture_05002408[];
+extern Light_t Light_bubba_geo_0x5004410;
+extern Light_t Light_bubba_geo_0x5004428;
+extern Light_t Light_bubba_geo_0x5004440;
+extern Ambient_t Light_bubba_geo_0x5004408;
+extern Ambient_t Light_bubba_geo_0x5004420;
+extern Ambient_t Light_bubba_geo_0x5004438;
+extern Gfx DL_bubba_geo_0x5004e80[];
+extern Gfx DL_bubba_geo_0x5004a40[];
+extern Gfx DL_bubba_geo_0x5004aa8[];
+extern Gfx DL_bubba_geo_0x5004be8[];
+extern Gfx DL_bubba_geo_0x5004c40[];
+extern Gfx DL_bubba_geo_0x5004d48[];
+extern Light_t Light_bubba_geo_0x5004f38;
+extern Light_t Light_bubba_geo_0x5004f50;
+extern Light_t Light_bubba_geo_0x5004f68;
+extern Ambient_t Light_bubba_geo_0x5004f30;
+extern Ambient_t Light_bubba_geo_0x5004f48;
+extern Ambient_t Light_bubba_geo_0x5004f60;
+extern Gfx DL_bubba_geo_0x5005978[];
+extern Gfx DL_bubba_geo_0x5005538[];
+extern Gfx DL_bubba_geo_0x50055a0[];
+extern Gfx DL_bubba_geo_0x50056e0[];
+extern Gfx DL_bubba_geo_0x5005738[];
+extern Gfx DL_bubba_geo_0x5005840[];
+#endif

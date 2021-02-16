@@ -1,9 +1,18 @@
 #ifndef BITS_HEADER_H
 #define BITS_HEADER_H
-
 #include "types.h"
-
-// geo
+#include "game/moving_texture.h"
+extern const GeoLayout Geo_bits_1_0x1699a40[];
+extern Gfx DL_bits_1_0xe01af20[];
+extern const Collision col_bits_1_0xe01f150[];
+extern struct MovtexQuadCollection bits_1_Movtex_0[];
+extern struct MovtexQuadCollection bits_1_Movtex_1[];
+extern struct MovtexQuadCollection bits_1_Movtex_2[];
+extern const LevelScript level_bits_custom_entry[];
+extern const LevelScript local_area_bits_1_[];
+extern const LevelScript local_objects_bits_1_[];
+extern const LevelScript local_warps_bits_1_[];
+extern const LevelScript level_bits_entry[];
 extern const GeoLayout bits_geo_000430[];
 extern const GeoLayout bits_geo_000448[];
 extern const GeoLayout bits_geo_000460[];
@@ -36,8 +45,6 @@ extern const GeoLayout bits_geo_0006D0[];
 extern const GeoLayout bits_geo_0006E8[];
 extern const GeoLayout bits_geo_000700[];
 extern const GeoLayout bits_geo_000718[];
-
-// leveldata
 extern const Gfx bits_seg7_dl_07002918[];
 extern const Gfx bits_seg7_dl_07003670[];
 extern const Gfx bits_seg7_dl_070047F0[];
@@ -85,8 +92,5 @@ extern const Collision bits_seg7_collision_0701B26C[];
 extern const Collision bits_seg7_collision_0701B404[];
 extern const Collision bits_seg7_collision_0701B59C[];
 extern const Collision bits_seg7_collision_0701B734[];
-
-// script
 extern const LevelScript level_bits_entry[];
-
 #endif
