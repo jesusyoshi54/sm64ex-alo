@@ -19,6 +19,7 @@
 #include "mario_cap/geo.inc.c"
 #include "number/geo.inc.c"
 #include "mushroom_1up/geo.inc.c"
+#include "star/custom.model.inc.h"
 #include "star/geo.inc.c"
 #include "dirt/geo.inc.c"
 #include "transparent_star/geo.inc.c"

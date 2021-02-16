@@ -757,7 +757,8 @@ static int parse_arguments(int argc, char *argv[], graphics_config *config)
             case 'f':
                if (++i >= argc) return 0;
                if (!parse_format(&config->format, argv[i])) {
-                  return 0;
+                  ERROR("bad format");
+				  return 0;
                }
                break;
             case 'g':
@@ -832,6 +833,7 @@ static int valid_config(const graphics_config *config)
 
 int main(int argc, char *argv[])
 {
+   
    graphics_config config = default_config;
    rgba *imgr;
    ia   *imgi;
@@ -842,6 +844,7 @@ int main(int argc, char *argv[])
    int flength;
    int res;
 
+   
    int valid = parse_arguments(argc, argv, &config);
    if (!valid || !valid_config(&config)) {
       print_usage();
@@ -849,7 +852,7 @@ int main(int argc, char *argv[])
    }
 
    if (config.mode == MODE_IMPORT) {
-      if (0 == strcmp("-", config.bin_filename)) {
+	  if (0 == strcmp("-", config.bin_filename)) {
          bin_fp = stdout;
       } else {
          if (config.bin_truncate) {
@@ -867,7 +870,7 @@ int main(int argc, char *argv[])
       }
       switch (config.format.format) {
          case IMG_FORMAT_RGBA:
-            imgr = png2rgba(config.img_filename, &config.width, &config.height);
+			imgr = png2rgba(config.img_filename, &config.width, &config.height);
             raw_size = (config.width * config.height * config.format.depth + 7) / 8;
             raw = malloc(raw_size);
             if (!raw) {
@@ -885,14 +888,14 @@ int main(int argc, char *argv[])
             length = ia2raw(raw, imgi, config.width, config.height, config.format.depth);
             break;
          case IMG_FORMAT_I:
-            imgi = png2ia(config.img_filename, &config.width, &config.height);
+			imgi = png2ia(config.img_filename, &config.width, &config.height);
             raw_size = (config.width * config.height * config.format.depth + 7) / 8;
             raw = malloc(raw_size);
             if (!raw) {
                ERROR("Error allocating %u bytes\n", raw_size);
             }
             length = i2raw(raw, imgi, config.width, config.height, config.format.depth);
-            break;
+			break;
          case IMG_FORMAT_CI:
          {
             palette_t pal = {0};

@@ -1323,6 +1323,7 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
     ;
 
     gCurrLevelNum = levelNum;
+	gCurrAreaIndex = 2;
     gCurrCourseNum = COURSE_NONE;
     gSavedCourseNum = COURSE_NONE;
     gCurrCreditsEntry = NULL;

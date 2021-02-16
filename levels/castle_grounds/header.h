@@ -1,17 +1,45 @@
 #ifndef CASTLE_GROUNDS_HEADER_H
 #define CASTLE_GROUNDS_HEADER_H
-
 #include "types.h"
 #include "game/moving_texture.h"
-
-// geo
+extern const GeoLayout Geo_castle_grounds_1_0x156eee0[];
+extern Gfx DL_castle_grounds_1_0xe0258c0[];
+extern Gfx DL_castle_grounds_1_0xe02a308[];
+extern Gfx DL_castle_grounds_1_0xe02a8d0[];
+extern const Collision col_castle_grounds_1_0xe02a9c0[];
+extern struct MovtexQuadCollection castle_grounds_1_Movtex_0[];
+extern struct MovtexQuadCollection castle_grounds_1_Movtex_1[];
+extern struct MovtexQuadCollection castle_grounds_1_Movtex_2[];
+extern const GeoLayout Geo_castle_grounds_2_0x156edd0[];
+extern Gfx DL_castle_grounds_2_0xe003320[];
+extern const Collision col_castle_grounds_2_0xe0034f0[];
+extern struct MovtexQuadCollection castle_grounds_2_Movtex_0[];
+extern struct MovtexQuadCollection castle_grounds_2_Movtex_1[];
+extern struct MovtexQuadCollection castle_grounds_2_Movtex_2[];
+extern const GeoLayout Geo_castle_grounds_3_0x156ecb0[];
+extern Gfx DL_castle_grounds_3_0xe00eb80[];
+extern Gfx DL_castle_grounds_3_0xe010e48[];
+extern Gfx DL_castle_grounds_3_0xe010f78[];
+extern const Collision col_castle_grounds_3_0xe011030[];
+extern struct MovtexQuadCollection castle_grounds_3_Movtex_0[];
+extern struct MovtexQuadCollection castle_grounds_3_Movtex_1[];
+extern struct MovtexQuadCollection castle_grounds_3_Movtex_2[];
+extern const LevelScript level_castle_grounds_custom_entry[];
+extern const LevelScript local_area_castle_grounds_1_[];
+extern const LevelScript local_objects_castle_grounds_1_[];
+extern const LevelScript local_warps_castle_grounds_1_[];
+extern const LevelScript local_area_castle_grounds_2_[];
+extern const LevelScript local_objects_castle_grounds_2_[];
+extern const LevelScript local_warps_castle_grounds_2_[];
+extern const LevelScript local_area_castle_grounds_3_[];
+extern const LevelScript local_objects_castle_grounds_3_[];
+extern const LevelScript local_warps_castle_grounds_3_[];
+extern const LevelScript level_castle_grounds_entry[];
 extern const GeoLayout castle_grounds_geo_000660[];
 extern const GeoLayout castle_grounds_geo_0006F4[];
 extern const GeoLayout castle_grounds_geo_00070C[];
 extern const GeoLayout castle_grounds_geo_000724[];
 extern const GeoLayout castle_grounds_geo_00073C[];
-
-// leveldata
 extern const Gfx castle_grounds_seg7_dl_07006D70[];
 extern const Gfx castle_grounds_seg7_dl_070095F0[];
 extern const Gfx castle_grounds_seg7_dl_0700A290[];
@@ -37,8 +65,5 @@ extern const Collision castle_grounds_seg7_collision_cannon_grill[];
 extern const struct MovtexQuadCollection castle_grounds_movtex_water[];
 extern Movtex castle_grounds_movtex_tris_waterfall[];
 extern const Gfx castle_grounds_dl_waterfall[];
-
-// script
 extern const LevelScript level_castle_grounds_entry[];
-
 #endif

@@ -63,7 +63,9 @@ UNUSED static const u64 binid_14 = 14;
 #include "mushroom_1up/model.inc.c"
 UNUSED static const u64 binid_15 = 15;
 
-#include "star/model.inc.c"
+#include "star/custom.model.inc.h"
+#include "star/custom.model.inc.c"
+#include "star/textureNew.inc.c"
 UNUSED static const u64 binid_16 = 16;
 
 #include "sand/model.inc.c"

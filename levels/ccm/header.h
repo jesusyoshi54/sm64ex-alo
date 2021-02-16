@@ -1,10 +1,49 @@
 #ifndef CCM_HEADER_H
 #define CCM_HEADER_H
-
 #include "types.h"
 #include "game/moving_texture.h"
-
-// geo
+extern const GeoLayout Geo_ccm_1_0x14aaf30[];
+extern Gfx DL_ccm_1_0xe0273e0[];
+extern Gfx DL_ccm_1_0xe02dd00[];
+extern Gfx DL_ccm_1_0xe02de30[];
+extern const Collision col_ccm_1_0xe02e050[];
+extern struct MovtexQuadCollection ccm_1_Movtex_0[];
+extern struct MovtexQuadCollection ccm_1_Movtex_1[];
+extern struct MovtexQuadCollection ccm_1_Movtex_2[];
+extern const GeoLayout Geo_ccm_2_0x14aae20[];
+extern Gfx DL_ccm_2_0xe007c40[];
+extern Gfx DL_ccm_2_0xe008b90[];
+extern const Collision col_ccm_2_0xe008fc0[];
+extern struct MovtexQuadCollection ccm_2_Movtex_0[];
+extern struct MovtexQuadCollection ccm_2_Movtex_1[];
+extern struct MovtexQuadCollection ccm_2_Movtex_2[];
+extern const GeoLayout Geo_ccm_3_0x14aad10[];
+extern Gfx DL_ccm_3_0xe026000[];
+extern Gfx DL_ccm_3_0xe02ff40[];
+extern const Collision col_ccm_3_0xe030110[];
+extern struct MovtexQuadCollection ccm_3_Movtex_0[];
+extern struct MovtexQuadCollection ccm_3_Movtex_1[];
+extern struct MovtexQuadCollection ccm_3_Movtex_2[];
+extern const GeoLayout Geo_ccm_4_0x14aac00[];
+extern Gfx DL_ccm_4_0xe00c190[];
+extern const Collision col_ccm_4_0xe00d9d0[];
+extern struct MovtexQuadCollection ccm_4_Movtex_0[];
+extern struct MovtexQuadCollection ccm_4_Movtex_1[];
+extern struct MovtexQuadCollection ccm_4_Movtex_2[];
+extern const LevelScript level_ccm_custom_entry[];
+extern const LevelScript local_area_ccm_1_[];
+extern const LevelScript local_objects_ccm_1_[];
+extern const LevelScript local_warps_ccm_1_[];
+extern const LevelScript local_area_ccm_2_[];
+extern const LevelScript local_objects_ccm_2_[];
+extern const LevelScript local_warps_ccm_2_[];
+extern const LevelScript local_area_ccm_3_[];
+extern const LevelScript local_objects_ccm_3_[];
+extern const LevelScript local_warps_ccm_3_[];
+extern const LevelScript local_area_ccm_4_[];
+extern const LevelScript local_objects_ccm_4_[];
+extern const LevelScript local_warps_ccm_4_[];
+extern const LevelScript level_ccm_entry[];
 extern const GeoLayout ccm_geo_0003D0[];
 extern const GeoLayout ccm_geo_0003F0[];
 extern const GeoLayout ccm_geo_00040C[];
@@ -15,8 +54,6 @@ extern const GeoLayout ccm_geo_0004BC[];
 extern const GeoLayout ccm_geo_0004E4[];
 extern const GeoLayout ccm_geo_00051C[];
 extern const GeoLayout ccm_geo_0005E8[];
-
-// leveldata
 extern const Gfx ccm_seg7_dl_0700B090[];
 extern const Gfx ccm_seg7_dl_0700B1D8[];
 extern const Gfx ccm_seg7_dl_0700C380[];
@@ -53,8 +90,5 @@ extern const Gfx ccm_seg7_dl_070207F0[];
 extern const Collision ccm_seg7_area_2_collision[];
 extern const MacroObject ccm_seg7_area_2_macro_objs[];
 extern const Trajectory ccm_seg7_trajectory_penguin_race[];
-
-// script
 extern const LevelScript level_ccm_entry[];
-
 #endif

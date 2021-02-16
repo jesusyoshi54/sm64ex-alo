@@ -5,6 +5,12 @@ Fork of [sm64pc/sm64ex](https://github.com/sm64pc/sm64ex/tree/nightly) with addi
 
  * pypng
  * bitstring
+ 
+ ### Installing bitstring on MSYS alternative method
+ 
+ *download package: https://pypi.org/project/bitstring/#files
+ * install 'python -m pip install bitstring-3.1.7.tar.gz'
+
 
 ## Changes
  * Restored N64 build.
