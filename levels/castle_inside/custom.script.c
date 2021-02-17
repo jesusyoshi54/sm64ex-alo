@@ -152,8 +152,8 @@ OBJECT_WITH_ACTS(0,0,-1799,-6178,0,0,0,0x7b0000, bhvAirborneWarp,31),
 OBJECT_WITH_ACTS(100,-510,-1875,2163,0,0,0,0x0, bhvMips,31),
 OBJECT_WITH_ACTS(194,0,-1823,0,0,0,0,0x0, bhvHomingAmp,31),
 OBJECT_WITH_ACTS(124,1729,-1875,-4467,0,270,0,0xa7a70000, bhvMessagePanel,31),
-OBJECT_WITH_ACTS(0,16,5,17,12,0,0,0,editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,16,5,381,6,0,0,1,editor_Scroll_Texture,31),
+// OBJECT_WITH_ACTS(0,16,5,27,12,0,0,0,editor_Scroll_Texture,31),
+// OBJECT_WITH_ACTS(0,16,5,381,6,0,0,1,editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_castle_inside_1_[] = {
