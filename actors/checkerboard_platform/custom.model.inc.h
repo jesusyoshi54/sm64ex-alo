@@ -1,0 +1,13 @@
+#ifndef checkerboard_platform_checkerboard_platform_model_HEADER_H
+#define checkerboard_platform_checkerboard_platform_model_HEADER_H
+#include "types.h"
+extern Vtx VB_checkerboard_platform_geo_0x800d440[];
+extern Vtx VB_checkerboard_platform_geo_0x800d4c0[];
+extern u8 checkerboard_platform_geo__texture_0800C840[];
+extern u8 checkerboard_platform_geo__texture_0800CC40[];
+extern Light_t Light_checkerboard_platform_geo_0x800c830;
+extern Ambient_t Light_checkerboard_platform_geo_0x800c828;
+extern Gfx DL_checkerboard_platform_geo_0x800d680[];
+extern Gfx DL_checkerboard_platform_geo_0x800d5c0[];
+extern Gfx DL_checkerboard_platform_geo_0x800d618[];
+#endif

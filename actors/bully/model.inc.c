@@ -86,12 +86,12 @@ static const Lights1 bully_seg5_lights_05000450 = gdSPDefLights1(
 // //! There's another malformed light entry here.
 // 0x05000468
 ALIGNED8 static const Texture bully_seg5_texture_05000468[] = {
-#include "actors/bully/bully_left_side.rgba16.inc.c"
+#include "actors/bully/bully_geo_0x5000468_custom.rgba16.inc.c"
 };
 
 // 0x05001468
 ALIGNED8 static const Texture bully_seg5_texture_05001468[] = {
-#include "actors/bully/bully_right_side.rgba16.inc.c"
+#include "actors/bully/bully_geo_0x5001468_custom.rgba16.inc.c"
 };
 
 // 0x05002468

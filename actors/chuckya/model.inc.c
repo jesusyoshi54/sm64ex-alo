@@ -42,25 +42,19 @@ UNUSED static const Lights1 chuckya_lights_unused7 = gdSPDefLights1(
     0x57, 0x53, 0x58, 0x28, 0x28, 0x28
 );
 
-// 0x08006778
-ALIGNED8 static const Texture chuckya_seg8_texture_08006778[] = {
-#include "actors/chuckya/chuckya_eyes.rgba16.inc.c"
+ALIGNED8 u8 chuckya_seg8_texture_08007778[] = {
+#include "actors/chuckya/chuckya_geo_0x8007778_custom.rgba16.inc.c"
+};
+ALIGNED8 u8 chuckya_seg8_texture_08006778[] = {
+#include "actors/chuckya/chuckya_geo_0x8006778_custom.rgba16.inc.c"
+};
+ALIGNED8 u8 chuckya_seg8_texture_08007F78[] = {
+#include "actors/chuckya/chuckya_geo_0x8007f78_custom.rgba16.inc.c"
+};
+ALIGNED8 u8 chuckya_seg8_texture_08008F78[] = {
+#include "actors/chuckya/chuckya_geo_0x8008f78_custom.rgba16.inc.c"
 };
 
-// 0x08007778
-ALIGNED8 static const Texture chuckya_seg8_texture_08007778[] = {
-#include "actors/chuckya/chuckya_hand_antenna.rgba16.inc.c"
-};
-
-// 0x08007F78
-ALIGNED8 static const Texture chuckya_seg8_texture_08007F78[] = {
-#include "actors/chuckya/chuckya_body_arm_left_side.rgba16.inc.c"
-};
-
-// 0x08008F78
-ALIGNED8 static const Texture chuckya_seg8_texture_08008F78[] = {
-#include "actors/chuckya/chuckya_body_arm_right_side.rgba16.inc.c"
-};
 
 // 0x08009F78
 static const Vtx chuckya_seg8_vertex_08009F78[] = {

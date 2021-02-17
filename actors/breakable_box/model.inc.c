@@ -8,12 +8,12 @@ static const Lights1 breakable_box_seg8_lights_08011A80 = gdSPDefLights1(
 
 // 0x08011A90
 ALIGNED8 static const Texture breakable_box_seg8_texture_08011A90[] = {
-#include "actors/breakable_box/crazy_box_surface.rgba16.inc.c"
+#include "actors/breakable_box/breakable_box_geo_0x8011a90_custom.rgba16.inc.c"
 };
 
 // 0x08012290
 ALIGNED8 static const Texture breakable_box_seg8_texture_08012290[] = {
-#include "actors/breakable_box/cork_box_surface.rgba16.inc.c"
+#include "actors/breakable_box/breakable_box_geo_0x8012290_custom.rgba16.inc.c"
 };
 
 // 0x08012A90

@@ -15,6 +15,32 @@
 
 #include "make_const_nonconst.h"
 #include "levels/cotmc/header.h"
+#include "level_misc_macros.h"
+#include "macro_preset_names.h"
+static const MacroObject local_macro_objects_cotmc_1[] = {
+MACRO_OBJECT_WITH_BEH_PARAM(macro_snufit,0,62616,220,65516,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_snufit,0,64156,240,740,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_box_metal_cap,0,65176,300,65336,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_snufit,0,360,200,64416,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_coin_line_horizontal,0,400,256,61236,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_box_metal_cap,0,300,620,60256,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_snufit,0,65196,260,62916,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_coin_ring_horizontal,0,0,65086,58536,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_1up,0,900,260,61916,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_coin_line_horizontal,0,0,65366,63876,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_coin_line_horizontal,0,65516,65325,61596,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_wooden_signpost,96,65465,20,720,123),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_red_coin,0,200,65245,59936,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_red_coin,0,980,260,62106,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_red_coin,0,64996,65184,59596,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_red_coin,0,65236,450,59296,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_red_coin,0,65336,65136,58856,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_red_coin,0,250,450,59136,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_red_coin,0,540,65175,59196,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_red_coin,0,980,260,61726,0),
+MACRO_OBJECT_WITH_BEH_PARAM(macro_box_1up_running_away,0,65516,180,2060,0),
+MACRO_OBJECT_END(),
+};
 
 static const LevelScript script_func_local_1[] = {
     OBJECT(/*model*/ MODEL_CAP_SWITCH, /*pos*/ 0,  363, -6144, /*angle*/ 0, 0, 0, /*behParam*/ 0x00010000, /*beh*/ bhvCapSwitch),
@@ -45,15 +71,17 @@ const LevelScript level_cotmc_entry[] = {
     JUMP_LINK(script_func_global_1),
 
     AREA(/*index*/ 1, cotmc_geo_0001A0),
-        OBJECT(/*model*/ MODEL_NONE, /*pos*/ -4185, 1020, -47, /*angle*/ 0, 90, 0, /*behParam*/ 0x000A0000, /*beh*/ bhvAirborneWarp),
-        WARP_NODE(/*id*/ 0x0A, /*destLevel*/ LEVEL_COTMC, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
-        WARP_NODE(/*id*/ 0xF0, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x03, /*destNode*/ 0x34, /*flags*/ WARP_NO_CHECKPOINT),
-        WARP_NODE(/*id*/ 0xF1, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x03, /*destNode*/ 0x66, /*flags*/ WARP_NO_CHECKPOINT),
-        WARP_NODE(/*id*/ 0xF3, /*destLevel*/ LEVEL_CASTLE_GROUNDS, /*destArea*/ 0x01, /*destNode*/ 0x14, /*flags*/ WARP_NO_CHECKPOINT),
-        JUMP_LINK(script_func_local_2),
-        JUMP_LINK(script_func_local_1),
+MACRO_OBJECTS(local_macro_objects_cotmc_1),
+WARP_NODE(243,16,1,20,0),
+WARP_NODE(241,6,3,102,0),
+WARP_NODE(240,6,3,52,0),
+WARP_NODE(10,28,1,10,0),
+OBJECT_WITH_ACTS(0,0,500,3584,0,0,0,0x0, bhvWaterfallSoundLoop,31),
+OBJECT_WITH_ACTS(0,0,500,-7373,0,0,0,0x0, bhvWaterfallSoundLoop,31),
+OBJECT_WITH_ACTS(85,0,363,-6144,0,0,0,0x10000, bhvCapSwitch,31),
+OBJECT_WITH_ACTS(0,0,-200,-7000,0,0,0,0x0, bhvHiddenRedCoinStar,31),
+OBJECT_WITH_ACTS(0,-4185,1020,-47,0,90,0,0xa0000, bhvAirborneWarp,31),
         TERRAIN(/*terrainData*/ cotmc_seg7_collision_level),
-        MACRO_OBJECTS(/*objList*/ cotmc_seg7_macro_objs),
         SHOW_DIALOG(/*index*/ 0x00, DIALOG_130),
         SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0004, /*seq*/ SEQ_LEVEL_UNDERGROUND),
         TERRAIN_TYPE(/*terrainType*/ TERRAIN_STONE),

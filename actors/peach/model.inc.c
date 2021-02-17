@@ -12,55 +12,37 @@ static const Lights1 peach_seg5_lights_05000A10 = gdSPDefLights1(
     0xff, 0xbf, 0x18, 0x28, 0x28, 0x28
 );
 
-// 0x05000A28
-ALIGNED8 static const Texture peach_seg5_texture_05000A28[] = {
-#include "actors/peach/peach_eye_open.rgba16.inc.c"
+ALIGNED8 Texture peach_seg5_texture_05004028[] = {
+#include "actors/peach/unk_DL_0c000410_0x5004028_custom.rgba16.inc.c"
+};
+ALIGNED8 Texture peach_seg5_texture_05002C28[] = {
+#include "actors/peach/unk_DL_0c000410_0x5002c28_custom.rgba16.inc.c"
+};
+ALIGNED8 Texture peach_seg5_texture_05002A28[] = {
+#include "actors/peach/unk_DL_0c000410_0x5002a28_custom.rgba16.inc.c"
+};
+ALIGNED8 Texture peach_seg5_texture_05003E28[] = {
+#include "actors/peach/unk_DL_0c000410_0x5003e28_custom.rgba16.inc.c"
+};
+ALIGNED8 Texture peach_seg5_texture_05000A28[] = {
+#include "actors/peach/unk_DL_0c000410_0x5000a28_custom.rgba16.inc.c"
+};
+ALIGNED8 Texture peach_seg5_texture_05002E28[] = {
+#include "actors/peach/unk_DL_0c000410_0x5002e28_custom.rgba16.inc.c"
+};
+ALIGNED8 Texture peach_seg5_texture_05001228[] = {
+#include "actors/peach/unk_DL_0c000410_0x5001228_custom.rgba16.inc.c"
+};
+ALIGNED8 Texture peach_seg5_texture_05001A28[] = {
+#include "actors/peach/unk_DL_0c000410_0x5001a28_custom.rgba16.inc.c"
+};
+ALIGNED8 Texture peach_seg5_texture_05002228[] = {
+#include "actors/peach/unk_DL_0c000410_0x5002228_custom.rgba16.inc.c"
+};
+ALIGNED8 Texture peach_seg5_texture_05003628[] = {
+#include "actors/peach/unk_DL_0c000410_0x5003628_custom.rgba16.inc.c"
 };
 
-// 0x05001228
-ALIGNED8 static const Texture peach_seg5_texture_05001228[] = {
-#include "actors/peach/peach_eye_mostly_open.rgba16.inc.c"
-};
-
-// 0x05001A28
-ALIGNED8 static const Texture peach_seg5_texture_05001A28[] = {
-#include "actors/peach/peach_eye_mostly_closed.rgba16.inc.c"
-};
-
-// 0x05002228
-ALIGNED8 static const Texture peach_seg5_texture_05002228[] = {
-#include "actors/peach/peach_eye_closed.rgba16.inc.c"
-};
-
-// 0x05002A28
-ALIGNED8 static const Texture peach_seg5_texture_05002A28[] = {
-#include "actors/peach/peach_crown_jewel.rgba16.inc.c"
-};
-
-// 0x05002C28
-ALIGNED8 static const Texture peach_seg5_texture_05002C28[] = {
-#include "actors/peach/peach_chest_jewel.rgba16.inc.c"
-};
-
-// 0x05002E28
-ALIGNED8 static const Texture peach_seg5_texture_05002E28[] = {
-#include "actors/peach/peach_lips_scrunched.rgba16.inc.c"
-};
-
-// 0x05003628
-ALIGNED8 static const Texture peach_seg5_texture_05003628[] = {
-#include "actors/peach/peach_lips.rgba16.inc.c"
-};
-
-// 0x05003E28
-ALIGNED8 static const Texture peach_seg5_texture_05003E28[] = {
-#include "actors/peach/peach_nostril.rgba16.inc.c"
-};
-
-// 0x05004028
-ALIGNED8 static const Texture peach_seg5_texture_05004028[] = {
-#include "actors/peach/peach_dress.rgba16.inc.c"
-};
 
 // 0x05004828
 static const Vtx peach_seg5_vertex_05004828[] = {
