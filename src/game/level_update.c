@@ -759,7 +759,11 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                 break;
 
             case WARP_OP_DEATH:
-                if (m->numLives == 0 && !INFINITE_LIVES) {
+                if (m->numLives == 0 && INFINITE_LIVES) {
+					//crash the plane with no survivors
+					#ifdef HARDCORE
+					int i=1/0;
+					#endif
                     sDelayedWarpOp = WARP_OP_GAME_OVER;
                 }
                 sDelayedWarpTimer = 48;
