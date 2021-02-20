@@ -70,7 +70,11 @@ void bobomb_act_patrol(void) {
     s16 collisionFlags;
 
     sp22 = o->header.gfx.animInfo.animFrame;
+#ifdef BUFFED_ENEMIES
+    o->oForwardVel = 15.0;
+#else
     o->oForwardVel = 5.0;
+#endif
 
     collisionFlags = object_step();
     if ((obj_return_home_if_safe(o, o->oHomeX, o->oHomeY, o->oHomeZ, 400) == 1)
@@ -86,8 +90,11 @@ void bobomb_act_chase_mario(void) {
     s16 sp1a, collisionFlags;
 
     sp1a = ++o->header.gfx.animInfo.animFrame;
+#ifdef BUFFED_ENEMIES
+    o->oForwardVel = 40.0;
+#else
     o->oForwardVel = 20.0;
-
+#endif
     collisionFlags = object_step();
 
     if (sp1a == 5 || sp1a == 16)
