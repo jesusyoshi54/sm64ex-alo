@@ -30,6 +30,28 @@ COMPILER_N64 ?= gcc
 # Accept RM2C level folder output
 RM2C ?= 1
 
+#Game wide edits to add optional challenges
+
+#Makes enemies move faster or attack more often generally
+BUFFED_ENEMIES ?= 0
+#Coins do not restore HP, may make several hacks impossible
+COINS_NO_HEAL ?= 0
+#Slowly drains HP over time continuously. About 1/4 strength of toxic gas.
+DRAIN_HP_CONSTANT ?= 0
+#Doubles lava damage
+DOUBLE_LAVA_DMG ?= 0
+#Doubles Koopa Speed (may cause the turtle to get stuck in places)
+DOUBLE_KOOPA_SPEED ?= 0
+#Basically chaos edition but light. Only edits that are manageable e.g. messing with mario's model/size/colors
+#or his physics somewhat. Two edits at a time, swaps out on 15s timer.
+CHAOS_LITE ?= 0
+#Pannen meme challenges. These cause the equivalent button press to remove 1 HP
+A_BTN_DRAIN ?= 0
+B_BTN_DRAIN ?= 0
+Z_BTN_DRAIN ?= 0
+#For those hardcore players. Saving is disabled and the game force crashes when you get zero lives.
+HARDCORE ?= 0
+
 # Build for original N64 (no pc code)
 TARGET_N64 = 1
 # Build and optimize for Raspberry Pi(s)
@@ -654,6 +676,57 @@ ifeq ($(RM2C),1)
   CFLAGS += -DRM2C
 endif
 
+#game wide edits
+ifeq ($(BUFFED_ENEMIES),1)
+  CC_CHECK += -DBUFFED_ENEMIES
+  CFLAGS += -DBUFFED_ENEMIES
+endif
+
+ifeq ($(COINS_NO_HEAL),1)
+  CC_CHECK += -DCOINS_NO_HEAL
+  CFLAGS += -DCOINS_NO_HEAL
+endif
+
+ifeq ($(DRAIN_HP_CONSTANT),1)
+  CC_CHECK += -DDRAIN_HP_CONSTANT
+  CFLAGS += -DDRAIN_HP_CONSTANT
+endif
+
+ifeq ($(DOUBLE_LAVA_DMG),1)
+  CC_CHECK += -DDOUBLE_LAVA_DMG
+  CFLAGS += -DDOUBLE_LAVA_DMG
+endif
+
+ifeq ($(DOUBLE_KOOPA_SPEED),1)
+  CC_CHECK += -DDOUBLE_KOOPA_SPEED
+  CFLAGS += -DDOUBLE_KOOPA_SPEED
+endif
+
+ifeq ($(CHAOS_LITE),1)
+  CC_CHECK += -DCHAOS_LITE
+  CFLAGS += -DCHAOS_LITE
+endif
+
+ifeq ($(A_BTN_DRAIN),1)
+  CC_CHECK += -DA_BTN_DRAIN
+  CFLAGS += -DA_BTN_DRAIN
+endif
+
+ifeq ($(B_BTN_DRAIN),1)
+  CC_CHECK += -DB_BTN_DRAIN
+  CFLAGS += -DB_BTN_DRAIN
+endif
+
+ifeq ($(Z_BTN_DRAIN),1)
+  CC_CHECK += -DZ_BTN_DRAIN
+  CFLAGS += -DZ_BTN_DRAIN
+endif
+
+ifeq ($(HARDCORE),1)
+  CC_CHECK += -DHARDCORE
+  CFLAGS += -DHARDCORE
+endif
+
 # Check for extended options menu option
 ifeq ($(EXT_OPTIONS_MENU),1)
   CC_CHECK += -DEXT_OPTIONS_MENU -DCHEATS_ACTIONS
@@ -876,6 +949,56 @@ endif
 ifeq ($(RM2C),1)
   CC_CHECK += -DRM2C
   CFLAGS += -DRM2C
+endif
+
+ifeq ($(BUFFED_ENEMIES),1)
+  CC_CHECK += -DBUFFED_ENEMIES
+  CFLAGS += -DBUFFED_ENEMIES
+endif
+
+ifeq ($(COINS_NO_HEAL),1)
+  CC_CHECK += -DCOINS_NO_HEAL
+  CFLAGS += -DCOINS_NO_HEAL
+endif
+
+ifeq ($(DRAIN_HP_CONSTANT),1)
+  CC_CHECK += -DDRAIN_HP_CONSTANT
+  CFLAGS += -DDRAIN_HP_CONSTANT
+endif
+
+ifeq ($(DOUBLE_LAVA_DMG),1)
+  CC_CHECK += -DDOUBLE_LAVA_DMG
+  CFLAGS += -DDOUBLE_LAVA_DMG
+endif
+
+ifeq ($(DOUBLE_KOOPA_SPEED),1)
+  CC_CHECK += -DDOUBLE_KOOPA_SPEED
+  CFLAGS += -DDOUBLE_KOOPA_SPEED
+endif
+
+ifeq ($(CHAOS_LITE),1)
+  CC_CHECK += -DCHAOS_LITE
+  CFLAGS += -DCHAOS_LITE
+endif
+
+ifeq ($(A_BTN_DRAIN),1)
+  CC_CHECK += -DA_BTN_DRAIN
+  CFLAGS += -DA_BTN_DRAIN
+endif
+
+ifeq ($(B_BTN_DRAIN),1)
+  CC_CHECK += -DB_BTN_DRAIN
+  CFLAGS += -DB_BTN_DRAIN
+endif
+
+ifeq ($(Z_BTN_DRAIN),1)
+  CC_CHECK += -DZ_BTN_DRAIN
+  CFLAGS += -DZ_BTN_DRAIN
+endif
+
+ifeq ($(HARDCORE),1)
+  CC_CHECK += -DHARDCORE
+  CFLAGS += -DHARDCORE
 endif
 
 ifeq ($(TEXTSAVES),1)

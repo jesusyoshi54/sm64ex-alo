@@ -3,8 +3,13 @@
 struct ObjectHitbox sScuttlebugHitbox = {
     /* interactType: */ INTERACT_BOUNCE_TOP,
     /* downOffset: */ 0,
+#ifdef BUFFED_ENEMIES
+    /* damageOrCoinValue: */ 3,
+    /* health: */ 3,
+#else
     /* damageOrCoinValue: */ 1,
     /* health: */ 1,
+#endif
     /* numLootCoins: */ 3,
     /* radius: */ 130,
     /* height: */ 70,
