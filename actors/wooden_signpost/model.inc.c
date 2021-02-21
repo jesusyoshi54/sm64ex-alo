@@ -24,7 +24,7 @@ ALIGNED8 static const Texture wooden_signpost_seg3_texture_0302C9C8[] = {
 
 // 0x0302D1C8
 ALIGNED8 static const Texture wooden_signpost_seg3_texture_0302D1C8[] = {
-#include "actors/wooden_signpost/wooden_signpost_front.rgba16.inc.c"
+#include "actors/wooden_signpost/wooden_signpost_geo_0x302d1c8_custom.rgba16.inc.c"
 };
 
 // 0x0302D9C8 - 0x0302DA48

@@ -9,7 +9,8 @@
 #include "mist/geo.inc.c"
 #include "explosion/geo.inc.c"
 #include "butterfly/geo.inc.c"
-#include "coin/geo.inc.c"
+#include "coin/custom.model.inc.h"
+#include "coin/custom.geo.inc.c"
 #include "warp_pipe/geo.inc.c"
 #include "door/geo.inc.c"
 #include "bowser_key/geo.inc.c"
@@ -25,6 +26,9 @@
 #include "white_particle/geo.inc.c"
 #include "wooden_signpost/geo.inc.c"
 #include "tree/geo.inc.c"
+
+#include "unk_bbh_12000830/custom.model.inc.h"
+#include "unk_bbh_12000830/custom.geo.inc.c"
 
 #if INCLUDE_MOP
 #include "Noteblock_MOP/model.inc.h"

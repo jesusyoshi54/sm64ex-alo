@@ -1,0 +1,4 @@
+#ifndef bitdw_staircase_slope_and_platform_model_HEADER_H
+#define bitdw_staircase_slope_and_platform_model_HEADER_H
+#include "types.h"
+#endif

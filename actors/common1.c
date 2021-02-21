@@ -17,7 +17,9 @@ UNUSED static const u64 binid_1 = 1;
 #include "butterfly/anims/table.inc.c"
 UNUSED static const u64 binid_2 = 2;
 
-#include "coin/model.inc.c"
+#include "coin/textureNew.inc.c"
+#include "coin/custom.model.inc.h"
+#include "coin/custom.model.inc.c"
 UNUSED static const u64 binid_3 = 3;
 
 #include "warp_pipe/model.inc.c"
@@ -84,6 +86,11 @@ UNUSED static const u64 binid_21 = 21;
 
 #include "tree/model.inc.c"
 UNUSED static const u64 binid_22 = 22;
+
+#include "unk_bbh_12000830/textureNew.inc.c"
+#include "unk_bbh_12000830/custom.model.inc.h"
+#include "unk_bbh_12000830/custom.model.inc.c"
+
 
 #if INCLUDE_MOP
 #include "Noteblock_MOP/model.inc.h"

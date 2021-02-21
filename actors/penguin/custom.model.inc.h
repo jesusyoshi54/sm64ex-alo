@@ -1,0 +1,51 @@
+#ifndef penguin_penguin_model_HEADER_H
+#define penguin_penguin_model_HEADER_H
+#include "types.h"
+extern Vtx VB_penguin_geo_0x5006e28[];
+extern Vtx VB_penguin_geo_0x5006f18[];
+extern Vtx VB_penguin_geo_0x5007018[];
+extern Vtx VB_penguin_geo_0x50070a8[];
+extern Vtx VB_penguin_geo_0x5006518[];
+extern Vtx VB_penguin_geo_0x50065b8[];
+extern Vtx VB_penguin_geo_0x5006658[];
+extern Vtx VB_penguin_geo_0x5006748[];
+extern Vtx VB_penguin_geo_0x5005e28[];
+extern Vtx VB_penguin_geo_0x5005ea8[];
+extern Vtx VB_penguin_geo_0x5005ee8[];
+extern Vtx VB_penguin_geo_0x5005fe8[];
+extern Vtx VB_penguin_geo_0x50060e8[];
+extern Vtx VB_penguin_geo_0x5006158[];
+extern Light_t Light_penguin_geo_0x5002d88;
+extern Light_t Light_penguin_geo_0x5002dd0;
+extern Ambient_t Light_penguin_geo_0x5002d80;
+extern Ambient_t Light_penguin_geo_0x5002dc8;
+extern Gfx DL_penguin_geo_0x5007540[];
+extern Gfx DL_penguin_geo_0x5007198[];
+extern Gfx DL_penguin_geo_0x50071e8[];
+extern Light_t Light_penguin_geo_0x5002da0;
+extern Ambient_t Light_penguin_geo_0x5002d98;
+extern Gfx DL_penguin_geo_0x5007238[];
+extern Gfx DL_penguin_geo_0x50072c8[];
+extern u8 penguin_geo__texture_05002DE0[];
+extern u8 penguin_geo__texture_050055E0[];
+extern Light_t Light_penguin_geo_0x5005de8;
+extern Light_t Light_penguin_geo_0x5005e00;
+extern Light_t Light_penguin_geo_0x5005e18;
+extern Ambient_t Light_penguin_geo_0x5005de0;
+extern Ambient_t Light_penguin_geo_0x5005df8;
+extern Ambient_t Light_penguin_geo_0x5005e10;
+extern Gfx DL_penguin_geo_0x5006428[];
+extern Gfx DL_penguin_geo_0x5006380[];
+extern Gfx DL_penguin_geo_0x50063c8[];
+extern Gfx DL_penguin_geo_0x5006188[];
+extern Gfx DL_penguin_geo_0x50061c8[];
+extern Gfx DL_penguin_geo_0x50061f8[];
+extern u8 penguin_geo__texture_050035E0[];
+extern Gfx DL_penguin_geo_0x5006458[];
+extern u8 penguin_geo__texture_05003DE0[];
+extern Gfx DL_penguin_geo_0x5006488[];
+extern u8 penguin_geo__texture_050045E0[];
+extern Gfx DL_penguin_geo_0x50064b8[];
+extern u8 penguin_geo__texture_05004DE0[];
+extern Gfx DL_penguin_geo_0x50064e8[];
+#endif

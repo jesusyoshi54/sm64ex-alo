@@ -250,6 +250,9 @@ extern const Gfx wooden_signpost_seg3_dl_0302DCD0[];
 extern const Gfx wooden_signpost_seg3_dl_0302DD08[];
 extern const Collision wooden_signpost_seg3_collision_0302DD80[];
 
+
+extern const GeoLayout unk_DL_12000830[];
+
 #if INCLUDE_MOP
 //Noteblock
 extern const GeoLayout Noteblock_MOP[];

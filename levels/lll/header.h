@@ -1,10 +1,35 @@
 #ifndef LLL_HEADER_H
 #define LLL_HEADER_H
-
 #include "types.h"
 #include "game/moving_texture.h"
-
-// geo
+extern const GeoLayout Geo_lll_1_0x2ac1700[];
+extern Gfx DL_lll_1_0xe0b9390[];
+extern Gfx DL_lll_1_0xe0f3950[];
+extern Gfx DL_lll_1_0xe0f3ad8[];
+extern const Collision col_lll_1_0xe0dfaf8[];
+extern const GeoLayout Geo_lll_2_0x2ac18f0[];
+extern Gfx DL_lll_2_0xe0f4d10[];
+extern const Collision col_lll_2_0xe0f4dd8[];
+extern const GeoLayout Geo_lll_3_0x2ac19f0[];
+extern Gfx DL_lll_3_0xe0fee70[];
+extern const Collision col_lll_3_0xe0ffb60[];
+extern const GeoLayout Geo_lll_4_0x2ac1af0[];
+extern Gfx DL_lll_4_0xe1250c0[];
+extern const Collision col_lll_4_0xe12a168[];
+extern const LevelScript level_lll_custom_entry[];
+extern const LevelScript local_area_lll_1_[];
+extern const LevelScript local_objects_lll_1_[];
+extern const LevelScript local_warps_lll_1_[];
+extern const LevelScript local_area_lll_2_[];
+extern const LevelScript local_objects_lll_2_[];
+extern const LevelScript local_warps_lll_2_[];
+extern const LevelScript local_area_lll_3_[];
+extern const LevelScript local_objects_lll_3_[];
+extern const LevelScript local_warps_lll_3_[];
+extern const LevelScript local_area_lll_4_[];
+extern const LevelScript local_objects_lll_4_[];
+extern const LevelScript local_warps_lll_4_[];
+extern const LevelScript level_lll_entry[];
 extern const GeoLayout lll_geo_0009E0[];
 extern const GeoLayout lll_geo_0009F8[];
 extern const GeoLayout lll_geo_000A10[];
@@ -47,8 +72,6 @@ extern const GeoLayout lll_geo_000DE8[];
 extern const GeoLayout lll_geo_000E00[];
 extern const GeoLayout lll_geo_000EA8[];
 extern const GeoLayout lll_geo_000EC0[];
-
-// leveldata
 extern const Gfx lll_seg7_dl_070134E0[];
 extern const Gfx lll_seg7_dl_070137C0[];
 extern const Gfx lll_seg7_dl_070138F8[];
@@ -124,8 +147,5 @@ extern const Gfx lll_dl_lava_floor[];
 extern const struct MovtexQuadCollection lll_movtex_volcano_floor_lava[];
 extern Movtex lll_movtex_tris_lavafall_volcano[];
 extern const Gfx lll_dl_lavafall_volcano[];
-
-// script
 extern const LevelScript level_lll_entry[];
-
 #endif

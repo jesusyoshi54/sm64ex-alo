@@ -117,6 +117,7 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_EXPLOSION,               explosion_geo),
     LOAD_MODEL_FROM_GEO(MODEL_DIRT_ANIMATION,          dirt_animation_geo),
     LOAD_MODEL_FROM_GEO(MODEL_CARTOON_STAR,            cartoon_star_geo),
+    LOAD_MODEL_FROM_GEO(15,            unk_DL_12000830), //the dute
 	#if INCLUDE_MOP
     LOAD_MODEL_FROM_GEO( /* NOTEBLOCK */0x7B,            Noteblock_MOP),
     LOAD_MODEL_FROM_DL(0x2E,DL_Checkpoint_Flag_MOP_0x606660,1),

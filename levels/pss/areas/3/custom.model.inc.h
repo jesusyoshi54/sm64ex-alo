@@ -1,0 +1,51 @@
+#ifndef PSS_3_HEADER_H
+#define PSS_3_HEADER_H
+#include "types.h"
+extern Vtx VB_pss_3_0xe027490[];
+extern Vtx VB_pss_3_0xe027580[];
+extern Vtx VB_pss_3_0xe027670[];
+extern Vtx VB_pss_3_0xe027760[];
+extern Vtx VB_pss_3_0xe027850[];
+extern Vtx VB_pss_3_0xe027940[];
+extern Vtx VB_pss_3_0xe027a30[];
+extern Vtx VB_pss_3_0xe027b20[];
+extern Vtx VB_pss_3_0xe027c10[];
+extern Vtx VB_pss_3_0xe027d00[];
+extern Vtx VB_pss_3_0xe027df0[];
+extern Vtx VB_pss_3_0xe027ee0[];
+extern Vtx VB_pss_3_0xe027fd0[];
+extern Vtx VB_pss_3_0xe0280c0[];
+extern Vtx VB_pss_3_0xe0281b0[];
+extern Vtx VB_pss_3_0xe0282a0[];
+extern Vtx VB_pss_3_0xe028390[];
+extern Vtx VB_pss_3_0xe028480[];
+extern Vtx VB_pss_3_0xe028570[];
+extern Vtx VB_pss_3_0xe028660[];
+extern Vtx VB_pss_3_0xe028750[];
+extern Vtx VB_pss_3_0xe028840[];
+extern Vtx VB_pss_3_0xe028930[];
+extern Vtx VB_pss_3_0xe028a20[];
+extern Vtx VB_pss_3_0xe028b10[];
+extern Vtx VB_pss_3_0xe028c00[];
+extern Vtx VB_pss_3_0xe028cf0[];
+extern Vtx VB_pss_3_0xe028de0[];
+extern Vtx VB_pss_3_0xe028ed0[];
+extern Vtx VB_pss_3_0xe028fc0[];
+extern Vtx VB_pss_3_0xe0290b0[];
+extern Vtx VB_pss_3_0xe0291a0[];
+extern u8 pss_3__texture_0E021490[];
+extern u8 pss_3__texture_0E021C90[];
+extern u8 pss_3__texture_0E022490[];
+extern u8 pss_3__texture_0E022C90[];
+extern u8 pss_3__texture_0E023490[];
+extern u8 pss_3__texture_0E023C90[];
+extern u8 pss_3__texture_0E024490[];
+extern u8 pss_3__texture_0E024C90[];
+extern u8 pss_3__texture_0E025490[];
+extern u8 pss_3__texture_0E025C90[];
+extern u8 pss_3__texture_0E026490[];
+extern u8 pss_3__texture_0E026C90[];
+extern Light_t Light_pss_3_0xe021440;
+extern Ambient_t Light_pss_3_0xe021448;
+extern Gfx DL_pss_3_0xe029290[];
+#endif

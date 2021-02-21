@@ -2153,7 +2153,7 @@ void shade_screen(void) {
 #if USE3DCOINS
 //this obviously isn't a real symbol, hopefully this erroring will alert you
 //to put the real extern here
-extern Gfx REDCOINSDL[];
+extern Gfx DL_red_coin_geo_0x3006dd0[];
 void print_animated_red_coin(s16 x, s16 y) {
     s32 timer = gGlobalTimer;
 
@@ -2162,7 +2162,7 @@ void print_animated_red_coin(s16 x, s16 y) {
 	//I rotate Z because the coins will clip near plane if I do y
     create_dl_rotation_matrix(MENU_MTX_NOPUSH, (f32)timer*5, 0.0f, 0.0f, 1.0f);
     gDPSetRenderMode(gDisplayListHead++, G_RM_TEX_EDGE, G_RM_TEX_EDGE2);
-	gSPDisplayList(gDisplayListHead++, REDCOINSDL);
+	gSPDisplayList(gDisplayListHead++, DL_red_coin_geo_0x3006dd0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 }

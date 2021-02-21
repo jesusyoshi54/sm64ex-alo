@@ -1,10 +1,35 @@
 #ifndef JRB_HEADER_H
 #define JRB_HEADER_H
-
 #include "types.h"
 #include "game/moving_texture.h"
-
-// geo
+extern const GeoLayout Geo_jrb_1_0x1d01700[];
+extern Gfx DL_jrb_1_0xe052270[];
+extern Gfx DL_jrb_1_0xe06a3a8[];
+extern Gfx DL_jrb_1_0xe06b198[];
+extern const Collision col_jrb_1_0xe05fee0[];
+extern const GeoLayout Geo_jrb_2_0x1d018f0[];
+extern Gfx DL_jrb_2_0xe073c00[];
+extern const Collision col_jrb_2_0xe074b10[];
+extern const GeoLayout Geo_jrb_3_0x1d019f0[];
+extern Gfx DL_jrb_3_0xe082570[];
+extern const Collision col_jrb_3_0xe084260[];
+extern const GeoLayout Geo_jrb_4_0x1d01af0[];
+extern Gfx DL_jrb_4_0xe093370[];
+extern const Collision col_jrb_4_0xe0956f0[];
+extern const LevelScript level_jrb_custom_entry[];
+extern const LevelScript local_area_jrb_1_[];
+extern const LevelScript local_objects_jrb_1_[];
+extern const LevelScript local_warps_jrb_1_[];
+extern const LevelScript local_area_jrb_2_[];
+extern const LevelScript local_objects_jrb_2_[];
+extern const LevelScript local_warps_jrb_2_[];
+extern const LevelScript local_area_jrb_3_[];
+extern const LevelScript local_objects_jrb_3_[];
+extern const LevelScript local_warps_jrb_3_[];
+extern const LevelScript local_area_jrb_4_[];
+extern const LevelScript local_objects_jrb_4_[];
+extern const LevelScript local_warps_jrb_4_[];
+extern const LevelScript level_jrb_entry[];
 extern const GeoLayout jrb_geo_000900[];
 extern const GeoLayout jrb_geo_000918[];
 extern const GeoLayout jrb_geo_000930[];
@@ -18,8 +43,6 @@ extern const GeoLayout jrb_geo_0009E8[];
 extern const GeoLayout jrb_geo_000A00[];
 extern const GeoLayout jrb_geo_000A18[];
 extern const GeoLayout jrb_geo_000AFC[];
-
-// leveldata
 extern const Gfx jrb_seg7_dl_07002FD0[];
 extern const Gfx jrb_seg7_dl_07004940[];
 extern const Gfx jrb_seg7_dl_07004C78[];
@@ -59,8 +82,5 @@ extern const Gfx jrb_seg7_dl_07010548[];
 extern const Collision jrb_seg7_area_2_collision[];
 extern const MacroObject jrb_seg7_area_2_macro_objs[];
 extern const struct MovtexQuadCollection jrb_movtex_sinked_boat_water[];
-
-// script
 extern const LevelScript level_jrb_entry[];
-
 #endif

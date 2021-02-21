@@ -1,0 +1,7 @@
+const GeoLayout rr_geo_000958[]= {
+GEO_CULLING_RADIUS(1500),
+GEO_OPEN_NODE(),
+GEO_DISPLAY_LIST(1,DL_rr_geo_000958_0x701c6b0),
+GEO_CLOSE_NODE(),
+GEO_END(),
+};
