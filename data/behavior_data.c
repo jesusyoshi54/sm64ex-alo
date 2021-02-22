@@ -4350,13 +4350,16 @@ const BehaviorScript bhvLllDrawbridge[] = {
 };
 
 const BehaviorScript bhvSmallBomp[] = {
-    BEGIN(OBJ_LIST_SURFACE),
-    OR_INT(oFlags, (OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_COLLISION_DATA(wf_seg7_collision_small_bomp),
-    CALL_NATIVE(bhv_small_bomp_init),
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    DROP_TO_FLOOR(),
+    LOAD_ANIMATIONS(oAnimations, piranha_plant_seg6_anims_0601C31C),
+    ANIMATE(0),
+    SET_HOME(),
+    HIDE(),
+    CALL_NATIVE(bhv_fire_piranha_plant_init),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_small_bomp_loop),
-        CALL_NATIVE(load_object_collision_model),
+        CALL_NATIVE(bhv_fire_piranha_plant_update),
     END_LOOP(),
 };
 
@@ -4782,6 +4785,7 @@ const BehaviorScript bhvHiddenStarTrigger[] = {
     SET_HITBOX(/*Radius*/ 100, /*Height*/ 100),
     SET_INT(oIntangibleTimer, 0),
     BEGIN_LOOP(),
+		ADD_INT(oFaceAngleYaw,2560),
         CALL_NATIVE(bhv_hidden_star_trigger_loop),
     END_LOOP(),
 };

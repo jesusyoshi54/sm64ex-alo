@@ -18,6 +18,10 @@ It is expected to have many warnings for editor files and for roms with lots of 
 
 ******************************************************************************************
 
+#make secrets rotate
+#add moving platform to c3 sub area
+#get trajectories for other objects
+#buff heave ho, chuckya, bomb, lakitu, boo, whomp
 Levels with fog in sm64 editor and likely early versions of Rom Manager are completely broken and destroy the levels graphics and most non opaque objects.
 I attempt to auto fix these, if there is any issue in these levels check fog first.
 
@@ -88,17 +92,6 @@ If a model is in this list, it has either an unrecognized ID or a new texture.
 If a model is not in this list, it does not guarantee that it is unedited.
 
  model mario_geo_ in folder mario has a new model or new textures.
-#done
- model rr_geo_000660_ in folder rr/areas/1/2 has a new model or new textures.
- model rr_geo_000788_ in folder rr/areas/1/14 has a new model or new textures.
- model rr_geo_000818_ in folder rr/areas/1/20 has a new model or new textures.
- model rr_geo_0008C0_ in folder rr/sliding_platform has a new model or new textures.
- model rr_geo_000860_ in folder rr/swinging_platform has a new model or new textures.
- model rr_geo_000958_ in folder rr/tricky_triangles1 has a new model or new textures.
- model rr_geo_000970_ in folder rr/tricky_triangles_2 has a new model or new textures.
- model rr_geo_000988_ in folder rr/tricky_triangles_3 has a new model or new textures.
- model rr_geo_0009A0_ in folder rr/tricky_triangles_4 has a new model or new textures.
- model rr_geo_000830_ in folder rr/areas/1/21 has a new model or new textures.
 
  model marios_winged_metal_cap_geo_ in folder mario_cap has a new model or new textures. **
 
@@ -106,9 +99,7 @@ If a model is not in this list, it does not guarantee that it is unedited.
 
  model boo_castle_geo_ in folder boo_castle has a new model or new textures.
  model toad_geo_ in folder toad has a new model or new textures.
- model breakable_box_geo_ in folder breakable_box has a new model or new textures.
- model breakable_box_small_geo_ in folder breakable_box_small has a new model or new textures.
- model exclamation_box_outline_geo_ in folder exclamation_box_outline has a new model or new textures.
+ 
  model exclamation_box_geo_ in folder exclamation_box has a new model or new textures.
  model blue_coin_switch_geo_ in folder blue_coin_switch has a new model or new textures.
  model bowling_ball_geo_ in folder bowling_ball has a new model or new textures.
@@ -128,13 +119,7 @@ If a model is not in this list, it does not guarantee that it is unedited.
 
  model koopa_with_shell_geo_ in folder koopa has a new model or new textures.
  model koopa_flag_geo_ in folder koopa_flag has a new model or new textures.
-#done
- model geo_bitdw_0003C0_ in folder bitdw/areas/1/starting_platform has a new model or new textures.
- model geo_bitdw_0005A0_ in folder bitdw/collapsing_stairs_1 has a new model or new textures.
- model geo_bitdw_0005B8_ in folder bitdw/collapsing_stairs_2 has a new model or new textures.
- model geo_bitdw_0005D0_ in folder bitdw/collapsing_stairs_3 has a new model or new textures.
- model geo_bitdw_0005E8_ in folder bitdw/collapsing_stairs_4 has a new model or new textures.
- model geo_bitdw_000600_ in folder bitdw/collapsing_stairs_5 has a new model or new textures.
+
 
 Known methods of crashing:
 *****************************************************************************
