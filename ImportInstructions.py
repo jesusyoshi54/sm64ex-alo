@@ -18,10 +18,9 @@ It is expected to have many warnings for editor files and for roms with lots of 
 
 ******************************************************************************************
 
-#make secrets rotate
 #add moving platform to c3 sub area
 #get trajectories for other objects
-#buff heave ho, chuckya, bomb, lakitu, boo, whomp
+#all levels work but scrolls are messed up across the board
 Levels with fog in sm64 editor and likely early versions of Rom Manager are completely broken and destroy the levels graphics and most non opaque objects.
 I attempt to auto fix these, if there is any issue in these levels check fog first.
 
