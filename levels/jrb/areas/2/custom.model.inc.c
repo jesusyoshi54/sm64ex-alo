@@ -1234,7 +1234,7 @@ Ambient_t Light_jrb_2_0xe06b3f8 = {
 Gfx DL_jrb_2_0xe073c00[] = {
 gsDPPipeSync(),
 gsDPNoOp(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -1572,7 +1572,7 @@ gsSP1Triangle(12, 13, 14, 0),
 gsSPVertex(VB_jrb_2_0xe073930, 15, 0),
 gsSP2Triangles(0, 1, 2, 0,3, 4, 5, 0),
 gsSP1Triangle(6, 7, 8, 0),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
 gsSPTexture(65535, 65535, 0, 0, 0),
 gsSPEndDisplayList(),
 };
