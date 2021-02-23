@@ -4089,9 +4089,15 @@ const BehaviorScript bhvExplosion[] = {
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     BILLBOARD(),
     SET_INTERACT_TYPE(INTERACT_DAMAGE),
+	#ifdef BUFFED_ENEMIES
+    SET_INT(oDamageOrCoinValue, 4),
+    SET_INT(oIntangibleTimer, 0),
+    SET_HITBOX_WITH_OFFSET(/*Radius*/ 350, /*Height*/ 350, /*Downwards offset*/ 350),
+	#else
     SET_INT(oDamageOrCoinValue, 2),
     SET_INT(oIntangibleTimer, 0),
     SET_HITBOX_WITH_OFFSET(/*Radius*/ 150, /*Height*/ 150, /*Downwards offset*/ 150),
+	#endif
     SET_INT(oAnimState, -1),
     CALL_NATIVE(bhv_explosion_init),
     BEGIN_LOOP(),

@@ -52,6 +52,10 @@ Z_BTN_DRAIN ?= 0
 #For those hardcore players. Saving is disabled and the game force crashes when you get zero lives.
 HARDCORE ?= 0
 
+#Debug stuff to make testing easier
+#inside pause menu of levels
+LEVEL_SELECT ?= 0
+
 # Build for original N64 (no pc code)
 TARGET_N64 = 1
 # Build and optimize for Raspberry Pi(s)
@@ -727,6 +731,11 @@ ifeq ($(HARDCORE),1)
   CFLAGS += -DHARDCORE
 endif
 
+ifeq ($(LEVEL_SELECT),1)
+  CC_CHECK += -DLEVEL_SELECT
+  CFLAGS += -DLEVEL_SELECT
+endif
+
 # Check for extended options menu option
 ifeq ($(EXT_OPTIONS_MENU),1)
   CC_CHECK += -DEXT_OPTIONS_MENU -DCHEATS_ACTIONS
@@ -999,6 +1008,11 @@ endif
 ifeq ($(HARDCORE),1)
   CC_CHECK += -DHARDCORE
   CFLAGS += -DHARDCORE
+endif
+
+ifeq ($(LEVEL_SELECT),1)
+  CC_CHECK += -DLEVEL_SELECT
+  CFLAGS += -DLEVEL_SELECT
 endif
 
 ifeq ($(TEXTSAVES),1)
