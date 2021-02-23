@@ -154,11 +154,11 @@ extern Vtx VB_intro_seg7_0x700abc0[];
 extern Vtx VB_intro_seg7_0x700acb0[];
 extern Vtx VB_intro_seg7_0x700ada0[];
 extern Vtx VB_intro_seg7_0x700ae90[];
-extern const u8 intro_seg7__texture_07000010[];
-extern const u8 intro_seg7__texture_07000810[];
-extern const u8 intro_seg7__texture_07001010[];
-extern const u8 intro_seg7__texture_07001810[];
-extern const Light_t Light_intro_seg7_0x7000000;
-extern const Ambient_t Light_intro_seg7_0x7000008;
-extern const Gfx DL_intro_seg7_0x700af80[];
+extern u8 intro_seg7__texture_07000010[];
+extern u8 intro_seg7__texture_07000810[];
+extern u8 intro_seg7__texture_07001010[];
+extern u8 intro_seg7__texture_07001810[];
+extern Light_t Light_intro_seg7_0x7000000;
+extern Ambient_t Light_intro_seg7_0x7000008;
+extern Gfx DL_intro_seg7_0x700af80[];
 #endif

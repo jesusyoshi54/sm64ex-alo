@@ -3,13 +3,13 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_vcutm_1_0x2541700[];
-extern const Gfx DL_vcutm_1_0xe036890[];
-extern const Gfx DL_vcutm_1_0xe043498[];
+extern Gfx DL_vcutm_1_0xe036890[];
+extern Gfx DL_vcutm_1_0xe043498[];
 extern const Collision col_vcutm_1_0xe03edf0[];
 extern struct MovtexQuadCollection vcutm_1_Movtex_0[];
 extern const GeoLayout Geo_vcutm_2_0x2541900[];
-extern const Gfx DL_vcutm_2_0xe07cae0[];
-extern const Gfx DL_vcutm_2_0xe043400[];
+extern Gfx DL_vcutm_2_0xe07cae0[];
+extern Gfx DL_vcutm_2_0xe043400[];
 extern const Collision col_vcutm_2_0xe0877c0[];
 extern struct MovtexQuadCollection vcutm_2_Movtex_0[];
 extern const LevelScript level_vcutm_custom_entry[];

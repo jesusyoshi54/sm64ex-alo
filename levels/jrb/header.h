@@ -3,9 +3,9 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_jrb_1_0x1d01700[];
-extern const Gfx DL_jrb_1_0xe0ddca0[];
-extern const Gfx DL_jrb_1_0xe115f48[];
-extern const Gfx DL_jrb_1_0xe11fa70[];
+extern Gfx DL_jrb_1_0xe0ddca0[];
+extern Gfx DL_jrb_1_0xe115f48[];
+extern Gfx DL_jrb_1_0xe11fa70[];
 extern const Collision col_jrb_1_0xe0fdd88[];
 extern struct MovtexQuadCollection jrb_1_Movtex_0[];
 extern const LevelScript level_jrb_custom_entry[];

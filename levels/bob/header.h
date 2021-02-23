@@ -3,8 +3,8 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_bob_1_0x18e1700[];
-extern const Gfx DL_bob_1_0xe0ab070[];
-extern const Gfx DL_bob_1_0xe0df3e0[];
+extern Gfx DL_bob_1_0xe0ab070[];
+extern Gfx DL_bob_1_0xe0df3e0[];
 extern const Collision col_bob_1_0xe0cc170[];
 extern const LevelScript level_bob_custom_entry[];
 extern const LevelScript local_area_bob_1_[];

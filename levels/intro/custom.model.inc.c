@@ -2753,15 +2753,15 @@ Vtx VB_intro_seg7_0x700ae90[] = {
 {{{ 0, 0, 0 }, 0, { 0, 0 }, { 0, 0, 0, 255}}},
 };
 
-const Light_t Light_intro_seg7_0x7000000 = {
+Light_t Light_intro_seg7_0x7000000 = {
 { 255, 255, 255}, 0, { 255, 255, 255}, 0, { 127, 127, 127}, 0
 };
 
-const Ambient_t Light_intro_seg7_0x7000008 = {
+Ambient_t Light_intro_seg7_0x7000008 = {
 {127, 127, 127}, 0, {127, 127, 127}, 0
 };
 
-const Gfx DL_intro_seg7_0x700af80[] = {
+Gfx DL_intro_seg7_0x700af80[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0),
 gsSPTexture(65535, 65535, 0, 0, 1),

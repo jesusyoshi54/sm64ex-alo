@@ -3,9 +3,9 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_castle_inside_1_0x14c1700[];
-extern const Gfx DL_castle_inside_1_0xe076c90[];
-extern const Gfx DL_castle_inside_1_0xe094628[];
-extern const Gfx DL_castle_inside_1_0xe0959e8[];
+extern Gfx DL_castle_inside_1_0xe076c90[];
+extern Gfx DL_castle_inside_1_0xe094628[];
+extern Gfx DL_castle_inside_1_0xe0959e8[];
 extern const Collision col_castle_inside_1_0xe08b6f8[];
 extern const LevelScript level_castle_inside_custom_entry[];
 extern const LevelScript local_area_castle_inside_1_[];

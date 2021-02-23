@@ -3,9 +3,9 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_thi_1_0x1e61700[];
-extern const Gfx DL_thi_1_0xe0d3940[];
-extern const Gfx DL_thi_1_0xe0fd9b0[];
-extern const Gfx DL_thi_1_0xe10b220[];
+extern Gfx DL_thi_1_0xe0d3940[];
+extern Gfx DL_thi_1_0xe0fd9b0[];
+extern Gfx DL_thi_1_0xe10b220[];
 extern const Collision col_thi_1_0xe0ebf08[];
 extern struct MovtexQuadCollection thi_1_Movtex_0[];
 extern const LevelScript level_thi_custom_entry[];

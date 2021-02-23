@@ -3,9 +3,9 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_bitfs_1_0x26a1700[];
-extern const Gfx DL_bitfs_1_0xe07fc90[];
-extern const Gfx DL_bitfs_1_0xe0a1de0[];
-extern const Gfx DL_bitfs_1_0xe0a2c90[];
+extern Gfx DL_bitfs_1_0xe07fc90[];
+extern Gfx DL_bitfs_1_0xe0a1de0[];
+extern Gfx DL_bitfs_1_0xe0a2c90[];
 extern const Collision col_bitfs_1_0xe095508[];
 extern const LevelScript level_bitfs_custom_entry[];
 extern const LevelScript local_area_bitfs_1_[];

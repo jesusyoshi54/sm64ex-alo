@@ -3,9 +3,9 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_ending_1_0x2ee1700[];
-extern const Gfx DL_ending_1_0xe0bfd10[];
-extern const Gfx DL_ending_1_0xe0ef168[];
-extern const Gfx DL_ending_1_0xe0efea0[];
+extern Gfx DL_ending_1_0xe0bfd10[];
+extern Gfx DL_ending_1_0xe0ef168[];
+extern Gfx DL_ending_1_0xe0efea0[];
 extern const Collision col_ending_1_0xe0e2418[];
 extern const LevelScript level_ending_custom_entry[];
 extern const LevelScript local_area_ending_1_[];

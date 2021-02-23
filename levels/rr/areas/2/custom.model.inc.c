@@ -13049,17 +13049,17 @@ Vtx VB_rr_2_0xe0bd298[] = {
 {{{ 0, 0, 0 }, 0, { 0, 0 }, { 0, 0, 0, 255}}},
 };
 
-const Light_t Light_rr_2_0xe087b88 = {
+Light_t Light_rr_2_0xe087b88 = {
 { 255, 255, 255}, 0, { 255, 255, 255}, 0, { 127, 127, 127}, 0
 };
 
-const Ambient_t Light_rr_2_0xe087b90 = {
+Ambient_t Light_rr_2_0xe087b90 = {
 {127, 127, 127}, 0, {127, 127, 127}, 0
 };
 
-const Gfx DL_rr_2_0xe0bd388[] = {
+Gfx DL_rr_2_0xe0bd388[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0,gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0,
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -16246,10 +16246,10 @@ gsDPPipeSync(),
 gsDPSetCycleType(G_CYC_1CYCLE),
 gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_NOOP2),
 gsSPGeometryMode(G_FOG, 0),
-gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE,gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE,
 gsSPGeometryMode(0, G_CULL_BACK|G_LIGHTING),
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,
 gsSPEndDisplayList(),
 };
 

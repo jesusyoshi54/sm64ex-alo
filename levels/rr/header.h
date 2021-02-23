@@ -3,12 +3,12 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_rr_1_0x2121700[];
-extern const Gfx DL_rr_1_0xe066510[];
-extern const Gfx DL_rr_1_0xe082220[];
-extern const Gfx DL_rr_1_0xe085be0[];
+extern Gfx DL_rr_1_0xe066510[];
+extern Gfx DL_rr_1_0xe082220[];
+extern Gfx DL_rr_1_0xe085be0[];
 extern const Collision col_rr_1_0xe077028[];
 extern const GeoLayout Geo_rr_2_0x21218f0[];
-extern const Gfx DL_rr_2_0xe0bd388[];
+extern Gfx DL_rr_2_0xe0bd388[];
 extern const Collision col_rr_2_0xe0c8518[];
 extern const LevelScript level_rr_custom_entry[];
 extern const LevelScript local_area_rr_1_[];

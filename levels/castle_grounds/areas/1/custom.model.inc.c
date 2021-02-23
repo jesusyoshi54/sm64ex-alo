@@ -30257,17 +30257,17 @@ Vtx VB_castle_grounds_1_0xe07b750[] = {
 {{{ 0, 691, -260 }, 0, { 0, 0 }, { 0, 0, 0, 255}}},
 };
 
-const Light_t Light_castle_grounds_1_0xe000000 = {
+Light_t Light_castle_grounds_1_0xe000000 = {
 { 255, 255, 255}, 0, { 255, 255, 255}, 0, { 127, 127, 127}, 0
 };
 
-const Ambient_t Light_castle_grounds_1_0xe000008 = {
+Ambient_t Light_castle_grounds_1_0xe000008 = {
 {127, 127, 127}, 0, {127, 127, 127}, 0
 };
 
-const Gfx DL_castle_grounds_1_0xe07b840[] = {
+Gfx DL_castle_grounds_1_0xe07b840[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -37240,14 +37240,14 @@ gsDPPipeSync(),
 gsDPSetCycleType(G_CYC_1CYCLE),
 gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_NOOP2),
 gsSPGeometryMode(G_FOG, 0),
-gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE,gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE,
 gsSPGeometryMode(0, G_CULL_BACK|G_LIGHTING),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_castle_grounds_1_0xe09c500[] = {
+Gfx DL_castle_grounds_1_0xe09c500[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0,gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0,
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -37281,17 +37281,17 @@ gsSPTexture(65535, 65535, 0, 0, 0),
 gsDPPipeSync(),
 gsDPSetCycleType(G_CYC_1CYCLE),
 gsSPGeometryMode(G_FOG, 0),
-gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE,gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE,
 gsSPGeometryMode(0, G_CULL_BACK|G_LIGHTING),
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,
 gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_NOOP2),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_castle_grounds_1_0xe09c660[] = {
+Gfx DL_castle_grounds_1_0xe09c660[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL1, 0, 0, ENVIRONMENT, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL1, 0, 0, ENVIRONMENT,gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL1, 0, 0, ENVIRONMENT,
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -37318,10 +37318,10 @@ gsDPPipeSync(),
 gsDPSetCycleType(G_CYC_1CYCLE),
 gsDPSetRenderMode(0, 4468856),
 gsSPGeometryMode(G_FOG, 0),
-gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE,gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE,
 gsSPGeometryMode(0, G_CULL_BACK|G_LIGHTING),
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,
 gsSPEndDisplayList(),
 };
 

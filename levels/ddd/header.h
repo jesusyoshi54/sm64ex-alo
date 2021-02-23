@@ -3,8 +3,8 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_ddd_1_0x2c21700[];
-extern const Gfx DL_ddd_1_0xe057de0[];
-extern const Gfx DL_ddd_1_0xe067e20[];
+extern Gfx DL_ddd_1_0xe057de0[];
+extern Gfx DL_ddd_1_0xe067e20[];
 extern const Collision col_ddd_1_0xe061020[];
 extern struct MovtexQuadCollection ddd_1_Movtex_0[];
 extern struct MovtexQuadCollection ddd_1_Movtex_1[];
