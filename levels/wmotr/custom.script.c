@@ -143,10 +143,10 @@ OBJECT_WITH_ACTS(84,-2422,-739,-802,0,0,0,0x0, bhvBoo,31),
 OBJECT_WITH_ACTS(84,2061,-861,4770,0,0,0,0x0, bhvBoo,31),
 OBJECT_WITH_ACTS(84,980,-861,4279,0,0,0,0x0, bhvBoo,31),
 OBJECT_WITH_ACTS(116,1519,-1308,4504,0,0,0,0x0, bhvOneCoin,31),
-// OBJECT_WITH_ACTS(0,2,4,39,9,0,0,82, editor_Scroll_Texture,31),
-// OBJECT_WITH_ACTS(0,2,4,381,3,0,0,83, editor_Scroll_Texture,31),
-// OBJECT_WITH_ACTS(0,16,5,72,12,0,0,84, editor_Scroll_Texture,31),
-// OBJECT_WITH_ACTS(0,4,5,24,3,0,0,85, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,2,4,39,9,0,0,82, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,2,4,381,3,0,0,83, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,72,12,0,0,84, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,5,24,3,0,0,85, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_wmotr_1_[] = {

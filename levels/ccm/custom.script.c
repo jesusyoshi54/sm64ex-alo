@@ -197,12 +197,12 @@ OBJECT_WITH_ACTS(180,-8680,2768,5907,0,0,0,0x0, bhvFireSpitter,31),
 OBJECT_WITH_ACTS(180,-6598,3453,4453,0,0,0,0x0, bhvFireSpitter,31),
 OBJECT_WITH_ACTS(0,-4236,893,-8265,0,180,0,0xf00000, bhvAirborneStarCollectWarp,31),
 OBJECT_WITH_ACTS(0,-4236,893,-8265,0,0,0,0xf10000, bhvAirborneDeathWarp,31),
-// OBJECT_WITH_ACTS(0,64,5,84,3,0,0,4, editor_Scroll_Texture,31),
-// OBJECT_WITH_ACTS(0,64,5,174,12,0,0,5, editor_Scroll_Texture,31),
-// OBJECT_WITH_ACTS(0,4,5,6,6,0,0,6, editor_Scroll_Texture,31),
-// OBJECT_WITH_ACTS(0,8,5,9,6,0,0,7, editor_Scroll_Texture,31),
-// OBJECT_WITH_ACTS(0,8,5,123,9,0,0,8, editor_Scroll_Texture,31),
-// OBJECT_WITH_ACTS(0,16,5,162,3,0,0,9, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,5,84,3,0,0,4, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,5,174,12,0,0,5, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,4,5,6,6,0,0,6, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,9,6,0,0,7, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,8,5,123,9,0,0,8, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,162,3,0,0,9, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_ccm_1_[] = {

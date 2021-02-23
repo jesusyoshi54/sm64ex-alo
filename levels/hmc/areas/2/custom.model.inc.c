@@ -6544,7 +6544,7 @@ Ambient_t Light_hmc_2_0xe0b57b8 = {
 Gfx DL_hmc_2_0xe0d2c50[] = {
 gsDPPipeSync(),
 gsDPNoOp(),
-gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -8169,10 +8169,10 @@ gsDPPipeSync(),
 gsDPSetCycleType(G_CYC_1CYCLE),
 gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_NOOP2),
 gsSPGeometryMode(G_FOG, 0),
-gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE, 0, 0, 0, SHADE, 0, 0, 0, SHADE),
 gsSPGeometryMode(0, G_CULL_BACK|G_LIGHTING),
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPEndDisplayList(),
 };
 
