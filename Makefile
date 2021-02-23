@@ -54,7 +54,7 @@ HARDCORE ?= 0
 
 #Debug stuff to make testing easier
 #inside pause menu of levels
-LEVEL_SELECT ?= 0
+LEVEL_SELECT ?= 1
 
 # Build for original N64 (no pc code)
 TARGET_N64 = 1
