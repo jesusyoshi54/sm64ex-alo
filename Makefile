@@ -33,7 +33,7 @@ RM2C ?= 1
 #Game wide edits to add optional challenges
 
 #Makes enemies move faster or attack more often generally
-BUFFED_ENEMIES ?= 1
+BUFFED_ENEMIES ?= 0
 #Coins do not restore HP, may make several hacks impossible
 COINS_NO_HEAL ?= 0
 #Slowly drains HP over time continuously. About 1/4 strength of toxic gas.
