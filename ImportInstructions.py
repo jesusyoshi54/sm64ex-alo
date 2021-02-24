@@ -119,6 +119,13 @@ If a model is not in this list, it does not guarantee that it is unedited.
  model koopa_with_shell_geo_ in folder koopa has a new model or new textures.
  model koopa_flag_geo_ in folder koopa_flag has a new model or new textures.
 
+******************************************************************************************
+
+Collision models are loaded via behavior, not alongside the model. This means it can be more difficult to detect where exactly the collision belongs.
+I attempt to guess based on what model the collision is first used with, but if I'm not sure, it will be logged here.
+#both included
+ Collision rr_geo_000860_ in folder rr/swinging_platform is unkown or found to be new. Used with Behavior bhvSwingPlatform.
+ Collision rr_geo_0008F0_ in folder rr/elevator_platform is unkown or found to be new. Used with Behavior bhvRrElevatorPlatform.
 
 Known methods of crashing:
 *****************************************************************************

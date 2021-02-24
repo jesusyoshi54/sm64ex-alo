@@ -78,7 +78,7 @@ void bobomb_act_patrol(void) {
         o->oBobombFuseLit = 1;
         o->oAction = BOBOMB_ACT_CHASE_MARIO;
 		#ifdef BUFFED_ENEMIES
-		o->oThwompRandomTimer= random_float() * 30.0f + 10.0f;
+		o->oThwompRandomTimer= (u32)(random_float() * 30.0f + 40.0f);
 		#endif
     }
     obj_check_floor_death(collisionFlags, sObjFloor);
