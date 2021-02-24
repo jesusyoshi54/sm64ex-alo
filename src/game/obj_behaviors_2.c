@@ -934,16 +934,23 @@ static void treat_far_home_as_mario(f32 threshold) {
 /**
  * Used by bowser, fly guy, piranha plant, and fire spitters.
  */
+#ifdef BUFFED_ENEMIES
+#define FIRE_SPEED_MULTIPLIER 2.5f
+#define FIRE_SPEED_MULTIPLIER_INT 3
+#else
+#define FIRE_SPEED_MULTIPLIER 1.0f
+#define FIRE_SPEED_MULTIPLIER_INT 1
+#endif
 void obj_spit_fire(s16 relativePosX, s16 relativePosY, s16 relativePosZ, f32 scale, s32 model,
                    f32 startSpeed, f32 endSpeed, s16 movePitch) {
     struct Object *obj = spawn_object_relative_with_scale(1, relativePosX, relativePosY, relativePosZ,
                                                            scale, o, model, bhvSmallPiranhaFlame);
 
     if (obj != NULL) {
-        obj->oSmallPiranhaFlameStartSpeed = startSpeed;
-        obj->oSmallPiranhaFlameEndSpeed = endSpeed;
+        obj->oSmallPiranhaFlameStartSpeed = startSpeed*FIRE_SPEED_MULTIPLIER;
+        obj->oSmallPiranhaFlameEndSpeed = endSpeed*FIRE_SPEED_MULTIPLIER;
         obj->oSmallPiranhaFlameModel = model;
-        obj->oMoveAnglePitch = movePitch;
+        obj->oMoveAnglePitch = movePitch*FIRE_SPEED_MULTIPLIER_INT;
     }
 }
 

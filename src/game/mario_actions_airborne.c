@@ -52,10 +52,15 @@ s32 lava_boost_on_wall(struct MarioState *m) {
     if (m->forwardVel < 24.0f) {
         m->forwardVel = 24.0f;
     }
-
+	#ifdef DOUBLE_LAVA_DMG
+    if (!(m->flags & MARIO_METAL_CAP)) {
+        m->hurtCounter += (m->flags & MARIO_CAP_ON_HEAD) ? 24 : 36;
+    }
+	#else
     if (!(m->flags & MARIO_METAL_CAP)) {
         m->hurtCounter += (m->flags & MARIO_CAP_ON_HEAD) ? 12 : 18;
     }
+	#endif
 
     play_sound(SOUND_MARIO_ON_FIRE, m->marioObj->header.gfx.cameraToObject);
     update_mario_sound_and_camera(m);
@@ -70,6 +75,15 @@ s32 check_fall_damage(struct MarioState *m, u32 hardFallAction) {
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wtype-limits"
+
+
+	#if INCLUDE_MOP
+	if (m->SelFallDmg){
+		m->SelFallDmg=0;
+		return FALSE;
+	}
+	#endif
+
 
     //! Never true
     if (m->actionState == ACT_GROUND_POUND) {

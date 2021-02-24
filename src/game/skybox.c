@@ -81,7 +81,7 @@ extern SkyboxTexture skybox##_ptrlist;
 #include "textures/skyboxes/Skybox_Rules.ld"
 #undef MIO0_SEG
 
-SkyboxTexture *sSkyboxTextures[10+
+SkyboxTexture *sSkyboxTextures[10
   #define MIO0_SEG(skybox, _2) + 1
   #include "textures/skyboxes/Skybox_Rules.ld"
   #undef MIO0_SEG
@@ -261,8 +261,6 @@ Vtx *make_skybox_rect(s32 tileIndex, s8 colorIndex) {
 void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex) {
     s32 row;
     s32 col;
-	//Custom skyboxes have an arg of 10. This is a bandaid fix so game behaves predictably.
-
     for (row = 0; row < 3; row++) {
         for (col = 0; col < 3; col++) {
             s32 tileIndex = sSkyBoxInfo[player].upperLeftTile + row * SKYBOX_COLS + col;

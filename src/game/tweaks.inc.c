@@ -19,7 +19,7 @@
 #define VC_TIME 900
 #define MC_LEVEL_TIME 900
 #define WC_LEVEL_TIME 1800
-#define VC_LEVEL_TIME 273
+#define VC_LEVEL_TIME 900
 #define HUD_LIVES_MARIO_X GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(16)
 #define HUD_LIVES_MARIO_Y 10
 #define HUD_LIVES_CROSS_X GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(30)
@@ -53,6 +53,7 @@
 #define SHOW_LIVES 11
 #define SHOW_CAM 11
 #define SHOW_TIME 11
+//The following are not exported from the rom, but are placed here for user convenience
 #define SHOW_STAR_MILESTONES 0
 #define TOAD_STAR_1_DIALOG DIALOG_082
 #define TOAD_STAR_2_DIALOG DIALOG_076
@@ -60,3 +61,7 @@
 #define TOAD_STAR_1_DIALOG_AFTER DIALOG_154
 #define TOAD_STAR_2_DIALOG_AFTER DIALOG_155
 #define TOAD_STAR_3_DIALOG_AFTER DIALOG_156
+//whether coins are 3d or not. Changes bhv scripts and pause menu reds rendering
+#define USE3DCOINS 1
+//must be manually set
+#define INCLUDE_MOP 0

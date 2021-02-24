@@ -1508,7 +1508,21 @@ void set_submerged_cam_preset_and_spawn_bubbles(struct MarioState *m) {
  */
 void update_mario_health(struct MarioState *m) {
     s32 terrainIsSnow;
-
+	#ifdef DRAIN_HP_CONSTANT
+	m->health -= 1;
+	#endif
+	#ifdef A_BTN_DRAIN
+	if (gPlayer1Controller->buttonPressed&A_BUTTON)
+		m->health -= 0x100;
+	#endif
+	#ifdef Z_BTN_DRAIN
+	if (gPlayer1Controller->buttonPressed&B_BUTTON)
+		m->health -= 0x100;
+	#endif
+	#ifdef B_BTN_DRAIN
+	if (gPlayer1Controller->buttonPressed&Z_TRIG)
+		m->health -= 0x100;
+	#endif
     if (m->health >= 0x100) {
         // When already healing or hurting Mario, Mario's HP is not changed any more here.
         if (((u32) m->healCounter | (u32) m->hurtCounter) == 0) {
@@ -1666,7 +1680,7 @@ void mario_update_hitbox_and_cap_model(struct MarioState *m) {
     struct MarioBodyState *bodyState = m->marioBodyState;
     s32 flags = update_and_return_cap_flags(m);
 
-    if (flags & MARIO_VANISH_CAP || newcam_xlu < 255) {
+    if (flags & MARIO_VANISH_CAP || (newcam_xlu < 255 &&(gLakituState.mode == CAMERA_MODE_NEWCAM))) {
         bodyState->modelState = MODEL_STATE_NOISE_ALPHA;
     }
 
