@@ -36,8 +36,13 @@ static void racing_penguin_act_show_init_text(void) {
         child = cur_obj_nearest_object_with_behavior(bhvPenguinRaceShortcutCheck);
         child->parentObj = o;
 
+		#ifdef RM2C
         o->oPathedStartWaypoint = o->oPathedPrevWaypoint =
+            segmented_to_virtual(ccm_seg7_trajectory_penguin_race_RM2C_path);
+			#else
+			o->oPathedStartWaypoint = o->oPathedPrevWaypoint =
             segmented_to_virtual(ccm_seg7_trajectory_penguin_race);
+			#endif
         o->oPathedPrevWaypointFlags = 0;
 
         o->oAction = RACING_PENGUIN_ACT_PREPARE_FOR_RACE;
