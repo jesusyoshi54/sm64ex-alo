@@ -8,11 +8,13 @@
 /**
  * Collision models for the different types of platforms.
  */
+//editor dum dum dum
+extern const Collision col_rr_geo_000660_0xf94111[];
 static void const *sPlatformOnTrackCollisionModels[] = {
-    /* PLATFORM_ON_TRACK_TYPE_CARPET    */ rr_seg7_collision_07029038,
-    /* PLATFORM_ON_TRACK_TYPE_SKI_LIFT  */ ccm_seg7_collision_070163F8,
-    /* PLATFORM_ON_TRACK_TYPE_CHECKERED */ checkerboard_platform_seg8_collision_0800D710,
-    /* PLATFORM_ON_TRACK_TYPE_GRATE     */ bitfs_seg7_collision_070157E0,
+    /* PLATFORM_ON_TRACK_TYPE_CARPET    */ col_rr_geo_000660_0xf94111,
+    /* PLATFORM_ON_TRACK_TYPE_SKI_LIFT  */ col_rr_geo_000660_0xf94111,
+    /* PLATFORM_ON_TRACK_TYPE_CHECKERED */ col_rr_geo_000660_0xf94111,
+    /* PLATFORM_ON_TRACK_TYPE_GRATE     */ col_rr_geo_000660_0xf94111,
 };
 
 /**

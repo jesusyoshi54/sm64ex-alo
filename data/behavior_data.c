@@ -1247,11 +1247,11 @@ const BehaviorScript bhvAnotherElavator[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
-
+extern const Collision col_rr_geo_0008F0_0x7ddc38[];
 const BehaviorScript bhvRrElevatorPlatform[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_COLLISION_DATA(rr_seg7_collision_elevator_platform),
+    LOAD_COLLISION_DATA(col_rr_geo_0008F0_0x7ddc38),
     SET_HOME(),
     CALL_NATIVE(bhv_elevator_init),
     BEGIN_LOOP(),
@@ -6099,10 +6099,10 @@ const BehaviorScript bhvSkeeterWave[] = {
         CALL_NATIVE(bhv_skeeter_wave_update),
     END_LOOP(),
 };
-
+extern const Collision col_rr_geo_000860_0xfb98fd[];
 const BehaviorScript bhvSwingPlatform[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    LOAD_COLLISION_DATA(rr_seg7_collision_pendulum),
+    LOAD_COLLISION_DATA(col_rr_geo_000860_0xfb98fd),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     SET_FLOAT(oCollisionDistance, 2000),
     CALL_NATIVE(bhv_swing_platform_init),

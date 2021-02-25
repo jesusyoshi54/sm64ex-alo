@@ -12,6 +12,7 @@
 #include "levels/rr/areas/1/1/model.inc.c"
 #include "levels/rr/areas/1/2/custom.model.inc.h"
 #include "levels/rr/areas/1/2/custom.model.inc.c"
+#include "levels/rr/areas/1/2/custom.collision.inc.c"
 #include "levels/rr/areas/1/3/model.inc.c"
 #include "levels/rr/areas/1/4/model.inc.c"
 #include "levels/rr/areas/1/5/model.inc.c"
