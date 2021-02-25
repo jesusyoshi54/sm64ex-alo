@@ -25,7 +25,9 @@ extern const Trajectory lll_seg7_trajectory_0702856C_RM2C_path[];
 extern const Trajectory lll_seg7_trajectory_07028660_RM2C_path[];
 extern const Trajectory rr_seg7_trajectory_0702ED9C_RM2C_path[];
 extern const Trajectory rr_seg7_trajectory_0702EEE0_RM2C_path[];
+extern const Trajectory ccm_seg7_trajectory_penguin_race_RM2C_path[];
 #endif
+
 void shelled_koopa_attack_handler(s32 attackType);
 void obj_spit_fire(s16 relativePosX, s16 relativePosY, s16 relativePosZ, f32 scale, s32 model,
                    f32 startSpeed, f32 endSpeed, s16 movePitch);

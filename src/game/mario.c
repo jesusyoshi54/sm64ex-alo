@@ -1515,11 +1515,11 @@ void update_mario_health(struct MarioState *m) {
 	if (gPlayer1Controller->buttonPressed&A_BUTTON)
 		m->health -= 0x100;
 	#endif
-	#ifdef Z_BTN_DRAIN
+	#ifdef B_BTN_DRAIN
 	if (gPlayer1Controller->buttonPressed&B_BUTTON)
 		m->health -= 0x100;
 	#endif
-	#ifdef B_BTN_DRAIN
+	#ifdef Z_BTN_DRAIN
 	if (gPlayer1Controller->buttonPressed&Z_TRIG)
 		m->health -= 0x100;
 	#endif
