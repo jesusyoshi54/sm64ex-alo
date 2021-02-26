@@ -90,7 +90,7 @@ Vtx VB_rr_geo_000770_0x700e5c8[] = {
 {{{ 107, 605, 0 }, 0, { 990, 990 }, { 255, 255, 255, 255}}},
 };
 
-const Gfx DL_rr_geo_000770_0x700e830[] = {
+Gfx DL_rr_geo_000770_0x700e830[] = {
 gsDPPipeSync(),
 gsDPSetEnvColor(255, 255, 255, 200),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, ENVIRONMENT, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, ENVIRONMENT, 0),
@@ -109,7 +109,7 @@ gsDPSetEnvColor(255, 255, 255, 255),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_rr_geo_000770_0x700e6c8[] = {
+Gfx DL_rr_geo_000770_0x700e6c8[] = {
 gsDPSetTextureImage(0, 2, 1, rr_geo_000770__texture_09005800),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),

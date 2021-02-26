@@ -497,7 +497,7 @@ Vtx VB_rr_geo_0006C0_0x70075c0[] = {
 {{{ -894, 1926, 395 }, 0, { 3014, 744 }, { 172, 142, 82, 255}}},
 };
 
-const Gfx DL_rr_geo_0006C0_0x7007e60[] = {
+Gfx DL_rr_geo_0006C0_0x7007e60[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPGeometryMode(G_LIGHTING, 0),
@@ -518,7 +518,7 @@ gsSPGeometryMode(0, G_LIGHTING),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_rr_geo_0006C0_0x70076b0[] = {
+Gfx DL_rr_geo_0006C0_0x70076b0[] = {
 gsDPSetTextureImage(0, 2, 1, rr_geo_0006C0__texture_09001800),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),
@@ -555,7 +555,7 @@ gsSP1Triangle(12, 13, 14, 0),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_rr_geo_0006C0_0x7007868[] = {
+Gfx DL_rr_geo_0006C0_0x7007868[] = {
 gsDPSetTextureImage(0, 2, 1, rr_geo_0006C0__texture_09008000),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),
@@ -584,7 +584,7 @@ gsSP2Triangles(0, 1, 2, 0,0, 3, 1, 0),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_rr_geo_0006C0_0x70079b0[] = {
+Gfx DL_rr_geo_0006C0_0x70079b0[] = {
 gsDPSetTextureImage(0, 2, 1, rr_geo_0006C0__texture_09007000),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),
@@ -647,7 +647,7 @@ gsSP2Triangles(0, 1, 2, 0,0, 2, 3, 0),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_rr_geo_0006C0_0x7007cb0[] = {
+Gfx DL_rr_geo_0006C0_0x7007cb0[] = {
 gsDPSetTextureImage(0, 2, 1, rr_geo_0006C0__texture_09004800),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),
@@ -667,7 +667,7 @@ gsSP2Triangles(4, 5, 6, 0,4, 6, 7, 0),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_rr_geo_0006C0_0x7007d88[] = {
+Gfx DL_rr_geo_0006C0_0x7007d88[] = {
 gsDPSetTextureImage(0, 2, 1, rr_geo_0006C0__texture_09000800),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),

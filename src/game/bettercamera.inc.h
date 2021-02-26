@@ -134,11 +134,18 @@ void newcam_init(struct Camera *c, u8 dv)
     newcam_distance_target = newcam_distance_values[dv];
     newcam_yaw = -c->yaw+0x4000; //Mario and the camera's yaw have this offset between them.
     //putting mode 8D here as standard, going to change newcam mode via L button
-	newcam_mode = NC_MODE_8D;
     ///This here will dictate what modes the camera will start in at the beginning of a level. Below are some examples.
-    // switch (gCurrLevelNum)
-    // {
-        // case LEVEL_BITDW: newcam_yaw = 0x4000; newcam_mode = NC_MODE_8D; newcam_tilt = 4000; newcam_distance_target = newcam_distance_values[2]; break;
+    if (gCurrLevelNum==LEVEL_WMOTR){
+        newcam_yaw = 0x0000;
+		newcam_mode = NC_MODE_2D;
+		newcam_tilt = 4000;
+		newcam_distance_target = newcam_distance_values[2];
+	}else{
+		newcam_mode = NC_MODE_8D;
+		newcam_distance = newcam_distance_target;
+		newcam_intendedmode = newcam_mode;
+		newcam_modeflags = newcam_mode;
+	}
         // case LEVEL_BITFS: newcam_yaw = 0x4000; newcam_mode = NC_MODE_8D; newcam_tilt = 4000; newcam_distance_target = newcam_distance_values[2]; break;
         // case LEVEL_BITS: newcam_yaw = 0x4000; newcam_mode = NC_MODE_8D; newcam_tilt = 4000; newcam_distance_target = newcam_distance_values[2]; break;
         // case LEVEL_WF: newcam_yaw = 0x4000; newcam_tilt = 2000; newcam_distance_target = newcam_distance_values[1]; break;
@@ -147,11 +154,6 @@ void newcam_init(struct Camera *c, u8 dv)
         // case LEVEL_WDW: newcam_yaw = 0x2000; newcam_tilt = 3000; newcam_distance_target = newcam_distance_values[1]; break;
         // case 27: newcam_mode = NC_MODE_SLIDE; break;
         // case LEVEL_TTM: if (gCurrAreaIndex == 2) newcam_mode = NC_MODE_SLIDE; break;
-    // }
-
-    newcam_distance = newcam_distance_target;
-    newcam_intendedmode = newcam_mode;
-    newcam_modeflags = newcam_mode;
 }
 
 static s16 newcam_clamp(s16 value, s16 min, s16 max) {
@@ -272,6 +274,19 @@ static void newcam_rotate_button(void)
 {
     f32 intendedXMag;
     f32 intendedYMag;
+	//swap modes via L button
+	if (gPlayer1Controller->buttonPressed & L_TRIG){
+		if (newcam_mode == NC_MODE_NORMAL){
+			newcam_mode = NC_MODE_8D;
+			newcam_tilt_acc = 0;
+			newcam_yaw_acc = 0;
+		}
+		else{
+			newcam_mode = NC_MODE_NORMAL;
+		}
+	newcam_intendedmode = newcam_mode;
+    newcam_modeflags = newcam_mode;
+	}
     //When you press L and R together, set the flag for centering the camera. Afterwards, start setting the yaw to the Player's yaw at the time.
     if (((gPlayer1Controller->buttonDown & L_TRIG && gPlayer1Controller->buttonDown & R_TRIG) | (gPlayer1Controller->buttonDown & D_JPAD)) && newcam_modeflags & NC_FLAG_ZOOM)
     {
@@ -484,19 +499,6 @@ static void newcam_zoom_button(void)
             newcam_distance_target = newcam_distance_values[0];
 
     }
-	//swap modes via L button
-	if (gPlayer1Controller->buttonPressed & L_TRIG){
-		if (newcam_mode == NC_MODE_NORMAL){
-			newcam_mode = NC_MODE_8D;
-			newcam_tilt_acc = 0;
-			newcam_yaw_acc = 0;
-		}
-		else{
-			newcam_mode = NC_MODE_NORMAL;
-		}
-	newcam_intendedmode = newcam_mode;
-    newcam_modeflags = newcam_mode;
-	}
     if (newcam_centering && newcam_modeflags & NC_FLAG_XTURN)
     {
         newcam_yaw = approach_s16_symmetric(newcam_yaw,newcam_yaw_target,0x800);
@@ -796,7 +798,12 @@ static void newcam_stick_input(void) {
 //Main loop.
 void newcam_loop(struct Camera *c) {
     newcam_stick_input();
-    newcam_rotate_button();
+	if (gCurrLevelNum==LEVEL_WMOTR){
+		newcam_mode = NC_MODE_2D;
+	}
+	if (newcam_mode != NC_MODE_2D){
+		newcam_rotate_button();
+	}
     newcam_zoom_button();
     newcam_position_cam();
     newcam_find_fixed();

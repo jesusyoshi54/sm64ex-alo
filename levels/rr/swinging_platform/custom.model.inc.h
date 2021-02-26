@@ -51,8 +51,8 @@ extern Vtx VB_rr_geo_000860_0x70183d0[];
 extern Vtx VB_rr_geo_000860_0x70184c0[];
 extern Vtx VB_rr_geo_000860_0x70185b0[];
 extern Vtx VB_rr_geo_000860_0x70186a0[];
-extern const u8 rr_geo_000860__texture_0700F900[];
-extern const u8 rr_geo_000860__texture_0700F100[];
-extern const u8 rr_geo_000860__texture_07010100[];
-extern const Gfx DL_rr_geo_000860_0x7019918[];
+extern u8 rr_geo_000860__texture_0700F900[];
+extern u8 rr_geo_000860__texture_0700F100[];
+extern u8 rr_geo_000860__texture_07010100[];
+extern Gfx DL_rr_geo_000860_0x7019918[];
 #endif

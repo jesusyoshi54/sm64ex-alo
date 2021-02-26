@@ -136,11 +136,11 @@ extern Vtx VB_rr_geo_000788_0x70183d0[];
 extern Vtx VB_rr_geo_000788_0x70184c0[];
 extern Vtx VB_rr_geo_000788_0x70185b0[];
 extern Vtx VB_rr_geo_000788_0x70186a0[];
-extern const u8 rr_geo_000788__texture_0700E900[];
-extern const u8 rr_geo_000788__texture_0700F100[];
-extern const u8 rr_geo_000788__texture_0700F900[];
-extern const u8 rr_geo_000788__texture_07010100[];
-extern const Light_t Light_rr_geo_000788_0x700e8b0;
-extern const Ambient_t Light_rr_geo_000788_0x700e8b8;
-extern const Gfx DL_rr_geo_000788_0x7018790[];
+extern u8 rr_geo_000788__texture_0700E900[];
+extern u8 rr_geo_000788__texture_0700F100[];
+extern u8 rr_geo_000788__texture_0700F900[];
+extern u8 rr_geo_000788__texture_07010100[];
+extern Light_t Light_rr_geo_000788_0x700e8b0;
+extern Ambient_t Light_rr_geo_000788_0x700e8b8;
+extern Gfx DL_rr_geo_000788_0x7018790[];
 #endif

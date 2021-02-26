@@ -1763,7 +1763,7 @@ Vtx VB_rr_geo_000878_0x7019a60[] = {
 {{{ -16640, 0, 90 }, 0, { -16640, 0 }, { 0, 120, 130, 140}}},
 };
 
-const Gfx DL_rr_geo_000878_0x701a3a0[] = {
+Gfx DL_rr_geo_000878_0x701a3a0[] = {
 gsSP2Triangles(6, 7, 8, 0,9, 10, 11, 0),
 gsSP1Triangle(12, 13, 14, 0),
 gsSPVertex(VB_rr_geo_000878_0x7013f70, 15, 0),

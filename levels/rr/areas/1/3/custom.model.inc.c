@@ -17,7 +17,7 @@ Vtx VB_rr_geo_000678_0x7002d80[] = {
 {{{ 410, -112, 205 }, 0, { 3590, 988 }, { 255, 212, 0, 255}}},
 };
 
-const Gfx DL_rr_geo_000678_0x7002e80[] = {
+Gfx DL_rr_geo_000678_0x7002e80[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0),
 gsSPGeometryMode(G_CULL_BACK|G_LIGHTING, 0),
@@ -35,7 +35,7 @@ gsSPGeometryMode(0, G_CULL_BACK|G_LIGHTING),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_rr_geo_000678_0x7002e00[] = {
+Gfx DL_rr_geo_000678_0x7002e00[] = {
 gsDPSetTextureImage(0, 2, 1, rr_geo_000678__texture_09000000),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),
@@ -44,7 +44,7 @@ gsSP2Triangles(0, 1, 2, 0,0, 3, 1, 0),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_rr_geo_000678_0x7002e38[] = {
+Gfx DL_rr_geo_000678_0x7002e38[] = {
 gsDPSetTextureImage(0, 2, 1, rr_geo_000678__texture_09006000),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),

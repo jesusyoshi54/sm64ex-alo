@@ -2429,15 +2429,15 @@ Vtx VB_rr_geo_000788_0x70186a0[] = {
 {{{ 0, 0, 0 }, 0, { 0, 0 }, { 0, 0, 0, 255}}},
 };
 
-const Light_t Light_rr_geo_000788_0x700e8b0 = {
+Light_t Light_rr_geo_000788_0x700e8b0 = {
 { 255, 255, 255}, 0, { 255, 255, 255}, 0, { 127, 127, 127}, 0
 };
 
-const Ambient_t Light_rr_geo_000788_0x700e8b8 = {
+Ambient_t Light_rr_geo_000788_0x700e8b8 = {
 {127, 127, 127}, 0, {127, 127, 127}, 0
 };
 
-const Gfx DL_rr_geo_000788_0x7018790[] = {
+Gfx DL_rr_geo_000788_0x7018790[] = {
 gsDPPipeSync(),
 gsSPGeometryMode(0, 0),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0),

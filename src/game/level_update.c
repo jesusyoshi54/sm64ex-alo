@@ -318,18 +318,18 @@ void set_mario_initial_cap_powerup(struct MarioState *m) {
 
     switch (capCourseIndex) {
         case COURSE_COTMC - COURSE_CAP_COURSES:
-            m->flags |= MARIO_METAL_CAP | MARIO_CAP_ON_HEAD;
-            m->capTimer = MC_LEVEL_TIME;
+            // m->flags |= MARIO_METAL_CAP | MARIO_CAP_ON_HEAD;
+            // m->capTimer = MC_LEVEL_TIME;
             break;
 
         case COURSE_TOTWC - COURSE_CAP_COURSES:
-            m->flags |= MARIO_WING_CAP | MARIO_CAP_ON_HEAD;
-            m->capTimer = WC_LEVEL_TIME;
+            // m->flags |= MARIO_WING_CAP | MARIO_CAP_ON_HEAD;
+            // m->capTimer = WC_LEVEL_TIME;
             break;
 
         case COURSE_VCUTM - COURSE_CAP_COURSES:
-            m->flags |= MARIO_VANISH_CAP | MARIO_CAP_ON_HEAD;
-            m->capTimer = VC_LEVEL_TIME;
+            // m->flags |= MARIO_VANISH_CAP | MARIO_CAP_ON_HEAD;
+            // m->capTimer = VC_LEVEL_TIME;
             break;
     }
 }

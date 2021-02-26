@@ -34,7 +34,7 @@ extern Vtx VB_rr_geo_0008F0_0x7019790[];
 extern Vtx VB_rr_geo_0008F0_0x7019880[];
 extern Vtx VB_rr_geo_0008F0_0x7019970[];
 extern Vtx VB_rr_geo_0008F0_0x7019a60[];
-extern const u8 rr_geo_0008F0__texture_07010900[];
-extern const u8 rr_geo_0008F0__texture_07011100[];
-extern const Gfx DL_rr_geo_0008F0_0x701b058[];
+extern u8 rr_geo_0008F0__texture_07010900[];
+extern u8 rr_geo_0008F0__texture_07011100[];
+extern Gfx DL_rr_geo_0008F0_0x701b058[];
 #endif

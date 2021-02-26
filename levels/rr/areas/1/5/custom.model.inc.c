@@ -247,7 +247,7 @@ Vtx VB_rr_geo_0006A8_0x70056f0[] = {
 {{{ -588, 0, -204 }, 0, { 990, 0 }, { 53, 76, 43, 255}}},
 };
 
-const Gfx DL_rr_geo_0006A8_0x7005c80[] = {
+Gfx DL_rr_geo_0006A8_0x7005c80[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPGeometryMode(G_LIGHTING, 0),
@@ -266,7 +266,7 @@ gsSPGeometryMode(0, G_LIGHTING),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_rr_geo_0006A8_0x70057f0[] = {
+Gfx DL_rr_geo_0006A8_0x70057f0[] = {
 gsDPSetTextureImage(0, 2, 1, rr_geo_0006A8__texture_09007000),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),
@@ -314,7 +314,7 @@ gsSP1Triangle(11, 14, 12, 0),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_rr_geo_0006A8_0x7005a48[] = {
+Gfx DL_rr_geo_0006A8_0x7005a48[] = {
 gsDPSetTextureImage(0, 2, 1, rr_geo_0006A8__texture_09001800),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),
@@ -351,7 +351,7 @@ gsSP2Triangles(0, 1, 2, 0,0, 2, 3, 0),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_rr_geo_0006A8_0x7005c18[] = {
+Gfx DL_rr_geo_0006A8_0x7005c18[] = {
 gsDPSetTextureImage(0, 2, 1, rr_geo_0006A8__texture_09000800),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),

@@ -63,7 +63,7 @@ ALIGNED8 static const Texture koopa_seg6_texture_06002648[] = {
 
 // 0x06002E48
 ALIGNED8 static const Texture koopa_seg6_texture_06002E48[] = {
-#include "actors/koopa/koopa_shell_back.rgba16.inc.c"
+#include "actors/koopa/koopa_with_shell_geo_0x6002e48_custom.rgba16.inc.c"
 };
 
 // 0x06003648

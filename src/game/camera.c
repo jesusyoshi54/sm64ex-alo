@@ -1191,6 +1191,9 @@ void mode_8_directions_camera(struct Camera *c) {
     }
     lakitu_zoom(400.f, 0x900);
     c->nextYaw = update_8_directions_camera(c, c->focus, pos);
+    if (gCurrLevelNum==LEVEL_WMOTR){
+		s8DirModeYawOffset=0x4000;
+	}
     c->pos[0] = pos[0];
     c->pos[2] = pos[2];
     sAreaYawChange = sAreaYaw - oldAreaYaw;
@@ -3033,7 +3036,7 @@ void update_camera(struct Camera *c) {
         // Only process R_TRIG if 'fixed' is not selected in the menu
         if (cam_select_alt_mode(0) == CAM_SELECTION_MARIO
 #ifdef BETTERCAMERA
-            && c->mode != CAMERA_MODE_NEWCAM
+            && c->mode != CAMERA_MODE_NEWCAM && gCurrLevelNum!=LEVEL_WMOTR
 #endif
             ) {
             if (gPlayer1Controller->buttonPressed & R_TRIG) {

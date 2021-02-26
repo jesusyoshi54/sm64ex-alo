@@ -68,14 +68,13 @@ RM2C will try to find the correct address after noticing the one it has is wrong
  Texture Scroll Object in level hmc area 1 at 0xe040550 has unrecognized address. Object Has been commented out.
  Texture Scroll Object in level sl area 1 at 0xe044d30 has unrecognized address. Object Has been commented out.
  Texture Scroll Object in level thi area 1 at 0xe037b80 has unrecognized address. Object Has been commented out.
- Texture Scroll Object in level bitdw area 1 at 0xe036660 has unrecognized address. Object Has been commented out.
- Texture Scroll Object in level bitdw area 1 at 0xe034e90 has unrecognized address. Object Has been commented out.
+
  Texture Scroll Object in level bitfs area 1 at 0xe07a8c0 has unrecognized address. Object Has been commented out.
  Texture Scroll Object in level lll area 1 at 0xe07b970 has unrecognized address. Object Has been commented out.
  Texture Scroll Object in level wmotr area 1 at 0xe027e60 has unrecognized address. Object Has been commented out.
  Texture Scroll Object in level wmotr area 1 at 0xe027e60 has unrecognized address. Object Has been commented out.
  Texture Scroll Object in level wmotr area 1 at 0xe0361d0 has unrecognized address. Object Has been commented out.
- Texture Scroll Object in level bowser_2 area 1 at 0xe01c070 has unrecognized address. Object Has been commented out.
+
 
 Known methods of crashing:
 *****************************************************************************

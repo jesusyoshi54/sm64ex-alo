@@ -845,7 +845,7 @@ Vtx VB_rr_geo_0008D8_0x7019a60[] = {
 {{{ -16640, 0, 90 }, 0, { -16640, 0 }, { 0, 120, 130, 140}}},
 };
 
-const Gfx DL_rr_geo_0008D8_0x701add8[] = {
+Gfx DL_rr_geo_0008D8_0x701add8[] = {
 gsDPSetTileSize(0, 0, 0, 124, 124),
 gsSPVertex(VB_rr_geo_0008D8_0x7016f40, 15, 0),
 gsSP1Triangle(12, 13, 14, 0),

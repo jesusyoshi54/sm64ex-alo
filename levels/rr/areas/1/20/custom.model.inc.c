@@ -2267,7 +2267,7 @@ Vtx VB_rr_geo_000818_0x70186a0[] = {
 {{{ 0, 0, 0 }, 0, { 0, 0 }, { 0, 0, 0, 255}}},
 };
 
-const Gfx DL_rr_geo_000818_0x7018990[] = {
+Gfx DL_rr_geo_000818_0x7018990[] = {
 gsSP2Triangles(0, 1, 2, 0,3, 4, 5, 0),
 gsSP2Triangles(6, 7, 8, 0,9, 10, 11, 0),
 gsSP1Triangle(12, 13, 14, 0),
