@@ -1822,7 +1822,6 @@ void Apply_Chaos_Mods(struct MarioState *m){
 	}
 	CurrVI++;
 	gMarioObject->header.gfx.sharedChild = gLoadedGraphNodes[MODEL_MARIO];
-	printf("%d %d\n",m->Chaos_Vals[0],m->Chaos_Vals[1]);
 	for (i=0;i<2;i++){
 		switch(m->Chaos_Vals[i]){
 			case Forward_Momentum:
