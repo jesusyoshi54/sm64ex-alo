@@ -11,7 +11,11 @@
 static struct ObjectHitbox sEnemyLakituHitbox = {
     /* interactType:      */ INTERACT_HIT_FROM_BELOW,
     /* downOffset:        */ 0,
+	#ifdef BUFFED_ENEMIES
+    /* damageOrCoinValue: */ 4,
+	#else
     /* damageOrCoinValue: */ 2,
+	#endif
     /* health:            */ 0,
     /* numLootCoins:      */ 5,
     /* radius:            */ 50,
@@ -111,7 +115,11 @@ static void enemy_lakitu_sub_act_no_spiny(void) {
 
             o->oEnemyLakituNumSpinies += 1;
             o->oSubAction = ENEMY_LAKITU_SUB_ACT_HOLD_SPINY;
-            o->oEnemyLakituSpinyCooldown = 30;
+			#ifdef BUFFED_ENEMIES
+			o->oEnemyLakituSpinyCooldown = 5;
+			#else
+			o->oEnemyLakituSpinyCooldown = 30;
+			#endif
         }
     }
 }
@@ -131,7 +139,11 @@ static void enemy_lakitu_sub_act_hold_spiny(void) {
              || (o->oDistanceToMario < 500.0f
                  && abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x2000)) {
         o->oSubAction = ENEMY_LAKITU_SUB_ACT_THROW_SPINY;
-        o->oEnemyLakituFaceForwardCountdown = 20;
+		#ifdef BUFFED_ENEMIES
+		o->oEnemyLakituFaceForwardCountdown = 5;
+		#else
+		o->oEnemyLakituFaceForwardCountdown = 20;
+		#endif
     }
 }
 

@@ -1044,7 +1044,18 @@ s32 play_mode_normal(void) {
 
     return 0;
 }
-
+#ifdef LEVEL_SELECT
+static char buf[32];
+static u8 LevelWarp=9;
+static u8 AreaWarp=1;
+static u8 WarpID=10;
+static u8 SelIndex=0;
+static u8 *LSScrolls[]={
+	&LevelWarp,
+	&AreaWarp,
+	&WarpID,
+};
+#endif
 s32 play_mode_paused(void) {
     if (gPauseScreenMode == 0) {
         set_menu_mode(RENDER_PAUSE_SCREEN);
@@ -1076,7 +1087,22 @@ s32 play_mode_paused(void) {
         game_exit();
     }
 #endif
-
+	//very cringe code
+	#ifdef LEVEL_SELECT
+	handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, &SelIndex, 0, 2);
+	handle_menu_scrolling(MENU_SCROLL_VERTICAL, LSScrolls[SelIndex], 0, 255);
+	sprintf(buf,"DEBUG L-L SELECT DUP to Warp\n");
+	print_text(32,188,buf);
+	sprintf(buf," LE-EL %d   AREA %d   ID %d",LevelWarp,AreaWarp,WarpID);
+	print_text(32,160,buf);
+	//star glyph
+	sprintf(buf,"-");
+	print_text(32+110*SelIndex,160,buf);
+	if (gPlayer1Controller->buttonPressed&U_JPAD){
+        initiate_warp(LevelWarp,AreaWarp,WarpID, 0);
+        fade_into_special_warp(0, 0);
+	}
+	#endif
     return 0;
 }
 
@@ -1273,6 +1299,10 @@ s32 init_level(void) {
     if (gMarioState->action == ACT_INTRO_CUTSCENE) {
         sound_banks_disable(SEQ_PLAYER_SFX, SOUND_BANKS_DISABLED_DURING_INTRO_CUTSCENE);
     }
+	#ifdef GREEN_DEMON
+	extern const BehaviorScript bhvHidden1upInPole[];
+	spawn_object(gMarioObject, MODEL_1UP, bhvHidden1upInPole);
+	#endif
 
     return 1;
 }
