@@ -8,7 +8,11 @@
 struct ObjectHitbox sSnufitHitbox = {
     /* interactType:      */ INTERACT_HIT_FROM_BELOW,
     /* downOffset:        */ 0,
+	#ifdef BUFFED_ENEMIES
+    /* damageOrCoinValue: */ 3,
+	#else
     /* damageOrCoinValue: */ 2,
+	#endif
     /* health:            */ 0,
     /* numLootCoins:      */ 2,
     /* radius:            */ 100,
@@ -20,7 +24,11 @@ struct ObjectHitbox sSnufitHitbox = {
 struct ObjectHitbox sSnufitBulletHitbox = {
     /* interactType:      */ INTERACT_SNUFIT_BULLET,
     /* downOffset:        */ 50,
+	#ifdef BUFFED_ENEMIES
+    /* damageOrCoinValue: */ 2,
+	#else
     /* damageOrCoinValue: */ 1,
+	#endif
     /* health:            */ 0,
     /* numLootCoins:      */ 0,
     /* radius:            */ 100,
@@ -77,13 +85,18 @@ void snufit_act_idle(void) {
     // if the game would not have already crashed.
     marioDist = (s32)(o->oDistanceToMario / 10.0f);
     if (o->oTimer > marioDist && o->oDistanceToMario < 800.0f) {
-        
+        	#ifdef BUFFED_ENEMIES
         // Controls an alternating scaling factor in a cos.
+        o->oSnufitBodyScalePeriod
+            = approach_s16_symmetric(o->oSnufitBodyScalePeriod, 0, 4000);
+        o->oSnufitBodyBaseScale
+            = approach_s16_symmetric(o->oSnufitBodyBaseScale, 600, 60);
+			#else
         o->oSnufitBodyScalePeriod
             = approach_s16_symmetric(o->oSnufitBodyScalePeriod, 0, 1500);
         o->oSnufitBodyBaseScale
             = approach_s16_symmetric(o->oSnufitBodyBaseScale, 600, 15);
-
+			#endif
         if ((s16) o->oSnufitBodyScalePeriod == 0 && o->oSnufitBodyBaseScale == 600) {
             o->oAction = SNUFIT_ACT_SHOOT;
             o->oSnufitBullets = 0;
