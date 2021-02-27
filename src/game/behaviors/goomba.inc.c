@@ -198,7 +198,7 @@ static void goomba_act_walk(void) {
 
                 o->oGoombaTargetYaw = o->oAngleToMario;
 				#ifdef BUFFED_ENEMIES
-                o->oGoombaRelativeSpeed = 40.0f;
+                o->oGoombaRelativeSpeed = 80.0f;
 				#else
                 o->oGoombaRelativeSpeed = 20.0f;
 				#endif

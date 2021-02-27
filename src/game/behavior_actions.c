@@ -274,3 +274,19 @@ s32 set_obj_anim_with_accel_and_sound(s16 a0, s16 a1, s32 a2) {
 #include "behaviors/strong_wind_particle.inc.c"
 #include "behaviors/sl_snowman_wind.inc.c"
 #include "behaviors/sl_walking_penguin.inc.c"
+
+#if INCLUDE_MOP
+#include "behaviors/FlipBlock.inc.c"
+#include "behaviors/NoteBlock.inc.c"
+#include "behaviors/SandBlock.inc.c"
+#include "behaviors/Spring.inc.c"
+#include "behaviors/ShrinkPlatform.inc.c"
+#include "behaviors/SwitchBlock.inc.c"
+#include "behaviors/Emitter.inc.c"
+#include "behaviors/FlipSwitch.inc.c"
+#include "behaviors/Checkpoint.inc.c"
+#include "behaviors/FlipSwap.inc.c"
+#include "behaviors/PSwitch.inc.c"
+#include "behaviors/GreenSwitchboard.inc.c"
+#include "behaviors/MovingRotating.inc.c"
+#endif

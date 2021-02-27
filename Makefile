@@ -52,6 +52,19 @@ Z_BTN_DRAIN ?= 0
 #For those hardcore players. Saving is disabled and the game force crashes when you get zero lives.
 HARDCORE ?= 0
 
+#Max HP is set to 1. For the sake of playability, water HP drain is removed in this mode.
+DAREDEVIL ?= 0
+#A 1 up spawns with you and chases you. Collecing it kills you
+GREEN_DEMON ?= 0
+#SR7 like badges. There is a wallkick badge, triple jump badge and mid air jump badge (I guess as an option to make things more exciting)
+MOVE_BADGES ?= 0
+#ASA Super mode basically. Can do two mid air jumps
+SUPER_MODE ?= 0
+
+#Debug stuff to make testing easier
+#inside pause menu of levels
+LEVEL_SELECT ?= 0
+
 # Build for original N64 (no pc code)
 TARGET_N64 = 1
 # Build and optimize for Raspberry Pi(s)
@@ -642,7 +655,7 @@ ifeq ($(COMPILER_N64),gcc)
 endif
 
 N64_CFLAGS := -nostdinc -I include/libc -DTARGET_N64 -D_LANGUAGE_C -DNO_LDIV
-CC_CFLAGS := -fno-builtin
+CC_CFLAGS := -fno-builtin -fno-toplevel-reorder
 
 INCLUDE_CFLAGS := -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I .
 
@@ -660,7 +673,7 @@ LDFLAGS := -T undefined_syms.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/
 ENDIAN_BITWIDTH := $(BUILD_DIR)/endian-and-bitwidth
 
 ifeq ($(COMPILER_N64),gcc)
-  CFLAGS := -march=vr4300 -mfix4300 -mabi=32 -mno-shared -G 0 $(COMMON_CFLAGS) -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I . -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
+  CFLAGS := -march=vr4300 -mfix4300 -mabi=32 -mno-shared -G 0 $(COMMON_CFLAGS) -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I . -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -fno-toplevel-reorder
 endif
 
 # Check for Puppycam option
@@ -725,6 +738,31 @@ endif
 ifeq ($(HARDCORE),1)
   CC_CHECK += -DHARDCORE
   CFLAGS += -DHARDCORE
+endif
+
+ifeq ($(DAREDEVIL),1)
+  CC_CHECK += -DDAREDEVIL
+  CFLAGS += -DDAREDEVIL
+endif
+
+ifeq ($(GREEN_DEMON),1)
+  CC_CHECK += -DGREEN_DEMON
+  CFLAGS += -DGREEN_DEMON
+endif
+
+ifeq ($(MOVE_BADGES),1)
+  CC_CHECK += -DMOVE_BADGES
+  CFLAGS += -DMOVE_BADGES
+endif
+
+ifeq ($(SUPER_MODE),1)
+  CC_CHECK += -DSUPER_MODE
+  CFLAGS += -DSUPER_MODE
+endif
+
+ifeq ($(LEVEL_SELECT),1)
+  CC_CHECK += -DLEVEL_SELECT
+  CFLAGS += -DLEVEL_SELECT
 endif
 
 # Check for extended options menu option
@@ -905,22 +943,22 @@ endif
 
 ifeq ($(WINDOWS_BUILD),1)
   CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
-  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv
+  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -fno-toplevel-reorder
 
 else ifeq ($(TARGET_WEB),1)
   CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -s USE_SDL=2
-  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -s USE_SDL=2
+  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -s USE_SDL=2 -fno-toplevel-reorder
 
 # Linux / Other builds below
 else
   CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
-  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv
+  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -fno-toplevel-reorder
 
 endif
 
 ifeq ($(TARGET_WII_U),1)
   CC_CHECK += -ffunction-sections $(MACHDEP) -ffast-math -D__WIIU__ -D__WUT__ $(INCLUDE)
-  CFLAGS += -ffunction-sections $(MACHDEP) -ffast-math -D__WIIU__ -D__WUT__ $(INCLUDE)
+  CFLAGS += -ffunction-sections $(MACHDEP) -ffast-math -D__WIIU__ -D__WUT__ $(INCLUDE) -fno-toplevel-reorder
 endif
 
 ifeq ($(TARGET_N3DS),1)
@@ -928,12 +966,12 @@ ifeq ($(TARGET_N3DS),1)
   LIBDIRS  := $(CTRULIB)
   export LIBPATHS  :=  $(foreach dir,$(LIBDIRS),-L$(dir)/lib)
   CC_CHECK += -mtp=soft -DARM11 -DosGetTime=n64_osGetTime -D_3DS -march=armv6k -mtune=mpcore -mfloat-abi=hard -mword-relocations -fomit-frame-pointer -ffast-math $(foreach dir,$(LIBDIRS),-I$(dir)/include)
-  CFLAGS += -mtp=soft -DARM11 -DosGetTime=n64_osGetTime -D_3DS -march=armv6k -mtune=mpcore -mfloat-abi=hard -mword-relocations -fomit-frame-pointer -ffast-math $(foreach dir,$(LIBDIRS),-I$(dir)/include)
+  CFLAGS += -mtp=soft -DARM11 -DosGetTime=n64_osGetTime -D_3DS -march=armv6k -mtune=mpcore -mfloat-abi=hard -mword-relocations -fomit-frame-pointer -ffast-math $(foreach dir,$(LIBDIRS),-I$(dir)/include) -fno-toplevel-reorder
 endif
 
 ifeq ($(TARGET_SWITCH),1)
   CC_CHECK := $(CC) $(NXARCH) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -D__SWITCH__=1
-  CFLAGS := $(NXARCH) $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -ftls-model=local-exec -fPIE -fwrapv -D__SWITCH__=1
+  CFLAGS := $(NXARCH) $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -ftls-model=local-exec -fPIE -fwrapv -D__SWITCH__=1 -fno-toplevel-reorder
 endif
 
 # Check for enhancement options
@@ -999,6 +1037,31 @@ endif
 ifeq ($(HARDCORE),1)
   CC_CHECK += -DHARDCORE
   CFLAGS += -DHARDCORE
+endif
+
+ifeq ($(DAREDEVIL),1)
+  CC_CHECK += -DDAREDEVIL
+  CFLAGS += -DDAREDEVIL
+endif
+
+ifeq ($(GREEN_DEMON),1)
+  CC_CHECK += -DGREEN_DEMON
+  CFLAGS += -DGREEN_DEMON
+endif
+
+ifeq ($(MOVE_BADGES),1)
+  CC_CHECK += -DMOVE_BADGES
+  CFLAGS += -DMOVE_BADGES
+endif
+
+ifeq ($(SUPER_MODE),1)
+  CC_CHECK += -DSUPER_MODE
+  CFLAGS += -DSUPER_MODE
+endif
+
+ifeq ($(LEVEL_SELECT),1)
+  CC_CHECK += -DLEVEL_SELECT
+  CFLAGS += -DLEVEL_SELECT
 endif
 
 ifeq ($(TEXTSAVES),1)
