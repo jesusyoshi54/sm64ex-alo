@@ -6029,12 +6029,16 @@ const BehaviorScript bhvRacingPenguin[] = {
         CALL_NATIVE(bhv_racing_penguin_update),
     END_LOOP(),
 };
-
+//LDD uses it for weird camera shit or something idk
 const BehaviorScript bhvPenguinRaceFinishLine[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_penguin_race_finish_line_update),
+		// #ifdef RM2C
+        // CALL_NATIVE(bhv_penguin_race_shortcut_check_update),
+		// #else
+        // CALL_NATIVE(bhv_penguin_race_finish_line_update),
+		// #endif
     END_LOOP(),
 };
 
@@ -6042,7 +6046,7 @@ const BehaviorScript bhvPenguinRaceShortcutCheck[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_penguin_race_shortcut_check_update),
+        // CALL_NATIVE(bhv_penguin_race_shortcut_check_update),
     END_LOOP(),
 };
 
