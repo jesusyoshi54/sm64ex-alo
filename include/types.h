@@ -6,7 +6,7 @@
 
 #include <ultra64.h>
 #include "macros.h"
-
+#include "sm64.h"
 
 // Certain functions are marked as having return values, but do not
 // actually return a value. This causes undefined behavior, which we'd rather
@@ -345,6 +345,10 @@ struct MarioState
     /*0xC0*/ f32 quicksandDepth;
     /*0xC4*/ f32 unkC4;
     /*0xc8*/ Vec3f platformDisplacement;    //for inertia
+	/*0xd4*/ u8 SelFallDmg; //For certain objects I don't want fall damage ever
+	#ifdef CHAOS_LITE
+	/*0xd5*/ u8 Chaos_Vals[2];
+	#endif
 };
 
 #endif // _SM64_TYPES_H_

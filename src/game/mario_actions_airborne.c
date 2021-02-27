@@ -17,7 +17,10 @@
 #ifdef BETTERCAMERA
 #include "bettercamera.h"
 #endif
-
+#ifdef SUPER_MODE
+u8 Super_Jump_Count=0;
+u8 Super_Can_Jump=0;
+#endif
 void play_flip_sounds(struct MarioState *m, s16 frame1, s16 frame2, s16 frame3) {
     s32 animFrame = m->marioObj->header.gfx.animInfo.animFrame;
     if (animFrame == frame1 || animFrame == frame2 || animFrame == frame3) {
@@ -52,10 +55,15 @@ s32 lava_boost_on_wall(struct MarioState *m) {
     if (m->forwardVel < 24.0f) {
         m->forwardVel = 24.0f;
     }
-
+	#ifdef DOUBLE_LAVA_DMG
+    if (!(m->flags & MARIO_METAL_CAP)) {
+        m->hurtCounter += (m->flags & MARIO_CAP_ON_HEAD) ? 24 : 36;
+    }
+	#else
     if (!(m->flags & MARIO_METAL_CAP)) {
         m->hurtCounter += (m->flags & MARIO_CAP_ON_HEAD) ? 12 : 18;
     }
+	#endif
 
     play_sound(SOUND_MARIO_ON_FIRE, m->marioObj->header.gfx.cameraToObject);
     update_mario_sound_and_camera(m);
@@ -63,6 +71,9 @@ s32 lava_boost_on_wall(struct MarioState *m) {
 }
 
 s32 check_fall_damage(struct MarioState *m, u32 hardFallAction) {
+	#ifdef SUPER_MODE
+	return FALSE;
+	#endif
     f32 fallHeight;
     f32 damageHeight;
 
@@ -70,6 +81,15 @@ s32 check_fall_damage(struct MarioState *m, u32 hardFallAction) {
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wtype-limits"
+
+
+	#if INCLUDE_MOP
+	if (m->SelFallDmg){
+		m->SelFallDmg=0;
+		return FALSE;
+	}
+	#endif
+
 
     //! Never true
     if (m->actionState == ACT_GROUND_POUND) {
@@ -367,6 +387,24 @@ void update_flying(struct MarioState *m) {
     m->slideVelX = m->vel[0];
     m->slideVelZ = m->vel[2];
 }
+#ifdef SUPER_MODE
+static void Check_Super_Jump(struct MarioState *m){
+	//Don't get caught on first frame or same frame
+	if ((m->framesSinceA == 0) && (Super_Jump_Count<2) && (Super_Can_Jump>1)){
+		m->vel[1]=45.0f;
+		Super_Jump_Count++;
+		Super_Can_Jump=0;
+		//I don't use set mario action because that fucks
+		if (Super_Jump_Count==1){
+			m->action = ACT_TRIPLE_JUMP;
+		}else{
+			m->action = ACT_SPECIAL_TRIPLE_JUMP;
+		}
+	}else if (m->framesSinceA > 0){
+		Super_Can_Jump+=1;
+	}
+}
+#endif
 
 u32 common_air_action_step(struct MarioState *m, u32 landAction, s32 animation, u32 stepArg) {
     u32 stepResult;
@@ -455,6 +493,9 @@ s32 act_jump(struct MarioState *m) {
     play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, 0);
     common_air_action_step(m, ACT_JUMP_LAND, MARIO_ANIM_SINGLE_JUMP,
                            AIR_STEP_CHECK_LEDGE_GRAB | AIR_STEP_CHECK_HANG);
+	#ifdef SUPER_MODE
+	Check_Super_Jump(m);
+	#endif
     return FALSE;
 }
 
@@ -474,11 +515,17 @@ s32 act_double_jump(struct MarioState *m) {
     play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, SOUND_MARIO_HOOHOO);
     common_air_action_step(m, ACT_DOUBLE_JUMP_LAND, animation,
                            AIR_STEP_CHECK_LEDGE_GRAB | AIR_STEP_CHECK_HANG);
-    return FALSE;
+	#ifdef SUPER_MODE
+	Check_Super_Jump(m);
+	#endif
+	return FALSE;
 }
 
 s32 act_triple_jump(struct MarioState *m) {
-    if (gSpecialTripleJump) {
+	#ifdef SUPER_MODE
+	Check_Super_Jump(m);
+	#endif
+	if (gSpecialTripleJump) {
         return set_mario_action(m, ACT_SPECIAL_TRIPLE_JUMP, 0);
     }
 
@@ -623,6 +670,10 @@ s32 act_wall_kick_air(struct MarioState *m) {
     if (m->input & INPUT_Z_PRESSED) {
         return set_mario_action(m, ACT_GROUND_POUND, 0);
     }
+	#ifdef SUPER_MODE
+	Super_Jump_Count=0;
+	Check_Super_Jump(m);
+	#endif
 
     play_mario_jump_sound(m);
     common_air_action_step(m, ACT_JUMP_LAND, MARIO_ANIM_SLIDEJUMP, AIR_STEP_CHECK_LEDGE_GRAB);
@@ -643,7 +694,9 @@ s32 act_long_jump(struct MarioState *m) {
         play_sound(SOUND_MARIO_HERE_WE_GO, m->marioObj->header.gfx.cameraToObject);
         m->actionState = 1;
     }
-
+	#ifdef SUPER_MODE
+	Check_Super_Jump(m);
+	#endif
     common_air_action_step(m, ACT_LONG_JUMP_LAND, animation, AIR_STEP_CHECK_LEDGE_GRAB);
 #ifdef RUMBLE_FEEDBACK
     if (m->action == ACT_LONG_JUMP_LAND) {
@@ -2109,59 +2162,17 @@ s32 act_special_triple_jump(struct MarioState *m) {
 
     switch (perform_air_step(m, 0)) {
         case AIR_STEP_LANDED:
-            #ifdef QOL_FIXES
-            if (m->actionState++ != 0) {
-                set_mario_action(m, ACT_FREEFALL_LAND_STOP, 0);
-            }
-            #else
             if (m->actionState++ == 0) {
                 m->vel[1] = 42.0f;
             } else {
                 set_mario_action(m, ACT_FREEFALL_LAND_STOP, 0);
             }
-            #endif
             play_mario_landing_sound(m, SOUND_ACTION_TERRAIN_LANDING);
             break;
         
-        #ifdef QOL_FIXES
-        case AIR_STEP_HIT_WALL:
-            if (m->forwardVel > 16.0f) {
-                mario_bonk_reflection(m, FALSE);
-                m->faceAngle[1] += 0x8000;
-
-                if (m->wall != NULL)
-                    set_mario_action(m, ACT_AIR_HIT_WALL, 0);
-                else {
-                    if (m->vel[1] > 0.0f)
-                        m->vel[1] = 0.0f;
-
-                    if (m->forwardVel >= 38.0f) {
-                        m->particleFlags |= PARTICLE_VERTICAL_STAR;
-                        set_mario_action(m, ACT_BACKWARD_AIR_KB, 0);
-                    } else {
-                        if (m->forwardVel > 8.0f)
-                            mario_set_forward_vel(m, -8.0f);
-                        return set_mario_action(m, ACT_SOFT_BONK, 0);
-                    }
-                }
-            } else
-                mario_set_forward_vel(m, 0.0f);
-
-            break;
-
-        case AIR_STEP_GRABBED_LEDGE:
-            set_mario_animation(m, MARIO_ANIM_IDLE_ON_LEDGE);
-            drop_and_set_mario_action(m, ACT_LEDGE_GRAB, 0);
-            break;
-
-        case AIR_STEP_GRABBED_CEILING:
-            set_mario_action(m, ACT_START_HANGING, 0);
-            break;
-        #else
         case AIR_STEP_HIT_WALL:                    
             mario_bonk_reflection(m, TRUE);
             break;
-        #endif
     }
 
     if (m->actionState == 0 || m->vel[1] > 0.0f) {
@@ -2234,6 +2245,10 @@ s32 mario_execute_airborne_action(struct MarioState *m) {
 #endif
 
     if (check_common_airborne_cancels(m)) {
+		#ifdef SUPER_MODE
+		Super_Can_Jump=0;
+		Super_Jump_Count=0;
+		#endif
         return TRUE;
     }
 

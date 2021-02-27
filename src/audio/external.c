@@ -2091,8 +2091,8 @@ static u8 begin_background_music_fade(u16 fadeDuration) {
             seq_player_fade_to_target_volume(SEQ_PLAYER_LEVEL, fadeDuration, targetVolume);
         } else {
 #if defined(VERSION_JP) || defined(VERSION_US)
-            gSequencePlayers[SEQ_PLAYER_LEVEL].volume =
-                sBackgroundMusicDefaultVolume[sCurrentBackgroundMusicSeqId] / 127.0f;
+            // gSequencePlayers[SEQ_PLAYER_LEVEL].volume =
+                // sBackgroundMusicDefaultVolume[sCurrentBackgroundMusicSeqId] / 127.0f;
 #endif
             seq_player_fade_to_normal_volume(SEQ_PLAYER_LEVEL, fadeDuration);
         }

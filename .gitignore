@@ -73,6 +73,7 @@ sm64config.txt
 !/levels/**/*custom*/**/*.png
 !/actors/**/*custom*.png
 !/actors/**/*custom*/**/*.png
+!/actors/**/*MOP*/**/*.png
 !/textures/**/*custom*.png
 !/textures/**/*custom*/**/*.png
 !/sound/**/*custom*.m64
