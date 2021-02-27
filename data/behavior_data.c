@@ -6034,7 +6034,11 @@ const BehaviorScript bhvPenguinRaceFinishLine[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     BEGIN_LOOP(),
+		#ifdef RM2C
+        CALL_NATIVE(bhv_penguin_race_shortcut_check_update),
+		#else
         CALL_NATIVE(bhv_penguin_race_finish_line_update),
+		#endif
     END_LOOP(),
 };
 
