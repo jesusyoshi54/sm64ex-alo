@@ -1299,6 +1299,10 @@ s32 init_level(void) {
     if (gMarioState->action == ACT_INTRO_CUTSCENE) {
         sound_banks_disable(SEQ_PLAYER_SFX, SOUND_BANKS_DISABLED_DURING_INTRO_CUTSCENE);
     }
+	#ifdef GREEN_DEMON
+	extern const BehaviorScript bhvHidden1upInPole[];
+	spawn_object(gMarioObject, MODEL_1UP, bhvHidden1upInPole);
+	#endif
 
     return 1;
 }

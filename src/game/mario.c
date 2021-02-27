@@ -1243,7 +1243,15 @@ void squish_mario_model(struct MarioState *m) {
             }
             else {
 #endif
-                vec3f_set(m->marioObj->header.gfx.scale, 1.0f, 1.0f, 1.0f);
+                #ifdef CHAOS_LITE
+				if (m->Chaos_Vals[0]<5 | m->Chaos_Vals[1]<5){
+					
+				}else{
+					vec3f_set(m->marioObj->header.gfx.scale, 1.0f, 1.0f, 1.0f);
+				}
+				#else
+				vec3f_set(m->marioObj->header.gfx.scale, 1.0f, 1.0f, 1.0f);
+				#endif
 #ifdef CHEATS_ACTIONS
             }
 #endif      
@@ -1506,24 +1514,29 @@ void set_submerged_cam_preset_and_spawn_bubbles(struct MarioState *m) {
 /**
  * Both increments and decrements Mario's HP.
  */
+#ifdef DAREDEVIL
+#define MAXHP 0x180
+#else
+#define MAXHP 0x880
+#endif
 void update_mario_health(struct MarioState *m) {
     s32 terrainIsSnow;
-	#ifdef DRAIN_HP_CONSTANT
-	m->health -= 1;
-	#endif
-	#ifdef A_BTN_DRAIN
-	if (gPlayer1Controller->buttonPressed&A_BUTTON)
-		m->health -= 0x100;
-	#endif
-	#ifdef Z_BTN_DRAIN
-	if (gPlayer1Controller->buttonPressed&B_BUTTON)
-		m->health -= 0x100;
-	#endif
-	#ifdef B_BTN_DRAIN
-	if (gPlayer1Controller->buttonPressed&Z_TRIG)
-		m->health -= 0x100;
-	#endif
     if (m->health >= 0x100) {
+		#ifdef DRAIN_HP_CONSTANT
+		m->health -= 1;
+		#endif
+		#ifdef A_BTN_DRAIN
+		if (gPlayer1Controller->buttonPressed&A_BUTTON)
+			m->health -= 0x100;
+		#endif
+		#ifdef B_BTN_DRAIN
+		if (gPlayer1Controller->buttonPressed&B_BUTTON)
+			m->health -= 0x100;
+		#endif
+		#ifdef Z_BTN_DRAIN
+		if (gPlayer1Controller->buttonPressed&Z_TRIG)
+			m->health -= 0x100;
+		#endif
         // When already healing or hurting Mario, Mario's HP is not changed any more here.
         if (((u32) m->healCounter | (u32) m->hurtCounter) == 0) {
             if ((m->input & INPUT_IN_POISON_GAS) && !(m->action & ACT_FLAG_INTANGIBLE)) {
@@ -1534,7 +1547,10 @@ void update_mario_health(struct MarioState *m) {
                 if ((m->action & ACT_FLAG_SWIMMING) && !(m->action & ACT_FLAG_INTANGIBLE)) {
                     terrainIsSnow = (m->area->terrainType & TERRAIN_MASK) == TERRAIN_SNOW;
 
-                    // When Mario is near the water surface, recover health (unless in snow),
+                    //Can't drain HP in water for daredevil because that would remove swimming entirely basically
+					#ifdef DAREDEVIL
+					#else
+					// When Mario is near the water surface, recover health (unless in snow),
                     // when in snow terrains lose 3 health.
                     // If using the debug level select, do not lose any HP to water.
                     if ((m->pos[1] >= (m->waterLevel - 140)) && !terrainIsSnow) {
@@ -1542,6 +1558,7 @@ void update_mario_health(struct MarioState *m) {
                     } else if (!gDebugLevelSelect) {
                         m->health -= (terrainIsSnow ? 3 : 1);
                     }
+					#endif
                 }
             }
         }
@@ -1555,8 +1572,8 @@ void update_mario_health(struct MarioState *m) {
             m->hurtCounter--;
         }
 
-        if (m->health > 0x880) {
-            m->health = 0x880;
+		if (m->health > MAXHP) {
+            m->health = MAXHP;
         }
         if (m->health < 0x100) {
             m->health = 0xFF;
@@ -1763,6 +1780,99 @@ void queue_rumble_particles(void) {
 }
 #endif
 
+
+#ifdef CHAOS_LITE
+//list of edits
+enum Chaos_Lite_Edit
+{
+	Fat_Mario = 1,
+	Giant_Mario = 2,
+	Small_Mario = 3,
+	Skinny_Mario = 4,
+	Remove_Cap = 5,
+	Halved_Gravity = 6,
+	Double_Gravity = 7,
+	Forward_Momentum = 8,
+	Backwards_Momentum = 9,
+	Always_Crawl = 10,
+	Sign_Mario = 11,
+	Walk_Fast = 12,
+	Walk_Slow = 13,
+	All_Caps = 14,
+	Double_Speed = 15
+};
+u8 Grav_Timer=0;
+static u32 LastVI=0;
+static u32 CurrVI=350;
+extern f32 random_float(void);
+void ApplyRandChaosEdit(struct MarioState *m){
+	u8 newChaos=random_u16()&15;
+	m->Chaos_Vals[1] = m->Chaos_Vals[0];
+	do{
+		m->Chaos_Vals[0] = newChaos;
+		newChaos=random_u16()&15;
+	}while(newChaos==m->Chaos_Vals[0]);
+}
+void Apply_Chaos_Mods(struct MarioState *m){
+	u8 i=0;
+	f32 tempV;
+	if (CurrVI-LastVI>450){
+		LastVI=CurrVI;
+		ApplyRandChaosEdit(m);
+	}
+	CurrVI++;
+	gMarioObject->header.gfx.sharedChild = gLoadedGraphNodes[MODEL_MARIO];
+	printf("%d %d\n",m->Chaos_Vals[0],m->Chaos_Vals[1]);
+	for (i=0;i<2;i++){
+		switch(m->Chaos_Vals[i]){
+			case Forward_Momentum:
+				tempV = m->forwardVel;
+				mario_set_forward_vel(m,16.0f);
+				// m->forwardVel = tempV;
+				break;
+			case Backwards_Momentum:
+				tempV = m->forwardVel;
+				mario_set_forward_vel(m,-16.0f);
+				// m->forwardVel = tempV;
+				break;
+			case Giant_Mario:
+				vec3f_set(m->marioObj->header.gfx.scale, 2.5f, 2.5f, 2.5f);
+				break;
+			case Fat_Mario:
+				vec3f_set(m->marioObj->header.gfx.scale, 4.5f, 1.0f, 4.5f);
+				break;
+			case Small_Mario:
+				vec3f_set(m->marioObj->header.gfx.scale, 0.4f, 0.4f, 0.4f);
+				break;
+			case Skinny_Mario:
+				vec3f_set(m->marioObj->header.gfx.scale, 0.25f, 1.0f, 0.25f);
+				break;
+			case Remove_Cap:
+				m->flags &= ~MARIO_CAP_ON_HEAD;
+				break;
+			//no case needed for double grav
+			case Halved_Gravity:
+				Grav_Timer = Grav_Timer^1;
+				break;
+			case Always_Crawl:
+				m->input |= INPUT_Z_DOWN;
+				break;
+			case Sign_Mario:
+				gMarioObject->header.gfx.sharedChild = gLoadedGraphNodes[MODEL_WOODEN_SIGNPOST];
+				break;
+			case All_Caps:
+				m->flags |= 10;
+				break;
+			case Double_Speed:
+				m->forwardVel*=2;
+				break;
+
+		}
+		
+	}
+}
+#endif
+
 /**
  * Main function for executing Mario's behavior.
  */
@@ -1799,6 +1909,17 @@ s32 execute_mario_action(UNUSED struct Object *o) {
         if (gMarioState->floor == NULL) {
             return 0;
         }
+		#ifdef SUPER_MODE
+		if(gMarioState->action & ACT_GROUP_MASK!=ACT_GROUP_AIRBORNE) {
+		extern u8 Super_Jump_Count;
+		extern u8 Super_Can_Jump;
+		Super_Can_Jump=0;
+		Super_Jump_Count=0;
+		}
+		#endif
+		#ifdef CHAOS_LITE
+		Apply_Chaos_Mods(gMarioState);
+		#endif
 
         // The function can loop through many action shifts in one frame,
         // which can lead to unexpected sub-frame behavior. Could potentially hang
