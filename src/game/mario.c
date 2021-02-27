@@ -1827,12 +1827,12 @@ void Apply_Chaos_Mods(struct MarioState *m){
 		switch(m->Chaos_Vals[i]){
 			case Forward_Momentum:
 				tempV = m->forwardVel;
-				mario_set_forward_vel(m,16.0f);
+				mario_set_forward_vel(m,32.0f);
 				// m->forwardVel = tempV;
 				break;
 			case Backwards_Momentum:
 				tempV = m->forwardVel;
-				mario_set_forward_vel(m,-16.0f);
+				mario_set_forward_vel(m,-32.0f);
 				// m->forwardVel = tempV;
 				break;
 			case Giant_Mario:
@@ -1861,10 +1861,15 @@ void Apply_Chaos_Mods(struct MarioState *m){
 				gMarioObject->header.gfx.sharedChild = gLoadedGraphNodes[MODEL_WOODEN_SIGNPOST];
 				break;
 			case All_Caps:
-				m->flags |= 10;
+				m->flags |= 14;
+				m->capTimer=30;
 				break;
 			case Double_Speed:
-				m->forwardVel*=2;
+				if(m->forwardVel>0){
+					m->forwardVel+=32.0f;
+				}else{
+					m->forwardVel-=32.0f;
+				}
 				break;
 
 		}
