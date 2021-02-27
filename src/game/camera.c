@@ -457,6 +457,7 @@ s32 update_boss_fight_camera(struct Camera *c, Vec3f, Vec3f);
 s32 update_parallel_tracking_camera(struct Camera *c, Vec3f, Vec3f);
 s32 update_fixed_camera(struct Camera *c, Vec3f, Vec3f);
 s32 update_8_directions_camera(struct Camera *c, Vec3f, Vec3f);
+s32 update_2_directions_camera(struct Camera *c, Vec3f, Vec3f);
 s32 update_slide_or_0f_camera(struct Camera *c, Vec3f, Vec3f);
 s32 update_spiral_stairs_camera(struct Camera *c, Vec3f, Vec3f);
 
@@ -477,6 +478,7 @@ CameraTransition sModeTransitions[] = {
     update_parallel_tracking_camera,
     update_fixed_camera,
     update_8_directions_camera,
+    update_2_directions_camera,
     update_slide_or_0f_camera,
     update_mario_camera,
     update_spiral_stairs_camera
@@ -908,6 +910,24 @@ s32 update_radial_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
 
     return camYaw;
 }
+/**
+ * Update the camera during 2 directional mode
+ */
+s32 update_2_directions_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
+    s16 camYaw = s8DirModeBaseYaw + s8DirModeYawOffset;
+    s16 pitch = look_down_slopes(camYaw);
+    f32 posY;
+    f32 focusY;
+    f32 yOff = 125.f;
+    f32 baseDist = 1000.f;
+
+    sAreaYaw = camYaw;
+    calc_y_to_curr_floor(&posY, 1.f, 200.f, &focusY, 0.9f, 200.f);
+    focus_on_mario(focus, pos, posY + yOff, focusY + yOff, sLakituDist + baseDist, pitch, camYaw);
+    pan_ahead_of_player(c);
+
+    return camYaw;
+}
 
 /**
  * Update the camera during 8 directional mode
@@ -1156,6 +1176,23 @@ void mode_radial_camera(struct Camera *c) {
     }
     set_camera_height(c, pos[1]);
     pan_ahead_of_player(c);
+}
+/**
+ * A mode that only has 1 camera angle.
+ */
+void mode_2_directions_camera(struct Camera *c) {
+    Vec3f pos;
+    s16 oldAreaYaw = sAreaYaw;
+
+    radial_camera_input(c, 0.f);
+
+    lakitu_zoom(400.f, 0x900);
+    c->nextYaw = update_2_directions_camera(c, c->focus, pos);
+	s8DirModeYawOffset=0x4000;
+    c->pos[0] = pos[0];
+    c->pos[2] = pos[2];
+    sAreaYawChange = sAreaYaw - oldAreaYaw;
+    set_camera_height(c, pos[1]);
 }
 
 /**
@@ -3035,7 +3072,7 @@ void update_camera(struct Camera *c) {
 #ifdef BETTERCAMERA
             && c->mode != CAMERA_MODE_NEWCAM
 #endif
-            ) {
+            && c->mode != CAMERA_MODE_2_DIRECTIONS) {
             if (gPlayer1Controller->buttonPressed & R_TRIG) {
                 if (set_cam_angle(0) == CAM_ANGLE_LAKITU) {
                     set_cam_angle(CAM_ANGLE_MARIO);
@@ -3152,6 +3189,9 @@ void update_camera(struct Camera *c) {
 
                 case CAMERA_MODE_8_DIRECTIONS:
                     mode_8_directions_camera(c);
+                    break;
+				case CAMERA_MODE_2_DIRECTIONS:
+                    mode_2_directions_camera(c);
                     break;
 
                 case CAMERA_MODE_RADIAL:

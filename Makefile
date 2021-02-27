@@ -51,6 +51,14 @@ B_BTN_DRAIN ?= 0
 Z_BTN_DRAIN ?= 0
 #For those hardcore players. Saving is disabled and the game force crashes when you get zero lives.
 HARDCORE ?= 0
+#Max HP is set to 1. For the sake of playability, water HP drain is removed in this mode.
+DAREDEVIL ?= 0
+#A 1 up spawns with you and chases you. Collecing it kills you
+GREEN_DEMON ?= 0
+#SR7 like badges. There is a wallkick badge, triple jump badge and mid air jump badge (I guess as an option to make things more exciting)
+MOVE_BADGES ?= 0
+#ASA Super mode basically. Can do two mid air jumps
+SUPER_MODE ?= 0
 
 #Debug stuff to make testing easier
 #inside pause menu of levels
@@ -731,6 +739,26 @@ ifeq ($(HARDCORE),1)
   CFLAGS += -DHARDCORE
 endif
 
+ifeq ($(DAREDEVIL),1)
+  CC_CHECK += -DDAREDEVIL
+  CFLAGS += -DDAREDEVIL
+endif
+
+ifeq ($(GREEN_DEMON),1)
+  CC_CHECK += -DGREEN_DEMON
+  CFLAGS += -DGREEN_DEMON
+endif
+
+ifeq ($(MOVE_BADGES),1)
+  CC_CHECK += -DMOVE_BADGES
+  CFLAGS += -DMOVE_BADGES
+endif
+
+ifeq ($(SUPER_MODE),1)
+  CC_CHECK += -DSUPER_MODE
+  CFLAGS += -DSUPER_MODE
+endif
+
 ifeq ($(LEVEL_SELECT),1)
   CC_CHECK += -DLEVEL_SELECT
   CFLAGS += -DLEVEL_SELECT
@@ -1008,6 +1036,26 @@ endif
 ifeq ($(HARDCORE),1)
   CC_CHECK += -DHARDCORE
   CFLAGS += -DHARDCORE
+endif
+
+ifeq ($(DAREDEVIL),1)
+  CC_CHECK += -DDAREDEVIL
+  CFLAGS += -DDAREDEVIL
+endif
+
+ifeq ($(GREEN_DEMON),1)
+  CC_CHECK += -DGREEN_DEMON
+  CFLAGS += -DGREEN_DEMON
+endif
+
+ifeq ($(MOVE_BADGES),1)
+  CC_CHECK += -DMOVE_BADGES
+  CFLAGS += -DMOVE_BADGES
+endif
+
+ifeq ($(SUPER_MODE),1)
+  CC_CHECK += -DSUPER_MODE
+  CFLAGS += -DSUPER_MODE
 endif
 
 ifeq ($(LEVEL_SELECT),1)

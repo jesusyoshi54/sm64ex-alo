@@ -1,5 +1,6 @@
 //This is a series of defines to edit commonly changed parameters in romhacks
 //These are commonly referred to as tweaks
+
 #define MARIO_START_LIVES 10
 #define INFINITE_LIVES 201991066
 #define START_LEVEL 16
@@ -8,6 +9,15 @@
 #define EXIT_COURSE 26, 1, 69
 #define FALL_DAMAGE 192
 #define STAR_MILESTONES 1, 3, 8, 30, 50, 70
+
+#define KING_BOMB_FVEL 3.0f
+#define KING_BOMB_YAWVEL 256
+#define KING_BOMB_HEALTH 3
+#define KING_WHOMP_HEALTH 3
+#define KOOPA_SPEED_RACE_END 8.0f
+#define KOOPA_SPEED_THI 7.5f
+#define KOOPA_SPEED_BOB 4.0f
+
 #define MIPS1_STAR_REQ 15
 #define MIPS2_STAR_REQ 100
 #define TOAD_STAR_1_REQUIREMENT 25
