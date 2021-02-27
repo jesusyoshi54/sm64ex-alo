@@ -10,7 +10,7 @@
 
 #include "make_const_nonconst.h"
 
+#include "levels/wdw/textureNew.inc.c"
 #include "levels/wdw/areas/1/movtextNew.inc.c"
 #include "levels/wdw/areas/1/custom.model.inc.c"
 #include "levels/wdw/areas/1/custom.collision.inc.c"
-#include "levels/wdw/textureNew.inc.c"

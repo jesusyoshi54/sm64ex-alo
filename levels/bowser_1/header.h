@@ -3,7 +3,7 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_bowser_1_1_0x35c1700[];
-extern const Gfx DL_bowser_1_1_0xe016c40[];
+extern Gfx DL_bowser_1_1_0xe016c40[];
 extern const Collision col_bowser_1_1_0xe01a210[];
 extern const LevelScript level_bowser_1_custom_entry[];
 extern const LevelScript local_area_bowser_1_1_[];

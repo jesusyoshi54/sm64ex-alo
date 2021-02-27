@@ -18701,17 +18701,17 @@ Vtx VB_bitdw_1_0xe04ed20[] = {
 {{{ 0, 0, 0 }, 0, { 0, 0 }, { 0, 0, 0, 255}}},
 };
 
-const Light_t Light_bitdw_1_0xe000000 = {
+Light_t Light_bitdw_1_0xe000000 = {
 { 255, 255, 255}, 0, { 255, 255, 255}, 0, { 127, 127, 127}, 0
 };
 
-const Ambient_t Light_bitdw_1_0xe000008 = {
+Ambient_t Light_bitdw_1_0xe000008 = {
 {127, 127, 127}, 0, {127, 127, 127}, 0
 };
 
-const Gfx DL_bitdw_1_0xe04ee10[] = {
+Gfx DL_bitdw_1_0xe04ee10[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -23139,10 +23139,10 @@ gsSPTexture(65535, 65535, 0, 0, 0),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_bitdw_1_0xe0670b8[] = {
+Gfx DL_bitdw_1_0xe0670b8[] = {
 gsDPPipeSync(),
 gsDPSetEnvColor(255, 255, 255, 154),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, TEXEL0, 0, 0, ENVIRONMENT),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL1, 0, 0, ENVIRONMENT,TEXEL0, 0, SHADE, 0, TEXEL1, 0, 0, ENVIRONMENT),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -23170,7 +23170,7 @@ gsSPVertex(VB_bitdw_1_0xe024a20, 15, 0),
 gsSP1Triangle(0, 1, 2, 0),
 gsSPTexture(65535, 65535, 0, 0, 0),
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPEndDisplayList(),
 };
 

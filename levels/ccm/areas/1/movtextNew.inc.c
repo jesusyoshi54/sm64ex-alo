@@ -10,7 +10,8 @@ const struct MovtexQuadCollection ccm_1_Movtex_0[] = {
 {0,ccm_1_Movtex_0_0},
 {1,ccm_1_Movtex_1_0},
 {-1, NULL},
-};const struct MovtexQuadCollection ccm_1_Movtex_1[] = {
+};
+const struct MovtexQuadCollection ccm_1_Movtex_1[] = {
 {0,ccm_1_Movtex_0_1},
 {1,ccm_1_Movtex_1_1},
 {-1, NULL},

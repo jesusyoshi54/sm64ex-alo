@@ -3,8 +3,8 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_wf_1_0x2d81700[];
-extern const Gfx DL_wf_1_0xe0653f0[];
-extern const Gfx DL_wf_1_0xe08fb90[];
+extern Gfx DL_wf_1_0xe0653f0[];
+extern Gfx DL_wf_1_0xe08fb90[];
 extern const Collision col_wf_1_0xe082700[];
 extern const LevelScript level_wf_custom_entry[];
 extern const LevelScript local_area_wf_1_[];

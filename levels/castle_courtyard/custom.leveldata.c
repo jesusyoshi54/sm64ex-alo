@@ -10,7 +10,7 @@
 
 #include "make_const_nonconst.h"
 
+#include "levels/castle_courtyard/textureNew.inc.c"
 #include "levels/castle_courtyard/areas/1/movtextNew.inc.c"
 #include "levels/castle_courtyard/areas/1/custom.model.inc.c"
 #include "levels/castle_courtyard/areas/1/custom.collision.inc.c"
-#include "levels/castle_courtyard/textureNew.inc.c"

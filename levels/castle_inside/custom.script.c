@@ -179,7 +179,7 @@ OBJECT_WITH_ACTS(124,6765,-5986,14862,0,178,0,0x2b0000, bhvMessagePanel,31),
 OBJECT_WITH_ACTS(0,20281,-6000,12311,0,0,0,0x0, bhvGoombaTripletSpawner,31),
 OBJECT_WITH_ACTS(0,18789,-1225,4809,0,0,0,0x0, bhvGoombaTripletSpawner,31),
 OBJECT_WITH_ACTS(0,7459,-5986,7219,0,0,0,0x20000, bhvCoinFormation,31),
-OBJECT_WITH_ACTS(0,32,5,120,0,0,0,0, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,32,5,120,6,0,0,0, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_castle_inside_1_[] = {

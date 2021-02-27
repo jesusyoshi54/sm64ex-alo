@@ -3,8 +3,8 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_castle_grounds_1_0x2281700[];
-extern const Gfx DL_castle_grounds_1_0xe05a330[];
-extern const Gfx DL_castle_grounds_1_0xe06c5a0[];
+extern Gfx DL_castle_grounds_1_0xe05a330[];
+extern Gfx DL_castle_grounds_1_0xe06c5a0[];
 extern const Collision col_castle_grounds_1_0xe065f20[];
 extern const LevelScript level_castle_grounds_custom_entry[];
 extern const LevelScript local_area_castle_grounds_1_[];

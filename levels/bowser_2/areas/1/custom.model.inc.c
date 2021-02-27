@@ -6191,6 +6191,24 @@ Vtx VB_bowser_2_1_0xe01c1a0[] = {
 {{{ -7215, 7767, 6912 }, 0, { -2064, 952 }, { 172, 0, 94, 255}}},
 };
 
+Vtx VB_bowser_2_1_0xe01c290[] = {
+{{{ -1297, 17968, 1356 }, 0, { 593, -3663 }, { 0, 127, 0, 255}}},
+{{{ -1878, 17968, -1846 }, 0, { -969, 4945 }, { 0, 127, 0, 255}}},
+{{{ -1878, 17968, 1356 }, 0, { -969, -3663 }, { 0, 127, 0, 255}}},
+{{{ -1878, 17968, -1846 }, 0, { -969, 4945 }, { 0, 127, 0, 255}}},
+{{{ -1297, 17968, 1356 }, 0, { 593, -3663 }, { 0, 127, 0, 255}}},
+{{{ -1314, 17968, -1846 }, 0, { 548, 4945 }, { 0, 127, 0, 255}}},
+{{{ -1314, 17968, -1846 }, 0, { -3548, 4945 }, { 0, 127, 0, 255}}},
+{{{ -1297, 17968, 1356 }, 0, { -3503, -3663 }, { 0, 127, 0, 255}}},
+{{{ -545, 17968, -1626 }, 0, { -1481, 4356 }, { 0, 127, 0, 255}}},
+{{{ -545, 17968, -1626 }, 0, { -1481, 4356 }, { 0, 127, 0, 255}}},
+{{{ -1297, 17968, 1356 }, 0, { -3503, -3663 }, { 0, 127, 0, 255}}},
+{{{ -543, 17968, 1181 }, 0, { -1476, -3191 }, { 0, 127, 0, 255}}},
+{{{ -545, 17968, -1626 }, 0, { -1481, 4356 }, { 0, 127, 0, 255}}},
+{{{ -543, 17968, 1181 }, 0, { -1476, -3191 }, { 0, 127, 0, 255}}},
+{{{ -210, 17968, -241 }, 0, { -583, 634 }, { 0, 127, 0, 255}}},
+};
+
 Vtx VB_bowser_2_1_0xe01c380[] = {
 {{{ -6824, 7706, 7775 }, 0, { 1390, -2189 }, { 0, 129, 0, 255}}},
 {{{ -9255, 7706, 8791 }, 0, { 3350, -3008 }, { 0, 129, 0, 255}}},
@@ -6461,35 +6479,17 @@ Vtx VB_bowser_2_1_0xe01d0a0[] = {
 {{{ 0, 0, 0 }, 0, { 0, 0 }, { 0, 0, 0, 255}}},
 };
 
-Vtx VB_bowser_2_1_0xe01c290[] = {
-{{{ -1297, 17968, 1356 }, 0, { 593, -3663 }, { 0, 127, 0, 255}}},
-{{{ -1878, 17968, -1846 }, 0, { -969, 4945 }, { 0, 127, 0, 255}}},
-{{{ -1878, 17968, 1356 }, 0, { -969, -3663 }, { 0, 127, 0, 255}}},
-{{{ -1878, 17968, -1846 }, 0, { -969, 4945 }, { 0, 127, 0, 255}}},
-{{{ -1297, 17968, 1356 }, 0, { 593, -3663 }, { 0, 127, 0, 255}}},
-{{{ -1314, 17968, -1846 }, 0, { 548, 4945 }, { 0, 127, 0, 255}}},
-{{{ -1314, 17968, -1846 }, 0, { -3548, 4945 }, { 0, 127, 0, 255}}},
-{{{ -1297, 17968, 1356 }, 0, { -3503, -3663 }, { 0, 127, 0, 255}}},
-{{{ -545, 17968, -1626 }, 0, { -1481, 4356 }, { 0, 127, 0, 255}}},
-{{{ -545, 17968, -1626 }, 0, { -1481, 4356 }, { 0, 127, 0, 255}}},
-{{{ -1297, 17968, 1356 }, 0, { -3503, -3663 }, { 0, 127, 0, 255}}},
-{{{ -543, 17968, 1181 }, 0, { -1476, -3191 }, { 0, 127, 0, 255}}},
-{{{ -545, 17968, -1626 }, 0, { -1481, 4356 }, { 0, 127, 0, 255}}},
-{{{ -543, 17968, 1181 }, 0, { -1476, -3191 }, { 0, 127, 0, 255}}},
-{{{ -210, 17968, -241 }, 0, { -583, 634 }, { 0, 127, 0, 255}}},
-};
-
-const Light_t Light_bowser_2_1_0xe000000 = {
+Light_t Light_bowser_2_1_0xe000000 = {
 { 255, 255, 255}, 0, { 255, 255, 255}, 0, { 127, 127, 127}, 0
 };
 
-const Ambient_t Light_bowser_2_1_0xe000008 = {
+Ambient_t Light_bowser_2_1_0xe000008 = {
 {127, 127, 127}, 0, {127, 127, 127}, 0
 };
 
-const Gfx DL_bowser_2_1_0xe01d190[] = {
+Gfx DL_bowser_2_1_0xe01d190[] = {
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
 gsDPLoadSync(),
@@ -8040,16 +8040,16 @@ gsDPPipeSync(),
 gsDPSetCycleType(G_CYC_1CYCLE),
 gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_NOOP2),
 gsSPGeometryMode(G_FOG, 0),
-gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE,0, 0, 0, SHADE, 0, 0, 0, SHADE),
 gsSPGeometryMode(0, G_CULL_BACK|G_LIGHTING),
 gsSPEndDisplayList(),
 };
 
-const Gfx DL_bowser_2_1_0xe025a48[] = {
+Gfx DL_bowser_2_1_0xe025a48[] = {
 gsDPPipeSync(),
-// gsDPSetDepthSource(0),
+gsDPSetDepthSource(0),
 gsSPGeometryMode(0, G_FOG),
-gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0,0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
 gsSPGeometryMode(G_LIGHTING, 0),
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsDPTileSync(),
@@ -8077,10 +8077,10 @@ gsSPTexture(65535, 65535, 0, 0, 0),
 gsDPPipeSync(),
 gsDPSetCycleType(G_CYC_1CYCLE),
 gsSPGeometryMode(G_FOG, 0),
-gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, SHADE,0, 0, 0, SHADE, 0, 0, 0, SHADE),
 gsSPGeometryMode(0, G_CULL_BACK|G_LIGHTING),
 gsDPPipeSync(),
-gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
+gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE,TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE),
 gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_NOOP2),
 gsSPEndDisplayList(),
 };

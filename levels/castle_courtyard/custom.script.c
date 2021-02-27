@@ -164,8 +164,8 @@ OBJECT_WITH_ACTS(22,-15211,3518,-5246,0,0,0,0x280000, bhvWarpPipe,31),
 OBJECT_WITH_ACTS(22,-8897,2202,-11902,0,0,0,0x320000, bhvWarpPipe,31),
 OBJECT_WITH_ACTS(0,-6326,208,-20233,0,0,0,0x510000, bhvDeathWarp,31),
 OBJECT_WITH_ACTS(0,-6326,208,-20233,0,0,0,0x520000, bhvPaintingStarCollectWarp,31),
-OBJECT_WITH_ACTS(0,16,5,96,0,0,0,5, editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,64,5,12,0,0,0,6, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,96,9,0,0,5, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,5,12,12,0,0,6, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_castle_courtyard_1_[] = {

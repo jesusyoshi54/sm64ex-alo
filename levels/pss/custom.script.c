@@ -147,9 +147,9 @@ OBJECT_WITH_ACTS(89,-4207,3199,5525,0,0,0,0x0, bhvHeaveHo,31),
 OBJECT_WITH_ACTS(89,-4411,3199,5001,0,0,0,0x0, bhvHeaveHo,31),
 OBJECT_WITH_ACTS(0,484,122,-990,0,0,0,0xd0000, bhvPaintingDeathWarp,31),
 OBJECT_WITH_ACTS(0,484,122,-990,0,0,0,0xe0000, bhvPaintingStarCollectWarp,31),
-OBJECT_WITH_ACTS(0,64,5,48,0,0,0,7, editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,16,5,360,0,0,0,8, editor_Scroll_Texture,31),
-OBJECT_WITH_ACTS(0,16,5,294,0,0,0,9, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,64,5,48,9,0,0,7, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,360,9,0,0,8, editor_Scroll_Texture,31),
+OBJECT_WITH_ACTS(0,16,5,294,9,0,0,9, editor_Scroll_Texture,31),
 RETURN()
 };
 const LevelScript local_warps_pss_1_[] = {

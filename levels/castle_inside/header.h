@@ -3,8 +3,8 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_castle_inside_1_0x14c1700[];
-extern const Gfx DL_castle_inside_1_0xe0b2040[];
-extern const Gfx DL_castle_inside_1_0xe0d4ff8[];
+extern Gfx DL_castle_inside_1_0xe0b2040[];
+extern Gfx DL_castle_inside_1_0xe0d4ff8[];
 extern const Collision col_castle_inside_1_0xe0cb580[];
 extern struct MovtexQuadCollection castle_inside_1_Movtex_0[];
 extern const LevelScript level_castle_inside_custom_entry[];

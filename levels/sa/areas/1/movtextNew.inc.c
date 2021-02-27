@@ -5,7 +5,8 @@ static Movtex sa_1_Movtex_0_1[] = {1, 0, 15, 16, -26583, -32145, 22052, -32145, 
 const struct MovtexQuadCollection sa_1_Movtex_0[] = {
 {0,sa_1_Movtex_0_0},
 {-1, NULL},
-};const struct MovtexQuadCollection sa_1_Movtex_1[] = {
+};
+const struct MovtexQuadCollection sa_1_Movtex_1[] = {
 {0,sa_1_Movtex_0_1},
 {-1, NULL},
 };

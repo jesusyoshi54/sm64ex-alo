@@ -3,7 +3,7 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_ttm_1_0x3b41700[];
-extern const Gfx DL_ttm_1_0xe0777d0[];
+extern Gfx DL_ttm_1_0xe0777d0[];
 extern const Collision col_ttm_1_0xe0972c0[];
 extern const LevelScript level_ttm_custom_entry[];
 extern const LevelScript local_area_ttm_1_[];

@@ -3401,15 +3401,15 @@ Vtx VB_intro_seg7_0x700d050[] = {
 {{{ 0, 0, 0 }, 0, { 0, 0 }, { 0, 0, 0, 255}}},
 };
 
-const Light_t Light_intro_seg7_0x7000000 = {
+Light_t Light_intro_seg7_0x7000000 = {
 { 255, 255, 255}, 0, { 255, 255, 255}, 0, { 127, 127, 127}, 0
 };
 
-const Ambient_t Light_intro_seg7_0x7000008 = {
+Ambient_t Light_intro_seg7_0x7000008 = {
 {127, 127, 127}, 0, {127, 127, 127}, 0
 };
 
-const Gfx DL_intro_seg7_0x700d140[] = {
+Gfx DL_intro_seg7_0x700d140[] = {
 gsDPPipeSync(),
 gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0),
 gsSPTexture(65535, 65535, 0, 0, 1),
@@ -3417,16 +3417,16 @@ gsDPTileSync(),
 gsDPLoadSync(),
 gsSPLight(&Light_intro_seg7_0x7000000.col, 1),
 gsSPLight(&Light_intro_seg7_0x7000008.col, 2),
-// gsDPSetTextureImage(0, 2, 1, intro_seg7__texture_09005800),
-// gsDPSetTile(0, 2, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0),
-// gsDPLoadSync(),
-// gsDPLoadBlock(7, 0, 0, 1023, 256),
-// gsDPPipeSync(),
-// gsDPSetTile(0, 2, 8, 0, 0, 0, 0, 5, 0, 0, 5, 0),
-// gsDPSetTileSize(0, 0, 0, 124, 124),
-// gsSPVertex(VB_intro_seg7_0x7002010, 15, 0),
-// gsSP2Triangles(0, 1, 2, 0,3, 4, 5, 0),
-// gsSP1Triangle(6, 7, 8, 0),
+gsDPSetTextureImage(0, 2, 1, intro_seg7__texture_09005800),
+gsDPSetTile(0, 2, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0),
+gsDPLoadSync(),
+gsDPLoadBlock(7, 0, 0, 1023, 256),
+gsDPPipeSync(),
+gsDPSetTile(0, 2, 8, 0, 0, 0, 0, 5, 0, 0, 5, 0),
+gsDPSetTileSize(0, 0, 0, 124, 124),
+gsSPVertex(VB_intro_seg7_0x7002010, 15, 0),
+gsSP2Triangles(0, 1, 2, 0,3, 4, 5, 0),
+gsSP1Triangle(6, 7, 8, 0),
 gsDPSetTextureImage(0, 2, 1, intro_seg7__texture_07000010),
 gsDPSetTile(0, 2, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0),
 gsDPLoadSync(),

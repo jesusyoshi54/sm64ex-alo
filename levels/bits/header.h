@@ -3,8 +3,8 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_bits_1_0x2961700[];
-extern const Gfx DL_bits_1_0xe0baa50[];
-extern const Gfx DL_bits_1_0xe0ec3f8[];
+extern Gfx DL_bits_1_0xe0baa50[];
+extern Gfx DL_bits_1_0xe0ec3f8[];
 extern const Collision col_bits_1_0xe0dcb90[];
 extern struct MovtexQuadCollection bits_1_Movtex_0[];
 extern const LevelScript level_bits_custom_entry[];

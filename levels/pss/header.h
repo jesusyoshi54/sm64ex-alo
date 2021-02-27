@@ -3,8 +3,8 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_pss_1_0x31a1700[];
-extern const Gfx DL_pss_1_0xe05d1f0[];
-extern const Gfx DL_pss_1_0xe0780e8[];
+extern Gfx DL_pss_1_0xe05d1f0[];
+extern Gfx DL_pss_1_0xe0780e8[];
 extern const Collision col_pss_1_0xe06be40[];
 extern const LevelScript level_pss_custom_entry[];
 extern const LevelScript local_area_pss_1_[];

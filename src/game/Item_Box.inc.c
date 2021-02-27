@@ -18,4 +18,6 @@ struct Struct802C0DF0 sExclamationBoxContents[] = { { 0, 0, 0, 135,  bhvWingCap 
 { 12, 0, 3, 122,  bhvSpawnedStar },
 { 13, 0, 4, 122,  bhvSpawnedStar },
 { 14, 0, 5, 122,  bhvSpawnedStar },
+{ 15, 0, 0, 136,  bhvVanishCap },
+{ 16, 0, 0, 134,  bhvMetalCap },
 { 99, 0, 0, 0, NULL } };

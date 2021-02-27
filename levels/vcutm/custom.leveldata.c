@@ -10,7 +10,7 @@
 
 #include "make_const_nonconst.h"
 
+#include "levels/vcutm/textureNew.inc.c"
 #include "levels/vcutm/areas/1/movtextNew.inc.c"
 #include "levels/vcutm/areas/1/custom.model.inc.c"
 #include "levels/vcutm/areas/1/custom.collision.inc.c"
-#include "levels/vcutm/textureNew.inc.c"

@@ -3,7 +3,7 @@
 #include "types.h"
 #include "game/moving_texture.h"
 extern const GeoLayout Geo_cotmc_1_0x3301700[];
-extern const Gfx DL_cotmc_1_0xe03dca0[];
+extern Gfx DL_cotmc_1_0xe03dca0[];
 extern const Collision col_cotmc_1_0xe047ad0[];
 extern struct MovtexQuadCollection cotmc_1_Movtex_0[];
 extern const LevelScript level_cotmc_custom_entry[];
