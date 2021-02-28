@@ -3066,6 +3066,7 @@ void update_camera(struct Camera *c) {
 
     gCamera = c;
     update_camera_hud_status(c);
+	newcam_toggle(configEnableCamera);
     if (c->cutscene == 0) {
         // Only process R_TRIG if 'fixed' is not selected in the menu
         if (cam_select_alt_mode(0) == CAM_SELECTION_MARIO
@@ -3138,6 +3139,7 @@ void update_camera(struct Camera *c) {
             }
         }
     }
+	
     // If not in a cutscene, do mode processing
     if (c->cutscene == 0) {
         sYawSpeed = 0x400;

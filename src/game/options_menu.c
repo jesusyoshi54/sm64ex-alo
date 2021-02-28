@@ -573,9 +573,7 @@ void optmenu_toggle(void) {
         play_sound(SOUND_MENU_MARIO_CASTLE_WARP2, gGlobalSoundSource);
         #endif
         optmenu_open = 0;
-        #ifdef BETTERCAMERA
-        newcam_init_settings(); // load bettercam settings from config vars
-        #endif
+
 #ifndef TARGET_N64
         controller_reconfigure(); // rebind using new config values
         configfile_save(configfile_name());
