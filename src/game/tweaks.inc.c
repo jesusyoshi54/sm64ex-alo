@@ -2,7 +2,7 @@
 //These are commonly referred to as tweaks
 #define MARIO_START_LIVES 33
 #define INFINITE_LIVES 201991066
-#define START_LEVEL 44
+#define START_LEVEL 16
 #define COINS_REQ_COINSTAR 100
 #define REDS_REQ 8
 #define EXIT_COURSE 16, 1, 0

@@ -3,8 +3,13 @@
 struct ObjectHitbox sScuttlebugHitbox = {
     /* interactType: */ INTERACT_BOUNCE_TOP,
     /* downOffset: */ 0,
+#ifdef BUFFED_ENEMIES
+    /* damageOrCoinValue: */ 3,
+    /* health: */ 3,
+#else
     /* damageOrCoinValue: */ 1,
     /* health: */ 1,
+#endif
     /* numLootCoins: */ 3,
     /* radius: */ 130,
     /* height: */ 70,
@@ -45,7 +50,11 @@ void bhv_scuttlebug_loop(void) {
             }
             break;
         case 1:
-            o->oForwardVel = 5.0f;
+            #ifdef BUFFED_ENEMIES
+			o->oForwardVel = 15.0f;
+			#else
+			o->oForwardVel = 5.0f;
+			#endif
             if (cur_obj_lateral_dist_from_mario_to_home() > 1000.0f)
                 o->oAngleToMario = cur_obj_angle_to_home();
             else {
@@ -78,13 +87,21 @@ void bhv_scuttlebug_loop(void) {
             break;
         case 3:
             o->oFlags &= ~8;
-            o->oForwardVel = -10.0f;
+            #ifdef BUFFED_ENEMIES
+			o->oForwardVel = -30.0f;
+			#else
+			o->oForwardVel = -10.0f;
+			#endif
             o->oVelY = 30.0f;
             cur_obj_play_sound_2(SOUND_OBJ2_SCUTTLEBUG_ALERT);
             o->oSubAction++;
             break;
         case 4:
-            o->oForwardVel = -10.0f;
+            #ifdef BUFFED_ENEMIES
+			o->oForwardVel = -20.0f;
+			#else
+			o->oForwardVel = -10.0f;
+			#endif
             if (o->oMoveFlags & OBJ_MOVE_LANDED) {
                 o->oSubAction++;
                 o->oVelY = 0.0f;
@@ -94,7 +111,11 @@ void bhv_scuttlebug_loop(void) {
             }
             break;
         case 5:
-            o->oForwardVel = 2.0f;
+            #ifdef BUFFED_ENEMIES
+			o->oForwardVel = 4.0f;
+			#else
+			o->oForwardVel = 2.0f;
+			#endif
             o->oScuttlebugUnkFC++;
             if (o->oScuttlebugUnkFC > 30)
                 o->oSubAction = 0;

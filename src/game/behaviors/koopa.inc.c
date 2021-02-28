@@ -60,6 +60,11 @@ struct KoopaTheQuickProperties {
 /**
  * Properties for the BoB race and the THI race.
  */
+#ifdef DOUBLE_KOOPA_SPEED
+#define speed_multiplier 2.0f
+#else
+#define speed_multiplier 1.0f
+#endif
 #ifdef RM2C
 //grab trajectory from Trajectories.inc.c and star pos from star_pos.inc.c
 static struct KoopaTheQuickProperties sKoopaTheQuickProperties[] = {
@@ -89,7 +94,7 @@ void bhv_koopa_init(void) {
     } else if (o->oKoopaMovementType >= KOOPA_BP_KOOPA_THE_QUICK_BASE) {
         // Koopa the Quick. Race index is 0 for BoB and 1 for THI
         o->oKoopaTheQuickRaceIndex = o->oKoopaMovementType - KOOPA_BP_KOOPA_THE_QUICK_BASE;
-        o->oKoopaAgility = 4.0f;
+        o->oKoopaAgility = 4.0f*speed_multiplier;
         cur_obj_scale(3.0f);
     } else {
         o->oKoopaAgility = 1.0f;
@@ -602,6 +607,7 @@ static void koopa_the_quick_animate_footsteps(void) {
  * Begin the race, then follow the race path. Avoid bowling balls by slowing
  * down or jumping. After finishing the race, enter the decelerate action.
  */
+ 
 static void koopa_the_quick_act_race(void) {
     f32 downhillSteepness;
     s32 bowlingBallStatus;
@@ -628,11 +634,11 @@ static void koopa_the_quick_act_race(void) {
                         && (o->oPathedPrevWaypointFlags & WAYPOINT_MASK_00FF) < 28) {
                         // Move faster if mario has already finished the race or
                         // cheated by shooting from cannon
-                        o->oKoopaAgility = 8.0f;
+                        o->oKoopaAgility = KOOPA_SPEED_RACE_END*speed_multiplier;
                     } else if (o->oKoopaTheQuickRaceIndex != KOOPA_THE_QUICK_BOB_INDEX) {
-                        o->oKoopaAgility = 6.0f;
+                        o->oKoopaAgility =KOOPA_SPEED_THI*speed_multiplier;
                     } else {
-                        o->oKoopaAgility = 4.0f;
+                        o->oKoopaAgility = KOOPA_SPEED_BOB*speed_multiplier;
                     }
 
                     obj_forward_vel_approach(o->oKoopaAgility * 6.0f * downhillSteepness,
