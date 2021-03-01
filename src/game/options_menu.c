@@ -223,7 +223,7 @@ struct SubMenu {
 static void optmenu_act_exit(UNUSED struct Option *self, s32 arg) {
     if (!arg) game_exit(); // only exit on A press and not directions
 }
-#endif
+
 
 static void optvideo_reset_window(UNUSED struct Option *self, s32 arg) {
     if (!arg) {
@@ -236,7 +236,7 @@ static void optvideo_reset_window(UNUSED struct Option *self, s32 arg) {
 static void optvideo_apply(UNUSED struct Option *self, s32 arg) {
     if (!arg) configWindow.settings_changed = true;
 }
-
+#endif
 /* submenu option lists */
 
 #ifdef BETTERCAMERA
