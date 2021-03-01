@@ -6319,9 +6319,7 @@ struct CameraTrigger sCamRR[] = {
  * to free_roam when Mario is not walking up the tower.
  */
 struct CameraTrigger sCamBOB[] = {
-    {  1, cam_bob_tower, 2468, 2720, -4608, 3263, 1696, 3072, 0 },
-    { -1, cam_bob_default_free_roam, 0, 0, 0, 0, 0, 0, 0 },
-    NULL_TRIGGER
+	NULL_TRIGGER
 };
 
 /**
