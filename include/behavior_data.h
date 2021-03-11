@@ -3,6 +3,10 @@
 
 #include "types.h"
 
+extern const BehaviorScript WaterCube_UPDown[];
+extern const BehaviorScript WaterCube_Square[];
+extern const BehaviorScript WaterCube_Static[];
+
 extern const BehaviorScript editor_Scroll_Texture[];
 extern const BehaviorScript RM_Scroll_Texture[];
 extern const BehaviorScript bhvStarDoor[];

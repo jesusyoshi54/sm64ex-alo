@@ -331,6 +331,36 @@
     BC_B(0x37), \
     BC_PTR(dropletParams)
 
+extern const Collision WaterCube_collision[];
+
+const BehaviorScript WaterCube_UPDown[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1),
+LOAD_COLLISION_DATA(WaterCube_collision),
+BEGIN_LOOP(),
+CALL_NATIVE( bhv_ssl_moving_pyramid_wall_loop),
+CALL_NATIVE( Update_Mario_Water_Displacement),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
+const BehaviorScript WaterCube_Square[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1),
+LOAD_COLLISION_DATA(WaterCube_collision),
+BEGIN_LOOP(),
+CALL_NATIVE( bhv_squarish_path_moving_loop),
+CALL_NATIVE( Update_Mario_Water_Displacement),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
+const BehaviorScript WaterCube_Static[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1),
+LOAD_COLLISION_DATA(WaterCube_collision),
+BEGIN_LOOP(),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
 
 const BehaviorScript bhvStarDoor[] = {
     BEGIN(OBJ_LIST_SURFACE),

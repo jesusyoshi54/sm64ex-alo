@@ -495,8 +495,8 @@ s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32 stepAr
         if (m->wall->type == SURFACE_BURNING) {
             return AIR_STEP_HIT_LAVA_WALL;
         }
-
-        if (wallDYaw < -0x6000 || wallDYaw > 0x6000) {
+		//should be about 55 degrees
+        if (wallDYaw < -0x5C00 || wallDYaw > 0x5C00) {
             m->flags |= MARIO_UNKNOWN_30;
             return AIR_STEP_HIT_WALL;
         }

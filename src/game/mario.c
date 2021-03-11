@@ -1195,9 +1195,9 @@ s32 transition_submerged_to_walking(struct MarioState *m) {
  */
 s32 set_water_plunge_action(struct MarioState *m) {
     m->forwardVel = m->forwardVel / 4.0f;
-    m->vel[1] = m->vel[1] / 2.0f;
+    m->vel[1] = m->vel[1] / 8.0f;
 
-    m->pos[1] = m->waterLevel - 100;
+    // m->pos[1] = m->waterLevel - 100;
 
     m->faceAngle[2] = 0;
 

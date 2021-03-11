@@ -90,6 +90,7 @@ s16 D_8032F0CC[] = { 6047, 5664, 5292, 4934, 4587, 4254, 3933, 3624, 3329, 3046,
                      2517, 2271, 2039, 1818, 1611, 1416, 1233, 1063, 906,  761,  629,
                      509,  402,  308,  226,  157,  100,  56,   25,   4,    0 };
 
+#include "behaviors/WaterCube.inc.c"
 #include "behaviors/star_door.inc.c"
 #include "behaviors/mr_i.inc.c"
 #include "behaviors/pole.inc.c"

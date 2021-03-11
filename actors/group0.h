@@ -344,4 +344,8 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "mario/geo_header.h"
 
+#include "WaterCube/geo_header.h"
+
+#include "WaterCube/collision_header.h"
+
 #endif

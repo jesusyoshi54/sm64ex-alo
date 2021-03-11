@@ -26,6 +26,8 @@ void play_penguin_walking_sound(s32 walk);
 s32 update_angle_from_move_flags(s32 *angle);
 void cur_obj_spawn_strong_wind_particles(s32 windSpread, f32 scale, f32 relPosX, f32 relPosY, f32 relPosZ);
 
+void Update_Mario_Water_Displacement(void);
+
 #if INCLUDE_MOP
 void bhv_flip_block_loop(void);
 void bhv_noteblock_loop(void);

@@ -25,3 +25,6 @@
 #include "white_particle_small/model.inc.c"
 
 #include "sparkle_animation/model.inc.c"
+
+#include "WaterCube/model.inc.c"
+#include "WaterCube/collision.inc.c"

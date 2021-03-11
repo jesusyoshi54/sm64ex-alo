@@ -12,7 +12,7 @@
 /**************************************************
  *                      WALLS                     *
  **************************************************/
-
+u32 gCheckingWaterCollisions = 0;
 /**
  * Iterate through the list of walls until all walls are checked and
  * have given their wall push.
@@ -259,7 +259,13 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
         else if (surf->type == SURFACE_CAMERA_BOUNDARY) {
             continue;
         }
-
+		if (gCheckingWaterCollisions==0){
+			if (surf->type==SURFACE_WATER){
+				continue;
+			}
+		}else if(surf->type!=SURFACE_WATER){
+			continue;
+		}
 		nx = surf->normal.x;
 		ny = surf->normal.y;
 		nz = surf->normal.z;
@@ -427,7 +433,13 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
         else if (surf->type == SURFACE_CAMERA_BOUNDARY) {
             continue;
         }
-
+		if (gCheckingWaterCollisions==0){
+			if (surf->type==SURFACE_WATER){
+				continue;
+			}
+		}else if(surf->type!=SURFACE_WATER){
+			continue;
+		}
         nx = surf->normal.x;
         ny = surf->normal.y;
         nz = surf->normal.z;
@@ -596,34 +608,29 @@ f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
  * Finds the height of water at a given location.
  */
 f32 find_water_level(f32 x, f32 z) {
-    s32 i;
-    s32 numRegions;
-    s16 val;
-    f32 loX, hiX, loZ, hiZ;
-    f32 waterLevel = FLOOR_LOWER_LIMIT;
-    s16 *p = gEnvironmentRegions;
-
-    if (p != NULL) {
-        numRegions = *p++;
-
-        for (i = 0; i < numRegions; i++) {
-            val = *p++;
-            loX = *p++;
-            loZ = *p++;
-            hiX = *p++;
-            hiZ = *p++;
-
-            // If the location is within a water box and it is a water box.
-            // Water is less than 50 val only, while above is gas and such.
-            if (loX < x && x < hiX && loZ < z && z < hiZ && val < 50) {
-                // Set the water height. Since this breaks, only return the first height.
-                waterLevel = *p;
-                break;
-            }
-            p++;
-        }
-    }
-
+    f32 y;
+    f32 waterLevel = -11000.0f;
+	struct Surface *floor = NULL;
+	struct Surface *ceil = NULL;
+	gCheckingWaterCollisions = 1;
+	f32 fHeight;
+	f32 cHeight;
+	y = gMarioState->pos[1];
+	cHeight = find_ceil(x,y,z,&ceil);
+	if (ceil==NULL){
+		gCheckingWaterCollisions = 0;
+		return waterLevel;
+	}
+	fHeight = find_floor(x,cHeight,z,&floor);
+	if (floor==NULL){
+		gCheckingWaterCollisions = 0;
+		return waterLevel;
+	}
+	gMarioState->Waterfloor = floor;
+	if ((y+140.0)>fHeight & y<=cHeight){
+	waterLevel = cHeight;
+	}
+	gCheckingWaterCollisions = 0;
     return waterLevel;
 }
 
