@@ -14,18 +14,18 @@ static void const *sSlidingPlatform2CollisionData[] = {
 void bhv_sliding_plat_2_init(void) {
     s32 collisionDataIndex;
 
-    collisionDataIndex = ((u16)(o->oBehParams >> 16) & 0x0380) >> 7;
-    o->collisionData = segmented_to_virtual(sSlidingPlatform2CollisionData[collisionDataIndex]);
+    // collisionDataIndex = ((u16)(o->oBehParams >> 16) & 0x0380) >> 7;
+    // o->collisionData = segmented_to_virtual(sSlidingPlatform2CollisionData[collisionDataIndex]);
     o->oBackAndForthPlatformPathLength = 50.0f * ((u16)(o->oBehParams >> 16) & 0x003F);
 
     if (collisionDataIndex < 5 || collisionDataIndex > 6) {
         o->oBackAndForthPlatformVel = 15.0f;
-        if ((u16)(o->oBehParams >> 16) & 0x0040) {
+        if ((u16)(o->oBehParams) & 0x0001) {
             o->oMoveAngleYaw += 0x8000;
         }
     } else {
         o->oBackAndForthPlatformVel = 10.0f;
-        if ((u16)(o->oBehParams >> 16) & 0x0040) {
+        if ((u16)(o->oBehParams) & 0x0001) {
             o->oBackAndForthPlatformDirection = -1.0f;
         } else {
             o->oBackAndForthPlatformDirection = 1.0f;

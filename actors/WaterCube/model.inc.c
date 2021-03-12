@@ -797,7 +797,7 @@ Gfx WaterCube_Cube_019_mesh_layer_4_tri_1[] = {
 
 Gfx mat_WaterCube_water_no_nsolid[] = {
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, TEXEL1, 0, TEXEL0, 0, 0, TEXEL1, COMBINED, 0, ENVIRONMENT, 0, 0, 0, 0, COMBINED),
+	gsDPSetCombineLERP(TEXEL0, 0, TEXEL1, 0, TEXEL0, 0, TEXEL1, 0, COMBINED, 0, ENVIRONMENT, 0, 1, 0, ENVIRONMENT, COMBINED),
 	gsSPClearGeometryMode(G_CULL_BACK),
 	gsDPSetCycleType(G_CYC_2CYCLE),
 	gsSPTexture(65535, 65535, 0, 0, 1),
@@ -817,7 +817,7 @@ Gfx mat_WaterCube_water_no_nsolid[] = {
 	gsDPPipeSync(),
 	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_8b, 8, 256, 1, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(1, 0, 0, 252, 124),
-	gsDPSetEnvColor(122, 228, 254, 255),
+	gsDPSetEnvColor(122, 228, 254, 20),
 	gsSPEndDisplayList(),
 };
 
@@ -830,7 +830,7 @@ Gfx mat_revert_WaterCube_water_no_nsolid[] = {
 
 Gfx mat_WaterCube_water[] = {
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, TEXEL1, 0, TEXEL0, 0, 0, TEXEL1, COMBINED, 0, ENVIRONMENT, 0, 0, 0, 0, COMBINED),
+	gsDPSetCombineLERP(TEXEL0, 0, TEXEL1, 0, TEXEL0, 0, TEXEL1, 0, COMBINED, 0, ENVIRONMENT, 0, 0, 0, 0, COMBINED),
 	gsSPClearGeometryMode(G_CULL_BACK),
 	gsDPSetCycleType(G_CYC_2CYCLE),
 	gsSPTexture(65535, 65535, 0, 0, 1),
@@ -864,8 +864,8 @@ Gfx mat_revert_WaterCube_water[] = {
 Gfx WaterCube_Cube_019_mesh_layer_4[] = {
 	gsSPDisplayList(mat_WaterCube_water_no_nsolid),
 	gsSPDisplayList(WaterCube_Cube_019_mesh_layer_4_tri_0),
-	gsSPDisplayList(mat_revert_WaterCube_water_no_nsolid),
-	gsSPDisplayList(mat_WaterCube_water),
+	// gsSPDisplayList(mat_revert_WaterCube_water_no_nsolid),
+	// gsSPDisplayList(mat_WaterCube_water),
 	gsSPDisplayList(WaterCube_Cube_019_mesh_layer_4_tri_1),
 	gsSPDisplayList(mat_revert_WaterCube_water),
 	gsSPEndDisplayList(),

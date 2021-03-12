@@ -978,6 +978,56 @@ void update_hud_values(void) {
     }
 }
 
+//This ended up much more complex than it needed to be because of differing platforms
+#if IS_64_BIT
+struct F2{
+	unsigned int Y:12;
+	unsigned int X:12;
+	unsigned int MSB:8;
+};
+#else
+struct F2{
+	unsigned int MSB:8;
+	unsigned int X:12;
+	unsigned int Y:12;
+};
+#endif
+union PosBytes{
+	u32 pos;
+	char bytes[4];
+};
+union WDBytes{
+	uintptr_t w0;
+	struct F2 SetTile;
+};
+extern Gfx mat_WaterCube_water_no_nsolid[];
+extern Gfx mat_WaterCube_water[];
+//This is re used from when pos took args from the object pos and converted it
+void ScrollF2(Gfx *F2,u32 x, u32 y){
+	union PosBytes Xspd;
+	union PosBytes Yspd;
+	union WDBytes F2B;
+	Xspd.pos = x;
+	Yspd.pos = y;
+	F2B.w0 = F2->words.w0;
+	#if IS_64_BIT
+	#define FLOAT_BYTE 2
+	#else
+	#define FLOAT_BYTE 1
+	#endif
+	F2B.SetTile.X+=Xspd.pos;//Xspd.bytes[FLOAT_BYTE];
+	F2B.SetTile.Y+=Yspd.pos;//Yspd.bytes[FLOAT_BYTE];
+	F2B.SetTile.X=F2B.SetTile.X%0x1FC;
+	F2B.SetTile.Y=F2B.SetTile.Y%0x1FC;
+	F2->words.w0 = F2B.w0;
+}
+void Scroll_Waters(void){
+	//Water cube gfx
+	Gfx *F2 = segmented_to_virtual(mat_WaterCube_water_no_nsolid);
+	ScrollF2(F2+12,1,0);
+	ScrollF2(F2+20,0,1);
+	//Now do switch based on level
+}
 /**
  * Update objects, HUD, and camera. This update function excludes things like
  * endless staircase, warps, pausing, etc. This is used when entering a painting,
@@ -987,6 +1037,7 @@ void update_hud_values(void) {
 void basic_update(UNUSED s16 *arg) {
     area_update_objects();
     update_hud_values();
+
 
     if (gCurrentArea != NULL) {
         update_camera(gCurrentArea->camera);
@@ -1017,7 +1068,7 @@ s32 play_mode_normal(void) {
 
     area_update_objects();
     update_hud_values();
-
+	Scroll_Waters();
     if (gCurrentArea != NULL) {
         update_camera(gCurrentArea->camera);
     }

@@ -117,7 +117,8 @@ enum HUDDisplayFlag {
     HUD_DISPLAY_DEFAULT = HUD_DISPLAY_FLAG_LIVES | HUD_DISPLAY_FLAG_COIN_COUNT | HUD_DISPLAY_FLAG_STAR_COUNT | HUD_DISPLAY_FLAG_CAMERA_AND_POWER | HUD_DISPLAY_FLAG_KEYS | HUD_DISPLAY_FLAG_UNKNOWN_0020
 };
 
-
+void ScrollF2(Gfx *F2,u32 x, u32 y);
+void Scroll_Waters(void);
 u16 level_control_timer(s32 timerOp);
 void fade_into_special_warp(u32 arg, u32 color);
 void load_level_init_text(u32 arg);

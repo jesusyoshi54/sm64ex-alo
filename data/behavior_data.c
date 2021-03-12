@@ -343,6 +343,18 @@ CALL_NATIVE( Update_Mario_Water_Displacement),
 CALL_NATIVE( load_object_collision_model),
 END_LOOP(),
 };
+//bparam2 = length, bparam4 to 1 to start moving backwards
+const BehaviorScript WaterCube_ForBack[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1),
+LOAD_COLLISION_DATA(WaterCube_collision),
+CALL_NATIVE( bhv_sliding_plat_2_init),
+BEGIN_LOOP(),
+CALL_NATIVE( bhv_sliding_plat_2_loop),
+CALL_NATIVE( Update_Mario_Water_Displacement),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
 const BehaviorScript WaterCube_Square[] = {
 BEGIN(OBJ_LIST_SURFACE),
 OR_INT(oFlags,1),
