@@ -874,6 +874,9 @@ void find_surface_on_ray_list(struct SurfaceNode *list, Vec3f orig, Vec3f dir, f
         // Reject no-cam collision surfaces
         if (gCheckingSurfaceCollisionsForCamera && (list->surface->flags & SURFACE_FLAG_NO_CAM_COLLISION))
             continue;
+        // Reject water
+        if (gCheckingSurfaceCollisionsForCamera && (list->surface->type == 0xD))
+            continue;
 
         // Check intersection between the ray and this surface
         if ((hit = ray_surface_intersect(orig, dir, dir_length, list->surface, chk_hit_pos, &length)) != 0)
