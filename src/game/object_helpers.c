@@ -506,7 +506,7 @@ struct Object *spawn_water_droplet(struct Object *parent, struct WaterDropletPar
     }
 
     if (params->flags & WATER_DROPLET_FLAG_SET_Y_TO_WATER_LEVEL) {
-        newObj->oPosY = find_water_level(newObj->oPosX, newObj->oPosZ);
+        newObj->oPosY = find_water_level(newObj->oPosX, newObj->oPosZ, newObj->oPosY);
     }
 
     if (params->flags & WATER_DROPLET_FLAG_RAND_OFFSET_XZ) {
@@ -1331,7 +1331,7 @@ static f32 cur_obj_move_y_and_get_water_level(f32 gravity, f32 buoyancy) {
     if (o->activeFlags & ACTIVE_FLAG_UNK10) {
         waterLevel = -11000.0f;
     } else {
-        waterLevel = find_water_level(o->oPosX, o->oPosZ);
+        waterLevel = find_water_level(o->oPosX, o->oPosZ,o->oPosY);
     }
 
     return waterLevel;

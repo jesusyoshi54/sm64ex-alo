@@ -27,32 +27,32 @@ void bhv_wf_sliding_platform_loop(void) {
         case WF_SLID_BRICK_PTFM_ACT_WAIT:
             if (o->oTimer >= 101) {
                 o->oAction = WF_SLID_BRICK_PTFM_ACT_EXTEND;
-                o->oForwardVel = o->oWFSlidBrickPtfmMovVel;
+                o->oForwardVel = 20.0f;//o->oWFSlidBrickPtfmMovVel;
             }
             break;
 
         case WF_SLID_BRICK_PTFM_ACT_EXTEND:
-            if (o->oTimer >= 500.0f / o->oWFSlidBrickPtfmMovVel) {
+            if (o->oTimer >= 500.0f / 30.0f) {
                 o->oForwardVel = 0;
-                o->oPosX = o->oHomeX + 510.0f;
+                // o->oPosX = o->oHomeX + 510.0f;
             }
 
             if (o->oTimer == 60) {
                 o->oAction = WF_SLID_BRICK_PTFM_ACT_RETRACT;
-                o->oForwardVel = o->oWFSlidBrickPtfmMovVel;
+                o->oForwardVel = 20.0f;//o->oWFSlidBrickPtfmMovVel;
                 o->oMoveAngleYaw -= 0x8000;
             }
             break;
 
         case WF_SLID_BRICK_PTFM_ACT_RETRACT:
-            if (o->oTimer >= 500.0f / o->oWFSlidBrickPtfmMovVel) {
+            if (o->oTimer >= 500.0f / 30.0f) {
                 o->oForwardVel = 0;
-                o->oPosX = o->oHomeX;
+                // o->oPosX = o->oHomeX;
             }
 
             if (o->oTimer == 90) {
                 o->oAction = WF_SLID_BRICK_PTFM_ACT_EXTEND;
-                o->oForwardVel = o->oWFSlidBrickPtfmMovVel;
+                o->oForwardVel = 20.0f;//o->oWFSlidBrickPtfmMovVel;
                 o->oMoveAngleYaw -= 0x8000;
             }
             break;

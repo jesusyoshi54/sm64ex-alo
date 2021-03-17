@@ -109,7 +109,7 @@ void envfx_update_snowflake_count(s32 mode, Vec3s marioPos) {
             break;
 
         case ENVFX_SNOW_WATER:
-            waterLevel = find_water_level(marioPos[0], marioPos[2]);
+            waterLevel = find_water_level(marioPos[0], marioPos[2], marioPos[1]);
 
             gSnowParticleCount =
                 (((s32)((waterLevel - 400.f - (f32) marioPos[1]) * 1.0e-3) << 0x10) >> 0x10) * 5;

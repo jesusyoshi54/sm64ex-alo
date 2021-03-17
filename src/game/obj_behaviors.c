@@ -435,7 +435,7 @@ s16 object_step(void) {
 
     floorY = find_floor(objX + objVelX, objY, objZ + objVelZ, &sObjFloor);
     if (turn_obj_away_from_steep_floor(sObjFloor, floorY, objVelX, objVelZ) == 1) {
-        waterY = find_water_level(objX + objVelX, objZ + objVelZ);
+        waterY = find_water_level(objX + objVelX, objZ + objVelZ, objY);
         if (waterY > objY) {
             calc_new_obj_vel_and_pos_y_underwater(sObjFloor, floorY, objVelX, objVelZ, waterY);
             collisionFlags += OBJ_COL_FLAG_UNDERWATER;

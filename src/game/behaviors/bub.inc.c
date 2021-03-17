@@ -117,7 +117,7 @@ void bub_act_2(void) {
 void (*sCheepCheepActions[])(void) = { bub_act_0, bub_act_1, bub_act_2 };
 
 void bhv_bub_loop(void) {
-    o->oCheepCheepUnkF4 = find_water_level(o->oPosX, o->oPosZ);
+    o->oCheepCheepUnkF4 = find_water_level(o->oPosX, o->oPosZ,o->oPosY);
     o->oCheepCheepUnkF8 = gMarioObject->oPosY + o->oCheepCheepUnkFC;
     o->oWallHitboxRadius = 30.0f;
     cur_obj_update_floor_and_walls();

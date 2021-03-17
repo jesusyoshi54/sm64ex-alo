@@ -5,7 +5,7 @@ f32 floating_platform_find_home_y(void) {
     f32 sp20;
     f32 sp1C;
 
-    sp20 = find_water_level(o->oPosX, o->oPosZ);
+    sp20 = find_water_level(o->oPosX, o->oPosZ,o->oPosY);
     sp1C = find_floor(o->oPosX, o->oPosY, o->oPosZ, &sp24);
     if (sp20 > sp1C + o->oFloatingPlatformUnkFC) {
         o->oFloatingPlatformUnkF4 = 0;

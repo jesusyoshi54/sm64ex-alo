@@ -607,15 +607,13 @@ f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
 /**
  * Finds the height of water at a given location.
  */
-f32 find_water_level(f32 x, f32 z) {
-    f32 y;
+f32 find_water_level(f32 x, f32 z, f32 y) {
     f32 waterLevel = -11000.0f;
 	struct Surface *floor = NULL;
 	struct Surface *ceil = NULL;
 	gCheckingWaterCollisions = 1;
 	f32 fHeight;
 	f32 cHeight;
-	y = gMarioState->pos[1];
 	cHeight = find_ceil(x,y,z,&ceil);
 	if (ceil==NULL){
 		gCheckingWaterCollisions = 0;

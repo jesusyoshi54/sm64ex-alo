@@ -673,7 +673,7 @@ BAD_RETURN(f32) calc_y_to_curr_floor(f32 *posOff, f32 posMul, f32 posBound, f32 
 
     if (!(sMarioCamState->action & ACT_FLAG_METAL_WATER)) {
         //! @bug this should use sMarioGeometry.waterHeight
-        if (floorHeight < (waterHeight = find_water_level(sMarioCamState->pos[0], sMarioCamState->pos[2]))) {
+        if (floorHeight < (waterHeight = find_water_level(sMarioCamState->pos[0], sMarioCamState->pos[2], sMarioCamState->pos[1]))) {
             floorHeight = waterHeight;
         }
     }
@@ -1965,7 +1965,7 @@ s32 mode_behind_mario(struct Camera *c) {
         }
     }
     approach_camera_height(c, newPos[1], 50.f);
-    waterHeight = find_water_level(c->pos[0], c->pos[2]) + 100.f;
+    waterHeight = find_water_level(c->pos[0], c->pos[2], c->pos[1]) + 100.f;
     if (c->pos[1] <= waterHeight) {
         gCameraMovementFlags |= CAM_MOVE_SUBMERGED;
     } else {
@@ -2311,7 +2311,7 @@ s16 update_default_camera(struct Camera *c) {
     }
 
     // If there's water below the camera, decide whether to keep the camera above the water surface
-    waterHeight = find_water_level(cPos[0], cPos[2]);
+    waterHeight = find_water_level(cPos[0], cPos[2], cPos[1]);
     if (waterHeight != FLOOR_LOWER_LIMIT) {
         waterHeight += 125.f;
         distFromWater = waterHeight - marioFloorHeight;
@@ -6953,7 +6953,7 @@ void find_mario_floor_and_ceil(struct PlayerGeometry *pg) {
     pg->currCeilHeight = find_ceil(sMarioCamState->pos[0],
                                    sMarioCamState->pos[1] - 10.f,
                                    sMarioCamState->pos[2], &pg->currCeil);
-    pg->waterHeight = find_water_level(sMarioCamState->pos[0], sMarioCamState->pos[2]);
+    pg->waterHeight = find_water_level(sMarioCamState->pos[0], sMarioCamState->pos[2], sMarioCamState->pos[1]);
     gCheckingSurfaceCollisionsForCamera = tempCheckingSurfaceCollisionsForCamera;
 }
 

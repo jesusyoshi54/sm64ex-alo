@@ -181,7 +181,7 @@ u8 dim_shadow_with_distance(u8 solidity, f32 distFromFloor) {
  * -10,000.
  */
 f32 get_water_level_below_shadow(struct Shadow *s) {
-    f32 waterLevel = find_water_level(s->parentX, s->parentZ);
+    f32 waterLevel = find_water_level(s->parentX, s->parentZ, s->parentY);
     if (waterLevel < FLOOR_LOWER_LIMIT_SHADOW) {
         return 0;
     } else if (s->parentY >= waterLevel && s->floorHeight <= waterLevel) {
@@ -768,7 +768,7 @@ s32 get_shadow_height_solidity(f32 xPos, f32 yPos, f32 zPos, f32 *shadowHeight, 
     if (*shadowHeight < FLOOR_LOWER_LIMIT_SHADOW) {
         return 1;
     } else {
-        waterLevel = find_water_level(xPos, zPos);
+        waterLevel = find_water_level(xPos, zPos,yPos);
 
         if (waterLevel < FLOOR_LOWER_LIMIT_SHADOW) {
             // Dead if-statement. There may have been an assert here.
