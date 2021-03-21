@@ -174,6 +174,7 @@ void newcam_toggle(bool enabled) {
         newcam_saved_defmode = gLakituState.defMode;
         gLakituState.mode = CAMERA_MODE_NEWCAM;
         gLakituState.defMode = CAMERA_MODE_NEWCAM;
+		newcam_init(gCurrentArea->camera, 0);
     } else if (!enabled && newcam_active) {
         if (newcam_saved_mode != -1) {
             gLakituState.defMode = newcam_saved_defmode;
@@ -198,7 +199,7 @@ void newcam_init_settings(void) {
 	newcam_analogue     = (s16)configCameraAnalog;
 #endif    
     newcam_degrade      = (f32)configCameraDegrade;
-
+    newcam_active      = configEnableCamera;
     newcam_toggle(configEnableCamera);
 }
 
@@ -510,7 +511,6 @@ static void newcam_zoom_button(void)
 static void newcam_update_values(void) {
     //For tilt, this just limits it so it doesn't go further than 90 degrees either way. 90 degrees is actually 16384, but can sometimes lead to issues, so I just leave it shy of 90.
     u8 waterflag = 0;
-	newcam_toggle(configEnableCamera);
 	if (!newcam_active){
 		newcam_xlu = 255;
 		gCurrentArea->camera->mode = CAMERA_MODE_8_DIRECTIONS;
