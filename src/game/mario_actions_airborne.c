@@ -425,7 +425,9 @@ u32 common_air_action_step(struct MarioState *m, u32 landAction, s32 animation, 
 
         case AIR_STEP_HIT_WALL:
             set_mario_animation(m, animation);
-
+			#ifdef SUPER_MODE
+			Super_Can_Jump=0;
+			#endif
             if (m->forwardVel > 16.0f) {
 #ifdef RUMBLE_FEEDBACK
                 queue_rumble_data(5, 40);
@@ -591,6 +593,9 @@ s32 act_freefall(struct MarioState *m) {
             animation = MARIO_ANIM_FALL_FROM_SLIDE_KICK;
             break;
     }
+	#ifdef SUPER_MODE
+	Check_Super_Jump(m);
+	#endif
 
     common_air_action_step(m, ACT_FREEFALL_LAND, animation, AIR_STEP_CHECK_LEDGE_GRAB);
     return FALSE;
