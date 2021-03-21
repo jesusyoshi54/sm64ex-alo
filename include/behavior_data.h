@@ -552,7 +552,7 @@ extern const BehaviorScript bhvUnusedFakeStar[];
 #if INCLUDE_MOP
 extern const BehaviorScript bhvFlipBlock_MOP[];
 extern const BehaviorScript bhvNoteblock_MOP[];
-extern const BehaviorScript bhvSandblock_MOP[];
+extern const BehaviorScript bhvSandBlock_MOP[];
 extern const BehaviorScript bhvSpring_MOP[];
 extern const BehaviorScript bhvShell_1_MOP[];
 extern const BehaviorScript bhvShell_2_MOP[];
