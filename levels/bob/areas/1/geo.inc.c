@@ -18,7 +18,7 @@ const GeoLayout bob_geo_000488[] = {
                GEO_DISPLAY_LIST(LAYER_OPAQUE, bob_seg7_dl_07004390),
                GEO_DISPLAY_LIST(LAYER_OPAQUE, bob_seg7_dl_07009D80),
                GEO_DISPLAY_LIST(LAYER_TRANSPARENT_DECAL, bob_seg7_dl_0700A470),
-               GEO_DISPLAY_LIST(LAYER_ALPHA, bob_seg7_dl_0700A920),
+               GEO_DISPLAY_LIST(4, bob_seg7_dl_0700A920),
                GEO_DISPLAY_LIST(LAYER_OPAQUE, bob_seg7_dl_0700DD18),
                GEO_DISPLAY_LIST(LAYER_OPAQUE, bob_seg7_dl_0700E338),
                GEO_RENDER_OBJ(),
