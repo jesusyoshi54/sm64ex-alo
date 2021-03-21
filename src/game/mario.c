@@ -1519,24 +1519,27 @@ void set_submerged_cam_preset_and_spawn_bubbles(struct MarioState *m) {
 #else
 #define MAXHP 0x880
 #endif
+extern s16 gDialogID;
 void update_mario_health(struct MarioState *m) {
     s32 terrainIsSnow;
     if (m->health >= 0x100) {
-		#ifdef DRAIN_HP_CONSTANT
-		m->health -= 1;
-		#endif
-		#ifdef A_BTN_DRAIN
-		if (gPlayer1Controller->buttonPressed&A_BUTTON)
-			m->health -= 0x100;
-		#endif
-		#ifdef B_BTN_DRAIN
-		if (gPlayer1Controller->buttonPressed&B_BUTTON)
-			m->health -= 0x100;
-		#endif
-		#ifdef Z_BTN_DRAIN
-		if (gPlayer1Controller->buttonPressed&Z_TRIG)
-			m->health -= 0x100;
-		#endif
+		if(gDialogID == -1){
+			#ifdef DRAIN_HP_CONSTANT
+			m->health -= 1;
+			#endif
+			#ifdef A_BTN_DRAIN
+			if (gPlayer1Controller->buttonPressed&A_BUTTON)
+				m->health -= 0x100;
+			#endif
+			#ifdef B_BTN_DRAIN
+			if (gPlayer1Controller->buttonPressed&B_BUTTON)
+				m->health -= 0x100;
+			#endif
+			#ifdef Z_BTN_DRAIN
+			if (gPlayer1Controller->buttonPressed&Z_TRIG)
+				m->health -= 0x100;
+			#endif
+		}
         // When already healing or hurting Mario, Mario's HP is not changed any more here.
         if (((u32) m->healCounter | (u32) m->hurtCounter) == 0) {
             if ((m->input & INPUT_IN_POISON_GAS) && !(m->action & ACT_FLAG_INTANGIBLE)) {
@@ -1578,7 +1581,8 @@ void update_mario_health(struct MarioState *m) {
         if (m->health < 0x100) {
             m->health = 0xFF;
         }
-
+		#ifdef DAREDEVIL
+		#else
         // Play a noise to alert the player when Mario is close to drowning.
         if (((m->action & ACT_GROUP_MASK) == ACT_GROUP_SUBMERGED) && (m->health < 0x300)) {
             play_sound(SOUND_MOVING_ALMOST_DROWNING, gGlobalSoundSource);
@@ -1594,6 +1598,7 @@ void update_mario_health(struct MarioState *m) {
             gRumblePakTimer = 0;
 #endif
         }
+		#endif
     }
 }
 

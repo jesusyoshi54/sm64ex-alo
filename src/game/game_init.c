@@ -593,8 +593,6 @@ void init_controllers(void) {
 #ifdef BETTERCAMERA
     // load bettercam settings from the config file
     newcam_init_settings();
-	newcam_active = 1;
-	configEnableCamera=1;
 #endif
 }
 

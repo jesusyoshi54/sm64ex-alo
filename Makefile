@@ -90,7 +90,7 @@ NODRAWINGDISTANCE ?= 0
 # Disable QoL fixes by default (helps with them purists)
 QOL_FIXES ?= 1
 # Enable extended options menu by default
-EXT_OPTIONS_MENU ?= 1
+EXT_OPTIONS_MENU ?= 0
 # Disable text-based save-files by default
 TEXTSAVES ?= 0
 # Load resources from external files
@@ -100,13 +100,13 @@ DISCORDRPC ?= 0
 # Enable rumble functions (Originally in Shindou)
 RUMBLE_FEEDBACK ?= 0
 # Enable PC Port defines
-PC_PORT_DEFINES ?= 1
+PC_PORT_DEFINES ?= 0
 
 # Various workarounds for weird toolchains
 NO_BZERO_BCOPY ?= 0
 NO_LDIV ?= 0
 # Check if is compiling on a console
-TARGET_GAME_CONSOLE ?= 1
+TARGET_GAME_CONSOLE ?= 0
 
 # Backend selection
 
