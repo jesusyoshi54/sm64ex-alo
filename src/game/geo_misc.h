@@ -13,16 +13,16 @@ enum FlyingCarpetState
 
 extern s8 gFlyingCarpetState;
 
+// #ifdef RM2C
 // #define MIO0_SEG(name, addr) \
     // name##_Index, \
-
 
 // enum Custom_Skybox_Indices{
 // #include "textures/skyboxes/Skybox_Rules.ld"
 // };
 
 // #undef MIO0_SEG
-
+// #endif
 
 #ifndef GBI_FLOATS
 extern void make_vertex(
