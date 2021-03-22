@@ -51,28 +51,6 @@ B_BTN_DRAIN ?= 0
 Z_BTN_DRAIN ?= 0
 #For those hardcore players. Saving is disabled and the game force crashes when you get zero lives.
 HARDCORE ?= 0
-
-#Game wide edits to add optional challenges
-
-#Makes enemies move faster or attack more often generally
-BUFFED_ENEMIES ?= 0
-#Coins do not restore HP, may make several hacks impossible
-COINS_NO_HEAL ?= 0
-#Slowly drains HP over time continuously. About 1/4 strength of toxic gas.
-DRAIN_HP_CONSTANT ?= 0
-#Doubles lava damage
-DOUBLE_LAVA_DMG ?= 0
-#Doubles Koopa Speed (may cause the turtle to get stuck in places)
-DOUBLE_KOOPA_SPEED ?= 0
-#Basically chaos edition but light. Only edits that are manageable e.g. messing with mario's model/size/colors
-#or his physics somewhat. Two edits at a time, swaps out on 15s timer.
-CHAOS_LITE ?= 0
-#Pannen meme challenges. These cause the equivalent button press to remove 1 HP
-A_BTN_DRAIN ?= 0
-B_BTN_DRAIN ?= 0
-Z_BTN_DRAIN ?= 0
-#For those hardcore players. Saving is disabled and the game force crashes when you get zero lives.
-HARDCORE ?= 0
 #Max HP is set to 1. For the sake of playability, water HP drain is removed in this mode.
 DAREDEVIL ?= 0
 #A 1 up spawns with you and chases you. Collecing it kills you
