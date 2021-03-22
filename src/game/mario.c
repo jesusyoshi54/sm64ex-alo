@@ -1519,24 +1519,27 @@ void set_submerged_cam_preset_and_spawn_bubbles(struct MarioState *m) {
 #else
 #define MAXHP 0x880
 #endif
+extern s16 gDialogID;
 void update_mario_health(struct MarioState *m) {
     s32 terrainIsSnow;
     if (m->health >= 0x100) {
-		#ifdef DRAIN_HP_CONSTANT
-		m->health -= 1;
-		#endif
-		#ifdef A_BTN_DRAIN
-		if (gPlayer1Controller->buttonPressed&A_BUTTON)
-			m->health -= 0x100;
-		#endif
-		#ifdef B_BTN_DRAIN
-		if (gPlayer1Controller->buttonPressed&B_BUTTON)
-			m->health -= 0x100;
-		#endif
-		#ifdef Z_BTN_DRAIN
-		if (gPlayer1Controller->buttonPressed&Z_TRIG)
-			m->health -= 0x100;
-		#endif
+		if(gDialogID == -1){
+			#ifdef DRAIN_HP_CONSTANT
+			m->health -= 1;
+			#endif
+			#ifdef A_BTN_DRAIN
+			if (gPlayer1Controller->buttonPressed&A_BUTTON)
+				m->health -= 0x100;
+			#endif
+			#ifdef B_BTN_DRAIN
+			if (gPlayer1Controller->buttonPressed&B_BUTTON)
+				m->health -= 0x100;
+			#endif
+			#ifdef Z_BTN_DRAIN
+			if (gPlayer1Controller->buttonPressed&Z_TRIG)
+				m->health -= 0x100;
+			#endif
+		}
         // When already healing or hurting Mario, Mario's HP is not changed any more here.
         if (((u32) m->healCounter | (u32) m->hurtCounter) == 0) {
             if ((m->input & INPUT_IN_POISON_GAS) && !(m->action & ACT_FLAG_INTANGIBLE)) {
@@ -1578,7 +1581,8 @@ void update_mario_health(struct MarioState *m) {
         if (m->health < 0x100) {
             m->health = 0xFF;
         }
-
+		#ifdef DAREDEVIL
+		#else
         // Play a noise to alert the player when Mario is close to drowning.
         if (((m->action & ACT_GROUP_MASK) == ACT_GROUP_SUBMERGED) && (m->health < 0x300)) {
             play_sound(SOUND_MOVING_ALMOST_DROWNING, gGlobalSoundSource);
@@ -1594,6 +1598,7 @@ void update_mario_health(struct MarioState *m) {
             gRumblePakTimer = 0;
 #endif
         }
+		#endif
     }
 }
 
@@ -1822,17 +1827,16 @@ void Apply_Chaos_Mods(struct MarioState *m){
 	}
 	CurrVI++;
 	gMarioObject->header.gfx.sharedChild = gLoadedGraphNodes[MODEL_MARIO];
-	printf("%d %d\n",m->Chaos_Vals[0],m->Chaos_Vals[1]);
 	for (i=0;i<2;i++){
 		switch(m->Chaos_Vals[i]){
 			case Forward_Momentum:
 				tempV = m->forwardVel;
-				mario_set_forward_vel(m,16.0f);
+				mario_set_forward_vel(m,32.0f);
 				// m->forwardVel = tempV;
 				break;
 			case Backwards_Momentum:
 				tempV = m->forwardVel;
-				mario_set_forward_vel(m,-16.0f);
+				mario_set_forward_vel(m,-32.0f);
 				// m->forwardVel = tempV;
 				break;
 			case Giant_Mario:
@@ -1861,10 +1865,15 @@ void Apply_Chaos_Mods(struct MarioState *m){
 				gMarioObject->header.gfx.sharedChild = gLoadedGraphNodes[MODEL_WOODEN_SIGNPOST];
 				break;
 			case All_Caps:
-				m->flags |= 10;
+				m->flags |= 14;
+				m->capTimer=30;
 				break;
 			case Double_Speed:
-				m->forwardVel*=2;
+				if(m->forwardVel>0){
+					m->forwardVel+=32.0f;
+				}else{
+					m->forwardVel-=32.0f;
+				}
 				break;
 
 		}
@@ -1910,7 +1919,7 @@ s32 execute_mario_action(UNUSED struct Object *o) {
             return 0;
         }
 		#ifdef SUPER_MODE
-		if(gMarioState->action & ACT_GROUP_MASK!=ACT_GROUP_AIRBORNE) {
+		if((gMarioState->action & ACT_GROUP_MASK)!=ACT_GROUP_AIRBORNE) {
 		extern u8 Super_Jump_Count;
 		extern u8 Super_Can_Jump;
 		Super_Can_Jump=0;

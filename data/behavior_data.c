@@ -6265,7 +6265,7 @@ CALL_NATIVE(load_object_collision_model),
 END_LOOP(),
 };
 
-const BehaviorScript bhvSandblock_MOP[] = {
+const BehaviorScript bhvSandBlock_MOP[] = {
 BEGIN(OBJ_LIST_SURFACE),
 OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE ),
 LOAD_COLLISION_DATA(col_Sandblock_MOP_0xaa6444),
