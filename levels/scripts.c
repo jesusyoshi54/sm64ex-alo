@@ -130,7 +130,7 @@ const LevelScript level_main_scripts_entry[] = {
 	LOAD_MODEL_FROM_DL(0x97,DL_Shrink_Platform_Border_MOP_0x3020860,1),
 	LOAD_MODEL_FROM_DL(0x92 /* Spring*/,DL_Spring_MOP_0x301fc98,1),
 	LOAD_MODEL_FROM_GEO(0x2D,Moving_Rotating_Block_MOP),
-	LOAD_MODEL_FROM_GEO(/* Sandblock */0x99,Sandblock_MOP),
+	LOAD_MODEL_FROM_GEO(/* SandBlock */0x99,SandBlock_MOP),
 	LOAD_MODEL_FROM_GEO(/* Shell 1 */0x9B,Shell_1_MOP),
 	LOAD_MODEL_FROM_GEO(/* Shell 2 */0x9D,Shell_2_MOP),
 	LOAD_MODEL_FROM_GEO(/* Shrinkplat */0x98,Shrink_Platform_MOP),

@@ -120,9 +120,9 @@ static void apply_water_current(struct MarioState *m, Vec3f step) {
     s32 i;
     f32 whirlpoolRadius = 2000.0f;
 
-    if (m->floor->type == SURFACE_FLOWING_WATER) {
-        s16 currentAngle = m->floor->force << 8;
-        f32 currentSpeed = sWaterCurrentSpeeds[m->floor->force >> 8];
+    if (m->Waterfloor->type == SURFACE_FLOWING_WATER) {
+        f32 currentSpeed = (f32) m->Waterfloor->force;
+		s16 currentAngle = atan2s(m->Waterfloor->normal.z,m->Waterfloor->normal.x);
 
         step[0] += currentSpeed * sins(currentAngle);
         step[2] += currentSpeed * coss(currentAngle);

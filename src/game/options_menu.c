@@ -224,7 +224,6 @@ static void optmenu_act_exit(UNUSED struct Option *self, s32 arg) {
     if (!arg) game_exit(); // only exit on A press and not directions
 }
 
-
 static void optvideo_reset_window(UNUSED struct Option *self, s32 arg) {
     if (!arg) {
         // Restrict reset to A press and not directions

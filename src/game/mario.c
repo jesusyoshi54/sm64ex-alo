@@ -1919,7 +1919,7 @@ s32 execute_mario_action(UNUSED struct Object *o) {
             return 0;
         }
 		#ifdef SUPER_MODE
-		if(gMarioState->action & ACT_GROUP_MASK!=ACT_GROUP_AIRBORNE) {
+		if((gMarioState->action & ACT_GROUP_MASK)!=ACT_GROUP_AIRBORNE) {
 		extern u8 Super_Jump_Count;
 		extern u8 Super_Can_Jump;
 		Super_Can_Jump=0;

@@ -425,7 +425,9 @@ u32 common_air_action_step(struct MarioState *m, u32 landAction, s32 animation, 
 
         case AIR_STEP_HIT_WALL:
             set_mario_animation(m, animation);
-
+			#ifdef SUPER_MODE
+			Super_Can_Jump=0;
+			#endif
             if (m->forwardVel > 16.0f) {
 #ifdef RUMBLE_FEEDBACK
                 queue_rumble_data(5, 40);
@@ -591,7 +593,9 @@ s32 act_freefall(struct MarioState *m) {
             animation = MARIO_ANIM_FALL_FROM_SLIDE_KICK;
             break;
     }
-
+	#ifdef SUPER_MODE
+	Check_Super_Jump(m);
+	#endif
     common_air_action_step(m, ACT_FREEFALL_LAND, animation, AIR_STEP_CHECK_LEDGE_GRAB);
     return FALSE;
 }
@@ -650,7 +654,7 @@ s32 act_side_flip(struct MarioState *m) {
 
     play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, 0);
 
-    if (common_air_action_step(m, ACT_SIDE_FLIP_LAND, MARIO_ANIM_SLIDEFLIP, AIR_STEP_CHECK_LEDGE_GRAB)
+    if (common_air_action_step(m, ACT_SIDE_FLIP_LAND, MARIO_ANIM_SLIDEFLIP, AIR_STEP_CHECK_LEDGE_GRAB| AIR_STEP_CHECK_HANG)
         != AIR_STEP_GRABBED_LEDGE) {
         m->marioObj->header.gfx.angle[1] += 0x8000;
     }
@@ -676,7 +680,7 @@ s32 act_wall_kick_air(struct MarioState *m) {
 	#endif
 
     play_mario_jump_sound(m);
-    common_air_action_step(m, ACT_JUMP_LAND, MARIO_ANIM_SLIDEJUMP, AIR_STEP_CHECK_LEDGE_GRAB);
+    common_air_action_step(m, ACT_JUMP_LAND, MARIO_ANIM_SLIDEJUMP, AIR_STEP_CHECK_LEDGE_GRAB| AIR_STEP_CHECK_HANG);
     return FALSE;
 }
 
@@ -697,7 +701,7 @@ s32 act_long_jump(struct MarioState *m) {
 	#ifdef SUPER_MODE
 	Check_Super_Jump(m);
 	#endif
-    common_air_action_step(m, ACT_LONG_JUMP_LAND, animation, AIR_STEP_CHECK_LEDGE_GRAB);
+    common_air_action_step(m, ACT_LONG_JUMP_LAND, animation, AIR_STEP_CHECK_LEDGE_GRAB| AIR_STEP_CHECK_HANG);
 #ifdef RUMBLE_FEEDBACK
     if (m->action == ACT_LONG_JUMP_LAND) {
         queue_rumble_data(5, 40);
@@ -881,7 +885,7 @@ s32 act_water_jump(struct MarioState *m) {
 
     play_mario_sound(m, SOUND_ACTION_UNKNOWN432, 0);
     set_mario_animation(m, MARIO_ANIM_SINGLE_JUMP);
-    common_air_action_step(m, ACT_JUMP_LAND, MARIO_ANIM_SINGLE_JUMP, AIR_STEP_CHECK_LEDGE_GRAB);
+    common_air_action_step(m, ACT_JUMP_LAND, MARIO_ANIM_SINGLE_JUMP, AIR_STEP_CHECK_LEDGE_GRAB| AIR_STEP_CHECK_HANG);
     // switch (perform_air_step(m, AIR_STEP_CHECK_LEDGE_GRAB)) {
         // case AIR_STEP_LANDED:
             // set_mario_action(m, ACT_JUMP_LAND, 0);

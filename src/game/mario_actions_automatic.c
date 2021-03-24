@@ -345,9 +345,9 @@ s32 perform_hanging_step(struct MarioState *m, Vec3f nextPos) {
 s32 update_hang_moving(struct MarioState *m) {
     s32 stepResult;
     Vec3f nextPos;
-    f32 maxSpeed = 4.0f;
+    f32 maxSpeed = 16.0f;
 
-    m->forwardVel += 1.0f;
+    m->forwardVel += 4.0f;
     if (m->forwardVel > maxSpeed) {
         m->forwardVel = maxSpeed;
     }
@@ -390,9 +390,10 @@ s32 act_start_hanging(struct MarioState *m) {
         queue_rumble_data(5, 80);
     }
 #endif
-    if ((m->input & INPUT_NONZERO_ANALOG) && m->actionTimer >= 31) {
+    if (m->actionTimer >= 8) {
         return set_mario_action(m, ACT_HANGING, 0);
     }
+	m->actionTimer++;
 
     if (!(m->input & INPUT_A_DOWN)) {
         return set_mario_action(m, ACT_FREEFALL, 0);

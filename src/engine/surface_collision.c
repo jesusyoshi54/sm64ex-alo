@@ -260,10 +260,10 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
             continue;
         }
 		if (gCheckingWaterCollisions==0){
-			if (surf->type==SURFACE_WATER){
+			if ((surf->type == 0xD)|(surf->type == 0xE)){
 				continue;
 			}
-		}else if(surf->type!=SURFACE_WATER){
+		}else if((surf->type != 0xD)&&(surf->type != 0xE)){
 			continue;
 		}
 		nx = surf->normal.x;
@@ -434,10 +434,10 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
             continue;
         }
 		if (gCheckingWaterCollisions==0){
-			if (surf->type==SURFACE_WATER){
+			if ((surf->type == 0xD)|(surf->type == 0xE)){
 				continue;
 			}
-		}else if(surf->type!=SURFACE_WATER){
+		}else if((surf->type != 0xD)&&(surf->type != 0xE)){
 			continue;
 		}
         nx = surf->normal.x;
@@ -624,9 +624,9 @@ f32 find_water_level(f32 x, f32 z, f32 y) {
 		gCheckingWaterCollisions = 0;
 		return waterLevel;
 	}
-	gMarioState->Waterfloor = floor;
 	if ((y+140.0)>fHeight & y<=cHeight){
 	waterLevel = cHeight;
+	gMarioState->Waterfloor = floor;
 	}
 	gCheckingWaterCollisions = 0;
     return waterLevel;
@@ -873,7 +873,7 @@ void find_surface_on_ray_list(struct SurfaceNode *list, Vec3f orig, Vec3f dir, f
         if (gCheckingSurfaceCollisionsForCamera && (list->surface->flags & SURFACE_FLAG_NO_CAM_COLLISION))
             continue;
         // Reject water
-        if (gCheckingSurfaceCollisionsForCamera && (list->surface->type == 0xD))
+        if (gCheckingSurfaceCollisionsForCamera && ((list->surface->type == 0xD)|(list->surface->type == 0xE)))
             continue;
 
         // Check intersection between the ray and this surface

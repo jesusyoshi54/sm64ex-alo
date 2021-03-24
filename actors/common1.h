@@ -275,7 +275,7 @@ extern const Collision col_Green_Switchboard_MOP_0x7ddc38[];
 extern const GeoLayout Moving_Rotating_Block_MOP[];
 extern const Collision col_Moving_Rotating_Block_MOP_0x7e3ea0[];
 //sandblock
-extern const GeoLayout Sandblock_MOP[];
+extern const GeoLayout SandBlock_MOP[];
 extern const Collision col_Sandblock_MOP_0xaa6444[];
 //shell 1
 extern const GeoLayout Shell_1_MOP[];

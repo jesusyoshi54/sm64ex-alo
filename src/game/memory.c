@@ -90,7 +90,9 @@ extern struct MainPoolBlock *sPoolListHeadR;
  */
 struct MemoryPool *gEffectsMemoryPool;
 
+
 uintptr_t sSegmentTable[32];
+uintptr_t sSegmentROMTable[32];
 u32 sPoolFreeSpace;
 u8 *sPoolStart;
 u8 *sPoolEnd;
@@ -397,7 +399,7 @@ void *load_segment(s32 segment, u8 *srcStart, u8 *srcEnd, u32 side) {
     void *addr = dynamic_dma_read(srcStart, srcEnd, side);
 
     if (addr != NULL) {
-        set_segment_base_addr(segment, addr);
+        set_segment_base_addr(segment, addr); sSegmentROMTable[segment] = (uintptr_t) srcStart;
     }
     return addr;
 }
@@ -447,7 +449,7 @@ void *load_segment_decompress(s32 segment, u8 *srcStart, u8 *srcEnd) {
         dest = main_pool_alloc(*size, MEMORY_POOL_LEFT);
         if (dest != NULL) {
             decompress(compressed, dest);
-            set_segment_base_addr(segment, dest);
+            set_segment_base_addr(segment, dest); sSegmentROMTable[segment] = (uintptr_t) srcStart;
             main_pool_free(compressed);
         } else {
         }
@@ -465,7 +467,7 @@ void *load_segment_decompress_heap(u32 segment, u8 *srcStart, u8 *srcEnd) {
     if (compressed != NULL) {
         dma_read(compressed, srcStart, srcEnd);
         decompress(compressed, gDecompressionHeap);
-        set_segment_base_addr(segment, gDecompressionHeap);
+        set_segment_base_addr(segment, gDecompressionHeap); sSegmentROMTable[segment] = (uintptr_t) srcStart;
         main_pool_free(compressed);
     } else {
     }

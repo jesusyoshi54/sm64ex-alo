@@ -1,4 +1,4 @@
-const GeoLayout Sandblock_MOP[]= {
+const GeoLayout SandBlock_MOP[]= {
 GEO_SHADOW(10,0,262),
 GEO_OPEN_NODE(),
 GEO_SCALE(0,65536),
