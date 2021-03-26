@@ -1,56 +1,55 @@
 // bomp.c.inc
 
 void bhv_small_bomp_init(void) {
-    o->oFaceAngleYaw -= 0x4000;
-    o->oSmallBompInitX = o->oPosX;
-    o->oTimer = random_float() * 100.0f;
+    o->oMoveAngleYaw += 0x4000;
+	obj_scale_xyz(o,3.0f,5.0f,1.8f);
 }
 
+//travel 150 units, then travel another 380 units
 void bhv_small_bomp_loop(void) {
     switch (o->oAction) {
         case BOMP_ACT_WAIT:
-            if (o->oTimer >= 101) {
-                o->oAction = BOMP_ACT_POKE_OUT;
-                o->oForwardVel = 30.0f;
-            }
+			o->oAction = BOMP_ACT_POKE_OUT;
+			o->oForwardVel = 50.0f;
             break;
 
-        case BOMP_ACT_POKE_OUT:
-            if (o->oPosX > 3450.0f) {
-                o->oPosX = 3450.0f;
+        //travel 150
+		case BOMP_ACT_POKE_OUT:
+            if (o->oTimer >= 3) {
                 o->oForwardVel = 0;
             }
 
-            if (o->oTimer == 15.0) {
+            if (o->oTimer >= 65) {
                 o->oAction = BOMP_ACT_EXTEND;
-                o->oForwardVel = 40.0f;
+                o->oForwardVel = 80.0f;
                 cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN2);
             }
             break;
 
-        case BOMP_ACT_EXTEND:
-            if (o->oPosX > 3830.0f) {
-                o->oPosX = 3830.0f;
+        //travel 380
+		case BOMP_ACT_EXTEND:
+            if (o->oTimer >= 5) {
                 o->oForwardVel = 0;
             }
 
-            if (o->oTimer == 60) {
+            if (o->oTimer >= 65) {
                 o->oAction = BOMP_ACT_RETRACT;
-                o->oForwardVel = 10.0f;
+                o->oForwardVel = 30.0f;
                 o->oMoveAngleYaw -= 0x8000;
                 cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN2);
             }
             break;
 
-        case BOMP_ACT_RETRACT:
-            if (o->oPosX < 3330.0f) {
-                o->oPosX = 3330.0f;
+        //travel -530
+		case BOMP_ACT_RETRACT:
+            if (o->oTimer >= 20) {
+                cur_obj_set_pos_to_home();
                 o->oForwardVel = 0;
             }
 
-            if (o->oTimer == 90) {
+            if (o->oTimer >= 28) {
                 o->oAction = BOMP_ACT_POKE_OUT;
-                o->oForwardVel = 25.0f;
+                o->oForwardVel = 50.0f;
                 o->oMoveAngleYaw -= 0x8000;
             }
             break;
@@ -58,7 +57,7 @@ void bhv_small_bomp_loop(void) {
 }
 
 void bhv_large_bomp_init(void) {
-    o->oMoveAngleYaw += 0x4000;
+    // o->oMoveAngleYaw += 0x4000;
     o->oTimer = random_float() * 100.0f;
 }
 

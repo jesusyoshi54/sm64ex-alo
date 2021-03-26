@@ -30,7 +30,7 @@ void whomp_act_0(void) {
             }
         } else if (cur_obj_update_dialog_with_cutscene(2, 1, CUTSCENE_DIALOG, DIALOG_114))
             o->oAction = 2;
-    } else if (o->oDistanceToMario < 500.0f)
+    } else
         o->oAction = 1;
     whomp_play_sfx_from_pound_animation();
 }
@@ -57,10 +57,7 @@ void whomp_act_1(void) {
     f32 sp1C;
     sp26 = abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw);
     sp20 = cur_obj_lateral_dist_to_home();
-    if (gCurrLevelNum == LEVEL_BITS)
-        sp1C = 200.0f;
-    else
-        sp1C = 700.0f;
+	sp1C = 600.0f;
     cur_obj_init_animation_with_accel_and_sound(0, 1.0f);
     o->oForwardVel = 3.0f;
     if (sp20 > sp1C)
