@@ -356,6 +356,20 @@ CALL_NATIVE( Update_Mario_Water_Displacement),
 CALL_NATIVE( load_object_collision_model),
 END_LOOP(),
 };
+const BehaviorScript WaterCube_Circular[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),
+LOAD_COLLISION_DATA(WaterCube_collision),
+SET_HOME(),
+SET_FLOAT(oForwardVel,22),
+SET_INT(oAngleVelYaw,0x52),
+BEGIN_LOOP(),
+ADD_INT(oFaceAngleYaw,0x57),
+ADD_INT(oMoveAngleYaw,0x57),
+CALL_NATIVE( Update_Mario_Water_Displacement),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
 const BehaviorScript WaterCube_Square[] = {
 BEGIN(OBJ_LIST_SURFACE),
 OR_INT(oFlags,1),

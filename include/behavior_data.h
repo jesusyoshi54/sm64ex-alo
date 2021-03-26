@@ -3,6 +3,7 @@
 
 #include "types.h"
 
+extern const BehaviorScript WaterCube_Circular[];
 extern const BehaviorScript WaterCube_UPDown[];
 extern const BehaviorScript WaterCube_ForBack[];
 extern const BehaviorScript WaterCube_Square[];
