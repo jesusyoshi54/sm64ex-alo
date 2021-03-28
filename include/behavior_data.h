@@ -3,6 +3,9 @@
 
 #include "types.h"
 
+extern const BehaviorScript bhv_Rot_Gear_Large[];
+extern const BehaviorScript bhv_Rot_Gear[];
+extern const BehaviorScript WaterCube_Circular_Small[];
 extern const BehaviorScript WaterCube_Circular[];
 extern const BehaviorScript WaterCube_UPDown[];
 extern const BehaviorScript WaterCube_ForBack[];

@@ -332,6 +332,31 @@
     BC_PTR(dropletParams)
 
 extern const Collision WaterCube_collision[];
+extern const Collision Rot_Gear_collision[];
+
+const BehaviorScript bhv_Rot_Gear_Large[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),
+LOAD_COLLISION_DATA(Rot_Gear_collision),
+SCALE(0,140),
+SET_INT(oAngleVelPitch,0x100),
+SET_FLOAT(oCollisionDistance, 0x2000),
+BEGIN_LOOP(),
+ADD_INT(oFaceAnglePitch,0x100),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
+const BehaviorScript bhv_Rot_Gear[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),
+LOAD_COLLISION_DATA(Rot_Gear_collision),
+SET_INT(oAngleVelPitch,0x100),
+BEGIN_LOOP(),
+ADD_INT(oFaceAnglePitch,0x100),
+ADD_INT(oAngleVelPitch,0x100),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
 
 const BehaviorScript WaterCube_UPDown[] = {
 BEGIN(OBJ_LIST_SURFACE),
@@ -366,6 +391,20 @@ SET_INT(oAngleVelYaw,0x52),
 BEGIN_LOOP(),
 ADD_INT(oFaceAngleYaw,0x57),
 ADD_INT(oMoveAngleYaw,0x57),
+CALL_NATIVE( Update_Mario_Water_Displacement),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
+const BehaviorScript WaterCube_Circular_Small[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),
+LOAD_COLLISION_DATA(WaterCube_collision),
+SET_HOME(),
+SET_FLOAT(oForwardVel,10),
+SET_INT(oAngleVelYaw,98),
+BEGIN_LOOP(),
+ADD_INT(oFaceAngleYaw,98),
+ADD_INT(oMoveAngleYaw,98),
 CALL_NATIVE( Update_Mario_Water_Displacement),
 CALL_NATIVE( load_object_collision_model),
 END_LOOP(),

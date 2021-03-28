@@ -57,7 +57,7 @@ void whomp_act_1(void) {
     f32 sp1C;
     sp26 = abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw);
     sp20 = cur_obj_lateral_dist_to_home();
-	sp1C = 600.0f;
+	sp1C = 1300.0f;
     cur_obj_init_animation_with_accel_and_sound(0, 1.0f);
     o->oForwardVel = 3.0f;
     if (sp20 > sp1C)
@@ -105,10 +105,11 @@ void whomp_act_3(void) {
 
 void whomp_act_4(void) {
     if (o->oTimer == 0)
-        o->oVelY = 40.0f;
-    if (o->oTimer < 8) {
+        o->oVelY = 80.0f;
+    if (o->oTimer < 4) {
+		o->oVelY = 0.0f;
     } else {
-        o->oAngleVelPitch += 0x100;
+        o->oAngleVelPitch += 0x800;
         o->oFaceAnglePitch += o->oAngleVelPitch;
         if (o->oFaceAnglePitch > 0x4000) {
             o->oAngleVelPitch = 0;

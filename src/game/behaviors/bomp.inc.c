@@ -19,7 +19,7 @@ void bhv_small_bomp_loop(void) {
                 o->oForwardVel = 0;
             }
 
-            if (o->oTimer >= 65) {
+            if (o->oTimer >= 30) {
                 o->oAction = BOMP_ACT_EXTEND;
                 o->oForwardVel = 80.0f;
                 cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN2);
@@ -32,7 +32,7 @@ void bhv_small_bomp_loop(void) {
                 o->oForwardVel = 0;
             }
 
-            if (o->oTimer >= 65) {
+            if (o->oTimer >= 30) {
                 o->oAction = BOMP_ACT_RETRACT;
                 o->oForwardVel = 30.0f;
                 o->oMoveAngleYaw -= 0x8000;
@@ -47,7 +47,7 @@ void bhv_small_bomp_loop(void) {
                 o->oForwardVel = 0;
             }
 
-            if (o->oTimer >= 28) {
+            if (o->oTimer >= 30) {
                 o->oAction = BOMP_ACT_POKE_OUT;
                 o->oForwardVel = 50.0f;
                 o->oMoveAngleYaw -= 0x8000;

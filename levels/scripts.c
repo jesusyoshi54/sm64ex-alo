@@ -63,6 +63,7 @@ static const LevelScript custom_script_exec_ ## folder [4 + 1];
 #undef DEFINE_LEVEL
 #undef STUB_LEVEL
 extern const GeoLayout WaterCube[];
+extern const GeoLayout Rot_Gear[];
 const LevelScript level_main_scripts_entry[] = {
     LOAD_MIO0(/*seg*/ 0x04, _group0_mio0SegmentRomStart, _group0_mio0SegmentRomEnd),
     LOAD_MIO0(/*seg*/ 0x03, _common1_mio0SegmentRomStart, _common1_mio0SegmentRomEnd),
@@ -72,6 +73,7 @@ const LevelScript level_main_scripts_entry[] = {
     ALLOC_LEVEL_POOL(),
     LOAD_MODEL_FROM_GEO(MODEL_MARIO,                   mario_geo),
     LOAD_MODEL_FROM_GEO(255,                   WaterCube),
+    LOAD_MODEL_FROM_GEO(254,                   Rot_Gear),
     LOAD_MODEL_FROM_GEO(MODEL_SMOKE,                   smoke_geo),
     LOAD_MODEL_FROM_GEO(MODEL_SPARKLES,                sparkles_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BUBBLE,                  bubble_geo),

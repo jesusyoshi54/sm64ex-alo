@@ -348,4 +348,10 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "WaterCube/collision_header.h"
 
+#include "Rot_Gear/collision_header.h"
+
+#include "Rot_Gear/header.h"
+
+#include "Rot_Gear/geo_header.h"
+
 #endif

@@ -18,3 +18,4 @@
 #include "mario/geo.inc.c"
 
 #include "WaterCube/geo.inc.c"
+#include "Rot_Gear/geo.inc.c"

@@ -28,3 +28,5 @@
 
 #include "WaterCube/model.inc.c"
 #include "WaterCube/collision.inc.c"
+#include "Rot_Gear/collision.inc.c"
+#include "Rot_Gear/model.inc.c"
