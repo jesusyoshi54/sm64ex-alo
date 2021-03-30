@@ -556,13 +556,13 @@ static void newcam_update_values(void) {
         waterflag = 1;
     }
 
-    if (waterflag && newcam_modeflags & NC_FLAG_XTURN) {
-        newcam_yaw = (approach_s16_symmetric(newcam_yaw,-gMarioState->faceAngle[1]-0x4000,(gMarioState->forwardVel*128)));
-        if ((signed)gMarioState->forwardVel > 1)
-            newcam_tilt = (approach_s16_symmetric(newcam_tilt,(-gMarioState->faceAngle[0]*0.8)+3000,(gMarioState->forwardVel*32)));
-        else
-            newcam_tilt = (approach_s16_symmetric(newcam_tilt,3000,32));
-    }
+    // if (waterflag && newcam_modeflags & NC_FLAG_XTURN) {
+        // newcam_yaw = (approach_s16_symmetric(newcam_yaw,-gMarioState->faceAngle[1]-0x4000,(gMarioState->forwardVel*128)));
+        // if ((signed)gMarioState->forwardVel > 1)
+            // newcam_tilt = (approach_s16_symmetric(newcam_tilt,(-gMarioState->faceAngle[0]*0.8)+3000,(gMarioState->forwardVel*32)));
+        // else
+            // newcam_tilt = (approach_s16_symmetric(newcam_tilt,3000,32));
+    // }
 }
 
 static void newcam_bounding_box(void) {

@@ -2,7 +2,8 @@
     "comment": "This file lists all sequences together with the sound banks they use. If a sequence uses multiple banks, the first bank will be used by default, and it can switch between them using the chan_setbank command; e.g. chan_setbank 0 will switch to the first bank in the given list.",
     "00_sound_player": ["00", "01_terrain", "02_water", "03", "04", "05", "06", "07", "08_mario", "09", "0A_mario_peach"],
     "01_cutscene_collect_star": ["22"],
-    "02_menu_title_screen": ["0C"],
+    "02_menu_title_screen": null,
+    "02_mmzx_area_d_custom": ["0C"],
     "03_level_grass": ["22"],
     "04_level_inside_castle": null,
     "04_road_taken_custom": ["0C"],
@@ -18,7 +19,8 @@
     "0A_level_spooky": ["10", "21"],
     "0B_event_piranha_plant": ["14_piranha_music_box"],
     "0C_level_underground": ["15"],
-    "0D_menu_star_select": ["16_course_start"],
+    "0D_menu_star_select": null,
+    "0D_aboveground_urban_area_custom": ["0C"],
     "0E_event_powerup": ["17"],
     "0F_event_metal_cap": ["18"],
     "10_event_koopa_message": ["12"],
@@ -39,6 +41,7 @@
     "1E_cutscene_intro": ["1B"],
     "1F_cutscene_victory": ["1A"],
     "20_cutscene_ending": ["23"],
-    "21_menu_file_select": ["24"],
+    "21_lyra_encounter_custom": ["0C"],
+    "21_menu_file_select": null,
     "22_cutscene_lakitu": {"ifdef": ["VERSION_US", "VERSION_EU", "VERSION_SH"], "banks": ["1B"]}
 }
