@@ -1,22 +1,22 @@
-COURSE_ACTS(COURSE_BOB, _("  REFLECTIONS OF A SNOWFALL ON A WARM WINTERS EVENING"),
-       _("THE ENEMY OF ANXIETY IS WITHOUT FORM")     , _("A CLOUDY DAY IN SUMMER IS A DREAM OF AN UNBORN CHILD") , _("ONE HUNDRED AND TWENTY METERS OF TIME ON A CLOCK WITH NO HANDS"),
-       _("A HOLIDAY AWAY FROM THE TROUBLES OF DAYTIME TELEVISION")          , _("AN INCREASE IN FREE CASH FLOW BREAKS THE RESISTANCE OF YOUR MIND")        , _("HIDDEN WITHIN THE THOUGHTS YOU ARE SCARED TO REMEMBER LIES INNER PEACE"))
+COURSE_ACTS(COURSE_BOB, _("Reflections of a Snowfall on a Warm Winters Evening"),
+       _("The enemy of anxiety is without form")     , _("A cloudy day in summer is a dream of a child") , _("One hundred twenty meters of time on a clock with no hands"),
+       _("A holiday away from the troubles of daytime television")          , _("An increase in free cash flow breaks   \n    the resistance of your mind")        , _("Hidden within the thoughts you're scared      \n     to remember lies inner peace"))
 
-COURSE_ACTS(COURSE_WF, _("  A PROVERB HOLDS WISDOM WITHOUT HANDS"),
-       _("INSIDE THE TOWER LIES A MAN WITH NO EYES WHO SEES THE FUTURE")        , _("THE FORTRESS ABOVE THE ABOVES HOLDS ETERNAL TREASURE")    , _("THE TIDES DRAG ALONG YOUR FORGOTTEN DREAMS TO THE DELTA OF YOUR MINDS OCEAN"),
-       _("BOILING INSIDE A POT WITH NO LID ARE LIFES TEMPTATIONS"), _("HIGH IN THE SKY IS A BIRD WITHOUT WINGS")    , _("LIFE IS A POOR MANS LUXURY"))
+COURSE_ACTS(COURSE_WF, _("A proverb holds wisdom without hands"),
+       _("Inside the tower lies a man with no eyes who sees the future      ")        , _("The fortress above the aboves holds the eternal treasure     ")    , _("The tides drag along your forgotten dreams    \n     to the delta of your minds ocean"),
+       _("Boiling inside a pot with no lid are lifes temptations"), _("High in the sky is a bird without wings   ")    , _("Life is a poor man's luxury  "))
 
-COURSE_ACTS(COURSE_JRB, _(" 3 JOLLY ROGER BAY"),
-       _("PLUNDER IN THE SUNKEN SHIP")    , _("CAN THE EEL COME OUT TO PLAY?") , _("TREASURE OF THE OCEAN CAVE"),
-       _("RED COINS ON THE SHIP AFLOAT")  , _("BLAST TO THE STONE PILLAR")     , _("THROUGH THE JET STREAM"))
+COURSE_ACTS(COURSE_JRB, _("A cool breeze across the bow of the galley"),
+       _("Nature's eyes hold seeds that grow hope")    , _("A funeral for the dead of night") , _("A secret cavern on the    \n        beachside holding the memories of secret lovers"),
+       _("The wind blows towards tomorrow")  , _("A blind child cries where no soul can hear them")     , _("Under the sea of life's mysteries      \n        are the mind's mysteries"))
 
 COURSE_ACTS(COURSE_CCM, _(" 4 COOL, COOL MOUNTAIN"),
        _("SLIP SLIDIN' AWAY")             , _("LI'L PENGUIN LOST")             , _("BIG PENGUIN RACE"),
        _("FROSTY SLIDE FOR 8 RED COINS")  , _("SNOWMAN'S LOST HIS HEAD")       , _("WALL KICKS WILL WORK"))
 
-COURSE_ACTS(COURSE_BBH, _(" 5 BIG BOO'S HAUNT"),
-       _("GO ON A GHOST HUNT")            , _("RIDE BIG BOO'S MERRY-GO-ROUND") , _("SECRET OF THE HAUNTED BOOKS"),
-       _("SEEK THE 8 RED COINS")          , _("BIG BOO'S BALCONY")             , _("EYE TO EYE IN THE SECRET ROOM"))
+COURSE_ACTS(COURSE_BBH, _("Soulja boy crank dat"),
+       _("YOUUUUUUUUUUUUUUU")            , _("UUUUUUUUUUUUU") , _("UUUUUUUUUUUUUUUUUU"),
+       _("UUUUUUUUUUUUUU")          , _("UUUUUUUUUUUU")             , _("UUUUUUUUUUUUUU"))
 
 COURSE_ACTS(COURSE_HMC, _(" 6 HAZY MAZE CAVE"),
        _("SWIMMING BEAST IN THE CAVERN")  , _("ELEVATE FOR 8 RED COINS")       , _("METAL-HEAD MARIO CAN MOVE!"),

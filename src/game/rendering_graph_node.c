@@ -91,7 +91,7 @@ struct RenderModeContainer renderModeTable_1Cycle[2] = { { {
     G_RM_AA_ZB_TEX_EDGE,
     G_RM_AA_ZB_XLU_SURF,
     G_RM_AA_ZB_XLU_DECAL,
-    G_RM_AA_ZB_XLU_INTER,
+    G_RM_AA_ZB_XLU_SURF,
     } } };
 
 /* Rendermode settings for cycle 2 for all 8 layers. */
@@ -114,7 +114,7 @@ struct RenderModeContainer renderModeTable_2Cycle[2] = { { {
     G_RM_AA_ZB_TEX_EDGE2,
     G_RM_AA_ZB_XLU_SURF2,
     G_RM_AA_ZB_XLU_DECAL2,
-    G_RM_AA_ZB_XLU_INTER2,
+    G_RM_AA_ZB_XLU_SURF2,
     } } };
 
 struct GraphNodeRoot *gCurGraphNodeRoot = NULL;

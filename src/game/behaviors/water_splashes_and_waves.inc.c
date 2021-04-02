@@ -113,7 +113,7 @@ void bhv_shallow_water_splash_init(void) {
 }
 
 void bhv_wave_trail_shrink(void) {
-    f32 waterLevel = find_water_level(o->oPosX, o->oPosZ,o->oPosY);
+    f32 waterLevel = find_water_level(o->oPosX, o->oPosZ,o->oPosY-10);
     // Destroy every other water wave to space them out (this is a terrible way of doing it)
     if (o->oTimer == 0)
         if (gGlobalTimer & 1)

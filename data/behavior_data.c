@@ -353,7 +353,6 @@ LOAD_COLLISION_DATA(Rot_Gear_collision),
 SET_INT(oAngleVelPitch,0x100),
 BEGIN_LOOP(),
 ADD_INT(oFaceAnglePitch,0x100),
-ADD_INT(oAngleVelPitch,0x100),
 CALL_NATIVE( load_object_collision_model),
 END_LOOP(),
 };

@@ -7157,7 +7157,7 @@ Gfx bob_dl_Ice_002_mesh_layer_5_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx bob_dl_Ignore_Col_mesh_layer_4_vtx_0[38] = {
+Vtx bob_dl_Ignore_Col_mesh_layer_5_vtx_0[38] = {
 	{{{3376, 899, -4709},0, {-7859, 1261},{0xBB, 0x0, 0x6B, 0xFF}}},
 	{{{3376, -604, -4709},0, {-7859, -269},{0xBB, 0x0, 0x6B, 0xFF}}},
 	{{{4337, -604, -4091},0, {-4500, -269},{0xDD, 0x0, 0x7A, 0xFF}}},
@@ -7198,8 +7198,8 @@ Vtx bob_dl_Ignore_Col_mesh_layer_4_vtx_0[38] = {
 	{{{4337, -604, -4091},0, {2032, 1008},{0xBB, 0x0, 0x6B, 0xFF}}},
 };
 
-Gfx bob_dl_Ignore_Col_mesh_layer_4_tri_0[] = {
-	gsSPVertex(bob_dl_Ignore_Col_mesh_layer_4_vtx_0 + 0, 16, 0),
+Gfx bob_dl_Ignore_Col_mesh_layer_5_tri_0[] = {
+	gsSPVertex(bob_dl_Ignore_Col_mesh_layer_5_vtx_0 + 0, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(3, 2, 4, 0),
@@ -7214,7 +7214,7 @@ Gfx bob_dl_Ignore_Col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(11, 12, 13, 0),
 	gsSP1Triangle(13, 12, 14, 0),
 	gsSP1Triangle(13, 14, 15, 0),
-	gsSPVertex(bob_dl_Ignore_Col_mesh_layer_4_vtx_0 + 16, 14, 0),
+	gsSPVertex(bob_dl_Ignore_Col_mesh_layer_5_vtx_0 + 16, 14, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(3, 2, 4, 0),
@@ -7225,7 +7225,7 @@ Gfx bob_dl_Ignore_Col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(7, 8, 9, 0),
 	gsSP1Triangle(10, 11, 12, 0),
 	gsSP1Triangle(10, 12, 13, 0),
-	gsSPVertex(bob_dl_Ignore_Col_mesh_layer_4_vtx_0 + 30, 8, 0),
+	gsSPVertex(bob_dl_Ignore_Col_mesh_layer_5_vtx_0 + 30, 8, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(4, 5, 6, 0),
@@ -7233,7 +7233,7 @@ Gfx bob_dl_Ignore_Col_mesh_layer_4_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_0[159] = {
+Vtx bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_0[173] = {
 	{{{-28, 605, 1223},0, {-1068, 82},{0xFF, 0xFF, 0xFF, 0xFF}}},
 	{{{115, 803, 1366},0, {157, -1143},{0xFF, 0xFF, 0xFF, 0xFF}}},
 	{{{313, 803, 1366},0, {1859, -1143},{0xFF, 0xFF, 0xFF, 0xFF}}},
@@ -7393,6 +7393,20 @@ Vtx bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_0[159] = {
 	{{{11883, -773, 736},0, {2032, 3056},{0xFF, 0xFF, 0xFF, 0xFF}}},
 	{{{11883, 24, 736},0, {2032, -1040},{0xFF, 0xFF, 0xFF, 0xFF}}},
 	{{{11883, 24, 480},0, {-16, -1040},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1220, -1141, -3107},0, {-1068, 82},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1292, -1242, -3179},0, {157, -1143},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1393, -1242, -3179},0, {1859, -1143},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1465, -1141, -3107},0, {3084, 82},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1465, -1141, -3107},0, {3084, 82},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1393, -1242, -3179},0, {1859, -1143},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1393, -1242, -3280},0, {157, -1143},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1465, -1141, -3352},0, {-1068, 82},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1220, -1141, -3352},0, {3084, 82},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1292, -1242, -3280},0, {1859, -1143},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1292, -1242, -3179},0, {157, -1143},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1393, -1242, -3280},0, {157, -1143},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1292, -1242, -3280},0, {1859, -1143},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{1220, -1141, -3352},0, {3084, 82},{0xFF, 0xFF, 0xFF, 0xFF}}},
 };
 
 Gfx bob_dl_inverted_pyramid_001_mesh_layer_1_tri_0[] = {
@@ -7495,10 +7509,19 @@ Gfx bob_dl_inverted_pyramid_001_mesh_layer_1_tri_0[] = {
 	gsSP1Triangle(8, 10, 11, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(12, 14, 15, 0),
+	gsSPVertex(bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_0 + 159, 14, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(0, 2, 3, 0),
+	gsSP1Triangle(4, 5, 6, 0),
+	gsSP1Triangle(4, 6, 7, 0),
+	gsSP1Triangle(8, 9, 10, 0),
+	gsSP1Triangle(8, 10, 0, 0),
+	gsSP1Triangle(7, 11, 12, 0),
+	gsSP1Triangle(7, 12, 13, 0),
 	gsSPEndDisplayList(),
 };
 
-Vtx bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_1[240] = {
+Vtx bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_1[248] = {
 	{{{-28, 466, 1223},0, {-1097, -1097},{0x0, 0x81, 0x0, 0xFF}}},
 	{{{456, 466, 1223},0, {-1097, 3113},{0x0, 0x81, 0x0, 0xFF}}},
 	{{{456, 466, 1707},0, {3113, 3113},{0x0, 0x81, 0x0, 0xFF}}},
@@ -7739,6 +7762,14 @@ Vtx bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_1[240] = {
 	{{{9964, 315, -860},0, {-5536, 3113},{0x0, 0x81, 0x0, 0xFF}}},
 	{{{9448, 315, -860},0, {-5536, -1097},{0x0, 0x81, 0x0, 0xFF}}},
 	{{{9448, 315, -1417},0, {-4266, -1097},{0x0, 0x81, 0x0, 0xFF}}},
+	{{{1220, -1071, -3107},0, {-1097, -1097},{0x0, 0x7F, 0x0, 0xFF}}},
+	{{{1465, -1071, -3107},0, {-1097, 3113},{0x0, 0x7F, 0x0, 0xFF}}},
+	{{{1465, -1071, -3352},0, {3113, 3113},{0x0, 0x7F, 0x0, 0xFF}}},
+	{{{1220, -1071, -3352},0, {3113, -1097},{0x0, 0x7F, 0x0, 0xFF}}},
+	{{{1393, -1242, -3280},0, {-16, 2032},{0x0, 0x81, 0x0, 0xFF}}},
+	{{{1393, -1242, -3179},0, {2032, 2032},{0x0, 0x81, 0x0, 0xFF}}},
+	{{{1292, -1242, -3179},0, {2032, -16},{0x0, 0x81, 0x0, 0xFF}}},
+	{{{1292, -1242, -3280},0, {-16, -16},{0x0, 0x81, 0x0, 0xFF}}},
 };
 
 Gfx bob_dl_inverted_pyramid_001_mesh_layer_1_tri_1[] = {
@@ -7879,13 +7910,17 @@ Gfx bob_dl_inverted_pyramid_001_mesh_layer_1_tri_1[] = {
 	gsSP1Triangle(8, 10, 11, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(12, 14, 15, 0),
-	gsSPVertex(bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_1 + 236, 4, 0),
+	gsSPVertex(bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_1 + 236, 12, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
+	gsSP1Triangle(4, 5, 6, 0),
+	gsSP1Triangle(4, 6, 7, 0),
+	gsSP1Triangle(8, 9, 10, 0),
+	gsSP1Triangle(8, 10, 11, 0),
 	gsSPEndDisplayList(),
 };
 
-Vtx bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_2[144] = {
+Vtx bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_2[160] = {
 	{{{456, 466, 1707},0, {-1040, 2032},{0x0, 0x0, 0x7F, 0xFF}}},
 	{{{456, 605, 1707},0, {-1040, -16},{0x0, 0x0, 0x7F, 0xFF}}},
 	{{{-28, 605, 1707},0, {3056, -16},{0x0, 0x0, 0x7F, 0xFF}}},
@@ -8030,6 +8065,22 @@ Vtx bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_2[144] = {
 	{{{12007, 788, 3541},0, {3056, -16},{0x81, 0x0, 0x0, 0xFF}}},
 	{{{12007, 788, 2752},0, {-1040, -16},{0x81, 0x0, 0x0, 0xFF}}},
 	{{{12007, 562, 2752},0, {-1040, 2032},{0x81, 0x0, 0x0, 0xFF}}},
+	{{{1465, -1071, -3352},0, {-1040, 2032},{0x0, 0x0, 0x81, 0xFF}}},
+	{{{1465, -1141, -3352},0, {-1040, -16},{0x0, 0x0, 0x81, 0xFF}}},
+	{{{1220, -1141, -3352},0, {3056, -16},{0x0, 0x0, 0x81, 0xFF}}},
+	{{{1220, -1071, -3352},0, {3056, 2032},{0x0, 0x0, 0x81, 0xFF}}},
+	{{{1465, -1071, -3107},0, {3056, 2032},{0x7F, 0x0, 0x0, 0xFF}}},
+	{{{1465, -1141, -3107},0, {3056, -16},{0x7F, 0x0, 0x0, 0xFF}}},
+	{{{1465, -1141, -3352},0, {-1040, -16},{0x7F, 0x0, 0x0, 0xFF}}},
+	{{{1465, -1071, -3352},0, {-1040, 2032},{0x7F, 0x0, 0x0, 0xFF}}},
+	{{{1220, -1071, -3107},0, {-1040, 2032},{0x0, 0x0, 0x7F, 0xFF}}},
+	{{{1220, -1141, -3107},0, {-1040, -16},{0x0, 0x0, 0x7F, 0xFF}}},
+	{{{1465, -1141, -3107},0, {3056, -16},{0x0, 0x0, 0x7F, 0xFF}}},
+	{{{1465, -1071, -3107},0, {3056, 2032},{0x0, 0x0, 0x7F, 0xFF}}},
+	{{{1220, -1071, -3352},0, {3056, 2032},{0x81, 0x0, 0x0, 0xFF}}},
+	{{{1220, -1141, -3352},0, {3056, -16},{0x81, 0x0, 0x0, 0xFF}}},
+	{{{1220, -1141, -3107},0, {-1040, -16},{0x81, 0x0, 0x0, 0xFF}}},
+	{{{1220, -1071, -3107},0, {-1040, 2032},{0x81, 0x0, 0x0, 0xFF}}},
 };
 
 Gfx bob_dl_inverted_pyramid_001_mesh_layer_1_tri_2[] = {
@@ -8106,6 +8157,15 @@ Gfx bob_dl_inverted_pyramid_001_mesh_layer_1_tri_2[] = {
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(12, 14, 15, 0),
 	gsSPVertex(bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_2 + 128, 16, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(0, 2, 3, 0),
+	gsSP1Triangle(4, 5, 6, 0),
+	gsSP1Triangle(4, 6, 7, 0),
+	gsSP1Triangle(8, 9, 10, 0),
+	gsSP1Triangle(8, 10, 11, 0),
+	gsSP1Triangle(12, 13, 14, 0),
+	gsSP1Triangle(12, 14, 15, 0),
+	gsSPVertex(bob_dl_inverted_pyramid_001_mesh_layer_1_vtx_2 + 144, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(4, 5, 6, 0),
@@ -10485,7 +10545,7 @@ Gfx bob_dl_Solid_006_mesh_layer_1_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx bob_dl_Water_render_col_mesh_layer_4_vtx_0[187] = {
+Vtx bob_dl_Water_render_col_mesh_layer_5_vtx_0[187] = {
 	{{{3376, -2002, -4709},0, {-16, -16},{0x0, 0x7F, 0x0, 0xFF}}},
 	{{{3376, -2002, -3793},0, {2032, -16},{0x0, 0x7F, 0x0, 0xFF}}},
 	{{{4337, -2002, -4091},0, {322, 604},{0x0, 0x7F, 0x0, 0xFF}}},
@@ -10675,8 +10735,8 @@ Vtx bob_dl_Water_render_col_mesh_layer_4_vtx_0[187] = {
 	{{{6167, 569, 367},0, {501, -1917},{0xAA, 0x27, 0x55, 0xFF}}},
 };
 
-Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 0, 16, 0),
+Gfx bob_dl_Water_render_col_mesh_layer_5_tri_0[] = {
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 0, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(3, 4, 5, 0),
 	gsSP1Triangle(3, 6, 4, 0),
@@ -10691,7 +10751,7 @@ Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(12, 14, 13, 0),
 	gsSP1Triangle(15, 14, 12, 0),
 	gsSP1Triangle(12, 10, 15, 0),
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 16, 16, 0),
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 16, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(2, 4, 5, 0),
@@ -10700,7 +10760,7 @@ Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(10, 11, 12, 0),
 	gsSP1Triangle(13, 11, 10, 0),
 	gsSP1Triangle(14, 11, 15, 0),
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 32, 16, 0),
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 32, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(3, 4, 5, 0),
 	gsSP1Triangle(3, 6, 4, 0),
@@ -10709,7 +10769,7 @@ Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(10, 11, 8, 0),
 	gsSP1Triangle(12, 8, 11, 0),
 	gsSP1Triangle(13, 14, 15, 0),
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 48, 16, 0),
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 48, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(3, 4, 5, 0),
 	gsSP1Triangle(6, 4, 3, 0),
@@ -10718,7 +10778,7 @@ Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(9, 10, 11, 0),
 	gsSP1Triangle(9, 12, 10, 0),
 	gsSP1Triangle(13, 14, 15, 0),
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 64, 15, 0),
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 64, 15, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(4, 1, 3, 0),
@@ -10728,7 +10788,7 @@ Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(12, 10, 9, 0),
 	gsSP1Triangle(12, 13, 10, 0),
 	gsSP1Triangle(14, 10, 13, 0),
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 79, 15, 0),
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 79, 15, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(3, 1, 0, 0),
 	gsSP1Triangle(4, 1, 5, 0),
@@ -10737,7 +10797,7 @@ Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(7, 9, 10, 0),
 	gsSP1Triangle(11, 12, 13, 0),
 	gsSP1Triangle(11, 14, 12, 0),
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 94, 15, 0),
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 94, 15, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(4, 5, 6, 0),
@@ -10746,7 +10806,7 @@ Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(9, 5, 10, 0),
 	gsSP1Triangle(11, 12, 13, 0),
 	gsSP1Triangle(11, 14, 12, 0),
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 109, 15, 0),
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 109, 15, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(3, 1, 0, 0),
 	gsSP1Triangle(4, 1, 5, 0),
@@ -10755,7 +10815,7 @@ Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(7, 10, 8, 0),
 	gsSP1Triangle(11, 12, 13, 0),
 	gsSP1Triangle(11, 13, 14, 0),
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 124, 14, 0),
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 124, 14, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(2, 1, 3, 0),
 	gsSP1Triangle(4, 1, 5, 0),
@@ -10764,7 +10824,7 @@ Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(10, 8, 7, 0),
 	gsSP1Triangle(11, 8, 12, 0),
 	gsSP1Triangle(12, 8, 13, 0),
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 138, 16, 0),
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 138, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(4, 5, 6, 0),
@@ -10773,7 +10833,7 @@ Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(8, 11, 9, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(14, 13, 15, 0),
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 154, 15, 0),
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 154, 15, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(3, 1, 0, 0),
 	gsSP1Triangle(4, 5, 6, 0),
@@ -10782,7 +10842,7 @@ Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(9, 5, 10, 0),
 	gsSP1Triangle(11, 12, 13, 0),
 	gsSP1Triangle(11, 13, 14, 0),
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 169, 14, 0),
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 169, 14, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(2, 1, 3, 0),
 	gsSP1Triangle(4, 1, 5, 0),
@@ -10791,7 +10851,7 @@ Gfx bob_dl_Water_render_col_mesh_layer_4_tri_0[] = {
 	gsSP1Triangle(10, 8, 7, 0),
 	gsSP1Triangle(11, 8, 12, 0),
 	gsSP1Triangle(12, 8, 13, 0),
-	gsSPVertex(bob_dl_Water_render_col_mesh_layer_4_vtx_0 + 183, 4, 0),
+	gsSPVertex(bob_dl_Water_render_col_mesh_layer_5_vtx_0 + 183, 4, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSPEndDisplayList(),
@@ -11294,7 +11354,7 @@ Gfx mat_revert_bob_dl_Underside_Wall[] = {
 
 Gfx mat_bob_dl_mesh[] = {
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, SHADE, 0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, ENVIRONMENT, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, ENVIRONMENT, 0),
 	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPTileSync(),
@@ -11878,9 +11938,9 @@ Gfx bob_dl_Ice_002_mesh_layer_5[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx bob_dl_Ignore_Col_mesh_layer_4[] = {
+Gfx bob_dl_Ignore_Col_mesh_layer_5[] = {
 	gsSPDisplayList(mat_bob_dl_water),
-	gsSPDisplayList(bob_dl_Ignore_Col_mesh_layer_4_tri_0),
+	gsSPDisplayList(bob_dl_Ignore_Col_mesh_layer_5_tri_0),
 	gsSPDisplayList(mat_revert_bob_dl_water),
 	gsSPEndDisplayList(),
 };
@@ -11964,9 +12024,9 @@ Gfx bob_dl_Solid_006_mesh_layer_1[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx bob_dl_Water_render_col_mesh_layer_4[] = {
+Gfx bob_dl_Water_render_col_mesh_layer_5[] = {
 	gsSPDisplayList(mat_bob_dl_water),
-	gsSPDisplayList(bob_dl_Water_render_col_mesh_layer_4_tri_0),
+	gsSPDisplayList(bob_dl_Water_render_col_mesh_layer_5_tri_0),
 	gsSPDisplayList(mat_revert_bob_dl_water),
 	gsSPEndDisplayList(),
 };

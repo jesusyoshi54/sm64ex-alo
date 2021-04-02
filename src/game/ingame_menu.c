@@ -785,7 +785,7 @@ s16 get_str_x_pos_from_center(s16 centerPos, u8 *str, UNUSED f32 scale) {
     s16 strPos = 0;
     f32 spacesWidth = 0.0f;
 
-    while (str[strPos] != DIALOG_CHAR_TERMINATOR) {
+    while ((str[strPos] != DIALOG_CHAR_TERMINATOR) & (str[strPos] != DIALOG_CHAR_NEWLINE)) {
         spacesWidth += gDialogCharWidths[str[strPos]];
         strPos++;
     }
@@ -2248,6 +2248,7 @@ void render_pause_my_score_coins(void) {
     u8 *actName;
     u8 courseIndex;
     u8 starFlags;
+	s16 lvlNameX;
 
 #ifndef VERSION_EU
     courseNameTbl = segmented_to_virtual(seg2_course_name_table);
@@ -2295,39 +2296,42 @@ void render_pause_my_score_coins(void) {
 
     if (courseIndex < COURSE_STAGES_COUNT) {
 #ifdef VERSION_EU
-        print_generic_string(48, 157, gTextCourseArr[gInGameLanguage]);
+        print_generic_string(120, 157, gTextCourseArr[gInGameLanguage]);
 #else
-        print_generic_string(63, 157, textCourse);
+        print_generic_string(120, 157, textCourse);
 #endif
         int_to_str(gCurrCourseNum, strCourseNum);
 #ifdef VERSION_EU
         print_generic_string(get_string_width(gTextCourseArr[gInGameLanguage]) + 51, 157, strCourseNum);
 #else
-        print_generic_string(CRS_NUM_X1, 157, strCourseNum);
+        print_generic_string(CRS_NUM_X1+60, 157, strCourseNum);
 #endif
 
         actName = segmented_to_virtual(actNameTbl[(gCurrCourseNum - 1) * 6 + gDialogCourseActNum - 1]);
 
-        if (starFlags & (1 << (gDialogCourseActNum - 1))) {
-            print_generic_string(TXT_STAR_X, 140, textStar);
-        } else {
-            print_generic_string(TXT_STAR_X, 140, textUnfilledStar);
-        }
-        print_generic_string(ACT_NAME_X, 140, actName);
+        // if (starFlags & (1 << (gDialogCourseActNum - 1))) {
+            // print_generic_string(TXT_STAR_X, 140, textStar);
+        // } else {
+            // print_generic_string(TXT_STAR_X, 140, textUnfilledStar);
+        // }
+        print_generic_string(get_str_x_pos_from_center(160, actName, 8.0f), 140, actName);
 #ifndef VERSION_JP
-        print_generic_string(LVL_NAME_X, 157, &courseName[3]);
+		lvlNameX = get_str_x_pos_from_center(160, &courseName[0], 10.0f);
+        print_generic_string(lvlNameX, 172, &courseName[0]);
 #endif
     }
 #ifndef VERSION_JP
     else {
 #if defined(VERSION_US) || defined(VERSION_SH)
-        print_generic_string(94, 157, &courseName[3]);
+		lvlNameX = get_str_x_pos_from_center(160, &courseName[0], 10.0f);
+        print_generic_string(lvlNameX, 172, &courseName[0]);
 #elif defined(VERSION_EU)
-        print_generic_string(get_str_x_pos_from_center(159, &courseName[3], 10.0f), 157, &courseName[3]);
+        print_generic_string(get_str_x_pos_from_center(159, &courseName[0], 10.0f), 172, &courseName[0]);
 #endif
     }
 #else
-    print_generic_string(117, 157, &courseName[3]);
+	lvlNameX = get_str_x_pos_from_center(160, &courseName[0], 10.0f);
+    print_generic_string(lvlNameX, 172, &courseName[0]);
 #endif
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 }

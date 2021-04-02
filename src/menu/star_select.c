@@ -94,7 +94,7 @@ void render_100_coin_star(u8 stars) {
     if (stars & (1 << 6)) {
         // If the 100 coin star has been collected, create a new star selector next to the coin score.
         sStarSelectorModels[6] = spawn_object_abs_with_rot(gCurrentObject, 0, MODEL_STAR,
-                                                        bhvActSelectorStarType, 370, 24, -300, 0, 0, 0);
+                                                        bhvActSelectorStarType, 370, -460, -300, 0, 0, 0);
         sStarSelectorModels[6]->oStarSelectorSize = 0.8;
         sStarSelectorModels[6]->oStarSelectorType = STAR_SELECTOR_100_COINS;
     }
@@ -308,7 +308,7 @@ void print_act_selector_strings(void) {
     // Print the coin highscore.
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, 255);
-    print_hud_my_score_coins(1, gCurrSaveFileNum - 1, gCurrCourseNum - 1, 155, 106);
+    print_hud_my_score_coins(1, gCurrSaveFileNum - 1, gCurrCourseNum - 1, 155, 215);
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
@@ -316,17 +316,17 @@ void print_act_selector_strings(void) {
     // Print the "MY SCORE" text if the coin score is more than 0
     if (save_file_get_course_coin_score(gCurrSaveFileNum - 1, gCurrCourseNum - 1) != 0) {
 #ifdef VERSION_EU
-        print_generic_string(95, 118, myScore[language]);
+        print_generic_string(95, 10, myScore[language]);
 #else
-        print_generic_string(102, 118, myScore);
+        print_generic_string(102, 10, myScore);
 #endif
     }
 
 #ifdef VERSION_EU
-    print_generic_string(get_str_x_pos_from_center(160, currLevelName + 3, 10.0f), 33, currLevelName + 3);
+    print_generic_string(get_str_x_pos_from_center(160, currLevelName, 10.0f), 33, currLevelName);
 #else
-    lvlNameX = get_str_x_pos_from_center(160, currLevelName + 3, 10.0f);
-    print_generic_string(lvlNameX, 33, currLevelName + 3);
+    lvlNameX = get_str_x_pos_from_center(160, currLevelName, 10.0f);
+    print_generic_string(lvlNameX, 33, currLevelName);
 #endif
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
@@ -337,20 +337,22 @@ void print_act_selector_strings(void) {
     print_course_number();
 #endif
 
-    gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
-    gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 255);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+	gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 255);
     // Print the name of the selected act.
     if (sVisibleStars != 0) {
         selectedActName = segmented_to_virtual(actNameTbl[(gCurrCourseNum - 1) * 6 + sSelectedActIndex]);
 
 #ifdef VERSION_EU
-        print_menu_generic_string(get_str_x_pos_from_center(ACT_NAME_X, selectedActName, 8.0f), 81, selectedActName);
+        print_generic_string(get_str_x_pos_from_center(ACT_NAME_X, selectedActName, 8.0f), 0x90, selectedActName);
 #else
         actNameX = get_str_x_pos_from_center(ACT_NAME_X, selectedActName, 8.0f);
-        print_menu_generic_string(actNameX, 81, selectedActName);
+        print_generic_string(actNameX, 0x90, selectedActName);
 #endif
     }
-
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
+	gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
+    gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 255);
     // Print the numbers above each star.
     for (i = 1; i <= sVisibleStars; i++) {
         starNumbers[0] = i;
