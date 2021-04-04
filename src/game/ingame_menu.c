@@ -2279,8 +2279,8 @@ void render_pause_my_score_coins(void) {
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
     if (courseIndex < COURSE_STAGES_COUNT) {
-        print_hud_my_score_coins(1, gCurrSaveFileNum - 1, courseIndex, 178, 103);
-        print_hud_my_score_stars(gCurrSaveFileNum - 1, courseIndex, 118, 103);
+        print_hud_my_score_coins(1, gCurrSaveFileNum - 1, courseIndex, 178, 123);
+        print_hud_my_score_stars(gCurrSaveFileNum - 1, courseIndex, 118, 123);
     }
 
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
@@ -2289,22 +2289,22 @@ void render_pause_my_score_coins(void) {
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
     if (courseIndex < COURSE_STAGES_COUNT && save_file_get_course_star_count(gCurrSaveFileNum - 1, courseIndex) != 0) {
-        print_generic_string(MYSCORE_X, 121, textMyScore);
+        print_generic_string(MYSCORE_X, 100, textMyScore);
     }
 
     courseName = segmented_to_virtual(courseNameTbl[courseIndex]);
 
     if (courseIndex < COURSE_STAGES_COUNT) {
 #ifdef VERSION_EU
-        print_generic_string(120, 157, gTextCourseArr[gInGameLanguage]);
+        print_generic_string(120, 154, gTextCourseArr[gInGameLanguage]);
 #else
-        print_generic_string(120, 157, textCourse);
+        print_generic_string(120, 154, textCourse);
 #endif
         int_to_str(gCurrCourseNum, strCourseNum);
 #ifdef VERSION_EU
-        print_generic_string(get_string_width(gTextCourseArr[gInGameLanguage]) + 51, 157, strCourseNum);
+        print_generic_string(get_string_width(gTextCourseArr[gInGameLanguage]) + 51, 154, strCourseNum);
 #else
-        print_generic_string(CRS_NUM_X1+60, 157, strCourseNum);
+        print_generic_string(CRS_NUM_X1+60, 154, strCourseNum);
 #endif
 
         actName = segmented_to_virtual(actNameTbl[(gCurrCourseNum - 1) * 6 + gDialogCourseActNum - 1]);
@@ -2676,7 +2676,7 @@ s16 render_pause_courses_and_castle(void) {
                 // || (Cheats.EnableCheats && Cheats.ExitAnywhere)
 // #endif
                 // ) {
-                render_pause_course_options(99, 93, &gDialogLineNum, 15);
+                render_pause_course_options(99, 73, &gDialogLineNum, 15);
             // }
 
 #if Z_TRIG_EXTRA_ACT

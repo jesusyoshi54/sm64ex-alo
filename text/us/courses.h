@@ -10,20 +10,20 @@ COURSE_ACTS(COURSE_JRB, _("A cool breeze across the bow of the galley"),
        _("Nature's eyes hold seeds that grow hope")    , _("A funeral for the dead of night") , _("A secret cavern on the    \n        beachside holding the memories of secret lovers"),
        _("The wind blows towards tomorrow")  , _("A blind child cries where no soul can hear them")     , _("Under the sea of life's mysteries      \n        are the mind's mysteries"))
 
-COURSE_ACTS(COURSE_CCM, _(" 4 COOL, COOL MOUNTAIN"),
-       _("SLIP SLIDIN' AWAY")             , _("LI'L PENGUIN LOST")             , _("BIG PENGUIN RACE"),
+COURSE_ACTS(COURSE_CCM, _("Within the heart you will find yourself"),
+       _("Alone and afraid you find yourself smiling")             , _("Surrounded by your friends and family you find yourself alone")             , _("---------------"),
        _("FROSTY SLIDE FOR 8 RED COINS")  , _("SNOWMAN'S LOST HIS HEAD")       , _("WALL KICKS WILL WORK"))
 
-COURSE_ACTS(COURSE_BBH, _("Soulja boy crank dat"),
-       _("YOUUUUUUUUUUUUUUU")            , _("UUUUUUUUUUUUU") , _("UUUUUUUUUUUUUUUUUU"),
+COURSE_ACTS(COURSE_BBH, _("Within the mind you find a friend"),
+       _("A friend is tomorrow's stranger")            , _("A stranger is tomorrow's friend") , _("---------------"),
        _("UUUUUUUUUUUUUU")          , _("UUUUUUUUUUUU")             , _("UUUUUUUUUUUUUU"))
 
-COURSE_ACTS(COURSE_HMC, _(" 6 HAZY MAZE CAVE"),
-       _("SWIMMING BEAST IN THE CAVERN")  , _("ELEVATE FOR 8 RED COINS")       , _("METAL-HEAD MARIO CAN MOVE!"),
+COURSE_ACTS(COURSE_HMC, _("Within your shadow hides your future"),
+       _("The future is tomorrow's past")  , _("The past is hides the key to the future")       , _("---------------"),
        _("NAVIGATING THE TOXIC MAZE")     , _("A-MAZE-ING EMERGENCY EXIT")     , _("WATCH FOR ROLLING ROCKS"))
 
-COURSE_ACTS(COURSE_LLL, _(" 7 LETHAL LAVA LAND"),
-       _("BOIL THE BIG BULLY")            , _("BULLY THE BULLIES")             , _("8-COIN PUZZLE WITH 15 PIECES"),
+COURSE_ACTS(COURSE_LLL, _("Within your blood lies your will"),
+       _("The bone of your blood upholds your will")            , _("Your will paves the path for your bones respite")             , _("---------------"),
        _("RED-HOT LOG ROLLING")           , _("HOT-FOOT-IT INTO THE VOLCANO")  , _("ELEVATOR TOUR IN THE VOLCANO"))
 
 COURSE_ACTS(COURSE_SSL, _(" 8 SHIFTING SAND LAND"),
@@ -58,7 +58,7 @@ COURSE_ACTS(COURSE_RR, _("15 RAINBOW RIDE"),
        _("CRUISER CROSSING THE RAINBOW")  , _("THE BIG HOUSE IN THE SKY")      , _("COINS AMASSED IN A MAZE"),
        _("SWINGIN' IN THE BREEZE")        , _("TRICKY TRIANGLES!")             , _("SOMEWHERE OVER THE RAINBOW"))
 
-SECRET_STAR(COURSE_BITDW, _("   BOWSER IN THE DARK WORLD"))
+SECRET_STAR(COURSE_BITDW, _("  APOTHEOSIS   "))
 SECRET_STAR(COURSE_BITFS, _("   BOWSER IN THE FIRE SEA"))
 SECRET_STAR(COURSE_BITS, _("   BOWSER IN THE SKY"))
 SECRET_STAR(COURSE_PSS, _("   THE PRINCESS'S SECRET SLIDE"))
@@ -69,9 +69,9 @@ SECRET_STAR(COURSE_WMOTR, _("   WING MARIO OVER THE RAINBOW"))
 SECRET_STAR(COURSE_SA, _("   THE SECRET AQUARIUM"))
 SECRET_STAR(COURSE_CAKE_END, _(""))
 
-CASTLE_SECRET_STARS(_("   CASTLE SECRET STARS"))
+CASTLE_SECRET_STARS(_(""))
 
-EXTRA_TEXT(0, _("ONE OF THE CASTLE'S SECRET STARS!"))
+EXTRA_TEXT(0, _(""))
 EXTRA_TEXT(1, _(""))
 EXTRA_TEXT(2, _(""))
 EXTRA_TEXT(3, _(""))
