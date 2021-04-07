@@ -22,91 +22,49 @@
 #define YOSHI_IT "It"
 #endif
 
-DEFINE_DIALOG(DIALOG_000, 1, 6, 30, 200, _("\
-Wow! You're smack in the\n\
-middle of the battlefield.\n\
-You'll find the Power\n\
-Stars that Bowser stole\n\
-inside the painting\n\
-worlds.\n\
-First, talk to the\n\
-Bob-omb Buddy. (Press [B]\n\
-to talk.) He'll certainly\n\
-help you out, and so will\n\
-his " COMRADES " in other\n\
-areas.\n\
-To read signs, stop, face\n\
-them and press [B]. Press [A]\n\
-or [B] to scroll ahead. You\n\
-can talk to some other\n\
-characters by facing them\n\
-and pressing [B]."))
+DEFINE_DIALOG(DIALOG_000, 1, 5, 30, 220, _("\
+A world between time. In the sky the\n\
+lodestar guides us all. The great\n\
+dorrie above delivers us from fear\n\
+delivers us from from affliction\n\
+delivers us from this mortal coil.\n\
+Young pilgram, through the valley\n\
+of death you shall walk, but you\n\
+will fear no evil nor suffer no\n\
+pestilance. The great dorrie gives\n\
+to all equally, shall they only fear him."))
 
-DEFINE_DIALOG(DIALOG_001, 1, 4, 95, 200, _("\
-Watch out! If you wander\n\
-around here, you're liable\n\
-to be " PLASTERED " by a\n\
-water bomb!\n\
-Those enemy Bob-ombs love\n\
-to fight, and they're\n\
-always finding ways to\n\
-attack.\n\
-This meadow has become\n\
-a battlefield ever since\n\
-the Big Bob-omb got his\n\
-paws on the Power Star.\n\
-Can you recover the Star\n\
-for us? Cross the bridge\n\
-and go left up the path\n\
-to find the Big Bob-omb.\n\
-Please come back to see\n\
-me after you've retrieved\n\
-the Power Star!"))
+DEFINE_DIALOG(DIALOG_001, 1, 5, 30, 220, _("\
+Fear him and him alone. The one above.\n\
+Inconceivable to mere mortals, his\n\
+anger creates and destroys entire\n\
+worlds. The primevil wrath shall\n\
+befall the non devout, deliver us\n\
+and spread his word."))
 
-DEFINE_DIALOG(DIALOG_002, 1, 4, 95, 200, _("\
-Hey, you! It's dangerous\n\
-ahead, so listen up! Take\n\
-my advice.\n\
-\n\
-Cross the two\n\
-bridges ahead, then\n\
-watch for falling\n\
-water bombs.\n\
-The Big Bob-omb at the\n\
-top of the mountain is\n\
-very powerful--don't let\n\
-him grab you!\n\
-We're Bob-omb Buddies,\n\
-and we're on your side.\n\
-You can talk to us\n\
-whenever you'd like to!"))
+DEFINE_DIALOG(DIALOG_002, 1, 5, 30, 220, _("\
+His glory reigns supreme above all.\n\
+Those who beseech his forgiveness\n\
+are granted blessings beyond blessings,\n\
+granted wisdom beyond wisdom, granted\n\
+life beyond life.\n\
+Seek now his glory above. Cry out\n\
+from your deepest lungs and grant\n\
+your soul to him. Glory to him\n\
+and glory to all. Deliver me."))
 
-DEFINE_DIALOG(DIALOG_003, 1, 5, 95, 200, _("\
-Thank you, Mario! The Big\n\
-Bob-omb is nothing but a\n\
-big dud now! But the\n\
-battle for the castle has\n\
-just begun.\n\
-Other enemies are holding\n\
-the other Power Stars. If\n\
-you recover more Stars,\n\
-you can open new doors\n\
-that lead to new worlds!\n\
-My Bob-omb Buddies are\n\
-waiting for you. Be sure\n\
-to talk to them--they'll\n\
-set up cannons for you."))
+DEFINE_DIALOG(DIALOG_003, 1, 3, 30, 220, _("\
+Forget your wordly desires. Forget\n\
+your wordly being. Forget your\n\
+wordly afflictions. He shall conquer\n\
+all."))
 
-DEFINE_DIALOG(DIALOG_004, 1, 3, 95, 200, _("\
-We're peace-loving\n\
-Bob-ombs, so we don't use\n\
-cannons.\n\
-But if you'd like\n\
-to blast off, we don't\n\
-mind. Help yourself.\n\
-We'll prepare all of the\n\
-cannons in this course for\n\
-you to use. Bon Voyage!"))
+DEFINE_DIALOG(DIALOG_004, 1, 5, 95, 200, _("\
+Within us all rests his spirit.\n\
+He has blessed us, and we are his\n\
+champions. Trust in the power\n\
+he has granted us. It shall guide\n\
+you in life and beyond."))
 
 DEFINE_DIALOG(DIALOG_005, 1, 3, 30, 200, _("\
 Hey, Mario! Is it true\n\

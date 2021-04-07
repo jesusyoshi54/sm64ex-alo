@@ -1004,6 +1004,7 @@ union WDBytes{
 extern Gfx mat_WaterCube_water_no_nsolid[];
 extern Gfx mat_WaterCube_water[];
 extern Gfx mat_bob_dl_water[];
+extern Gfx mat_castle_grounds_dl_water_no_nsolid[];
 extern Gfx mat_wf_dl_water_no_nsolid[];
 //This is re used from when pos took args from the object pos and converted it
 void ScrollF2(Gfx *F2,u32 x, u32 y){
@@ -1030,14 +1031,19 @@ void Scroll_Waters(void){
 	ScrollF2(F2+12,1,0);
 	ScrollF2(F2+20,0,1);
 	//Now do switch based on level
-	switch(gCurrCourseNum){
-		case COURSE_BOB:
+	switch(gCurrLevelNum){
+		case LEVEL_BOB:
 			F2 = segmented_to_virtual(mat_bob_dl_water);
 			ScrollF2(F2+12,1,0);
 			ScrollF2(F2+20,0,1);
 			break;
-		case COURSE_WF:
+		case LEVEL_WF:
 			F2 = segmented_to_virtual(mat_wf_dl_water_no_nsolid);
+			ScrollF2(F2+12,1,0);
+			ScrollF2(F2+20,0,1);
+			break;
+		case LEVEL_CASTLE_GROUNDS:
+			F2 = segmented_to_virtual(mat_castle_grounds_dl_water_no_nsolid);
 			ScrollF2(F2+12,1,0);
 			ScrollF2(F2+20,0,1);
 			break;
