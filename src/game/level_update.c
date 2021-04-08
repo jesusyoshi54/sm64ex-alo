@@ -39,7 +39,7 @@
 #include "pc/cliopts.h"
 #include "pc/configfile.h"
 #endif
-
+#include "segment2.h"
 #define PLAY_MODE_NORMAL 0
 #define PLAY_MODE_PAUSED 2
 #define PLAY_MODE_CHANGE_AREA 3
@@ -1066,7 +1066,7 @@ void basic_update(UNUSED s16 *arg) {
 }
 
 int gPressedStart = 0;
-
+extern s16 gStarFadeDialog;
 s32 play_mode_normal(void) {
     if (gCurrDemoInput != NULL) {
         print_intro_text();
@@ -1086,7 +1086,6 @@ s32 play_mode_normal(void) {
     if (sTimerRunning && gHudDisplay.timer < 17999) {
         gHudDisplay.timer += 1;
     }
-
     area_update_objects();
     update_hud_values();
 	Scroll_Waters();
@@ -1096,11 +1095,11 @@ s32 play_mode_normal(void) {
 
     initiate_painting_warp();
     initiate_delayed_warp();
-
     // If either initiate_painting_warp or initiate_delayed_warp initiated a
     // warp, change play mode accordingly.
     if (sCurrPlayMode == PLAY_MODE_NORMAL) {
         if (sWarpDest.type == WARP_TYPE_CHANGE_LEVEL) {
+			gStarFadeDialog=0;
             set_play_mode(PLAY_MODE_CHANGE_LEVEL);
         } else if (sTransitionTimer != 0) {
             set_play_mode(PLAY_MODE_CHANGE_AREA);
@@ -1238,17 +1237,15 @@ s32 play_mode_change_level(void) {
     if (sTransitionUpdate != NULL) {
         sTransitionUpdate(&sTransitionTimer);
     }
-
     if (--sTransitionTimer == -1) {
         gHudDisplay.flags = HUD_DISPLAY_NONE;
         sTransitionTimer = 0;
         sTransitionUpdate = NULL;
-
-        if (sWarpDest.type != WARP_TYPE_NOT_WARPING) {
-            return sWarpDest.levelNum;
-        } else {
-            return D_80339EE0;
-        }
+		if (sWarpDest.type != WARP_TYPE_NOT_WARPING) {
+			return sWarpDest.levelNum;
+		} else {
+			return D_80339EE0;
+		}
     }
 
     return 0;
@@ -1273,7 +1270,6 @@ static s32 play_mode_unused(void) {
 
 s32 update_level(void) {
     s32 changeLevel;
-
     switch (sCurrPlayMode) {
         case PLAY_MODE_NORMAL:
             changeLevel = play_mode_normal(); scroll_textures();

@@ -110,6 +110,7 @@ f32 gDialogBoxScale = DEFAULT_DIALOG_BOX_SCALE;
 s16 gDialogScrollOffsetY = 0;
 s8 gDialogBoxType = DIALOG_TYPE_ROTATE;
 s16 gDialogID = -1;
+s16 gStarFadeDialog = -1;
 s16 gLastDialogPageStrPos = 0;
 s16 gDialogTextPos = 0;
 #ifdef VERSION_EU
@@ -3137,6 +3138,7 @@ s16 render_course_complete_screen(void) {
 }
 
 // Only case 1 and 2 are used
+s16 sTextTimer=150;
 s16 render_menus_and_dialogs(void) {
     s16 mode = 0;
 
@@ -3168,6 +3170,21 @@ s16 render_menus_and_dialogs(void) {
 
         render_dialog_entries();
         gDialogColorFadeTimer = (s16) gDialogColorFadeTimer + 0x1000;
-    }
+    } else if (gStarFadeDialog!=-1){
+		if (sTextTimer>0){
+			void **dialogTable;
+			struct DialogEntry *dialog;
+			gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+			gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 255-(absi(255-sTextTimer*510/150)));
+			dialogTable = segmented_to_virtual(seg2_dialog_table);
+			dialog = segmented_to_virtual(dialogTable[gStarFadeDialog]);
+			u8 *str = segmented_to_virtual(dialog->str);
+			print_generic_string(60,130,str);
+			gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
+			sTextTimer-=1;
+		}else{
+			gStarFadeDialog=-1;
+		}
+	}
     return mode;
 }

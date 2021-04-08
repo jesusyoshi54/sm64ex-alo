@@ -3856,8 +3856,8 @@ const BehaviorScript bhvActSelectorStarType[] = {
 const BehaviorScript bhvActSelector[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    CALL_NATIVE(bhv_act_selector_init),
     BEGIN_LOOP(),
+		CALL_NATIVE(bhv_act_selector_init),
         CALL_NATIVE(bhv_act_selector_loop),
     END_LOOP(),
 };

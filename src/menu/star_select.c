@@ -22,6 +22,7 @@
 #include "text_strings.h"
 #include "prevent_bss_reordering.h"
 
+#define sTextTime 150
 /**
  * @file star_select.c
  * This file implements how the star select screen (act selector) function.
@@ -111,7 +112,9 @@ void bhv_act_selector_init(void) {
     s32 selectorModelIDs[10];
     u8 stars = save_file_get_star_flags(gCurrSaveFileNum - 1, gCurrCourseNum - 1);
 
-    sVisibleStars = 0;
+    
+	if (sActSelectorMenuTimer==sTextTime+5){
+	sVisibleStars = 0;
     while (i != sObtainedStars) {
         if (stars & (1 << sVisibleStars)) { // Star has been collected
             selectorModelIDs[sVisibleStars] = MODEL_STAR;
@@ -156,6 +159,7 @@ void bhv_act_selector_init(void) {
     }
 
     render_100_coin_star(stars);
+	}
 }
 
 /**
@@ -375,9 +379,11 @@ Gfx *geo_act_selector_strings(s16 callContext, UNUSED struct GraphNode *node, UN
 #else
 Gfx *geo_act_selector_strings(s16 callContext, UNUSED struct GraphNode *node) {
 #endif
-    if (callContext == GEO_CONTEXT_RENDER) {
-        print_act_selector_strings();
-    }
+	if (sActSelectorMenuTimer>(sTextTime+5)){
+		if (callContext == GEO_CONTEXT_RENDER) {
+			print_act_selector_strings();
+		}
+	}
     return NULL;
 }
 
@@ -414,7 +420,7 @@ s32 lvl_init_act_selector_values_and_stars(UNUSED s32 arg, UNUSED s32 unused) {
  * Also updates objects and returns act number selected after is chosen.
  */
 s32 lvl_update_obj_and_load_act_button_actions(UNUSED s32 arg, UNUSED s32 unused) {
-    if (sActSelectorMenuTimer >= 11) {
+    if (sActSelectorMenuTimer >= sTextTime+11) {
         // If any of these buttons are pressed, play sound and go to course act
 #ifndef Z_TRIG_EXTRA_ACT
         if ((gPlayer3Controller->buttonPressed & A_BUTTON)
@@ -440,7 +446,6 @@ s32 lvl_update_obj_and_load_act_button_actions(UNUSED s32 arg, UNUSED s32 unused
             gDialogCourseActNum = sSelectedActIndex + 1;
         }
     }
-
     area_update_objects(); scroll_textures();
     sActSelectorMenuTimer++;
     return sLoadedActNum;
