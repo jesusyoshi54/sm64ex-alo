@@ -1,4 +1,4 @@
-void scroll_castle_inside_dl_Cylinder_005_mesh_layer_5_vtx_0() {
+void scroll_warp_ring_Cylinder_006_mesh_layer_5_vtx_0() {
 	int i = 0;
 	int count = 12;
 	int width = 64 * 0x20;
@@ -6,7 +6,7 @@ void scroll_castle_inside_dl_Cylinder_005_mesh_layer_5_vtx_0() {
 
 	static int currentX = 0;
 	int deltaX;
-	Vtx *vertices = segmented_to_virtual(castle_inside_dl_Cylinder_005_mesh_layer_5_vtx_0);
+	Vtx *vertices = segmented_to_virtual(warp_ring_Cylinder_006_mesh_layer_5_vtx_0);
 
 	deltaX = (int)(1.0 * 0x20) % width;
 
@@ -20,6 +20,6 @@ void scroll_castle_inside_dl_Cylinder_005_mesh_layer_5_vtx_0() {
 	currentX += deltaX;
 
 }
-void scroll_castle_inside() {
-	scroll_castle_inside_dl_Cylinder_005_mesh_layer_5_vtx_0();
+void scroll_actor_geo_warp_ring() {
+	scroll_warp_ring_Cylinder_006_mesh_layer_5_vtx_0();
 }

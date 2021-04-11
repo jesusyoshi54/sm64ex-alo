@@ -961,7 +961,7 @@ void reset_dialog_render_state(void) {
 void render_dialog_box_type(struct DialogEntry *dialog, s8 linesPerBox) {
     UNUSED s32 unused;
 
-    create_dl_translation_matrix(MENU_MTX_NOPUSH, dialog->leftOffset, dialog->width, 0);
+    create_dl_translation_matrix(MENU_MTX_NOPUSH, dialog->leftOffset, 150.0f, 0);
 
     switch (gDialogBoxType) {
         case DIALOG_TYPE_ROTATE: // Renders a dialog black box with zoom and rotation
@@ -983,7 +983,7 @@ void render_dialog_box_type(struct DialogEntry *dialog, s8 linesPerBox) {
     }
 
     create_dl_translation_matrix(MENU_MTX_PUSH, X_VAL1, Y_VAL1, 0);
-    create_dl_scale_matrix(MENU_MTX_NOPUSH, 1.1f, ((f32) linesPerBox / Y_VAL2) + 0.1, 1.0f);
+    create_dl_scale_matrix(MENU_MTX_NOPUSH, 1.1f*(dialog->width/200.0f), ((f32) linesPerBox / Y_VAL2) + 0.1, 1.0f);
 
     gSPDisplayList(gDisplayListHead++, dl_draw_text_bg_box);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -1029,7 +1029,7 @@ void render_generic_dialog_char_at_pos(struct DialogEntry *dialog, s16 x, s16 y,
     width = (8.0 - (gDialogBoxScale * 0.8));
     height = (16.0 - (gDialogBoxScale * 0.8));
     tmpX = (dialog->leftOffset + (65.0 - (65.0 / gDialogBoxScale)));
-    tmpY = ((240 - dialog->width) - ((40.0 / gDialogBoxScale) - 40));
+    tmpY = ((240 - 150) - ((40.0 / gDialogBoxScale) - 40));
     xCoord = (tmpX + (x / gDialogBoxScale));
     yCoord = (tmpY + (y / gDialogBoxScale));
 
@@ -1823,21 +1823,21 @@ void render_dialog_entries(void) {
 #else
                   ensure_nonnegative(dialog->leftOffset),
 #endif
-                  ensure_nonnegative(DIAG_VAL2 - dialog->width),
+                  ensure_nonnegative(DIAG_VAL2 - 150),
 #ifdef VERSION_EU
 #ifdef WIDESCREEN
                   SCREEN_WIDTH,
 #else
-                  ensure_nonnegative(dialog->leftOffset + DIAG_VAL3 / gDialogBoxScale),
+                  SCREEN_WIDTH,
 #endif
-                  ensure_nonnegative((240 - dialog->width) + ((dialog->linesPerBox * 80) / DIAG_VAL4) / gDialogBoxScale));
+                  ensure_nonnegative((240 - 150) + ((dialog->linesPerBox * 80) / DIAG_VAL4) / gDialogBoxScale));
 #else
 #ifdef WIDESCREEN
                   SCREEN_WIDTH,
 #else
-                  ensure_nonnegative(DIAG_VAL3 + dialog->leftOffset),
+                  SCREEN_WIDTH,
 #endif
-                  ensure_nonnegative(240 + ((dialog->linesPerBox * 80) / DIAG_VAL4) - dialog->width));
+                  ensure_nonnegative(240 + ((dialog->linesPerBox * 80) / DIAG_VAL4) - 150));
 #endif
 #if defined(VERSION_JP)
     handle_dialog_text_and_pages(0, dialog);
@@ -1857,9 +1857,9 @@ void render_dialog_entries(void) {
     #undef BORDER_HEIGHT
     #define BORDER_HEIGHT 1
     #endif
-    if (gLastDialogPageStrPos != -1 && gDialogBoxState == DIALOG_STATE_VERTICAL) {
-        render_dialog_string_color(dialog->linesPerBox);
-    }
+    // if (gLastDialogPageStrPos != -1 && gDialogBoxState == DIALOG_STATE_VERTICAL) {
+        // render_dialog_string_color(dialog->linesPerBox);
+    // }
 }
 
 // Calls a gMenuMode value defined by render_menus_and_dialogs cases
@@ -3138,7 +3138,8 @@ s16 render_course_complete_screen(void) {
 }
 
 // Only case 1 and 2 are used
-s16 sTextTimer=150;
+#define textTime 200
+s16 sTextTimer=textTime;
 s16 render_menus_and_dialogs(void) {
     s16 mode = 0;
 
@@ -3175,15 +3176,16 @@ s16 render_menus_and_dialogs(void) {
 			void **dialogTable;
 			struct DialogEntry *dialog;
 			gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
-			gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 255-(absi(255-sTextTimer*510/150)));
+			gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 255-(absi(255-sTextTimer*510/textTime)));
 			dialogTable = segmented_to_virtual(seg2_dialog_table);
 			dialog = segmented_to_virtual(dialogTable[gStarFadeDialog]);
 			u8 *str = segmented_to_virtual(dialog->str);
-			print_generic_string(60,130,str);
+			print_generic_string(get_str_x_pos_from_center(160, str, 10.0f),130,str);
 			gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 			sTextTimer-=1;
 		}else{
 			gStarFadeDialog=-1;
+			sTextTimer=textTime;
 		}
 	}
     return mode;

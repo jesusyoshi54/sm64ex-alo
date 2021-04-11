@@ -1006,6 +1006,8 @@ extern Gfx mat_WaterCube_water[];
 extern Gfx mat_bob_dl_water[];
 extern Gfx mat_castle_grounds_dl_water_no_nsolid[];
 extern Gfx mat_wf_dl_water_no_nsolid[];
+extern Gfx mat_ccm_dl_water_no_nsolid[];
+extern Gfx mat_bbh_dl_water_no_nsolid[];
 //This is re used from when pos took args from the object pos and converted it
 void ScrollF2(Gfx *F2,u32 x, u32 y){
 	union PosBytes Xspd;
@@ -1047,6 +1049,16 @@ void Scroll_Waters(void){
 			ScrollF2(F2+12,1,0);
 			ScrollF2(F2+20,0,1);
 			break;
+		case LEVEL_CCM:
+			F2 = segmented_to_virtual(mat_ccm_dl_water_no_nsolid);
+			ScrollF2(F2+12,1,0);
+			ScrollF2(F2+20,0,1);
+			break;
+		case LEVEL_BBH:
+			F2 = segmented_to_virtual(mat_bbh_dl_water_no_nsolid);
+			ScrollF2(F2+12,1,0);
+			ScrollF2(F2+20,0,1);
+			break;
 	}
 }
 /**
@@ -1067,6 +1079,8 @@ void basic_update(UNUSED s16 *arg) {
 
 int gPressedStart = 0;
 extern s16 gStarFadeDialog;
+extern f32 random_float(void);
+extern s32 sActSelectorMenuTimer;
 s32 play_mode_normal(void) {
     if (gCurrDemoInput != NULL) {
         print_intro_text();
@@ -1099,7 +1113,13 @@ s32 play_mode_normal(void) {
     // warp, change play mode accordingly.
     if (sCurrPlayMode == PLAY_MODE_NORMAL) {
         if (sWarpDest.type == WARP_TYPE_CHANGE_LEVEL) {
-			gStarFadeDialog=0;
+			if ((sWarpDest.levelNum == LEVEL_CASTLE_GROUNDS) || (sWarpDest.levelNum == LEVEL_CASTLE)|| (sWarpDest.levelNum == LEVEL_BOWSER_1)){
+				//nothing
+			}else{
+			f32 rand = (random_float()*10.0f);
+			gStarFadeDialog=15+(u32) rand;
+			}
+			sActSelectorMenuTimer = 0;
             set_play_mode(PLAY_MODE_CHANGE_LEVEL);
         } else if (sTransitionTimer != 0) {
             set_play_mode(PLAY_MODE_CHANGE_AREA);

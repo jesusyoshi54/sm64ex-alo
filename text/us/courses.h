@@ -10,11 +10,11 @@ COURSE_ACTS(COURSE_JRB, _("A cool breeze across the bow of the galley"),
        _("Nature's eyes hold seeds that grow hope")    , _("A funeral for the dead of night") , _("A secret cavern on the    \n        beachside holding the memories of secret lovers"),
        _("The wind blows towards tomorrow")  , _("A blind child cries where no soul can hear them")     , _("Under the sea of life's mysteries      \n        are the mind's mysteries"))
 
-COURSE_ACTS(COURSE_CCM, _("Within the heart you will find yourself"),
-       _("Alone and afraid you find yourself smiling")             , _("Surrounded by your friends and family you find yourself alone")             , _("---------------"),
+COURSE_ACTS(COURSE_CCM, _("Within the heart you will find yourself         "),
+       _("Alone and afraid you find yourself smiling")             , _("Surrounded by your friends and family     \n      you find yourself alone")             , _("---------------"),
        _("FROSTY SLIDE FOR 8 RED COINS")  , _("SNOWMAN'S LOST HIS HEAD")       , _("WALL KICKS WILL WORK"))
 
-COURSE_ACTS(COURSE_BBH, _("Within the mind you find a friend"),
+COURSE_ACTS(COURSE_BBH, _("Within the mind you find a friend        "),
        _("A friend is tomorrow's stranger")            , _("A stranger is tomorrow's friend") , _("---------------"),
        _("UUUUUUUUUUUUUU")          , _("UUUUUUUUUUUU")             , _("UUUUUUUUUUUUUU"))
 

@@ -1051,7 +1051,7 @@ s32 act_ground_pound_land(struct MarioState *m) {
     landing_step(m, MARIO_ANIM_GROUND_POUND_LANDING, ACT_BUTT_SLIDE_STOP);
     return FALSE;
 }
-
+extern s16 newcam_tilt;
 s32 act_first_person(struct MarioState *m) {
     s32 sp1C = (m->input & (INPUT_OFF_FLOOR | INPUT_ABOVE_SLIDE | INPUT_UNKNOWN_10)) != 0;
 
@@ -1070,7 +1070,7 @@ s32 act_first_person(struct MarioState *m) {
         && save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= 0) {
         s16 sp1A = m->statusForCamera->headRotation[0];
         s16 sp18 = ((m->statusForCamera->headRotation[1] * 4) / 3) + m->faceAngle[1];
-        if (sp1A == -0x1800) {
+        if (sp1A == -0x1800 || newcam_tilt<-11000) {
             level_trigger_warp(m, WARP_OP_UNKNOWN_01);
         }
     }

@@ -22,7 +22,7 @@
 #include "text_strings.h"
 #include "prevent_bss_reordering.h"
 
-#define sTextTime 150
+#define sTextTime 200
 /**
  * @file star_select.c
  * This file implements how the star select screen (act selector) function.
@@ -53,7 +53,7 @@ static s8 sSelectedActIndex = 0;
 static s8 sSelectableStarIndex = 0;
 
 // Act Selector menu timer that keeps counting until you choose an act.
-static s32 sActSelectorMenuTimer = 0;
+s32 sActSelectorMenuTimer = 0;
 
 /**
  * Act Selector Star Type Loop Action
@@ -111,7 +111,6 @@ void bhv_act_selector_init(void) {
     s16 i = 0;
     s32 selectorModelIDs[10];
     u8 stars = save_file_get_star_flags(gCurrSaveFileNum - 1, gCurrCourseNum - 1);
-
     
 	if (sActSelectorMenuTimer==sTextTime+5){
 	sVisibleStars = 0;

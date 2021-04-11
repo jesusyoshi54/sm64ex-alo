@@ -6,7 +6,7 @@
 #define START_LEVEL LEVEL_CASTLE_GROUNDS
 #define COINS_REQ_COINSTAR 100
 //level, area, warp ID
-#define EXIT_COURSE LEVEL_CASTLE, 1, 0x1F
+#define EXIT_COURSE LEVEL_CASTLE_GROUNDS, 1, 0x0A
 #define FALL_DAMAGE 1
 #define REDS_REQ 8
 //whether coins are 3d or not. Changes bhv scripts and pause menu reds rendering

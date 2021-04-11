@@ -770,7 +770,9 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
     u32 starGrabAction = ACT_STAR_DANCE_EXIT;
     u32 noExit = (o->oInteractionSubtype & INT_SUBTYPE_GRAND_STAR) == 0;
     u32 grandStar = (o->oInteractionSubtype & INT_SUBTYPE_GRAND_STAR) != 0;
-
+	if ((o->oBehParams&0xFF)==0x64){
+		noExit=0;
+	}
     if (m->health >= 0x100) {
         mario_stop_riding_and_holding(m);
 #ifdef RUMBLE_FEEDBACK

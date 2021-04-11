@@ -354,4 +354,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "Rot_Gear/geo_header.h"
 
+#include "warp_ring/geo_header.h"
+
 #endif

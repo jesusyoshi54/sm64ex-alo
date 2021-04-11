@@ -19,3 +19,4 @@
 
 #include "WaterCube/geo.inc.c"
 #include "Rot_Gear/geo.inc.c"
+#include "warp_ring/geo.inc.c"

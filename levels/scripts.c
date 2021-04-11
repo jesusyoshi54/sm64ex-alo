@@ -88,6 +88,8 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_DL( MODEL_WHITE_PARTICLE_SMALL,    white_particle_small_dl,     LAYER_ALPHA),
     LOAD_MODEL_FROM_GEO(MODEL_RED_FLAME,               red_flame_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BLUE_FLAME,              blue_flame_geo),
+    LOAD_MODEL_FROM_GEO(250,              yellow_flame_geo),
+    LOAD_MODEL_FROM_GEO(249,              warp_ring),
     LOAD_MODEL_FROM_GEO(MODEL_BURN_SMOKE,              burn_smoke_geo),
     LOAD_MODEL_FROM_GEO(MODEL_LEAVES,                  leaves_geo),
     LOAD_MODEL_FROM_GEO(MODEL_PURPLE_MARBLE,           purple_marble_geo),

@@ -22,11 +22,11 @@
 #define YOSHI_IT "It"
 #endif
 
-DEFINE_DIALOG(DIALOG_000, 1, 5, 30, 220, _("\
+DEFINE_DIALOG(DIALOG_000, 1, 5, 60, 300, _("\
 A world between time. In the sky the\n\
 lodestar guides us all. The great\n\
-dorrie above delivers us from fear\n\
-delivers us from from affliction\n\
+dorrie above delivers us from fear,\n\
+delivers us from from affliction,\n\
 delivers us from this mortal coil.\n\
 Young pilgram, through the valley\n\
 of death you shall walk, but you\n\
@@ -34,7 +34,7 @@ will fear no evil nor suffer no\n\
 pestilance. The great dorrie gives\n\
 to all equally, shall they only fear him."))
 
-DEFINE_DIALOG(DIALOG_001, 1, 5, 30, 220, _("\
+DEFINE_DIALOG(DIALOG_001, 1, 6, 60, 300, _("\
 Fear him and him alone. The one above.\n\
 Inconceivable to mere mortals, his\n\
 anger creates and destroys entire\n\
@@ -42,7 +42,7 @@ worlds. The primevil wrath shall\n\
 befall the non devout, deliver us\n\
 and spread his word."))
 
-DEFINE_DIALOG(DIALOG_002, 1, 5, 30, 220, _("\
+DEFINE_DIALOG(DIALOG_002, 1, 5, 60, 300, _("\
 His glory reigns supreme above all.\n\
 Those who beseech his forgiveness\n\
 are granted blessings beyond blessings,\n\
@@ -51,86 +51,49 @@ life beyond life.\n\
 Seek now his glory above. Cry out\n\
 from your deepest lungs and grant\n\
 your soul to him. Glory to him\n\
-and glory to all. Deliver me."))
+and glory to all. Deliver us."))
 
-DEFINE_DIALOG(DIALOG_003, 1, 3, 30, 220, _("\
+DEFINE_DIALOG(DIALOG_003, 1, 4, 60, 300, _("\
 Forget your wordly desires. Forget\n\
 your wordly being. Forget your\n\
 wordly afflictions. He shall conquer\n\
 all."))
 
-DEFINE_DIALOG(DIALOG_004, 1, 5, 95, 200, _("\
+DEFINE_DIALOG(DIALOG_004, 1, 5, 60, 300, _("\
 Within us all rests his spirit.\n\
 He has blessed us, and we are his\n\
 champions. Trust in the power\n\
 he has granted us. It shall guide\n\
 you in life and beyond."))
 
-DEFINE_DIALOG(DIALOG_005, 1, 3, 30, 200, _("\
-Hey, Mario! Is it true\n\
-that you beat the Big\n\
-Bob-omb? Cool!\n\
-You must be strong. And\n\
-pretty fast. So, how fast\n\
-are you, anyway?\n\
-Fast enough to beat me...\n\
-Koopa the Quick? I don't\n\
-think so. Just try me.\n\
-How about a race to the\n\
-mountaintop, where the\n\
-Big Bob-omb was?\n\
-Whaddya say? When I say\n\
-『Go,』 let the race begin!\n\
-\n\
-Ready....\n\
-\n\
-//Go!////Don't Go"))
+DEFINE_DIALOG(DIALOG_005, 1, 3, 60, 300, _("\
+We are his warriors. He calls and we\n\
+answer. We are the lamb and him the\n\
+shepherd. He leads and we follow."))
 
-DEFINE_DIALOG(DIALOG_006, 1, 3, 30, 200, _("\
-Hey!!! Don't try to " SCAM_ME
-"You've gotta run\n\
-the whole course.\n\
-Later. Look me up when\n\
-you want to race for\n\
-real."))
+DEFINE_DIALOG(DIALOG_006, 1, 4, 60, 300, _("\
+His call beckons across time and space.\n\
+All come for his word and seek his vision.\n\
+All are his children, and his\n\
+love is eternal."))
 
-DEFINE_DIALOG(DIALOG_007, 1, 5, 30, 200, _("\
-Hufff...fff...pufff...\n\
-Whoa! You...really...are...\n\
-fast! A human blur!\n\
-Here you go--you've won\n\
-it, fair and square!"))
+DEFINE_DIALOG(DIALOG_007, 1, 4, 60, 300, _("\
+We are all his children. The father above\n\
+almighty and alknowing. He forgives us\n\
+for our eternal sin. We are lost without\n\
+his word. Deliver us."))
 
-DEFINE_DIALOG(DIALOG_008, 1, 4, 30, 200, _("\
-BEWARE OF CHAIN CHOMP\n\
-Extreme Danger!\n\
-Get close and press [C]^\n\
-for a better look.\n\
-Scary, huh?\n\
-See the Red Coin on top\n\
-of the stake?\n\
-\n\
-When you collect eight of\n\
-them, a Power Star will\n\
-appear in the meadow\n\
-across the bridge."))
+DEFINE_DIALOG(DIALOG_008, 1, 4, 60, 316, _("\
+The star above guides us. Our father looks\n\
+to heaven above and grants us its wisdom.\n\
+He is eternal and forever. He is the stars\n\
+themselves."))
 
-DEFINE_DIALOG(DIALOG_009, 1, 5, 30, 200, _("\
-Long time, no see! Wow,\n\
-have you gotten fast!\n\
-Have you been training\n\
-on the sly, or is it the\n\
-power of the Stars?\n\
-I've been feeling down\n\
-about losing the last\n\
-race. This is my home\n\
-course--how about a\n\
-rematch?\n\
-The goal is in\n\
-Windswept Valley.\n\
-Ready?\n\
-\n\
-//Go//// Don't Go"))
+DEFINE_DIALOG(DIALOG_009, 1, 4, 60, 310, _("\
+We are doomed to live in sin without him.\n\
+He guides us to the heaven. He is our\n\
+shepherd and guiding star. He allows\n\
+us to escape eternal torture. Deliver us."))
 
 DEFINE_DIALOG(DIALOG_010, 1, 4, 30, 200, _("\
 You've stepped on the\n\
@@ -187,88 +150,47 @@ Do you want to Save?\n\
 \n\
 //You Bet//Not Now"))
 
+//star select dialogs start, 10 of them total
 DEFINE_DIALOG(DIALOG_015, 1, 4, 30, 200, _("\
-You can punch enemies to\n\
-knock them down. Press [A]\n\
-to jump, [B] to punch.\n\
-Press [A] then [B] to Kick.\n\
-To pick something up,\n\
-press [B], too. To throw\n\
-something you're holding,\n\
-press [B] again."))
+A dream so sweet I wished it would never end.\n\
+    A dream where I was no longer alone."))
 
 DEFINE_DIALOG(DIALOG_016, 1, 3, 30, 200, _("\
-Hop on the shiny shell and\n\
-ride wherever you want to\n\
-go! Shred those enemies!"))
+I was in a field of flowers, the wind blew by my legs.\n\
+   I wished for a friend while staring at the sun."))
 
 DEFINE_DIALOG(DIALOG_017, 1, 4, 30, 200, _("\
-I'm the Big Bob-omb, lord\n\
-of all blasting matter,\n\
-king of ka-booms the\n\
-world over!\n\
-How dare you scale my\n\
-mountain? By what right\n\
-do you set foot on my\n\
-imperial mountaintop?\n\
-You may have eluded my\n\
-guards, but you'll never\n\
-escape my grasp...\n\
-\n\
-...and you'll never take\n\
-away my Power Star. I\n\
-hereby challenge you,\n\
-Mario!\n\
-If you want the Star I\n\
-hold, you must prove\n\
-yourself in battle.\n\
-\n\
-Can you pick me up from\n\
-the back and hurl me to\n\
-this royal turf? I think\n\
-that you cannot!"))
+I fell asleep to forget that wish. A wish\n\
+         upon my guiding star."))
 
 DEFINE_DIALOG(DIALOG_018, 1, 4, 30, 200, _("\
-I'm sleeping because...\n\
-...I'm sleepy. I don't\n\
-like being disturbed.\n\
-Please walk quietly."))
+A fairy came and greeted me. It granted me my wish.\n\
+   It could see into my soul. It knew why I was."))
 
 DEFINE_DIALOG(DIALOG_019, 1, 2, 30, 200, _("\
-Shhh! Please walk\n\
-quietly in the hallway!"))
+There was a thunderous roar. I have defied nature.\n\
+  I wasn't sad though. Nature never helped me."))
 
 DEFINE_DIALOG(DIALOG_020, 1, 6, 95, 150, _("\
-Dear Mario:\n\
-Please come to the\n\
-castle. I've baked\n\
-a cake for you.\n\
-Yours truly--\n\
-Princess Toadstool"))
+When I awoke I was alone. Another day in dorrie\n\
+      land. I found a friend in the sun."))
 
 DEFINE_DIALOG(DIALOG_021, 1, 5, 95, 200, _("\
-Welcome.\n\
-No one's home!\n\
-Now " SCRAM "\n\
-and don't come back!\n\
-Gwa ha ha!"))
+The sun gives me strength. It's my guiding\n\
+star. The sun is the only one thats there for me."))
 
 DEFINE_DIALOG(DIALOG_022, 1, 2, 95, 200, _("\
-You need a key to open\n\
-this door."))
+Beside me was a rift. Unnatural and cold. It\n\
+called to me and all I could do was listen."))
 
 DEFINE_DIALOG(DIALOG_023, 1, 3, 95, 200, _("\
-This key doesn't fit!\n\
-Maybe it's for the\n\
-basement..."))
+Inside was nothing. It was like I was asleep.\n\
+  Nothing new for me. I've been here before."))
 
 DEFINE_DIALOG(DIALOG_024, 1, 5, 95, 200, _("\
-You need Star power to\n\
-open this door. Recover a\n\
-Power Star from an enemy\n\
-inside one of the castle's\n\
-paintings."))
-
+I saw a new star. It was inside me this whole time.\n\
+The star is a friend. A friend to give my life to."))
+//end of star select dialogs
 DEFINE_DIALOG(DIALOG_025, 1, 4, 95, 200, _("\
 It takes the power of\n\
 3 Stars to open this\n\
@@ -301,29 +223,9 @@ Stars.\n\
 Bwa ha ha!"))
 
 DEFINE_DIALOG(DIALOG_030, 1, 6, 30, 200, _("\
-Hello! The Lakitu Bros.,\n\
-cutting in with a live\n\
-update on Mario's\n\
-progress. He's about to\n\
-learn a technique for\n\
-sneaking up on enemies.\n\
-The trick is this: He has\n\
-to walk very slowly in\n\
-order to walk quietly.\n\
-\n\
-\n\
-\n\
-And wrapping up filming\n\
-techniques reported on\n\
-earlier, you can take a\n\
-look around using [C]> and\n\
-[C]<. Press [C]| to view the\n\
-action from a distance.\n\
-When you can't move the\n\
-camera any farther, the\n\
-buzzer will sound. This is\n\
-the Lakitu Bros.,\n\
-signing off."))
+Welcome pilgram. While you make your journey,\n\
+observe the stars. They guide you to the\n\
+future."))
 
 DEFINE_DIALOG(DIALOG_031, 1, 5, 30, 200, _("\
 No way! You beat me...\n\

@@ -334,6 +334,11 @@
 extern const Collision WaterCube_collision[];
 extern const Collision Rot_Gear_collision[];
 
+const BehaviorScript bhv_Music_Changer[] = {
+BEGIN(OBJ_LIST_GENACTOR),
+CALL_NATIVE( play_music_init),
+DEACTIVATE()
+};
 const BehaviorScript bhv_Rot_Gear_Large[] = {
 BEGIN(OBJ_LIST_SURFACE),
 OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),
@@ -1332,6 +1337,21 @@ const BehaviorScript bhvFlame[] = {
         ANIMATE_TEXTURE(oAnimState, 2),
     END_LOOP(),
 };
+const BehaviorScript bhvLargeFlame[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BILLBOARD(),
+    SET_HOME(),
+    SCALE(/*Unused*/ 0, /*Field*/ 1600),
+    SET_INTERACT_TYPE(INTERACT_FLAME),
+    SET_HITBOX_WITH_OFFSET(/*Radius*/ 50, /*Height*/ 25, /*Downwards offset*/ 25),
+    SET_INT(oIntangibleTimer, 0),
+    CALL_NATIVE(bhv_init_room),
+    BEGIN_LOOP(),
+        SET_INT(oInteractStatus, 0),
+        ANIMATE_TEXTURE(oAnimState, 2),
+    END_LOOP(),
+};
 
 const BehaviorScript bhvAnotherElavator[] = {
     BEGIN(OBJ_LIST_SURFACE),
@@ -1390,6 +1410,12 @@ const BehaviorScript bhvBreathParticleSpawner[] = {
         CALL_NATIVE(bhv_water_mist_spawn_loop),
     END_REPEAT(),
     DEACTIVATE(),
+};
+const BehaviorScript bhvWarpRing[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+    END_LOOP(),
 };
 
 const BehaviorScript bhvBreakBoxTriangle[] = {
@@ -6134,11 +6160,7 @@ const BehaviorScript bhvPenguinRaceFinishLine[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     BEGIN_LOOP(),
-		#ifdef RM2C
         CALL_NATIVE(bhv_penguin_race_shortcut_check_update),
-		#else
-        CALL_NATIVE(bhv_penguin_race_finish_line_update),
-		#endif
     END_LOOP(),
 };
 
