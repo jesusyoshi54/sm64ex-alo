@@ -1009,6 +1009,7 @@ extern Gfx mat_wf_dl_water_no_nsolid[];
 extern Gfx mat_ccm_dl_water_no_nsolid[];
 extern Gfx mat_bbh_dl_water_no_nsolid[];
 extern Gfx mat_hmc_dl_water_no_nsolid[];
+extern Gfx mat_lll_dl_water_no_nsolid[];
 //This is re used from when pos took args from the object pos and converted it
 void ScrollF2(Gfx *F2,u32 x, u32 y){
 	union PosBytes Xspd;
@@ -1062,6 +1063,11 @@ void Scroll_Waters(void){
 			break;
 		case LEVEL_HMC:
 			F2 = segmented_to_virtual(mat_hmc_dl_water_no_nsolid);
+			ScrollF2(F2+12,1,0);
+			ScrollF2(F2+20,0,1);
+			break;
+		case LEVEL_LLL:
+			F2 = segmented_to_virtual(mat_lll_dl_water_no_nsolid);
 			ScrollF2(F2+12,1,0);
 			ScrollF2(F2+20,0,1);
 			break;

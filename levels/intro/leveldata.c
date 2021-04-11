@@ -3327,10 +3327,10 @@ static const Vtx intro_seg7_vertex_0700B420[] = {
 
 // 0x0700B460 - 0x0700B4A0
 static const Vtx intro_seg7_vertex_0700B460[] = {
-    {{{   268,    180,     -1}, 0, {     0,    512}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   284,    180,     -1}, 0, {   544,    512}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   284,    196,     -1}, 0, {   544,      0}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   268,    196,     -1}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{   268,    140,     -1}, 0, {     0,    512}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{   284,    140,     -1}, 0, {   544,    512}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{   284,    156,     -1}, 0, {   544,      0}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{   268,    156,     -1}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
@@ -3362,26 +3362,10 @@ ALIGNED8 static const Texture intro_seg7_texture_0700C4A0[] = {
 };
 #endif
 
+
 // 0x0700C6A0 - 0x0700C790
 const Gfx intro_seg7_dl_0700C6A0[] = {
     gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_DECALFADE, G_CC_DECALFADE),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-
-    gsDPLoadTextureBlock(intro_seg7_texture_0700B4A0, G_IM_FMT_RGBA, G_IM_SIZ_16b, 128, 16, 0, G_TX_CLAMP, G_TX_CLAMP, 7, 4, G_TX_NOLOD, G_TX_NOLOD),
-    gsSPVertex(intro_seg7_vertex_0700B420, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-
-    gsDPLoadTextureBlock(intro_seg7_texture_0700C4A0, G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 16, 0, G_TX_CLAMP, G_TX_CLAMP, 4, 4, G_TX_NOLOD, G_TX_NOLOD),
-    gsSPVertex(intro_seg7_vertex_0700B460, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
-    gsDPPipeSync(),
-    gsSPSetGeometryMode(G_LIGHTING),
-    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-    gsDPSetEnvColor(255, 255, 255, 255),
-    gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
     gsSPEndDisplayList(),
 };
 
@@ -3418,4 +3402,40 @@ const f32 intro_seg7_table_0700C880[] = {
     0.104000f, 0.104000f, 0.104000f, 0.048600f,
     0.048600f, 0.048600f, 0.012800f, 0.012800f,
     0.012800f, 0.000000f, 0.000000f, 0.000000f,
+};
+
+#include "levels/intro/Title/model.inc.c"
+
+ALIGNED8 static const Texture wacky[] = {
+#include "levels/intro/WACKY_custom.ia4.inc.c"
+};
+ALIGNED8 static const Texture waiting[] = {
+#include "levels/intro/WAITING_custom.ia4.inc.c"
+};
+ALIGNED8 static const Texture wasted[] = {
+#include "levels/intro/WASTED_custom.ia4.inc.c"
+};
+ALIGNED8 static const Texture water[] = {
+#include "levels/intro/WATER_custom.ia4.inc.c"
+};
+ALIGNED8 static const Texture weak[] = {
+#include "levels/intro/WEAK_custom.ia4.inc.c"
+};
+ALIGNED8 static const Texture week[] = {
+#include "levels/intro/WEEK_custom.ia4.inc.c"
+};
+ALIGNED8 static const Texture wisdom[] = {
+#include "levels/intro/WISDOM_custom.ia4.inc.c"
+};
+ALIGNED8 static const Texture wishing[] = {
+#include "levels/intro/WISHING_custom.ia4.inc.c"
+};
+ALIGNED8 static const Texture witness[] = {
+#include "levels/intro/WITNESS_custom.ia4.inc.c"
+};
+ALIGNED8 static const Texture worship[] = {
+#include "levels/intro/WORSHIP_custom.ia4.inc.c"
+};
+ALIGNED8 static const Texture wrong[] = {
+#include "levels/intro/WRONG_custom.ia4.inc.c"
 };
