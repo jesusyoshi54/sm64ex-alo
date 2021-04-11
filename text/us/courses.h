@@ -18,12 +18,12 @@ COURSE_ACTS(COURSE_BBH, _("Within the mind you find a friend        "),
        _("A friend is tomorrow's stranger")            , _("A stranger is tomorrow's friend") , _("---------------"),
        _("UUUUUUUUUUUUUU")          , _("UUUUUUUUUUUU")             , _("UUUUUUUUUUUUUU"))
 
-COURSE_ACTS(COURSE_HMC, _("Within your shadow hides your future"),
-       _("The future is tomorrow's past")  , _("The past is hides the key to the future")       , _("---------------"),
+COURSE_ACTS(COURSE_HMC, _("Within your shadow hides your future       "),
+       _("The future is tomorrow's past")  , _("The past is hides the key to the future     ")       , _("---------------"),
        _("NAVIGATING THE TOXIC MAZE")     , _("A-MAZE-ING EMERGENCY EXIT")     , _("WATCH FOR ROLLING ROCKS"))
 
-COURSE_ACTS(COURSE_LLL, _("Within your blood lies your will"),
-       _("The bone of your blood upholds your will")            , _("Your will paves the path for your bones respite")             , _("---------------"),
+COURSE_ACTS(COURSE_LLL, _("Within your blood lies your will        "),
+       _("The bone of your blood upholds your will       ")            , _("Your will paves the path for your bones respite       ")             , _("---------------"),
        _("RED-HOT LOG ROLLING")           , _("HOT-FOOT-IT INTO THE VOLCANO")  , _("ELEVATOR TOUR IN THE VOLCANO"))
 
 COURSE_ACTS(COURSE_SSL, _(" 8 SHIFTING SAND LAND"),

@@ -830,7 +830,11 @@ void newcam_loop(struct Camera *c) {
     if (gMarioObject)
         newcam_apply_values(c);
     newcam_fade_target_closeup();
-
+	if(gMarioState->floor->type == SURFACE_LOOK_UP_WARP) {
+        if (newcam_tilt<-11000) {
+            level_trigger_warp(gMarioState, WARP_OP_UNKNOWN_01);
+        }
+    }
     //Just some visual information on the values of the camera. utilises ifdef because it's better at runtime.
     #ifdef NEWCAM_DEBUG
     newcam_diagnostics();

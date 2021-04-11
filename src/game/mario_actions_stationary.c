@@ -1070,7 +1070,7 @@ s32 act_first_person(struct MarioState *m) {
         && save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= 0) {
         s16 sp1A = m->statusForCamera->headRotation[0];
         s16 sp18 = ((m->statusForCamera->headRotation[1] * 4) / 3) + m->faceAngle[1];
-        if (sp1A == -0x1800 || newcam_tilt<-11000) {
+        if (sp1A == -0x1800) {
             level_trigger_warp(m, WARP_OP_UNKNOWN_01);
         }
     }

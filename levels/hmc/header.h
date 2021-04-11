@@ -90,4 +90,6 @@ extern const struct MovtexQuadCollection hmc_movtex_toxic_maze_mist[];
 // script
 extern const LevelScript level_hmc_entry[];
 
+#include "levels/hmc/header.inc.h"
+
 #endif
