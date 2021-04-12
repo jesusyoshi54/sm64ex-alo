@@ -3404,38 +3404,37 @@ const f32 intro_seg7_table_0700C880[] = {
     0.012800f, 0.000000f, 0.000000f, 0.000000f,
 };
 
-#include "levels/intro/Title/model.inc.c"
-
-ALIGNED8 static const Texture wacky[] = {
-#include "levels/intro/WACKY_custom.ia4.inc.c"
+ALIGNED8 const Texture wacky[] = {
+#include "levels/intro/WACKY_custom.i8.inc.c"
 };
-ALIGNED8 static const Texture waiting[] = {
-#include "levels/intro/WAITING_custom.ia4.inc.c"
+ALIGNED8 const Texture waiting[] = {
+#include "levels/intro/WAITING_custom.i8.inc.c"
 };
-ALIGNED8 static const Texture wasted[] = {
-#include "levels/intro/WASTED_custom.ia4.inc.c"
+ALIGNED8 const Texture wasted[] = {
+#include "levels/intro/WASTED_custom.i8.inc.c"
 };
-ALIGNED8 static const Texture water[] = {
-#include "levels/intro/WATER_custom.ia4.inc.c"
+ALIGNED8 const Texture water[] = {
+#include "levels/intro/WATER_custom.i8.inc.c"
 };
-ALIGNED8 static const Texture weak[] = {
-#include "levels/intro/WEAK_custom.ia4.inc.c"
+ALIGNED8 const Texture weak[] = {
+#include "levels/intro/WEAK_custom.i8.inc.c"
 };
-ALIGNED8 static const Texture week[] = {
-#include "levels/intro/WEEK_custom.ia4.inc.c"
+ALIGNED8 const Texture week[] = {
+#include "levels/intro/WEEK_custom.i8.inc.c"
 };
-ALIGNED8 static const Texture wisdom[] = {
-#include "levels/intro/WISDOM_custom.ia4.inc.c"
+ALIGNED8 const Texture wisdom[] = {
+#include "levels/intro/WISDOM_custom.i8.inc.c"
 };
-ALIGNED8 static const Texture wishing[] = {
-#include "levels/intro/WISHING_custom.ia4.inc.c"
+ALIGNED8 const Texture wishing[] = {
+#include "levels/intro/WISHING_custom.i8.inc.c"
 };
-ALIGNED8 static const Texture witness[] = {
-#include "levels/intro/WITNESS_custom.ia4.inc.c"
+ALIGNED8 const Texture witness[] = {
+#include "levels/intro/WITNESS_custom.i8.inc.c"
 };
-ALIGNED8 static const Texture worship[] = {
-#include "levels/intro/WORSHIP_custom.ia4.inc.c"
+ALIGNED8 const Texture worship[] = {
+#include "levels/intro/WORSHIP_custom.i8.inc.c"
 };
-ALIGNED8 static const Texture wrong[] = {
-#include "levels/intro/WRONG_custom.ia4.inc.c"
+ALIGNED8 const Texture wrong[] = {
+#include "levels/intro/WRONG_custom.i8.inc.c"
 };
+#include "levels/intro/Test/model.inc.c"

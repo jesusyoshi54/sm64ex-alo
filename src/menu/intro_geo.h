@@ -9,6 +9,7 @@
 
 Gfx *geo_intro_super_mario_64_logo(s32 sp50, struct GraphNode *sp54, UNUSED void *context);
 Gfx *geo_intro_tm_copyright(s32 sp40, struct GraphNode *sp44, UNUSED void *context);
+Gfx *geo_TextureCall(s32 sp40, struct GraphNode *sp44, UNUSED void *context);
 Gfx *geo_intro_regular_backdrop(s32 sp48, struct GraphNode *sp4c, UNUSED void *context);
 Gfx *geo_intro_gameover_backdrop(s32 sp40, struct GraphNode *sp44, UNUSED void *context);
 

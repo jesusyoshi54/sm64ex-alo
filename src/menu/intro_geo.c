@@ -95,7 +95,6 @@ Gfx *geo_intro_super_mario_64_logo(s32 state, struct GraphNode *node, UNUSED voi
 /**
  * Geo callback to render TM and Copyright on the title screen
  */
-extern Gfx Title_Plane_001_mesh[];
 Gfx *geo_intro_tm_copyright(s32 state, struct GraphNode *node, UNUSED void *context) {
     struct GraphNode *graphNode = node;
     Gfx *dl = NULL;
@@ -118,7 +117,7 @@ Gfx *geo_intro_tm_copyright(s32 state, struct GraphNode *node, UNUSED void *cont
                 gDPSetRenderMode(dlIter++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
                 break;
         }
-        gSPDisplayList(dlIter++, &Title_Plane_001_mesh);  // draw model
+        // gSPDisplayList(dlIter++, &Title_Plane_001_mesh);  // draw model
         gSPEndDisplayList(dlIter);
 
         // Once the "Super Mario 64" logo has just about zoomed fully, fade in the "TM" and copyright text
@@ -131,6 +130,111 @@ Gfx *geo_intro_tm_copyright(s32 state, struct GraphNode *node, UNUSED void *cont
     }
     return dl;
 }
+extern const Texture wacky[];
+
+extern const Texture Test_WAITING_custom_ia4_i8[];
+extern const Texture waiting[];
+
+extern const Texture wasted[];
+
+extern const Texture water[];
+
+extern const Texture weak[];
+
+extern const Texture week[];
+
+extern const Texture wisdom[];
+
+extern const Texture wishing[];
+
+extern const Texture witness[];
+
+extern const Texture worship[];
+
+extern const Texture wrong[];
+
+Texture *TPtrs[] = {
+	wacky,
+	waiting,
+	wasted,
+	water,
+	weak,
+	week,
+	wisdom,
+	wishing,
+	witness,
+	worship,
+	wrong
+};
+u16 random_u16T(u16 seed) {
+    u16 temp1, temp2;
+
+    if (seed == 22026) {
+        seed = 0;
+    }
+
+    temp1 = (seed & 0x00FF) << 8;
+    temp1 = temp1 ^ seed;
+
+    seed = ((temp1 & 0x00FF) << 8) + ((temp1 & 0xFF00) >> 8);
+
+    temp1 = ((temp1 & 0x00FF) << 1) ^ seed;
+    temp2 = (temp1 >> 1) ^ 0xFF80;
+
+    if ((temp1 & 1) == 0) {
+        if (temp2 == 43605) {
+            seed = 0;
+        } else {
+            seed = temp2 ^ 0x1FF4;
+        }
+    } else {
+        seed = temp2 ^ 0x8180;
+    }
+
+    return seed;
+}
+
+// Generate a pseudorandom float in the range [0, 1).
+f32 random_floatT(u16 seed) {
+    f32 rnd = random_u16T(seed);
+    return rnd / (double) 0x10000;
+}
+
+#include "game/save_file.h"
+extern struct SaveBuffer gSaveBuffer;
+extern s8 gMainMenuDataModified;
+//allocing a DL doesn't fucking work for some reason
+extern Gfx mat_Test_f3d_material[];
+extern Gfx mat_Test_water_no_nsolid[];
+static u16 Check=0;
+extern void ScrollF2(Gfx *F2,u32 x, u32 y);
+Gfx *geo_TextureCall(s32 state, struct GraphNode *node, UNUSED void *context) {
+    struct GraphNode *graphNode = node;
+    Gfx *dl = NULL;
+    Gfx *dlIter = NULL;
+	dl = alloc_display_list(2 * sizeof(*dl));
+	dlIter = dl;
+	OSTime Time = osGetTime();
+	f32 pick;
+	//fantastic programming
+	if (Check==0){
+		Check=(u16)Time + gSaveBuffer.menuData[0].filler[0];
+		pick = random_floatT(Check);
+		gSaveBuffer.menuData[0].filler[0] = (u8)(pick*10.0f);
+		gMainMenuDataModified=1;
+		save_file_do_save(1);
+	}
+	pick = random_floatT(Check);
+	gSaveBuffer.menuData[0].filler[0] = Check;
+	save_file_do_save(1);
+	Gfx *FD = segmented_to_virtual(mat_Test_f3d_material+4);
+	FD->words.w1 = TPtrs[(u8)(pick*10.0f)];
+	Gfx *F2 = segmented_to_virtual(mat_Test_water_no_nsolid);
+	ScrollF2(F2+12,1,1);
+	ScrollF2(F2+20,1,1);
+    return dl;
+}
+
 
 #ifndef WIDESCREEN
 /**
