@@ -28,6 +28,7 @@ void cur_obj_spawn_strong_wind_particles(s32 windSpread, f32 scale, f32 relPosX,
 
 void play_music_init(void);
 void Update_Mario_Water_Displacement(void);
+void RotCrane(void);
 
 #if INCLUDE_MOP
 void bhv_flip_block_loop(void);

@@ -3,6 +3,8 @@
 
 #include "types.h"
 
+extern const BehaviorScript bhv_CraneUP[];
+extern const BehaviorScript bhv_Crane[];
 extern const BehaviorScript bhv_Music_Changer[];
 extern const BehaviorScript bhvWarpRing[];
 extern const BehaviorScript bhvLargeFlame[];

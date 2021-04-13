@@ -356,4 +356,8 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "warp_ring/geo_header.h"
 
+#include "Crane/geo_header.h"
+
+#include "Crane/collision_header.h"
+
 #endif

@@ -754,6 +754,9 @@ static s32 obj_is_in_view(struct GraphNodeObject *node, Mat4 matrix) {
     if (node->node.flags & GRAPH_RENDER_INVISIBLE) {
         return FALSE;
     }
+    if (node->node.flags & GRAPH_RENDER_NO_CULL) {
+        return TRUE;
+    }
 
     geo = node->sharedChild;
 

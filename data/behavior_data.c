@@ -333,7 +333,32 @@
 
 extern const Collision WaterCube_collision[];
 extern const Collision Rot_Gear_collision[];
+extern const Collision Crane_collision[];
 
+const BehaviorScript bhv_CraneUP[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),
+LOAD_COLLISION_DATA(Crane_collision),
+SET_INT(oFaceAnglePitch,7800),
+SET_INT(oAction,3),
+SET_FLOAT(oCollisionDistance, 0x3000),
+BEGIN_LOOP(),
+CALL_NATIVE( RotCrane),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
+const BehaviorScript bhv_Crane[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),
+LOAD_COLLISION_DATA(Crane_collision),
+SET_INT(oFaceAnglePitch,-7800),
+SET_INT(oAction,1),
+SET_FLOAT(oCollisionDistance, 0x3000),
+BEGIN_LOOP(),
+CALL_NATIVE( RotCrane),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
 const BehaviorScript bhv_Music_Changer[] = {
 BEGIN(OBJ_LIST_GENACTOR),
 CALL_NATIVE( play_music_init),
@@ -351,6 +376,7 @@ ADD_INT(oFaceAnglePitch,0x100),
 CALL_NATIVE( load_object_collision_model),
 END_LOOP(),
 };
+
 const BehaviorScript bhv_Rot_Gear[] = {
 BEGIN(OBJ_LIST_SURFACE),
 OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),

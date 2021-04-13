@@ -31,3 +31,5 @@
 #include "Rot_Gear/collision.inc.c"
 #include "Rot_Gear/model.inc.c"
 #include "warp_ring/model.inc.c"
+#include "Crane/model.inc.c"
+#include "Crane/collision.inc.c"
