@@ -573,66 +573,34 @@ I can't award you a gold\n\
 medal, but here, take this\n\
 Star instead. You've\n\
 earned it!"))
+//INIT
+DEFINE_DIALOG(DIALOG_057, 1, 4, 30, 250, _("\
+Ahhhhh! My babies!! I know\n\
+I shouldn't have let them swim\n\
+in the lake, Dorrie knows what\n\
+trouble they could be in now.\n\
+You look like a swift swimmer, can\n\
+get them back here alright?"))
 
-DEFINE_DIALOG(DIALOG_057, 1, 4, 30, 200, _("\
-Egad! My baby!! Have you\n\
-seen my baby??? She's\n\
-the most precious baby in\n\
-the whole wide world.\n\
-(They say she has my\n\
-beak...) I just can't\n\
-remember where I left\n\
-her.\n\
-Let's see...I stopped\n\
-for herring and ice cubes,\n\
-then I...oohh! I just\n\
-don't know!"))
+//found a baby
+DEFINE_DIALOG(DIALOG_058, 1, 4, 30, 250, _("\
+Praise dorrie you found him.\n\
+Bless your soul, I can't thank you enough.\n\
+Can keep looking for the other ones\n\
+they're sure to be nearby."))
 
-DEFINE_DIALOG(DIALOG_058, 1, 4, 30, 200, _("\
-You found my precious,\n\
-precious baby! Where\n\
-have you been? How can\n\
-I ever thank you, Mario?\n\
-Oh, I do have this...\n\
-...Star. Here, take it\n\
-with my eternal\n\
-gratitude."))
-
+//wrong baby, unused
 DEFINE_DIALOG(DIALOG_059, 1, 4, 30, 200, _("\
 That's not my baby! She\n\
 looks nothing like me!\n\
 Her parents must be\n\
 worried sick!"))
-
+//found all babies
 DEFINE_DIALOG(DIALOG_060, 1, 4, 30, 200, _("\
-ATTENTION!\n\
-Read Before Diving In!\n\
-\n\
-\n\
-If you stay under the\n\
-water for too long, you'll\n\
-run out of oxygen.\n\
-\n\
-Return to the surface for\n\
-air or find an air bubble\n\
-or coins to breathe while\n\
-underwater.\n\
-Press [A] to swim. Hold [A]\n\
-to swim slow and steady.\n\
-Tap [A] with smooth timing\n\
-to gain speed.\n\
-Press Up on the\n\
-Control Stick and press [A]\n\
-to dive.\n\
-\n\
-Press Down on the Control\n\
-Stick and press [A] to\n\
-return to the surface.\n\
-\n\
-Hold Down and press [A]\n\
-while on the surface near\n\
-the edge of the water to\n\
-jump out."))
+Oh thank the great star they're all\n\
+fine. Take this star as a symbol\n\
+of my gratitude.\n\
+May Dorrie guide you."))
 
 DEFINE_DIALOG(DIALOG_061, 1, 4, 30, 200, _("\
 BRRR! Frostbite Danger!\n\

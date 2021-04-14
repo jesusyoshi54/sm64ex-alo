@@ -334,6 +334,7 @@
 extern const Collision WaterCube_collision[];
 extern const Collision Rot_Gear_collision[];
 extern const Collision Crane_collision[];
+extern const Collision Mesh_collision[];
 
 const BehaviorScript bhv_CraneUP[] = {
 BEGIN(OBJ_LIST_SURFACE),
@@ -388,6 +389,16 @@ CALL_NATIVE( load_object_collision_model),
 END_LOOP(),
 };
 
+const BehaviorScript bhv_Mesh[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1),
+LOAD_COLLISION_DATA(Mesh_collision),
+CALL_NATIVE( bhv_ssl_moving_pyramid_wall_init),
+BEGIN_LOOP(),
+CALL_NATIVE( bhv_ssl_moving_pyramid_wall_loop),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
 const BehaviorScript WaterCube_UPDown[] = {
 BEGIN(OBJ_LIST_SURFACE),
 OR_INT(oFlags,1),
@@ -935,6 +946,18 @@ const BehaviorScript bhvExitPodiumWarp[] = {
     END_LOOP(),
 };
 
+const BehaviorScript bhvFadingWarpUnlock[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    SET_INT(oInteractionSubtype, INT_SUBTYPE_FADING_WARP),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_INT(oInteractType, INTERACT_WARP),
+    SET_INT(oIntangibleTimer, 0),
+    CALL_NATIVE(bhv_castle_cannon_grate_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_fading_warp_loop),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvFadingWarp[] = {
     BEGIN(OBJ_LIST_LEVEL),
     SET_INT(oInteractionSubtype, INT_SUBTYPE_FADING_WARP),
@@ -1439,6 +1462,13 @@ const BehaviorScript bhvBreathParticleSpawner[] = {
 };
 const BehaviorScript bhvWarpRing[] = {
     BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+    END_LOOP(),
+};
+const BehaviorScript bhvWarpRingUnlock[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    CALL_NATIVE(bhv_castle_cannon_grate_init),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BEGIN_LOOP(),
     END_LOOP(),
@@ -2738,6 +2768,22 @@ const BehaviorScript bhvUnused20E0[] = {
 };
 
 const BehaviorScript bhvSmallPenguin[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    DROP_TO_FLOOR(),
+    LOAD_ANIMATIONS(oAnimations, penguin_seg5_anims_05008B74),
+    ANIMATE(0),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 0, /*Friction*/ 0, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    SET_INT(oInteractType, INTERACT_GRABBABLE),
+    SET_INT(oInteractionSubtype, INT_SUBTYPE_HOLDABLE_NPC),
+    SET_INT(oIntangibleTimer, 0),
+    SET_HITBOX(/*Radius*/ 40, /*Height*/ 40),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_small_penguin_loop),
+    END_LOOP(),
+};
+const BehaviorScript bhvSmallPenguinFound[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     DROP_TO_FLOOR(),

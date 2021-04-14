@@ -360,4 +360,8 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "Crane/collision_header.h"
 
+#include "Mesh/collision_header.h"
+
+#include "Mesh/geo_header.h"
+
 #endif

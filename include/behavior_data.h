@@ -3,6 +3,7 @@
 
 #include "types.h"
 
+extern const BehaviorScript bhv_Mesh[];
 extern const BehaviorScript bhv_CraneUP[];
 extern const BehaviorScript bhv_Crane[];
 extern const BehaviorScript bhv_Music_Changer[];
@@ -226,6 +227,7 @@ extern const BehaviorScript bhvTuxiesMother[];
 extern const BehaviorScript bhvPenguinBaby[];
 extern const BehaviorScript bhvUnused20E0[];
 extern const BehaviorScript bhvSmallPenguin[];
+extern const BehaviorScript bhvSmallPenguinFound[];
 extern const BehaviorScript bhvManyBlueFishSpawner[];
 extern const BehaviorScript bhvFewBlueFishSpawner[];
 extern const BehaviorScript bhvFishSpawner[];

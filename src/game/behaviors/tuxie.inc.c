@@ -50,22 +50,26 @@ void tuxies_mother_act_1(void) {
             if (!cur_obj_is_mario_on_platform()) {
                 sp2C = (o->oBehParams >> 0x10) & 0xFF;
                 sp28 = (o->prevObj->oBehParams >> 0x10) & 0xFF;
-                if (sp2C == sp28)
-                    dialogID = DIALOG_058;
-                else
-                    dialogID = DIALOG_059;
+				// if (sp2C == sp28)
+				if (o->oHiddenStarTriggerCounter==0) {
+					dialogID = DIALOG_060;
+				}else{
+					dialogID = DIALOG_058;
+				}
+				// else
+				// dialogID = DIALOG_059;
                 if (cur_obj_update_dialog_with_cutscene(2, 1, CUTSCENE_DIALOG, dialogID)) {
                     if (dialogID == DIALOG_058)
                         o->oSubAction = 1;
                     else
-                        o->oSubAction = 2;
+                        o->oSubAction = 1;
                     o->prevObj->oInteractionSubtype |= INT_SUBTYPE_DROP_IMMEDIATELY;
                 }
             } else
                 cur_obj_init_animation_with_sound(0);
             break;
         case 1:
-            if (o->prevObj->oHeldState == HELD_FREE) {
+            if (o->oHiddenStarTriggerCounter==0) {
                 //! This line is was almost certainly supposed to be something
                 // like o->prevObj->oInteractionSubtype &= ~INT_SUBTYPE_DROP_IMMEDIATELY;
                 // however, this code uses the value of o->oInteractionSubtype
@@ -79,10 +83,14 @@ void tuxies_mother_act_1(void) {
 #ifdef RM2C
                 cur_obj_spawn_star_at_y_offset(TuxieMotherStarPos, 200.0f);
 #else
-                cur_obj_spawn_star_at_y_offset(3167.0f, -4300.0f, 5108.0f, 200.0f);
+                cur_obj_spawn_star_at_y_offset(12484.0f, 679.0f, 4197.0f, 200.0f);
 #endif
                 o->oAction = 2;
             }
+			else{
+				o->oAction = 0;
+				o->oBehParams += 1;
+			}
             break;
         case 2:
             if (o->prevObj->oHeldState == HELD_FREE) {
@@ -108,11 +116,13 @@ void tuxies_mother_act_0(void) {
     if (sp24 != NULL && sp28 < 300.0f && sp24->oHeldState != HELD_FREE) {
         o->oAction = 1;
         sp24->oSmallPenguinUnk88 = 1;
+		//Hacky solution
+		sp24->behavior = &bhvSmallPenguinFound;
         o->prevObj = sp24;
     } else {
         switch (o->oSubAction) {
             case 0:
-                if (cur_obj_can_mario_activate_textbox_2(300.0f, 100.0f))
+                if (cur_obj_can_mario_activate_textbox_2(300.0f, 100.0f) && (o->oBehParams&0xFF)!=1)
                     if (sp2C == 0)
                         o->oSubAction++;
                 break;
@@ -139,6 +149,7 @@ void bhv_tuxies_mother_loop(void) {
     cur_obj_call_action_function(sTuxiesMotherActions);
     cur_obj_move_standard(-78);
     play_penguin_walking_sound(PENGUIN_WALK_BIG);
+	o->oHiddenStarTriggerCounter = count_objects_with_behavior(bhvSmallPenguin);
     o->oInteractStatus = 0;
 }
 

@@ -33,3 +33,5 @@
 #include "warp_ring/model.inc.c"
 #include "Crane/model.inc.c"
 #include "Crane/collision.inc.c"
+#include "Mesh/collision.inc.c"
+#include "Mesh/model.inc.c"

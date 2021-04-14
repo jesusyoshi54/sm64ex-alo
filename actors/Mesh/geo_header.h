@@ -1,0 +1,18 @@
+extern const GeoLayout Mesh_geo[];
+extern Lights1 Mesh_fLOATING_side_002_lights;
+extern Lights1 Mesh_floating_faCE_002_lights;
+extern u8 Mesh_E050_O021_CI_ci4[];
+extern u8 Mesh_E050_O021_CI_ci4_pal_rgba16[];
+extern u8 Mesh_qua_p_ks2_mesh01_CI_ci4[];
+extern u8 Mesh_qua_p_ks2_mesh01_CI_ci4_pal_rgba16[];
+extern Vtx Mesh_Cube_085_mesh_layer_1_vtx_0[32];
+extern Gfx Mesh_Cube_085_mesh_layer_1_tri_0[];
+extern Vtx Mesh_Cube_085_mesh_layer_4_vtx_0[8];
+extern Gfx Mesh_Cube_085_mesh_layer_4_tri_0[];
+extern Gfx mat_Mesh_fLOATING_side_002[];
+extern Gfx mat_revert_Mesh_fLOATING_side_002[];
+extern Gfx mat_Mesh_floating_faCE_002[];
+extern Gfx mat_revert_Mesh_floating_faCE_002[];
+extern Gfx Mesh_Cube_085_mesh_layer_1[];
+extern Gfx Mesh_Cube_085_mesh_layer_4[];
+extern Gfx Mesh_material_revert_render_settings[];
