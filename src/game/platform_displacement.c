@@ -157,11 +157,11 @@ void apply_platform_displacement(u32 isMario, struct Object *platform) {
     }
 
     if (isMario) {
-#if FIX_MOVING_PLATFORMS_INERTIA
-        gMarioStates[0].platformDisplacement[0] = x - gMarioStates[0].pos[0];
-        gMarioStates[0].platformDisplacement[1] = y - gMarioStates[0].pos[1];
-        gMarioStates[0].platformDisplacement[2] = z - gMarioStates[0].pos[2];
-#endif
+// #if FIX_MOVING_PLATFORMS_INERTIA
+        // gMarioStates[0].platformDisplacement[0] = x - gMarioStates[0].pos[0];
+        // gMarioStates[0].platformDisplacement[1] = y - gMarioStates[0].pos[1];
+        // gMarioStates[0].platformDisplacement[2] = z - gMarioStates[0].pos[2];
+// #endif
         set_mario_pos(x, y, z);
     } else {
         gCurrentObject->oPosX = x;
@@ -176,14 +176,14 @@ void apply_platform_displacement(u32 isMario, struct Object *platform) {
 void apply_mario_platform_displacement(void) {
     struct Object *platform = gMarioPlatform;
 
-#if FIX_MOVING_PLATFORMS_INERTIA
-//sets platform displacement to 0 now so it wont be stored from prior platforms
-    if (gMarioStates[0].pos[1] == gMarioStates[0].floorHeight) {
-            gMarioStates[0].platformDisplacement[0] = 0.0f;
-            gMarioStates[0].platformDisplacement[1] = 0.0f;
-            gMarioStates[0].platformDisplacement[2] = 0.0f;
-        }
-#endif
+// #if FIX_MOVING_PLATFORMS_INERTIA
+// sets platform displacement to 0 now so it wont be stored from prior platforms
+    // if (gMarioStates[0].pos[1] == gMarioStates[0].floorHeight) {
+            // gMarioStates[0].platformDisplacement[0] = 0.0f;
+            // gMarioStates[0].platformDisplacement[1] = 0.0f;
+            // gMarioStates[0].platformDisplacement[2] = 0.0f;
+        // }
+// #endif
 
     if (!(gTimeStopState & TIME_STOP_ACTIVE) && gMarioObject != NULL && platform != NULL) {
         apply_platform_displacement(TRUE, platform);

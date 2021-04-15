@@ -35,3 +35,7 @@
 #include "Crane/collision.inc.c"
 #include "Mesh/collision.inc.c"
 #include "Mesh/model.inc.c"
+#include "HPillar/collision.inc.c"
+#include "HPillar/model.inc.c"
+#include "TCube/model.inc.c"
+#include "TCube/collision.inc.c"

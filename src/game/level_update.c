@@ -1011,6 +1011,7 @@ extern Gfx mat_bbh_dl_water_no_nsolid[];
 extern Gfx mat_hmc_dl_water_no_nsolid[];
 extern Gfx mat_lll_dl_water_no_nsolid[];
 extern Gfx mat_jrb_dl_water_no_nsolid[];
+extern Gfx mat_bitdw_dl_water_no_nsolid[];
 //This is re used from when pos took args from the object pos and converted it
 void ScrollF2(Gfx *F2,u32 x, u32 y){
 	union PosBytes Xspd;
@@ -1039,6 +1040,11 @@ void Scroll_Waters(void){
 	switch(gCurrLevelNum){
 		case LEVEL_BOB:
 			F2 = segmented_to_virtual(mat_bob_dl_water);
+			ScrollF2(F2+12,1,0);
+			ScrollF2(F2+20,0,1);
+			break;
+		case LEVEL_BITDW:
+			F2 = segmented_to_virtual(mat_bitdw_dl_water_no_nsolid);
 			ScrollF2(F2+12,1,0);
 			ScrollF2(F2+20,0,1);
 			break;
@@ -1131,7 +1137,7 @@ s32 play_mode_normal(void) {
     // warp, change play mode accordingly.
     if (sCurrPlayMode == PLAY_MODE_NORMAL) {
         if (sWarpDest.type == WARP_TYPE_CHANGE_LEVEL) {
-			if ((sWarpDest.levelNum == LEVEL_CASTLE_GROUNDS) || (sWarpDest.levelNum == LEVEL_CASTLE)|| (sWarpDest.levelNum == LEVEL_BOWSER_1)){
+			if ((sWarpDest.levelNum == LEVEL_CASTLE_GROUNDS) || (sWarpDest.levelNum == LEVEL_CASTLE)|| (sWarpDest.levelNum == LEVEL_BOWSER_1)|| (sWarpDest.levelNum == LEVEL_SA)|| (sWarpDest.levelNum == LEVEL_ENDING)|| (sWarpDest.levelNum == LEVEL_BOWSER_3)|| (sWarpDest.levelNum == LEVEL_BITDW)){
 				//nothing
 			}else{
 			f32 rand = (random_float()*10.0f);

@@ -11,10 +11,10 @@
 #define REDS_REQ 8
 //whether coins are 3d or not. Changes bhv scripts and pause menu reds rendering
 #define USE3DCOINS 0
-#define INCLUDE_MOP 1
+#define INCLUDE_MOP 0
 //an array
 #define STAR_MILESTONES  1, 3, 8, 30, 50, 70
-#define SHOW_STAR_MILESTONES 1
+#define SHOW_STAR_MILESTONES 0
 
 #define KING_BOMB_FVEL 3.0f
 #define KING_BOMB_YAWVEL 0x100
@@ -101,6 +101,6 @@
 
 #define SHOW_STARS 1
 #define SHOW_COINS 1
-#define SHOW_LIVES 1
+#define SHOW_LIVES 0
 #define SHOW_CAM 1
 #define SHOW_TIME 1

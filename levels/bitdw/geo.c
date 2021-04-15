@@ -39,3 +39,4 @@
 #include "levels/bitdw/collapsing_stairs_4/geo.inc.c"
 #include "levels/bitdw/collapsing_stairs_5/geo.inc.c"
 #include "levels/bitdw/areas/1/geo.inc.c"
+#include "levels/bitdw/geo.inc.c"

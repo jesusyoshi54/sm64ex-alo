@@ -335,7 +335,32 @@ extern const Collision WaterCube_collision[];
 extern const Collision Rot_Gear_collision[];
 extern const Collision Crane_collision[];
 extern const Collision Mesh_collision[];
+extern const Collision HPillar_collision[];
+extern const Collision TCube_collision[];
 
+const BehaviorScript BhvTransparentCube[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),
+LOAD_COLLISION_DATA(TCube_collision),
+CALL_NATIVE( TCube_Init),
+BEGIN_LOOP(),
+CALL_NATIVE( TCube_Loop),
+END_LOOP(),
+};
+
+//bparam2 = length, bparam4 to 1 to start moving backwards
+const BehaviorScript BhvHPillar[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),
+LOAD_COLLISION_DATA(HPillar_collision),
+SET_HOME(),
+SET_FLOAT(oCollisionDistance, 0x3000),
+BEGIN_LOOP(),
+CALL_NATIVE( bhv_wf_sliding_platform_loop),
+CALL_NATIVE( NoCull),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
 const BehaviorScript bhv_CraneUP[] = {
 BEGIN(OBJ_LIST_SURFACE),
 OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),
@@ -374,6 +399,29 @@ SET_INT(oAngleVelPitch,0x100),
 SET_FLOAT(oCollisionDistance, 0x2000),
 BEGIN_LOOP(),
 ADD_INT(oFaceAnglePitch,0x100),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
+const BehaviorScript bhv_Rot_Gear_FlatO[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),
+LOAD_COLLISION_DATA(Rot_Gear_collision),
+SET_INT(oAngleVelYaw,-0x100),
+ADD_INT(oFaceAngleYaw,-0x800),
+SET_FLOAT(oCollisionDistance, 0x2000),
+BEGIN_LOOP(),
+ADD_INT(oFaceAngleYaw,-0x100),
+CALL_NATIVE( load_object_collision_model),
+END_LOOP(),
+};
+const BehaviorScript bhv_Rot_Gear_Flat[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags,1| OBJ_FLAG_MOVE_XZ_USING_FVEL),
+LOAD_COLLISION_DATA(Rot_Gear_collision),
+SET_INT(oAngleVelYaw,0x100),
+SET_FLOAT(oCollisionDistance, 0x2000),
+BEGIN_LOOP(),
+ADD_INT(oFaceAngleYaw,0x100),
 CALL_NATIVE( load_object_collision_model),
 END_LOOP(),
 };

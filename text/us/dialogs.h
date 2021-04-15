@@ -141,11 +141,10 @@ power from the castle.\n\
 Do you want to Save?\n\
 //Yes////No"))
 
-DEFINE_DIALOG(DIALOG_014, 1, 4, 30, 200, _("\
-Wow! Another Power Star!\n\
-Mario gains more courage\n\
-from the power of the\n\
-castle.\n\
+DEFINE_DIALOG(DIALOG_014, 1, 3, 30, 200, _("\
+Another jewel of glory.\n\
+Mario gains more reverence\n\
+the holy one.\n\
 Do you want to Save?\n\
 \n\
 //You Bet//Not Now"))
@@ -406,64 +405,45 @@ the Control Stick. To\n\
 scurry up quickly, press\n\
 the [A] Button."))
 
-DEFINE_DIALOG(DIALOG_043, 1, 5, 30, 200, _("\
-If you jump and hold the\n\
-[A] Button, you can hang on\n\
-to some objects overhead.\n\
-It's the same as grabbing\n\
-a flying bird!"))
+DEFINE_DIALOG(DIALOG_043, 1, 5, 60, 300, _("\
+Long before time was known we knew\n\
+words of his praise. Ever tenacious\n\
+are his servents, basking in their\n\
+self made reverence like swine, yet\n\
+they see themselves as sheep.\n\
+Beware the message he brings.\n\
+He promises salvation yet only\n\
+brings lambs to slaughter."))
 
-DEFINE_DIALOG(DIALOG_044, 1, 5, 95, 200, _("\
-Whooo's there? Whooo\n\
-woke me up? It's still\n\
-daylight--I should be\n\
-sleeping!\n\
-\n\
-Hey, as long as I'm\n\
-awake, why not take a\n\
-short flight with me?\n\
-Press and hold [A] to grab\n\
-on. Release [A] to let go.\n\
-I'll take you wherever\n\
-you want to go, as long\n\
-as my wings hold out.\n\
-Watch my shadow, and\n\
-grab on."))
+DEFINE_DIALOG(DIALOG_044, 1, 5, 60, 300, _("\
+Your mission is the journey itself\n\
+pilgram. Be wary of the road and\n\
+the jewels they give. Learn\n\
+the path and seek wisdom, not\n\
+respite.\n\
+The false one promises all but\n\
+has no hand to deliver. You must\n\
+take hold of it within your\n\
+own hands."))
 
-DEFINE_DIALOG(DIALOG_045, 1, 6, 95, 200, _("\
-Whew! I'm just about\n\
-flapped out. You should\n\
-lay off the pasta, Mario!\n\
-That's it for now. Press\n\
-[A] to let go. Okay,\n\
-bye byyyyyyeeee!"))
+DEFINE_DIALOG(DIALOG_045, 1, 5, 60, 300, _("\
+The zealots only see the sheep they\n\
+guide and not the world around.\n\
+As the father leads them to the\n\
+pool of wisdom they see their own\n\
+image within.\n\
+Yet no mind is paid to\n\
+the surface beneath.\n\
+Drink not from the fountain\n\
+given, but the one within. Only\n\
+from there will you find yourself."))
 
-DEFINE_DIALOG(DIALOG_046, 1, 5, 30, 200, _("\
-You have to master three\n\
-important jumping\n\
-techniques.\n\
-First try the Triple Jump.\n\
-\n\
-Run fast, then jump three\n\
-times, one, two, three.\n\
-If you time the jumps\n\
-right, you'll hop, skip,\n\
-then jump really high.\n\
-Next, go for distance\n\
-with the Long Jump. Run,\n\
-press [Z] to crouch then [A]\n\
-to jump really far.\n\
-\n\
-To do the Wall Kick, press\n\
-[A] to jump at a wall, then\n\
-jump again when you hit\n\
-the wall.\n\
-\n\
-Got that? Triple Jump,\n\
-Long Jump, Wall Kick.\n\
-Practice, practice,\n\
-practice. You don't stand\n\
-a chance without them."))
+DEFINE_DIALOG(DIALOG_046, 1, 5, 60, 300, _("\
+Within yourself you will find\n\
+truths and lies. The future and past.\n\
+The end to your journey. Believe in\n\
+what's within, and you will be guided\n\
+into tomorrow."))
 
 DEFINE_DIALOG(DIALOG_047, 1, 2, 95, 200, _("\
 Hi! I'll prepare the\n\
@@ -579,15 +559,17 @@ Ahhhhh! My babies!! I know\n\
 I shouldn't have let them swim\n\
 in the lake, Dorrie knows what\n\
 trouble they could be in now.\n\
-You look like a swift swimmer, can\n\
-get them back here alright?"))
+You look like a swift swimmer,\n\
+can you please make sure they're\n\
+ok for me?"))
 
 //found a baby
-DEFINE_DIALOG(DIALOG_058, 1, 4, 30, 250, _("\
+DEFINE_DIALOG(DIALOG_058, 1, 5, 30, 250, _("\
 Praise dorrie you found him.\n\
-Bless your soul, I can't thank you enough.\n\
-Can keep looking for the other ones\n\
-they're sure to be nearby."))
+Bless your soul, I can't thank you\n\
+enough. Can you keep looking for\n\
+the other ones they're sure\n\
+to be nearby."))
 
 //wrong baby, unused
 DEFINE_DIALOG(DIALOG_059, 1, 4, 30, 200, _("\

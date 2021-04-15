@@ -1,0 +1,17 @@
+extern const GeoLayout TCube_geo[];
+extern Lights1 TCube_Trans_Side_lights;
+extern Lights1 TCube_Trans_Top_lights;
+extern u8 TCube__3300hm_teko_ci4[];
+extern u8 TCube__3300hm_teko_ci4_pal_rgba16[];
+extern u8 TCube_modelrgtflrdwn557_CI_ci4[];
+extern u8 TCube_modelrgtflrdwn557_CI_ci4_pal_rgba16[];
+extern Vtx TCube_Cube_007_mesh_layer_1_vtx_0[26];
+extern Gfx TCube_Cube_007_mesh_layer_1_tri_0[];
+extern Vtx TCube_Cube_007_mesh_layer_1_vtx_1[32];
+extern Gfx TCube_Cube_007_mesh_layer_1_tri_1[];
+extern Gfx mat_TCube_Trans_Side[];
+extern Gfx mat_revert_TCube_Trans_Side[];
+extern Gfx mat_TCube_Trans_Top[];
+extern Gfx mat_revert_TCube_Trans_Top[];
+extern Gfx TCube_Cube_007_mesh_layer_1[];
+extern Gfx TCube_material_revert_render_settings[];

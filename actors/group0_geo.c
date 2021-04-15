@@ -22,3 +22,5 @@
 #include "warp_ring/geo.inc.c"
 #include "Crane/geo.inc.c"
 #include "Mesh/geo.inc.c"
+#include "HPillar/geo.inc.c"
+#include "TCube/geo.inc.c"

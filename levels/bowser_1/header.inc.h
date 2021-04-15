@@ -1,0 +1,10 @@
+extern const GeoLayout bowser_1_area_1_geo[];
+extern const GeoLayout bowser_1_area_1[];
+extern const Collision bowser_1_area_1_collision[];
+extern const MacroObject bowser_1_area_1_macro_objs[];
+extern Lights1 bowser_1_dl_Foight2_lights;
+extern Vtx bowser_1_dl_Plane_mesh_layer_1_vtx_0[4];
+extern Gfx bowser_1_dl_Plane_mesh_layer_1_tri_0[];
+extern Gfx mat_bowser_1_dl_Foight2[];
+extern Gfx bowser_1_dl_Plane_mesh_layer_1[];
+extern Gfx bowser_1_dl_material_revert_render_settings[];

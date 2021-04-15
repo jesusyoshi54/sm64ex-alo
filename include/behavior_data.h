@@ -3,12 +3,17 @@
 
 #include "types.h"
 
+extern const BehaviorScript BhvTransparentCube[];
+extern const BehaviorScript BhvHPillar[];
 extern const BehaviorScript bhv_Mesh[];
 extern const BehaviorScript bhv_CraneUP[];
 extern const BehaviorScript bhv_Crane[];
 extern const BehaviorScript bhv_Music_Changer[];
+extern const BehaviorScript bhvWarpRingUnlock[];
 extern const BehaviorScript bhvWarpRing[];
 extern const BehaviorScript bhvLargeFlame[];
+extern const BehaviorScript bhv_Rot_Gear_FlatO[];
+extern const BehaviorScript bhv_Rot_Gear_Flat[];
 extern const BehaviorScript bhv_Rot_Gear_Large[];
 extern const BehaviorScript bhv_Rot_Gear[];
 extern const BehaviorScript WaterCube_Circular_Small[];
@@ -62,6 +67,7 @@ extern const BehaviorScript bhvRotatingCounterClockwise[];
 extern const BehaviorScript bhvWfRotatingWoodenPlatform[];
 extern const BehaviorScript bhvKoopaShellUnderwater[];
 extern const BehaviorScript bhvExitPodiumWarp[];
+extern const BehaviorScript bhvFadingWarpUnlock[];
 extern const BehaviorScript bhvFadingWarp[];
 extern const BehaviorScript bhvWarp[];
 extern const BehaviorScript bhvWarpPipe[];

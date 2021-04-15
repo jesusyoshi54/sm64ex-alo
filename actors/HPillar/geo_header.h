@@ -1,0 +1,17 @@
+extern const GeoLayout HPillar_geo[];
+extern Lights1 HPillar_Pillar_Top_lights;
+extern Lights1 HPillar_Pillar_side_lights;
+extern u8 HPillar_OSC_O_M_METAL03CI_ci4[];
+extern u8 HPillar_OSC_O_M_METAL03CI_ci4_pal_rgba16[];
+extern u8 HPillar_rso_o_ty1_road01_spc_CI_ci4[];
+extern u8 HPillar_rso_o_ty1_road01_spc_CI_ci4_pal_rgba16[];
+extern Vtx HPillar_Cube_003_mesh_layer_1_vtx_0[8];
+extern Gfx HPillar_Cube_003_mesh_layer_1_tri_0[];
+extern Vtx HPillar_Cube_003_mesh_layer_1_vtx_1[16];
+extern Gfx HPillar_Cube_003_mesh_layer_1_tri_1[];
+extern Gfx mat_HPillar_Pillar_Top[];
+extern Gfx mat_revert_HPillar_Pillar_Top[];
+extern Gfx mat_HPillar_Pillar_side[];
+extern Gfx mat_revert_HPillar_Pillar_side[];
+extern Gfx HPillar_Cube_003_mesh_layer_1[];
+extern Gfx HPillar_material_revert_render_settings[];

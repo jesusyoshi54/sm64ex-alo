@@ -53,6 +53,9 @@ void bhv_green_switchboard_loop(void);
 void bhv_green_switchboard_init(void);
 #endif
 
+void TCube_Init(void);
+void TCube_Loop(void);
+void NoCull(void);
 void uv_update_scroll(void);
 void bhv_cap_switch_loop(void);
 void bhv_tiny_star_particles_init(void);

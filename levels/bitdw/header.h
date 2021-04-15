@@ -74,4 +74,6 @@ extern const Collision bitdw_seg7_collision_0700FD9C[];
 // script
 extern const LevelScript level_bitdw_entry[];
 
+#include "levels/bitdw/header.inc.h"
+
 #endif

@@ -364,4 +364,12 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "Mesh/geo_header.h"
 
+#include "HPillar/collision_header.h"
+
+#include "HPillar/geo_header.h"
+
+#include "TCube/geo_header.h"
+
+#include "TCube/collision_header.h"
+
 #endif

@@ -38,7 +38,7 @@ extern Vtx castle_inside_dl_Room_001_mesh_layer_1_vtx_1[5];
 extern Gfx castle_inside_dl_Room_001_mesh_layer_1_tri_1[];
 extern Vtx castle_inside_dl_Room_001_mesh_layer_1_vtx_2[52];
 extern Gfx castle_inside_dl_Room_001_mesh_layer_1_tri_2[];
-extern Vtx castle_inside_dl_Room_002_mesh_layer_1_vtx_0[116];
+extern Vtx castle_inside_dl_Room_002_mesh_layer_1_vtx_0[90];
 extern Gfx castle_inside_dl_Room_002_mesh_layer_1_tri_0[];
 extern Vtx castle_inside_dl_Room_002_mesh_layer_1_vtx_1[32];
 extern Gfx castle_inside_dl_Room_002_mesh_layer_1_tri_1[];

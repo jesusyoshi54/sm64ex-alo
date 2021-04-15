@@ -48,3 +48,4 @@
 #include "levels/bitdw/collapsing_stairs_3/collision.inc.c"
 #include "levels/bitdw/collapsing_stairs_4/collision.inc.c"
 #include "levels/bitdw/collapsing_stairs_5/collision.inc.c"
+#include "levels/bitdw/leveldata.inc.c"
