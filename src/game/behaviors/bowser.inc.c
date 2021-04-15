@@ -6,7 +6,7 @@ void bowser_tail_anchor_act_0(void) {
     cur_obj_scale(1.0f);
     if (bowser->oAction == 19)
         bowser->oIntangibleTimer = -1;
-    else if (obj_check_if_collided_with_object(o, gMarioObject)) {
+    else if (0) {
         bowser->oIntangibleTimer = 0;
         o->oAction = 2;
     } else
@@ -489,10 +489,14 @@ void bowser_act_jump(void) {
             bowser_short_second_hop();
             o->oSubAction++;
         }
+		if (o->oTimer>500)
+			bowser_reset_fallen_off_stage();
     } else if (o->oSubAction == 1) {
 #ifndef VERSION_JP
         if (o->oBehParams2ndByte == 2 && o->oBowserUnkF4 & 0x10000)
             bowser_reset_fallen_off_stage();
+		if (o->oTimer>500)
+			bowser_reset_fallen_off_stage();
 #endif
         if (bowser_land()) {
             o->oBowserUnkF4 &= ~0x10000;
@@ -697,7 +701,7 @@ void bowser_act_jump_onto_stage(void) {
             break;
         case 1:
             cur_obj_init_animation_with_sound(9);
-            if (cur_obj_check_anim_frame(11)) {
+            if (o->oTimer >= 12) {
                 o->oMoveAngleYaw = o->oBowserAngleToCentre;
                 o->oVelY = 150.0f;
                 o->oBowserUnk1AC = 0xFF;
@@ -1005,7 +1009,7 @@ struct SoundState D_8032F5B8[] = { { 0, 0, 0, NO_SOUND },
                                    { 1, 0, -1, SOUND_OBJ_BOWSER_TAIL_PICKUP },
                                    { 1, 0, -1, SOUND_OBJ2_BOWSER_ROAR } };
 s8 D_8032F690[4] = { 0, 0, 1, 0 };
-s8 D_8032F694[4] = { 3, 1, 3, 0 };
+s8 D_8032F694[4] = { 1, 1, 3, 0 };
 extern u8 bowser_3_seg7_collision_07004B94[];
 extern u8 bowser_3_seg7_collision_07004C18[];
 extern u8 bowser_3_seg7_collision_07004C9C[];

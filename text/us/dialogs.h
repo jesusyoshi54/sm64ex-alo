@@ -675,7 +675,7 @@ again to launch Bowser.\n\
 Good luck, Mario! Our\n\
 fate is in your hands."))
 
-DEFINE_DIALOG(DIALOG_067, 1, 4, 30, 250, _("\
+DEFINE_DIALOG(DIALOG_067, 1, 4, 60, 300, _("\
 There is no god here anymore mario.\n\
 I have gained power beyond what\n\
 any dorrie could imagine. I am\n\
@@ -1234,7 +1234,7 @@ For today...\n\
 Now, take Star of Power.\n\
 We...sleep...darkness."))
 
-DEFINE_DIALOG(DIALOG_119, 1, 3, 30, 260, _("\
+DEFINE_DIALOG(DIALOG_119, 1, 3, 30, 300, _("\
 Impossible! Only one with the power\n\
 of a dorrie should be able to\n\
 defeat me. This can't be happening!!!\n\

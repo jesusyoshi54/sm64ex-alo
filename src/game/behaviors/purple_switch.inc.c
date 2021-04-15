@@ -8,6 +8,7 @@
 
 void bhv_purple_switch_loop(void) {
     UNUSED s32 unused;
+	struct Object *bowser;
     switch (o->oAction) {
         /**
          * Set the switch's model and scale. If Mario is standing near the
@@ -32,6 +33,10 @@ void bhv_purple_switch_loop(void) {
                 cur_obj_play_sound_2(SOUND_GENERAL2_PURPLE_SWITCH);
                 o->oAction = PURPLE_SWITCH_TICKING;
                 cur_obj_shake_screen(SHAKE_POS_SMALL);
+				bowser = cur_obj_nearest_object_with_behavior(bhvBowser);
+				bowser->oHealth = 0;
+				bowser->oAction = 4;
+
 #ifdef RUMBLE_FEEDBACK
                 queue_rumble_data(5, 80);
 #endif
@@ -42,6 +47,9 @@ void bhv_purple_switch_loop(void) {
          * up. When time is up, move to a waiting-while-pressed state.
          */
         case PURPLE_SWITCH_TICKING:
+				bowser = cur_obj_nearest_object_with_behavior(bhvBowser);
+				bowser->oPosX = 0.0f;
+				bowser->oPosZ = 0.0f;
             if (o->oBehParams2ndByte != 0) {
                 if (o->oBehParams2ndByte == 1 && gMarioObject->platform != o) {
                     o->oAction++;

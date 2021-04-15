@@ -17,6 +17,7 @@
 #include "src/game/texscroll/castle_grounds_texscroll.inc.c"
 #include "src/game/texscroll/group0_texscroll.inc.c"
 #include "src/game/texscroll/bitdw_texscroll.inc.c"
+#include "src/game/texscroll/bowser_1_texscroll.inc.c"
 void scroll_textures() {
 	if(SCROLL_CONDITION(sSegmentROMTable[0x7] == (uintptr_t)_wf_segment_7SegmentRomStart)) {
 		scroll_textures_wf();
@@ -36,6 +37,10 @@ void scroll_textures() {
 
 	if(SCROLL_CONDITION(sSegmentROMTable[0x7] == (uintptr_t)_bitdw_segment_7SegmentRomStart)) {
 		scroll_textures_bitdw();
+	}
+
+	if(SCROLL_CONDITION(sSegmentROMTable[0x7] == (uintptr_t)_bowser_1_segment_7SegmentRomStart)) {
+		scroll_textures_bowser_1();
 	}
 
 }
