@@ -143,8 +143,8 @@ Do you want to Save?\n\
 
 DEFINE_DIALOG(DIALOG_014, 1, 3, 30, 200, _("\
 Another jewel of glory.\n\
-Mario gains more reverence\n\
-the holy one.\n\
+Mario gains more sovereignty\n\
+over himself.\n\
 Do you want to Save?\n\
 \n\
 //You Bet//Not Now"))
@@ -613,17 +613,12 @@ Even the Big Boo will be\n\
 fooled--and you can walk\n\
 through secret walls, too."))
 
-DEFINE_DIALOG(DIALOG_064, 1, 5, 30, 200, _("\
-When you put on the Wing\n\
-Cap that comes from a\n\
-red block, do the Triple\n\
-Jump to soar high into\n\
-the sky.\n\
-Use the Control Stick to\n\
-guide Mario. Pull back to\n\
-to fly up, press forward\n\
-to nose down, and press [Z]\n\
-to land."))
+DEFINE_DIALOG(DIALOG_064, 1, 5, 30, 300, _("\
+You've finished your journey pilgram.\n\
+Now you get to make your choice.\n\
+Take the left star to become\n\
+a scholar of dorrie. The right\n\
+to reach self enlightenment."))
 
 DEFINE_DIALOG(DIALOG_065, 1, 6, 30, 200, _("\
 Swimming Lessons!\n\
@@ -680,16 +675,11 @@ again to launch Bowser.\n\
 Good luck, Mario! Our\n\
 fate is in your hands."))
 
-DEFINE_DIALOG(DIALOG_067, 1, 5, 30, 200, _("\
-Tough luck, Mario!\n\
-Princess Toadstool isn't\n\
-here...Gwa ha ha!! Go\n\
-ahead--just try to grab\n\
-me by the tail!\n\
-You'll never be able to\n\
-swing ME around! A wimp\n\
-like you won't throw me\n\
-out of here! Never! Ha!"))
+DEFINE_DIALOG(DIALOG_067, 1, 4, 30, 250, _("\
+There is no god here anymore mario.\n\
+I have gained power beyond what\n\
+any dorrie could imagine. I am\n\
+have become an ultimate being."))
 
 DEFINE_DIALOG(DIALOG_068, 1, 5, 30, 200, _("\
 It's Lethal Lava Land!\n\
@@ -1244,19 +1234,22 @@ For today...\n\
 Now, take Star of Power.\n\
 We...sleep...darkness."))
 
-DEFINE_DIALOG(DIALOG_119, 1, 6, 30, 200, _("\
-Grrr! I was a bit\n\
-careless. This is not as I\n\
-had planned...but I still\n\
-hold the power of the\n\
-Stars, and I still have\n\
-Peach.\n\
-Bwa ha ha! You'll get no\n\
-more Stars from me! I'm\n\
-not finished with you yet,\n\
-but I'll let you go for\n\
-now. You'll pay for this...\n\
-later!"))
+DEFINE_DIALOG(DIALOG_119, 1, 3, 30, 260, _("\
+Impossible! Only one with the power\n\
+of a dorrie should be able to\n\
+defeat me. This can't be happening!!!\n\
+AAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHH\n\
+AAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHH\n\
+AAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHH\n\
+NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n\
+NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n\
+NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n\
+AAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHH\n\
+AAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHH\n\
+AAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHH\n\
+NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n\
+NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n\
+NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"))
 
 DEFINE_DIALOG(DIALOG_120, 1, 4, 30, 200, _("\
 Ooowaah! Can it be that\n\

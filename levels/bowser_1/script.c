@@ -30,7 +30,13 @@ const LevelScript level_bowser_1_entry[] = {
 
 	AREA(1, bowser_1_area_1),
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(240, LEVEL_SA, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(241, LEVEL_BITDW, 0x02, 0x11, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_BOWSER, 398, -391, 0, 0, 0, 0, 0x000A0000, bhvBowser),
+		OBJECT(MODEL_BOWSER_BOMB, 2615, 189, 0, 0, 0, 0, 0, bhvBowserBomb),
+		OBJECT(MODEL_BOWSER_BOMB, -2551, 189, 0, 0, 0, 0, 0, bhvBowserBomb),
+		OBJECT(MODEL_BOWSER_BOMB, -10, 189, -2706, 0, 0, 0, 0, bhvBowserBomb),
+		OBJECT(MODEL_BOWSER_BOMB, -10, 189, 2633, 0, 0, 0, 0, bhvBowserBomb),
 		OBJECT(MODEL_NONE, -574, -189, 0, 0, 0, 0, 0x000A0000, bhvAirborneWarp),
 		TERRAIN(bowser_1_area_1_collision),
 		MACRO_OBJECTS(bowser_1_area_1_macro_objs),
