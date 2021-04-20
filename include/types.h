@@ -350,6 +350,7 @@ struct MarioState
 	#ifdef CHAOS_LITE
 	/*0xd5*/ u8 Chaos_Vals[2];
 	#endif
+	/*0xd6*/ u8 framesSinceWater;
 };
 
 #endif // _SM64_TYPES_H_

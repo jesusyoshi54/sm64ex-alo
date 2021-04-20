@@ -141,7 +141,7 @@ power from the castle.\n\
 Do you want to Save?\n\
 //Yes////No"))
 
-DEFINE_DIALOG(DIALOG_014, 1, 3, 30, 200, _("\
+DEFINE_DIALOG(DIALOG_014, 1, 3, 30, 230, _("\
 Another jewel of glory.\n\
 Mario gains more sovereignty\n\
 over himself.\n\
@@ -226,16 +226,10 @@ Welcome pilgram. While you make your journey,\n\
 observe the stars. They guide you to the\n\
 future."))
 
-DEFINE_DIALOG(DIALOG_031, 1, 5, 30, 200, _("\
-No way! You beat me...\n\
-again!! And I just spent\n\
-my entire savings on\n\
-these new Koopa\n\
-Mach 1 Sprint shoes!\n\
-Here, I guess I have to\n\
-hand over this Star to\n\
-the winner of the race.\n\
-Congrats, Mario!"))
+DEFINE_DIALOG(DIALOG_031, 1, 3, 60, 300, _("\
+We are his warriors. He calls and we\n\
+answer. We are the lamb and him the\n\
+shepherd. He leads and we follow."))
 
 DEFINE_DIALOG(DIALOG_032, 1, 5, 30, 200, _("\
 If you get the Wing Cap,\n\
@@ -438,12 +432,16 @@ Drink not from the fountain\n\
 given, but the one within. Only\n\
 from there will you find yourself."))
 
-DEFINE_DIALOG(DIALOG_046, 1, 5, 60, 300, _("\
-Within yourself you will find\n\
-truths and lies. The future and past.\n\
-The end to your journey. Believe in\n\
-what's within, and you will be guided\n\
-into tomorrow."))
+DEFINE_DIALOG(DIALOG_046, 1, 6, 60, 300, _("\
+With every perspective comes a new life.\n\
+In these worlds you shall re-experience\n\
+yourself in a new perspective.\n\
+You may have a limited view, but you can\n\
+zoom out far more than normal in these\n\
+new worlds.\n\
+When you are done, look to the heavens\n\
+while standing on the alter of\n\
+reflection to return to your world."))
 
 DEFINE_DIALOG(DIALOG_047, 1, 2, 95, 200, _("\
 Hi! I'll prepare the\n\
@@ -578,7 +576,7 @@ looks nothing like me!\n\
 Her parents must be\n\
 worried sick!"))
 //found all babies
-DEFINE_DIALOG(DIALOG_060, 1, 4, 30, 200, _("\
+DEFINE_DIALOG(DIALOG_060, 1, 4, 30, 280, _("\
 Oh thank the great star they're all\n\
 fine. Take this star as a symbol\n\
 of my gratitude.\n\
@@ -603,15 +601,17 @@ breathe while wearing it.\n\
 The only problem:\n"
 YOU_CANT_SWIM_IN_IT))
 
-DEFINE_DIALOG(DIALOG_063, 1, 5, 30, 200, _("\
-The Vanish Cap is inside\n\
-the blue block. Mr. I.\n\
-will be surprised, since\n\
-you'll be invisible when\n\
-you wear it!\n\
-Even the Big Boo will be\n\
-fooled--and you can walk\n\
-through secret walls, too."))
+//Ow1 message
+DEFINE_DIALOG(DIALOG_063, 1, 6, 30, 300, _("\
+Welcome pilgram. Your journey towards\n\
+divinity starts with the stars. You will\n\
+have several new tools for your journey.\n\
+Your camera for one has additional\n\
+controls with the dpad. You can also zoom in\n\
+and out using R, and change modes with L.\n\
+Once you collect 25 jewels of worhship you\n\
+may undertake the rite of passage upon\n\
+the stantion above."))
 
 DEFINE_DIALOG(DIALOG_064, 1, 5, 30, 300, _("\
 You've finished your journey pilgram.\n\
@@ -620,76 +620,39 @@ Take the left star to become\n\
 a scholar of dorrie. The right\n\
 to reach self enlightenment."))
 
-DEFINE_DIALOG(DIALOG_065, 1, 6, 30, 200, _("\
-Swimming Lessons!\n\
-Tap [A] to do the breast\n\
-stroke. If you time the\n\
-taps right, you'll swim\n\
-fast.\n\
-\n\
-Press and hold [A] to do a\n\
-slow, steady flutter kick.\n\
-Press Up on the Control\n\
-Stick to dive, and pull\n\
-back on the stick to head\n\
-for the surface.\n\
-To jump out of the water,\n\
-hold Down on the Control\n\
-Stick, then press [A].\n\
-Easy as pie, right?\n\
-\n\
-\n\
-But remember:\n\
-Mario can't breathe under\n\
-the water! Return to the\n\
-surface for air when the\n\
-Power Meter runs low.\n\
-\n\
-And one last thing: You\n\
-can't open doors that\n\
-are underwater."))
+//c1 start message
+DEFINE_DIALOG(DIALOG_065, 1, 5, 60, 300, _("\
+Traversing the water will be your\n\
+biggest challenge pilgram. To smoothly\n\
+exit, you must always hold fully\n\
+backwards at the water's surface and\n\
+leap.\n\
+Compared to your prevoius life, you will\n\
+be able to wall jump, kick and\n\
+even maneuver mid air coming out of\n\
+the water."))
 
-DEFINE_DIALOG(DIALOG_066, 1, 5, 30, 200, _("\
-Mario, it's Peach!\n\
-Please be careful! Bowser\n\
-is so wicked! He will try\n\
-to burn you with his\n\
-horrible flame breath.\n\
-Run around behind and\n\
-grab him by the tail with\n\
-the [B] Button. Once you\n\
-grab hold, swing him\n\
-around in great circles.\n\
-Rotate the Control Stick\n\
-to go faster and faster.\n\
-The faster you swing him,\n\
-the farther he'll fly.\n\
-\n\
-Use the [C] Buttons to look\n\
-around, Mario. You have\n\
-to throw Bowser into one\n\
-of the bombs in the four\n\
-corners.\n\
-Aim well, then press [B]\n\
-again to launch Bowser.\n\
-Good luck, Mario! Our\n\
-fate is in your hands."))
+//c2 start message
+DEFINE_DIALOG(DIALOG_066, 1, 5, 60, 310, _("\
+The water flows strongly here. Many paths\n\
+are one way. Do not fight the currents,\n\
+but move alongside them. Following\n\
+nature's flow will lead you to the\n\
+ojects of your worship pilgram."))
 
 DEFINE_DIALOG(DIALOG_067, 1, 4, 60, 300, _("\
 There is no god here anymore mario.\n\
 I have gained power beyond what\n\
 any dorrie could imagine. I am\n\
 have become an ultimate being."))
-
-DEFINE_DIALOG(DIALOG_068, 1, 5, 30, 200, _("\
-It's Lethal Lava Land!\n\
-If you catch fire or fall\n\
-into a pool of flames,\n\
-you'll be hopping mad, but\n\
-don't lose your cool.\n\
-You can still control\n\
-Mario--just try to keep\n\
-calm!"))
+//c3 start message
+DEFINE_DIALOG(DIALOG_068, 1, 6, 60, 300, _("\
+Your wallkicks work from many\n\
+angles pilgram. The answer to your\n\
+problems may be easy once taken from\n\
+a new perspective. Be precise and care\n\
+for your surroundings. The answers you\n\
+seek may be hiding right behind you."))
 
 DEFINE_DIALOG(DIALOG_069, 1, 6, 30, 200, _("\
 Sometimes you'll bump into\n\

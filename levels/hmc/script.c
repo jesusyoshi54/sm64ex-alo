@@ -69,7 +69,7 @@ const LevelScript level_hmc_entry[] = {
 		OBJECT_WITH_ACTS(MODEL_NONE, -2788, 861, 3919, 0, -180, 0, 0x000A0000, bhvAirborneWarp, ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
 		OBJECT_WITH_ACTS(255, -3185, 87, 3032, 0, 0, 0, 0x00020000, WaterCube_UPDown, ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
 		OBJECT_WITH_ACTS(255, 1590, 1393, 3948, 0, 0, 0, 0x00020000, WaterCube_UPDown, ACT_1),
-		OBJECT_WITH_ACTS(255, -793, 682, 2758, 0, 0, 0, 0x00020000, WaterCube_Static, ACT_1),
+		OBJECT_WITH_ACTS(255, -793, 518, 3097, 0, 0, 0, 0x00020000, WaterCube_Static, ACT_1),
 		OBJECT(255, -861, 218, -3385, 0, 0, 0, 0x00020000, WaterCube_Static),
 		TERRAIN(hmc_area_1_collision),
 		MACRO_OBJECTS(hmc_area_1_macro_objs),

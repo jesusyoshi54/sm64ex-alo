@@ -3182,7 +3182,11 @@ s16 render_menus_and_dialogs(void) {
 			u8 *str = segmented_to_virtual(dialog->str);
 			print_generic_string(get_str_x_pos_from_center(160, str, 10.0f),130,str);
 			gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
-			sTextTimer-=1;
+			if ((gPlayer3Controller->buttonDown & A_BUTTON) || (gPlayer3Controller->buttonDown & B_BUTTON)){
+				sTextTimer-=25;
+			}else{
+				sTextTimer-=1;
+			}
 		}else{
 			gStarFadeDialog=-1;
 			sTextTimer=textTime;

@@ -915,7 +915,7 @@ s32 update_radial_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
  */
 s32 update_2_directions_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     s16 camYaw = s8DirModeBaseYaw + s8DirModeYawOffset;
-    s16 pitch = look_down_slopes(camYaw);
+    s16 pitch = 0x300;//look_down_slopes(camYaw);
     f32 posY;
     f32 focusY;
     f32 yOff = 125.f;
@@ -924,7 +924,7 @@ s32 update_2_directions_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     sAreaYaw = camYaw;
     calc_y_to_curr_floor(&posY, 1.f, 200.f, &focusY, 0.9f, 200.f);
     focus_on_mario(focus, pos, posY + yOff, focusY + yOff, sLakituDist + baseDist, pitch, camYaw);
-    pan_ahead_of_player(c);
+    // pan_ahead_of_player(c);
 
     return camYaw;
 }
@@ -936,7 +936,7 @@ s32 update_8_directions_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     UNUSED f32 cenDistX = sMarioCamState->pos[0] - c->areaCenX;
     UNUSED f32 cenDistZ = sMarioCamState->pos[2] - c->areaCenZ;
     s16 camYaw = s8DirModeBaseYaw + s8DirModeYawOffset;
-    s16 pitch = look_down_slopes(camYaw);
+    s16 pitch = 0x400; //look_down_slopes(camYaw);
     f32 posY;
     f32 focusY;
     UNUSED f32 unused1;
@@ -948,7 +948,7 @@ s32 update_8_directions_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     sAreaYaw = camYaw;
     calc_y_to_curr_floor(&posY, 1.f, 200.f, &focusY, 0.9f, 200.f);
     focus_on_mario(focus, pos, posY + yOff, focusY + yOff, sLakituDist + baseDist, pitch, camYaw);
-    pan_ahead_of_player(c);
+    // pan_ahead_of_player(c);
     // if (gCurrLevelArea == AREA_DDD_SUB) {
         // camYaw = clamp_positions_and_find_yaw(pos, focus, 6839.f, 995.f, 5994.f, -3945.f);
     // }
@@ -1099,15 +1099,19 @@ void radial_camera_move(struct Camera *c) {
  */
 void lakitu_zoom(f32 rangeDist, s16 rangePitch) {
     if (sLakituDist < 0) {
-        if ((sLakituDist += 30) > 0) {
+        if ((sLakituDist += 60) > 0) {
             sLakituDist = 0;
         }
-    } else if (rangeDist < sLakituDist) {
-        if ((sLakituDist -= 30) < rangeDist) {
+    } else if ((rangeDist < sLakituDist) && !(gCameraMovementFlags & CAM_MOVE_ULTRA_ZOOM_OUT)) {
+        if ((sLakituDist -= 60) < rangeDist) {
             sLakituDist = rangeDist;
         }
+    } else if (gCameraMovementFlags & CAM_MOVE_ULTRA_ZOOM_OUT) {
+        if ((sLakituDist += 60) > rangeDist*2) {
+            sLakituDist = rangeDist*2;
+        }
     } else if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
-        if ((sLakituDist += 30) > rangeDist) {
+        if ((sLakituDist += 60) > rangeDist) {
             sLakituDist = rangeDist;
         }
     } else {
@@ -1116,19 +1120,28 @@ void lakitu_zoom(f32 rangeDist, s16 rangePitch) {
         }
     }
 
-    if (gCurrLevelArea == AREA_SSL_PYRAMID && gCamera->mode == CAMERA_MODE_OUTWARD_RADIAL) {
-        rangePitch /= 2;
-    }
-
-    if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
-        if ((sLakituPitch += rangePitch / 13) > rangePitch) {
-            sLakituPitch = rangePitch;
-        }
-    } else {
-        if ((sLakituPitch -= rangePitch / 13) < 0) {
-            sLakituPitch = 0;
-        }
-    }
+    // if (gCurrLevelArea == AREA_SSL_PYRAMID && gCamera->mode == CAMERA_MODE_OUTWARD_RADIAL) {
+        // rangePitch /= 2;
+    // }
+    if (gCameraMovementFlags & CAM_MOVE_PITCH) {
+		if ((sLakituPitch += rangePitch/2) > rangePitch+0x1800) {
+				sLakituPitch = rangePitch+0x1800;
+			}
+	}else{
+		if (gCameraMovementFlags & CAM_MOVE_ULTRA_ZOOM_OUT) {
+			if ((sLakituPitch += rangePitch / 4) > rangePitch+50) {
+				sLakituPitch = rangePitch+50;
+			}
+		}else if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
+			if ((sLakituPitch += rangePitch / 4) > rangePitch) {
+				sLakituPitch = rangePitch;
+			}
+		} else {
+			if ((sLakituPitch -= rangePitch / 4) < 0) {
+				sLakituPitch = 0;
+			}
+		}
+	}
 }
 
 void radial_camera_input_default(struct Camera *c) {
@@ -1178,17 +1191,30 @@ void mode_radial_camera(struct Camera *c) {
     pan_ahead_of_player(c);
 }
 /**
- * A mode that only has 1 camera angle.
+ * A mode that only has 3 camera angle.
  */
 void mode_2_directions_camera(struct Camera *c) {
     Vec3f pos;
     s16 oldAreaYaw = sAreaYaw;
 
     radial_camera_input(c, 0.f);
-
+	
+    if ((gPlayer1Controller->buttonPressed & R_CBUTTONS)&&s8DirModeYawOffset!=-0x2000) {
+        s8DirModeYawOffset += DEGREES(45);
+        play_sound_cbutton_side();
+    }
+    else if ((gPlayer1Controller->buttonPressed & L_CBUTTONS)&&s8DirModeYawOffset!=-0x6000) {
+        s8DirModeYawOffset -= DEGREES(45);
+        play_sound_cbutton_side();
+    }
     lakitu_zoom(800.f, 0x900);
+	
+	if (gPlayer1Controller->buttonPressed & R_TRIG){
+	gCameraMovementFlags ^= CAM_MOVE_PITCH;
+	}
+	
     c->nextYaw = update_2_directions_camera(c, c->focus, pos);
-	s8DirModeYawOffset=0xC000;
+	// s8DirModeYawOffset=0xC000;
     c->pos[0] = pos[0];
     c->pos[2] = pos[2];
     sAreaYawChange = sAreaYaw - oldAreaYaw;
@@ -3069,11 +3095,11 @@ void update_camera(struct Camera *c) {
 	newcam_toggle(configEnableCamera);
     if (c->cutscene == 0) {
         // Only process R_TRIG if 'fixed' is not selected in the menu
-        if (cam_select_alt_mode(0) == CAM_SELECTION_MARIO
+        if ((cam_select_alt_mode(0) == CAM_SELECTION_MARIO)
 #ifdef BETTERCAMERA
-            && c->mode != CAMERA_MODE_NEWCAM
+            && (c->mode != CAMERA_MODE_NEWCAM)
 #endif
-            && c->mode != CAMERA_MODE_2_DIRECTIONS) {
+            && (c->mode != CAMERA_MODE_2_DIRECTIONS)) {
             if (gPlayer1Controller->buttonPressed & R_TRIG) {
                 if (set_cam_angle(0) == CAM_ANGLE_LAKITU) {
                     set_cam_angle(CAM_ANGLE_MARIO);
@@ -3119,7 +3145,10 @@ void update_camera(struct Camera *c) {
 			if(gCurrCourseNum<4 || gCurrCourseNum>8){
 				c->mode=CAMERA_MODE_8_DIRECTIONS;
 			}else{
-				c->mode=CAMERA_MODE_2_DIRECTIONS;
+				if (c->mode!=CAMERA_MODE_2_DIRECTIONS){
+					s8DirModeYawOffset=0xC000;
+					c->mode=CAMERA_MODE_2_DIRECTIONS;
+				}
 			}
 		}
 #endif
@@ -5022,7 +5051,10 @@ s32 radial_camera_input(struct Camera *c, UNUSED f32 unused) {
 
     // Zoom in / enter C-Up
     if (gPlayer1Controller->buttonPressed & U_CBUTTONS) {
-        if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
+        if (gCameraMovementFlags & CAM_MOVE_ULTRA_ZOOM_OUT) {
+            gCameraMovementFlags &= ~CAM_MOVE_ULTRA_ZOOM_OUT;
+            play_sound_cbutton_up();
+        } else if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
             gCameraMovementFlags &= ~CAM_MOVE_ZOOMED_OUT;
             play_sound_cbutton_up();
         } else {
@@ -5033,10 +5065,10 @@ s32 radial_camera_input(struct Camera *c, UNUSED f32 unused) {
     // Zoom out
     if (gPlayer1Controller->buttonPressed & D_CBUTTONS) {
         if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
-            gCameraMovementFlags |= CAM_MOVE_ALREADY_ZOOMED_OUT;
-#ifndef VERSION_JP
-            play_camera_buzz_if_cdown();
-#endif
+            gCameraMovementFlags |= CAM_MOVE_ULTRA_ZOOM_OUT;
+// #ifndef VERSION_JP
+            // play_camera_buzz_if_cdown();
+// #endif
         } else {
             gCameraMovementFlags |= CAM_MOVE_ZOOMED_OUT;
             play_sound_cbutton_down();
@@ -5070,7 +5102,10 @@ void handle_c_button_movement(struct Camera *c) {
 
     // Zoom in
     if (gPlayer1Controller->buttonPressed & U_CBUTTONS) {
-        if (c->mode != CAMERA_MODE_FIXED && (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT)) {
+        if (c->mode != CAMERA_MODE_FIXED && (gCameraMovementFlags & CAM_MOVE_ULTRA_ZOOM_OUT)) {
+            gCameraMovementFlags &= ~CAM_MOVE_ULTRA_ZOOM_OUT;
+            play_sound_cbutton_up();
+        } else if (c->mode != CAMERA_MODE_FIXED && (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT)) {
             gCameraMovementFlags &= ~CAM_MOVE_ZOOMED_OUT;
             play_sound_cbutton_up();
         } else {
@@ -5086,11 +5121,11 @@ void handle_c_button_movement(struct Camera *c) {
         // Zoom out
         if (gPlayer1Controller->buttonPressed & D_CBUTTONS) {
             if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
-                gCameraMovementFlags |= CAM_MOVE_ALREADY_ZOOMED_OUT;
+                gCameraMovementFlags |= CAM_MOVE_ULTRA_ZOOM_OUT;
                 sZoomAmount = gCameraZoomDist + 400.f;
-#ifndef VERSION_JP
-                play_camera_buzz_if_cdown();
-#endif
+// #ifndef VERSION_JP
+                // play_camera_buzz_if_cdown();
+// #endif
             } else {
                 gCameraMovementFlags |= CAM_MOVE_ZOOMED_OUT;
                 sZoomAmount = gCameraZoomDist + 400.f;

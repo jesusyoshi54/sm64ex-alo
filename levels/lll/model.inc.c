@@ -4200,6 +4200,76 @@ u8 lll_dl_grs_stone03_ci4_pal_rgba16[] = {
 	
 };
 
+Vtx lll_dl_Cube_079_mesh_layer_1_vtx_0[16] = {
+	{{{-111, -83, 111},0, {-16, 2032},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{-111, 83, 111},0, {-16, 4080},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{-111, 83, -111},0, {2032, 4080},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{-111, -83, -111},0, {2032, 2032},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{-111, -83, -111},0, {-16, 2032},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{-111, 83, -111},0, {-16, 4080},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{111, 83, -111},0, {2032, 4080},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{111, -83, -111},0, {2032, 2032},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{111, -83, -111},0, {-16, 2032},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{111, 83, -111},0, {-16, 4080},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{111, 83, 111},0, {2032, 4080},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{111, -83, 111},0, {2032, 2032},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{111, -83, 111},0, {-16, 2032},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{111, 83, 111},0, {-16, 4080},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{-111, 83, 111},0, {2032, 4080},{0xFF, 0xFF, 0xFF, 0xFF}}},
+	{{{-111, -83, 111},0, {2032, 2032},{0xFF, 0xFF, 0xFF, 0xFF}}},
+};
+
+Gfx lll_dl_Cube_079_mesh_layer_1_tri_0[] = {
+	gsSPVertex(lll_dl_Cube_079_mesh_layer_1_vtx_0 + 0, 16, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(0, 2, 3, 0),
+	gsSP1Triangle(4, 5, 6, 0),
+	gsSP1Triangle(4, 6, 7, 0),
+	gsSP1Triangle(8, 9, 10, 0),
+	gsSP1Triangle(8, 10, 11, 0),
+	gsSP1Triangle(12, 13, 14, 0),
+	gsSP1Triangle(12, 14, 15, 0),
+	gsSPEndDisplayList(),
+};
+
+Vtx lll_dl_Cube_079_mesh_layer_1_vtx_1[12] = {
+	{{{-111, -83, 111},0, {2032, 2032},{0x8F, 0xC6, 0x0, 0xFF}}},
+	{{{-111, -83, -111},0, {2032, -2064},{0x8F, 0xC6, 0x0, 0xFF}}},
+	{{{0, -298, 0},0, {-16, -16},{0x8F, 0xC6, 0x0, 0xFF}}},
+	{{{111, -83, -111},0, {-2064, -2064},{0x71, 0xC6, 0x0, 0xFF}}},
+	{{{111, -83, 111},0, {-2064, 2032},{0x71, 0xC6, 0x0, 0xFF}}},
+	{{{0, -298, 0},0, {-16, -16},{0x71, 0xC6, 0x0, 0xFF}}},
+	{{{111, -83, 111},0, {-2064, 2032},{0x0, 0xC6, 0x71, 0xFF}}},
+	{{{-111, -83, 111},0, {2032, 2032},{0x0, 0xC6, 0x71, 0xFF}}},
+	{{{0, -298, 0},0, {-16, -16},{0x0, 0xC6, 0x71, 0xFF}}},
+	{{{-111, -83, -111},0, {2032, -2064},{0x0, 0xC6, 0x8F, 0xFF}}},
+	{{{111, -83, -111},0, {-2064, -2064},{0x0, 0xC6, 0x8F, 0xFF}}},
+	{{{0, -298, 0},0, {-16, -16},{0x0, 0xC6, 0x8F, 0xFF}}},
+};
+
+Gfx lll_dl_Cube_079_mesh_layer_1_tri_1[] = {
+	gsSPVertex(lll_dl_Cube_079_mesh_layer_1_vtx_1 + 0, 12, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(3, 4, 5, 0),
+	gsSP1Triangle(6, 7, 8, 0),
+	gsSP1Triangle(9, 10, 11, 0),
+	gsSPEndDisplayList(),
+};
+
+Vtx lll_dl_Cube_079_mesh_layer_1_vtx_2[4] = {
+	{{{111, 83, -111},0, {-16, 2032},{0x0, 0x7F, 0x0, 0xFF}}},
+	{{{-111, 83, -111},0, {2032, 2032},{0x0, 0x7F, 0x0, 0xFF}}},
+	{{{-111, 83, 111},0, {2032, -16},{0x0, 0x7F, 0x0, 0xFF}}},
+	{{{111, 83, 111},0, {-16, -16},{0x0, 0x7F, 0x0, 0xFF}}},
+};
+
+Gfx lll_dl_Cube_079_mesh_layer_1_tri_2[] = {
+	gsSPVertex(lll_dl_Cube_079_mesh_layer_1_vtx_2 + 0, 4, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(0, 2, 3, 0),
+	gsSPEndDisplayList(),
+};
+
 Vtx lll_dl_Cube_083_mesh_layer_1_vtx_0[16] = {
 	{{{-250, -95, 250},0, {-16, 2032},{0xFF, 0xFF, 0xFF, 0xFF}}},
 	{{{-250, 95, 250},0, {-16, 4080},{0xFF, 0xFF, 0xFF, 0xFF}}},
@@ -7064,7 +7134,7 @@ Gfx lll_dl_NurbsPath_005_mesh_layer_1_tri_1[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx lll_dl_NurbsPath_006_mesh_layer_5_vtx_0[438] = {
+Vtx lll_dl_NurbsPath_006_mesh_layer_7_vtx_0[438] = {
 	{{{171, 1691, 1288},0, {-16, 667},{0x3F, 0x92, 0xFF, 0xFF}}},
 	{{{456, 1691, 1284},0, {-16, 1008},{0xC1, 0x92, 0x0, 0xFF}}},
 	{{{462, 1687, 1869},0, {803, 1008},{0xC0, 0x93, 0xB, 0xFF}}},
@@ -7505,8 +7575,8 @@ Vtx lll_dl_NurbsPath_006_mesh_layer_5_vtx_0[438] = {
 	{{{2077, 2014, -467},0, {667, -16},{0xB5, 0x67, 0x0, 0xFF}}},
 };
 
-Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 0, 16, 0),
+Gfx lll_dl_NurbsPath_006_mesh_layer_7_tri_0[] = {
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 0, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(3, 2, 4, 0),
@@ -7521,7 +7591,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(12, 11, 13, 0),
 	gsSP1Triangle(14, 12, 13, 0),
 	gsSP1Triangle(14, 13, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 16, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 16, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(3, 4, 1, 0),
@@ -7534,7 +7604,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(9, 11, 10, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(12, 14, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 32, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 32, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(4, 0, 3, 0),
@@ -7550,7 +7620,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(14, 10, 12, 0),
 	gsSP1Triangle(14, 15, 10, 0),
 	gsSP1Triangle(15, 8, 10, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 48, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 48, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(1, 3, 2, 0),
 	gsSP1Triangle(1, 4, 3, 0),
@@ -7563,7 +7633,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(12, 11, 13, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(14, 13, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 64, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 64, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(3, 0, 2, 0),
 	gsSP1Triangle(3, 2, 4, 0),
@@ -7578,7 +7648,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(13, 9, 11, 0),
 	gsSP1Triangle(13, 14, 9, 0),
 	gsSP1Triangle(15, 14, 13, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 80, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 80, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(1, 3, 2, 0),
 	gsSP1Triangle(1, 4, 3, 0),
@@ -7596,7 +7666,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(3, 13, 14, 0),
 	gsSP1Triangle(2, 3, 14, 0),
 	gsSP1Triangle(2, 14, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 96, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 96, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(3, 2, 4, 0),
@@ -7611,7 +7681,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(12, 11, 13, 0),
 	gsSP1Triangle(14, 12, 13, 0),
 	gsSP1Triangle(14, 13, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 112, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 112, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(4, 1, 0, 0),
@@ -7626,7 +7696,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(11, 13, 12, 0),
 	gsSP1Triangle(13, 14, 12, 0),
 	gsSP1Triangle(13, 15, 14, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 128, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 128, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(4, 0, 3, 0),
@@ -7639,7 +7709,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(10, 12, 13, 0),
 	gsSP1Triangle(13, 12, 14, 0),
 	gsSP1Triangle(13, 14, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 144, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 144, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(4, 0, 3, 0),
@@ -7654,7 +7724,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(12, 11, 13, 0),
 	gsSP1Triangle(14, 10, 12, 0),
 	gsSP1Triangle(14, 15, 10, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 160, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 160, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(3, 4, 1, 0),
@@ -7672,7 +7742,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(4, 6, 14, 0),
 	gsSP1Triangle(4, 14, 15, 0),
 	gsSP1Triangle(1, 4, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 176, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 176, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(3, 4, 5, 0),
 	gsSP1Triangle(3, 5, 6, 0),
@@ -7685,7 +7755,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(12, 11, 13, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(14, 13, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 192, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 192, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(2, 1, 3, 0),
 	gsSP1Triangle(2, 3, 4, 0),
@@ -7700,7 +7770,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(13, 11, 12, 0),
 	gsSP1Triangle(13, 12, 14, 0),
 	gsSP1Triangle(15, 11, 13, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 208, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 208, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(3, 1, 0, 0),
 	gsSP1Triangle(3, 4, 1, 0),
@@ -7715,7 +7785,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(12, 13, 10, 0),
 	gsSP1Triangle(12, 14, 13, 0),
 	gsSP1Triangle(14, 15, 13, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 224, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 224, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(1, 3, 2, 0),
 	gsSP1Triangle(1, 4, 3, 0),
@@ -7730,7 +7800,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(12, 11, 13, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(14, 13, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 240, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 240, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(3, 0, 2, 0),
 	gsSP1Triangle(3, 2, 4, 0),
@@ -7745,7 +7815,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(13, 12, 11, 0),
 	gsSP1Triangle(13, 14, 12, 0),
 	gsSP1Triangle(15, 14, 13, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 256, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 256, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(1, 3, 2, 0),
 	gsSP1Triangle(1, 4, 3, 0),
@@ -7763,7 +7833,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(15, 8, 10, 0),
 	gsSP1Triangle(2, 8, 15, 0),
 	gsSP1Triangle(2, 3, 8, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 272, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 272, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(3, 2, 4, 0),
@@ -7778,7 +7848,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(11, 12, 13, 0),
 	gsSP1Triangle(13, 12, 14, 0),
 	gsSP1Triangle(13, 14, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 288, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 288, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(3, 2, 4, 0),
@@ -7793,7 +7863,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(12, 11, 13, 0),
 	gsSP1Triangle(14, 12, 13, 0),
 	gsSP1Triangle(14, 13, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 304, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 304, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(4, 0, 3, 0),
@@ -7808,7 +7878,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(12, 13, 11, 0),
 	gsSP1Triangle(14, 13, 12, 0),
 	gsSP1Triangle(14, 15, 13, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 320, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 320, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(4, 3, 0, 0),
@@ -7823,7 +7893,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(12, 13, 11, 0),
 	gsSP1Triangle(14, 13, 12, 0),
 	gsSP1Triangle(14, 15, 13, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 336, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 336, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(3, 4, 1, 0),
@@ -7838,7 +7908,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(11, 12, 13, 0),
 	gsSP1Triangle(13, 12, 14, 0),
 	gsSP1Triangle(13, 14, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 352, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 352, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(3, 2, 4, 0),
@@ -7853,7 +7923,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(11, 12, 13, 0),
 	gsSP1Triangle(13, 12, 14, 0),
 	gsSP1Triangle(13, 14, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 368, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 368, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(4, 0, 3, 0),
@@ -7868,7 +7938,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(12, 13, 11, 0),
 	gsSP1Triangle(14, 13, 12, 0),
 	gsSP1Triangle(14, 15, 13, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 384, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 384, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(4, 3, 0, 0),
@@ -7883,7 +7953,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(11, 13, 12, 0),
 	gsSP1Triangle(13, 14, 12, 0),
 	gsSP1Triangle(13, 15, 14, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 400, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 400, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(3, 2, 4, 0),
@@ -7898,7 +7968,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(11, 12, 13, 0),
 	gsSP1Triangle(13, 12, 14, 0),
 	gsSP1Triangle(13, 14, 15, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 416, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 416, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(4, 0, 3, 0),
@@ -7913,7 +7983,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(12, 13, 11, 0),
 	gsSP1Triangle(14, 13, 12, 0),
 	gsSP1Triangle(14, 15, 13, 0),
-	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_5_vtx_0 + 432, 6, 0),
+	gsSPVertex(lll_dl_NurbsPath_006_mesh_layer_7_vtx_0 + 432, 6, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(4, 3, 0, 0),
@@ -7921,7 +7991,7 @@ Gfx lll_dl_NurbsPath_006_mesh_layer_5_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx lll_dl_NurbsPath_007_mesh_layer_5_vtx_0[14] = {
+Vtx lll_dl_NurbsPath_007_mesh_layer_7_vtx_0[14] = {
 	{{{465, 1732, 2125},0, {1622, -1040},{0xBF, 0x0, 0x6D, 0xFF}}},
 	{{{610, 2023, 2325},0, {2442, -699},{0x84, 0x0, 0xE4, 0xFF}}},
 	{{{465, 1880, 2125},0, {2442, -1040},{0xBF, 0x0, 0x6D, 0xFF}}},
@@ -7938,8 +8008,8 @@ Vtx lll_dl_NurbsPath_007_mesh_layer_5_vtx_0[14] = {
 	{{{465, 1732, 2125},0, {1622, 1008},{0xBF, 0x0, 0x6D, 0xFF}}},
 };
 
-Gfx lll_dl_NurbsPath_007_mesh_layer_5_tri_0[] = {
-	gsSPVertex(lll_dl_NurbsPath_007_mesh_layer_5_vtx_0 + 0, 14, 0),
+Gfx lll_dl_NurbsPath_007_mesh_layer_7_tri_0[] = {
+	gsSPVertex(lll_dl_NurbsPath_007_mesh_layer_7_vtx_0 + 0, 14, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(3, 4, 1, 0),
@@ -7955,7 +8025,7 @@ Gfx lll_dl_NurbsPath_007_mesh_layer_5_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx lll_dl_NurbsPath_008_mesh_layer_5_vtx_0[47] = {
+Vtx lll_dl_NurbsPath_008_mesh_layer_7_vtx_0[47] = {
 	{{{-119, 601, 1106},0, {-298, 318},{0x81, 0x0, 0x0, 0xFF}}},
 	{{{-119, 848, 1249},0, {756, 14},{0x81, 0x0, 0x0, 0xFF}}},
 	{{{-119, 1095, 1106},0, {1810, 318},{0x81, 0x0, 0x0, 0xFF}}},
@@ -8005,8 +8075,8 @@ Vtx lll_dl_NurbsPath_008_mesh_layer_5_vtx_0[47] = {
 	{{{-370, -782, -2189},0, {-298, 926},{0x81, 0x0, 0x0, 0xFF}}},
 };
 
-Gfx lll_dl_NurbsPath_008_mesh_layer_5_tri_0[] = {
-	gsSPVertex(lll_dl_NurbsPath_008_mesh_layer_5_vtx_0 + 0, 16, 0),
+Gfx lll_dl_NurbsPath_008_mesh_layer_7_tri_0[] = {
+	gsSPVertex(lll_dl_NurbsPath_008_mesh_layer_7_vtx_0 + 0, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(2, 3, 0, 0),
 	gsSP1Triangle(2, 4, 3, 0),
@@ -8017,7 +8087,7 @@ Gfx lll_dl_NurbsPath_008_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(9, 11, 6, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(14, 15, 12, 0),
-	gsSPVertex(lll_dl_NurbsPath_008_mesh_layer_5_vtx_0 + 16, 16, 0),
+	gsSPVertex(lll_dl_NurbsPath_008_mesh_layer_7_vtx_0 + 16, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(2, 3, 4, 0),
 	gsSP1Triangle(5, 6, 7, 0),
@@ -8027,7 +8097,7 @@ Gfx lll_dl_NurbsPath_008_mesh_layer_5_tri_0[] = {
 	gsSP1Triangle(11, 12, 13, 0),
 	gsSP1Triangle(13, 14, 11, 0),
 	gsSP1Triangle(13, 15, 14, 0),
-	gsSPVertex(lll_dl_NurbsPath_008_mesh_layer_5_vtx_0 + 32, 15, 0),
+	gsSPVertex(lll_dl_NurbsPath_008_mesh_layer_7_vtx_0 + 32, 15, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(3, 4, 5, 0),
 	gsSP1Triangle(5, 6, 3, 0),
@@ -8040,7 +8110,7 @@ Gfx lll_dl_NurbsPath_008_mesh_layer_5_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx lll_dl_NurbsPath_009_mesh_layer_5_vtx_0[6] = {
+Vtx lll_dl_NurbsPath_009_mesh_layer_7_vtx_0[6] = {
 	{{{-1381, -2175, -1531},0, {-298, 318},{0x0, 0x7F, 0x0, 0xFF}}},
 	{{{-1524, -2175, -1284},0, {756, 14},{0x0, 0x7F, 0x0, 0xFF}}},
 	{{{-1381, -2175, -1037},0, {1810, 318},{0x0, 0x7F, 0x0, 0xFF}}},
@@ -8049,8 +8119,8 @@ Vtx lll_dl_NurbsPath_009_mesh_layer_5_vtx_0[6] = {
 	{{{-1096, -2175, -1531},0, {-298, 926},{0x0, 0x7F, 0x0, 0xFF}}},
 };
 
-Gfx lll_dl_NurbsPath_009_mesh_layer_5_tri_0[] = {
-	gsSPVertex(lll_dl_NurbsPath_009_mesh_layer_5_vtx_0 + 0, 6, 0),
+Gfx lll_dl_NurbsPath_009_mesh_layer_7_tri_0[] = {
+	gsSPVertex(lll_dl_NurbsPath_009_mesh_layer_7_vtx_0 + 0, 6, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(2, 3, 0, 0),
 	gsSP1Triangle(2, 4, 3, 0),
@@ -8058,7 +8128,7 @@ Gfx lll_dl_NurbsPath_009_mesh_layer_5_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx lll_dl_NurbsPath_010_mesh_layer_5_vtx_0[12] = {
+Vtx lll_dl_NurbsPath_010_mesh_layer_7_vtx_0[12] = {
 	{{{456, 1197, 1284},0, {121, 240},{0x1, 0x0, 0x7F, 0xFF}}},
 	{{{598, 1444, 1283},0, {1008, -16},{0x1, 0x0, 0x7F, 0xFF}}},
 	{{{456, 1691, 1284},0, {1895, 240},{0x1, 0x0, 0x7F, 0xFF}}},
@@ -8073,8 +8143,8 @@ Vtx lll_dl_NurbsPath_010_mesh_layer_5_vtx_0[12] = {
 	{{{171, 1921, 1288},0, {121, 752},{0x1, 0x0, 0x7F, 0xFF}}},
 };
 
-Gfx lll_dl_NurbsPath_010_mesh_layer_5_tri_0[] = {
-	gsSPVertex(lll_dl_NurbsPath_010_mesh_layer_5_vtx_0 + 0, 12, 0),
+Gfx lll_dl_NurbsPath_010_mesh_layer_7_tri_0[] = {
+	gsSPVertex(lll_dl_NurbsPath_010_mesh_layer_7_vtx_0 + 0, 12, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(2, 3, 0, 0),
 	gsSP1Triangle(2, 4, 3, 0),
@@ -8911,6 +8981,19 @@ Gfx mat_revert_lll_dl_Rocks_tile[] = {
 	gsSPEndDisplayList(),
 };
 
+Gfx lll_dl_Cube_079_mesh_layer_1[] = {
+	gsSPDisplayList(mat_lll_dl_Brdige_side),
+	gsSPDisplayList(lll_dl_Cube_079_mesh_layer_1_tri_0),
+	gsSPDisplayList(mat_revert_lll_dl_Brdige_side),
+	gsSPDisplayList(mat_lll_dl_float_bottom_001),
+	gsSPDisplayList(lll_dl_Cube_079_mesh_layer_1_tri_1),
+	gsSPDisplayList(mat_revert_lll_dl_float_bottom_001),
+	gsSPDisplayList(mat_lll_dl_Design_wood),
+	gsSPDisplayList(lll_dl_Cube_079_mesh_layer_1_tri_2),
+	gsSPDisplayList(mat_revert_lll_dl_Design_wood),
+	gsSPEndDisplayList(),
+};
+
 Gfx lll_dl_Cube_083_mesh_layer_1[] = {
 	gsSPDisplayList(mat_lll_dl_Brdige_side),
 	gsSPDisplayList(lll_dl_Cube_083_mesh_layer_1_tri_0),
@@ -9246,37 +9329,37 @@ Gfx lll_dl_NurbsPath_005_mesh_layer_1[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx lll_dl_NurbsPath_006_mesh_layer_5[] = {
+Gfx lll_dl_NurbsPath_006_mesh_layer_7[] = {
 	gsSPDisplayList(mat_lll_dl_water_no_nsolid),
-	gsSPDisplayList(lll_dl_NurbsPath_006_mesh_layer_5_tri_0),
+	gsSPDisplayList(lll_dl_NurbsPath_006_mesh_layer_7_tri_0),
 	gsSPDisplayList(mat_revert_lll_dl_water_no_nsolid),
 	gsSPEndDisplayList(),
 };
 
-Gfx lll_dl_NurbsPath_007_mesh_layer_5[] = {
+Gfx lll_dl_NurbsPath_007_mesh_layer_7[] = {
 	gsSPDisplayList(mat_lll_dl_water_no_nsolid),
-	gsSPDisplayList(lll_dl_NurbsPath_007_mesh_layer_5_tri_0),
+	gsSPDisplayList(lll_dl_NurbsPath_007_mesh_layer_7_tri_0),
 	gsSPDisplayList(mat_revert_lll_dl_water_no_nsolid),
 	gsSPEndDisplayList(),
 };
 
-Gfx lll_dl_NurbsPath_008_mesh_layer_5[] = {
+Gfx lll_dl_NurbsPath_008_mesh_layer_7[] = {
 	gsSPDisplayList(mat_lll_dl_water_no_nsolid),
-	gsSPDisplayList(lll_dl_NurbsPath_008_mesh_layer_5_tri_0),
+	gsSPDisplayList(lll_dl_NurbsPath_008_mesh_layer_7_tri_0),
 	gsSPDisplayList(mat_revert_lll_dl_water_no_nsolid),
 	gsSPEndDisplayList(),
 };
 
-Gfx lll_dl_NurbsPath_009_mesh_layer_5[] = {
+Gfx lll_dl_NurbsPath_009_mesh_layer_7[] = {
 	gsSPDisplayList(mat_lll_dl_water_no_nsolid),
-	gsSPDisplayList(lll_dl_NurbsPath_009_mesh_layer_5_tri_0),
+	gsSPDisplayList(lll_dl_NurbsPath_009_mesh_layer_7_tri_0),
 	gsSPDisplayList(mat_revert_lll_dl_water_no_nsolid),
 	gsSPEndDisplayList(),
 };
 
-Gfx lll_dl_NurbsPath_010_mesh_layer_5[] = {
+Gfx lll_dl_NurbsPath_010_mesh_layer_7[] = {
 	gsSPDisplayList(mat_lll_dl_water_no_nsolid),
-	gsSPDisplayList(lll_dl_NurbsPath_010_mesh_layer_5_tri_0),
+	gsSPDisplayList(lll_dl_NurbsPath_010_mesh_layer_7_tri_0),
 	gsSPDisplayList(mat_revert_lll_dl_water_no_nsolid),
 	gsSPEndDisplayList(),
 };

@@ -107,12 +107,14 @@ void render_100_coin_star(u8 stars) {
  * the correct star models, the 100 coin star and also handles
  * checks of what star should be next in sInitSelectedActNum.
  */
+static u8 spawned=1;
 void bhv_act_selector_init(void) {
     s16 i = 0;
     s32 selectorModelIDs[10];
     u8 stars = save_file_get_star_flags(gCurrSaveFileNum - 1, gCurrCourseNum - 1);
     
-	if (sActSelectorMenuTimer==sTextTime+5){
+	if ((sActSelectorMenuTimer>=sTextTime+5) && spawned){
+	spawned = 0;
 	sVisibleStars = 0;
     while (i != sObtainedStars) {
         if (stars & (1 << sVisibleStars)) { // Star has been collected
@@ -419,6 +421,9 @@ s32 lvl_init_act_selector_values_and_stars(UNUSED s32 arg, UNUSED s32 unused) {
  * Also updates objects and returns act number selected after is chosen.
  */
 s32 lvl_update_obj_and_load_act_button_actions(UNUSED s32 arg, UNUSED s32 unused) {
+	if (sActSelectorMenuTimer == 0) {
+	spawned=1;
+	}
     if (sActSelectorMenuTimer >= sTextTime+11) {
         // If any of these buttons are pressed, play sound and go to course act
 #ifndef Z_TRIG_EXTRA_ACT
@@ -446,6 +451,10 @@ s32 lvl_update_obj_and_load_act_button_actions(UNUSED s32 arg, UNUSED s32 unused
         }
     }
     area_update_objects(); scroll_textures();
-    sActSelectorMenuTimer++;
+	if ((gPlayer3Controller->buttonDown & A_BUTTON) || (gPlayer3Controller->buttonDown & B_BUTTON)){
+		sActSelectorMenuTimer+=25;
+	}else{
+		sActSelectorMenuTimer++;
+	}
     return sLoadedActNum;
 }

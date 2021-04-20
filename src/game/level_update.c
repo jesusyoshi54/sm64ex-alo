@@ -760,7 +760,7 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                 break;
 
             case WARP_OP_DEATH:
-                if (m->numLives == 0 && INFINITE_LIVES) {
+                if (m->numLives == 0 && INFINITE_LIVES!=0) {
 					//crash the plane with no survivors
 					#ifdef HARDCORE
 					int i=1/0;

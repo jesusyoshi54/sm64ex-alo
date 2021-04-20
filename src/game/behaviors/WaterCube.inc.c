@@ -15,29 +15,29 @@ void RotCrane(void) {
 	o->header.gfx.node.flags |= GRAPH_RENDER_NO_CULL;
 	switch(o->oAction){
 	case 1:
-		o->oFaceAnglePitch+=60;
-		o->oAngleVelPitch=60;
-		if(o->oTimer>130){
+		o->oFaceAnglePitch+=120;
+		o->oAngleVelPitch=120;
+		if(o->oTimer>65){
 			o->oAction=2;
 		}
 		break;
 	case 2:
 		// o->oFaceAnglePitch+=40;
 		o->oAngleVelPitch=0;
-		if(o->oTimer>130){
+		if(o->oTimer>60){
 			o->oAction=3;
 		}
 		break;
 	case 3:
-		o->oFaceAnglePitch-=60;
-		o->oAngleVelPitch=-60;
-		if(o->oTimer>130){
+		o->oFaceAnglePitch-=120;
+		o->oAngleVelPitch=-120;
+		if(o->oTimer>65){
 			o->oAction=4;
 		}
 		break;
 	case 4:
 		o->oAngleVelPitch=0;
-		if(o->oTimer>130){
+		if(o->oTimer>60){
 			o->oAction=1;
 		}
 		break;

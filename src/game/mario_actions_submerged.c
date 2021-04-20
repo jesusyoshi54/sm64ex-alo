@@ -490,15 +490,16 @@ static s32 check_water_jump(struct MarioState *m) {
     s32 probe = (s32)(m->pos[1] + 1.5f);
 
     if (m->input & INPUT_A_PRESSED) {
-        if (probe >= m->waterLevel - 80 && m->faceAngle[0] >= 0x300 && m->controller->stickMag > 50.0f) {
+        if (probe >= m->waterLevel - 120 && m->faceAngle[0] >= 0x50 && m->controller->stickMag > 45.0f) {
             vec3s_set(m->angleVel, 0, 0, 0);
 
             m->vel[1] = 62.0f;
+			m->forwardVel += 16.0f;
 
             if (m->heldObj == NULL) {
-                return set_mario_action(m, ACT_WATER_JUMP, 0);
+                return set_mario_action(m, ACT_JUMP, 0);
             } else {
-                return set_mario_action(m, ACT_HOLD_WATER_JUMP, 0);
+                return set_mario_action(m, ACT_HOLD_JUMP, 0);
             }
         }
     }

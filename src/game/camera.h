@@ -127,9 +127,9 @@
 #define CAM_MOVE_UNKNOWN_8              0x0080
 #define CAM_MOVING_INTO_MODE            0x0100
 #define CAM_MOVE_STARTED_EXITING_C_UP   0x0200
-#define CAM_MOVE_UNKNOWN_11             0x0400
+#define CAM_MOVE_ULTRA_ZOOM_OUT         0x0400
 #define CAM_MOVE_INIT_CAMERA            0x0800
-#define CAM_MOVE_ALREADY_ZOOMED_OUT     0x1000
+#define CAM_MOVE_PITCH                  0x1000
 #define CAM_MOVE_C_UP_MODE              0x2000
 #define CAM_MOVE_SUBMERGED              0x4000
 #define CAM_MOVE_PAUSE_SCREEN           0x8000

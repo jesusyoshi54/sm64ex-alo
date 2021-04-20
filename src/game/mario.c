@@ -680,7 +680,7 @@ s32 mario_floor_is_steep(struct MarioState *m) {
                 break;
 
             case SURFACE_NOT_SLIPPERY:
-                normY = 0.8660254f; // ~cos(30 deg)
+                normY = 0.0f; // ~cos(30 deg)
                 break;
         }
 
@@ -1489,15 +1489,15 @@ void set_submerged_cam_preset_and_spawn_bubbles(struct MarioState *m) {
 
         if (m->action & ACT_FLAG_METAL_WATER) {
             if (camPreset != CAMERA_MODE_CLOSE) {
-                set_camera_mode(m->area->camera, CAMERA_MODE_CLOSE, 1);
+                // set_camera_mode(m->area->camera, CAMERA_MODE_CLOSE, 1);
             }
         } else {
             if ((heightBelowWater > 800.0f) && (camPreset != CAMERA_MODE_BEHIND_MARIO)) {
-                set_camera_mode(m->area->camera, CAMERA_MODE_BEHIND_MARIO, 1);
+                // set_camera_mode(m->area->camera, CAMERA_MODE_BEHIND_MARIO, 1);
             }
 
             if ((heightBelowWater < 400.0f) && (camPreset != CAMERA_MODE_WATER_SURFACE)) {
-                set_camera_mode(m->area->camera, CAMERA_MODE_WATER_SURFACE, 1);
+                // set_camera_mode(m->area->camera, CAMERA_MODE_WATER_SURFACE, 1);
             }
 
             // As long as Mario isn't drowning or at the top
@@ -1559,7 +1559,7 @@ void update_mario_health(struct MarioState *m) {
                     if ((m->pos[1] >= (m->waterLevel - 140)) && !terrainIsSnow) {
                         m->health += 0x1A;
                     } else if (!gDebugLevelSelect) {
-                        m->health -= (terrainIsSnow ? 3 : 1);
+                        // m->health -= (terrainIsSnow ? 3 : 1);
                     }
 					#endif
                 }
@@ -1584,20 +1584,20 @@ void update_mario_health(struct MarioState *m) {
 		#ifdef DAREDEVIL
 		#else
         // Play a noise to alert the player when Mario is close to drowning.
-        if (((m->action & ACT_GROUP_MASK) == ACT_GROUP_SUBMERGED) && (m->health < 0x300)) {
-            play_sound(SOUND_MOVING_ALMOST_DROWNING, gGlobalSoundSource);
-#ifdef RUMBLE_FEEDBACK
-            if (!gRumblePakTimer) {
-                gRumblePakTimer = 36;
-                if (is_rumble_finished_and_queue_empty()) {
-                    queue_rumble_data(3, 30);
+        // if (((m->action & ACT_GROUP_MASK) == ACT_GROUP_SUBMERGED) && (m->health < 0x300)) {
+            // play_sound(SOUND_MOVING_ALMOST_DROWNING, gGlobalSoundSource);
+// #ifdef RUMBLE_FEEDBACK
+            // if (!gRumblePakTimer) {
+                // gRumblePakTimer = 36;
+                // if (is_rumble_finished_and_queue_empty()) {
+                    // queue_rumble_data(3, 30);
 
-                }
-            }
-        } else {
-            gRumblePakTimer = 0;
-#endif
-        }
+                // }
+            // }
+        // } else {
+            // gRumblePakTimer = 0;
+// #endif
+        // }
 		#endif
     }
 }
