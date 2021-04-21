@@ -67,7 +67,7 @@ extern Vtx bitdw_dl_Area_1_Mesh_mesh_layer_1_vtx_2[122];
 extern Gfx bitdw_dl_Area_1_Mesh_mesh_layer_1_tri_2[];
 extern Vtx bitdw_dl_Area_1_Mesh_mesh_layer_1_vtx_3[54];
 extern Gfx bitdw_dl_Area_1_Mesh_mesh_layer_1_tri_3[];
-extern Vtx bitdw_dl_Area_1_Mesh_mesh_layer_1_vtx_4[91];
+extern Vtx bitdw_dl_Area_1_Mesh_mesh_layer_1_vtx_4[88];
 extern Gfx bitdw_dl_Area_1_Mesh_mesh_layer_1_tri_4[];
 extern Vtx bitdw_dl_Area_1_Mesh_mesh_layer_1_vtx_5[56];
 extern Gfx bitdw_dl_Area_1_Mesh_mesh_layer_1_tri_5[];

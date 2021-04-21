@@ -3,8 +3,8 @@
 const GeoLayout bitdw_area_1_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
-		GEO_TRANSLATE_NODE_WITH_DL(1, 4662, -5205, 0, bitdw_dl_Area_1_Mesh_mesh_layer_1),
-		GEO_TRANSLATE_ROTATE_WITH_DL(1, 3744, -2435, 97, 0, 90, 0, bitdw_dl_Grid_001_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(1, 4662, 0, 5205, bitdw_dl_Area_1_Mesh_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(1, 3744, 97, 2435, bitdw_dl_Grid_001_mesh_layer_1),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };

@@ -1467,7 +1467,7 @@ s32 common_slide_action_with_jump(struct MarioState *m, u32 stopAction, u32 jump
                                   s32 animation) {
     //cancel butt slide anytime
 	if (m->actionTimer == 5) {
-        if (m->framesSinceA <= 6) {
+        if (m->framesSinceA <= 3) {
             return set_jumping_action(m, jumpAction, 0);
 		}
         }else{

@@ -177,7 +177,7 @@ const LevelScript level_wf_entry[] = {
 		OBJECT(MODEL_THWOMP, -9921, 1565, 10723, 0, 90, 0, 0, bhvThwomp),
 		OBJECT(MODEL_NONE, -12778, 1344, 8190, 0, 0, 0, 0x200B0000, bhvWarp),
 		OBJECT(MODEL_NONE, 13829, 4763, -7284, 0, 0, 0, 0x500D0000, bhvWarp),
-		OBJECT(255, 2452, 2292, -7228, 0, 0, 0, 0, WaterCube_UPDown),
+		OBJECT(255, 2452, 2360, -7289, 0, 0, 0, 0, WaterCube_UPDown),
 		OBJECT(255, 11425, 8168, 3609, 0, 0, 0, 0, WaterCube_Static),
 		OBJECT(255, 10817, 8314, 3153, 0, 0, 0, 0, WaterCube_Static),
 		OBJECT(255, 6294, 6329, 11454, 0, 0, 0, 0, WaterCube_UPDown),

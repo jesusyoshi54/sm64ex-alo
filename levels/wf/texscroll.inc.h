@@ -1,4 +1,3 @@
-extern void scroll_wf_dl_Lava_Plane_Decal_mesh_layer_6_vtx_0();
 extern void scroll_wf_dl_NurbsPath_005_mesh_layer_7_vtx_0();
 extern void scroll_wf_dl_NurbsPath_008_mesh_layer_7_vtx_0();
 extern void scroll_wf_dl_NurbsPath_014_mesh_layer_7_vtx_0();

@@ -1181,6 +1181,11 @@ s32 transition_submerged_to_walking(struct MarioState *m) {
     set_camera_mode(m->area->camera, m->area->camera->defMode, 1);
 
     vec3s_set(m->angleVel, 0, 0, 0);
+	if(m->Waterfloor->type == SURFACE_FLOWING_WATER){
+		s16 currentAngle = atan2s(m->Waterfloor->normal.z,m->Waterfloor->normal.x);
+		m->forwardVel += m->Waterfloor->force*coss(currentAngle-m->faceAngle[1]);
+		
+	}
 
     if (m->heldObj == NULL) {
         return set_mario_action(m, ACT_WALKING, 0);
@@ -1194,6 +1199,12 @@ s32 transition_submerged_to_walking(struct MarioState *m) {
  * non-submerged action. This also applies the water surface camera preset.
  */
 s32 set_water_plunge_action(struct MarioState *m) {
+	if (m->framesSinceWater<10){
+		return 0;
+	}
+	if ((m->framesSinceWater<20) && (m->Waterfloor->type == SURFACE_FLOWING_WATER)){
+		return 0;
+	}
     m->forwardVel = m->forwardVel / 4.0f;
     m->vel[1] = m->vel[1] / 8.0f;
 
@@ -1210,6 +1221,7 @@ s32 set_water_plunge_action(struct MarioState *m) {
     if (m->area->camera->mode != CAMERA_MODE_WATER_SURFACE) {
         set_camera_mode(m->area->camera, CAMERA_MODE_WATER_SURFACE, 1);
     }
+	m->framesSinceWater=0;
 
     return set_mario_action(m, ACT_WATER_PLUNGE, 0);
 }
@@ -1971,6 +1983,14 @@ s32 execute_mario_action(UNUSED struct Object *o) {
         update_mario_health(gMarioState);
         update_mario_info_for_cam(gMarioState);
         mario_update_hitbox_and_cap_model(gMarioState);
+		if (gMarioState->framesSinceWater<254){
+		gMarioState->framesSinceWater++;
+		}
+		if((gMarioState->action & ACT_GROUP_MASK)==ACT_GROUP_AIRBORNE) {
+			gMarioState->framesSinceGround++;
+		}else{
+			gMarioState->framesSinceGround=0;
+		}
 
         // Both of the wind handling portions play wind audio only in
         // non-Japanese releases.

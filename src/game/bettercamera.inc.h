@@ -655,12 +655,21 @@ static void newcam_collision(void) {
         offset[2] = surf->normal.z;
         vec3f_mul(offset, 5.0f);
         vec3f_add(hitpos, offset);
-        
-        newcam_pos[0] = hitpos[0];
-        newcam_pos[1] = hitpos[1];
-        newcam_pos[2] = hitpos[2];
-        newcam_pan_x = 0;
-        newcam_pan_z = 0;
+		//just set the camera to have a Y pos below the ceiling
+        if (surf->type == SURFACE_HANGABLE) {
+			vec3f_mul(offset, 50.0f);
+			vec3f_add(hitpos, offset);
+			// newcam_pos[0] -= hitpos[0];
+			newcam_pos[1] = hitpos[1];
+			// newcam_pos[2] -= hitpos[2];
+			newcam_coldist = 9999.0f;
+		}else{
+			newcam_pos[0] = hitpos[0];
+			newcam_pos[1] = hitpos[1];
+			newcam_pos[2] = hitpos[2];
+			newcam_pan_x = 0;
+			newcam_pan_z = 0;
+		}
     }
 }
 

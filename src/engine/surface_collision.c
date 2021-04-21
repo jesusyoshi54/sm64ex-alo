@@ -111,7 +111,7 @@ static s32 find_wall_collisions_from_list(struct SurfaceNode *surfaceNode,
 
         // Determine if checking for the camera or not.
         if (gCheckingSurfaceCollisionsForCamera) {
-            if ((surf->flags & SURFACE_FLAG_NO_CAM_COLLISION)||(surf->type == SURFACE_HANGABLE)) {
+            if ((surf->flags & SURFACE_FLAG_NO_CAM_COLLISION)||(surf->type == SURFACE_TTM_VINES)) {
                 continue;
             }
         } else {
@@ -251,7 +251,7 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
 
         // Determine if checking for the camera or not.
         if (gCheckingSurfaceCollisionsForCamera != 0) {
-            if ((surf->flags & SURFACE_FLAG_NO_CAM_COLLISION)||(surf->type == SURFACE_HANGABLE)) {
+            if ((surf->flags & SURFACE_FLAG_NO_CAM_COLLISION)||(surf->type == SURFACE_TTM_VINES)) {
                 continue;
             }
         }
@@ -425,7 +425,7 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
 
         // Determine if we are checking for the camera or not.
         if (gCheckingSurfaceCollisionsForCamera != 0) {
-            if ((surf->flags & SURFACE_FLAG_NO_CAM_COLLISION)||(surf->type == SURFACE_HANGABLE)) {
+            if ((surf->flags & SURFACE_FLAG_NO_CAM_COLLISION)||(surf->type == SURFACE_TTM_VINES)) {
                 continue;
             }
         }
@@ -870,7 +870,7 @@ void find_surface_on_ray_list(struct SurfaceNode *list, Vec3f orig, Vec3f dir, f
             continue;
         
         // Reject no-cam collision surfaces
-        if (gCheckingSurfaceCollisionsForCamera && ((list->surface->flags & SURFACE_FLAG_NO_CAM_COLLISION)||(list->surface->type == SURFACE_HANGABLE)))
+        if (gCheckingSurfaceCollisionsForCamera && ((list->surface->flags & SURFACE_FLAG_NO_CAM_COLLISION)||(list->surface->type == SURFACE_TTM_VINES)))
             continue;
         // Reject water
         if (gCheckingSurfaceCollisionsForCamera && ((list->surface->type == 0xD)|(list->surface->type == 0xE)))

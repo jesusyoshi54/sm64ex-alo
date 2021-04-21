@@ -89,7 +89,7 @@ void tuxies_mother_act_1(void) {
             }
 			else{
 				o->oAction = 0;
-				o->oBehParams += 1;
+				o->oBehParams |= 1;
 			}
             break;
         case 2:

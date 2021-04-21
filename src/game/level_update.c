@@ -1027,8 +1027,8 @@ void ScrollF2(Gfx *F2,u32 x, u32 y){
 	#endif
 	F2B.SetTile.X+=Xspd.pos;//Xspd.bytes[FLOAT_BYTE];
 	F2B.SetTile.Y+=Yspd.pos;//Yspd.bytes[FLOAT_BYTE];
-	F2B.SetTile.X=F2B.SetTile.X%0x1FC;
-	F2B.SetTile.Y=F2B.SetTile.Y%0x1FC;
+	F2B.SetTile.X=F2B.SetTile.X%0x200;
+	F2B.SetTile.Y=F2B.SetTile.Y%0x200;
 	F2->words.w0 = F2B.w0;
 }
 void Scroll_Waters(void){

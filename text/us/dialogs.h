@@ -73,13 +73,13 @@ shepherd. He leads and we follow."))
 
 DEFINE_DIALOG(DIALOG_006, 1, 4, 60, 300, _("\
 His call beckons across time and space.\n\
-All come for his word and seek his vision.\n\
-All are his children, and his\n\
+All come for his word and seek his\n\
+vision. All are his children, and his\n\
 love is eternal."))
 
 DEFINE_DIALOG(DIALOG_007, 1, 4, 60, 300, _("\
 We are all his children. The father above\n\
-almighty and alknowing. He forgives us\n\
+almighty and all knowing. He forgives us\n\
 for our eternal sin. We are lost without\n\
 his word. Deliver us."))
 
@@ -426,22 +426,21 @@ guide and not the world around.\n\
 As the father leads them to the\n\
 pool of wisdom they see their own\n\
 image within.\n\
-Yet no mind is paid to\n\
-the surface beneath.\n\
-Drink not from the fountain\n\
-given, but the one within. Only\n\
-from there will you find yourself."))
+Yet no mind is paid to the surface\n\
+beneath. Drink not from the\n\
+fountain given, but the one within.\n\
+Only from there will you see\n\
+your reflection."))
 
-DEFINE_DIALOG(DIALOG_046, 1, 6, 60, 300, _("\
+DEFINE_DIALOG(DIALOG_046, 1, 5, 60, 300, _("\
 With every perspective comes a new life.\n\
 In these worlds you shall re-experience\n\
 yourself in a new perspective.\n\
 You may have a limited view, but you can\n\
-zoom out far more than normal in these\n\
-new worlds.\n\
+zoom out far more than normal.\n\
 When you are done, look to the heavens\n\
 while standing on the alter of\n\
-reflection to return to your world."))
+reflection to resume your journey."))
 
 DEFINE_DIALOG(DIALOG_047, 1, 2, 95, 200, _("\
 Hi! I'll prepare the\n\
@@ -602,7 +601,7 @@ The only problem:\n"
 YOU_CANT_SWIM_IN_IT))
 
 //Ow1 message
-DEFINE_DIALOG(DIALOG_063, 1, 6, 30, 300, _("\
+DEFINE_DIALOG(DIALOG_063, 1, 6, 30, 330, _("\
 Welcome pilgram. Your journey towards\n\
 divinity starts with the stars. You will\n\
 have several new tools for your journey.\n\
