@@ -134,11 +134,12 @@ Would you like to Save?\n\
 \n\
 //Yes////No"))
 
-DEFINE_DIALOG(DIALOG_013, 1, 5, 30, 200, _("\
-You've collected 100\n\
+DEFINE_DIALOG(DIALOG_013, 1, 3, 30, 230, _("\
+You've collected 150\n\
 coins! Mario gains more\n\
-power from the castle.\n\
+sovereignty over himself.\n\
 Do you want to Save?\n\
+\n\
 //Yes////No"))
 
 DEFINE_DIALOG(DIALOG_014, 1, 3, 30, 230, _("\

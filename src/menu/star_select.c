@@ -420,10 +420,13 @@ s32 lvl_init_act_selector_values_and_stars(UNUSED s32 arg, UNUSED s32 unused) {
  * Loads act selector button actions with selected act value checks.
  * Also updates objects and returns act number selected after is chosen.
  */
+extern Gfx star_seg3_dl_0302B870[];
 s32 lvl_update_obj_and_load_act_button_actions(UNUSED s32 arg, UNUSED s32 unused) {
 	if (sActSelectorMenuTimer == 0) {
 	spawned=1;
 	}
+	Gfx *F2 = segmented_to_virtual(star_seg3_dl_0302B870);
+	ScrollF2(F2+10,5,2);
     if (sActSelectorMenuTimer >= sTextTime+11) {
         // If any of these buttons are pressed, play sound and go to course act
 #ifndef Z_TRIG_EXTRA_ACT

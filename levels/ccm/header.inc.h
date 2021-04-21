@@ -209,7 +209,7 @@ extern Vtx ccm_dl_NurbsPath_001_mesh_layer_7_vtx_0[12];
 extern Gfx ccm_dl_NurbsPath_001_mesh_layer_7_tri_0[];
 extern Vtx ccm_dl_NurbsPath_002_mesh_layer_7_vtx_0[94];
 extern Gfx ccm_dl_NurbsPath_002_mesh_layer_7_tri_0[];
-extern Vtx ccm_dl_Plane_mesh_layer_1_vtx_0[919];
+extern Vtx ccm_dl_Plane_mesh_layer_1_vtx_0[121];
 extern Gfx ccm_dl_Plane_mesh_layer_1_tri_0[];
 extern Gfx mat_ccm_dl_siding[];
 extern Gfx mat_revert_ccm_dl_siding[];

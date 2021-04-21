@@ -54,8 +54,8 @@ const GeoLayout wf_area_2[] = {
 				GEO_CLOSE_NODE(),
 			GEO_CLOSE_NODE(),
 		GEO_CLOSE_NODE(),
-		GEO_DISPLAY_LIST(1, wf_dl_material_revert_render_settings),
 		GEO_DISPLAY_LIST(7, wf_dl_material_revert_render_settings),
+		GEO_DISPLAY_LIST(1, wf_dl_material_revert_render_settings),
 	GEO_CLOSE_NODE(),
 	GEO_END(),
 };

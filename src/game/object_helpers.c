@@ -2274,6 +2274,22 @@ void cur_obj_scale_over_time(s32 a0, s32 a1, f32 sp10, f32 sp14) {
         o->header.gfx.scale[2] = sp4 * sp0 + sp10;
     }
 }
+void cur_obj_scale_over_Wall(s32 a0, s32 a1, f32 sp10, f32 sp14) {
+    f32 sp4 = sp14 - sp10;
+    f32 sp0 = (f32) o->oWallAngle / a1;
+
+    if (a0 & 0x01) {
+        o->header.gfx.scale[0] = sp4 * sp0 + sp10;
+    }
+
+    if (a0 & 0x02) {
+        o->header.gfx.scale[1] = sp4 * sp0 + sp10;
+    }
+
+    if (a0 & 0x04) {
+        o->header.gfx.scale[2] = sp4 * sp0 + sp10;
+    }
+}
 
 void cur_obj_set_pos_to_home_with_debug(void) {
     o->oPosX = o->oHomeX + gDebugInfo[5][0];

@@ -760,13 +760,13 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                 break;
 
             case WARP_OP_DEATH:
-                if (m->numLives == 0 && INFINITE_LIVES!=0) {
-					//crash the plane with no survivors
-					#ifdef HARDCORE
-					int i=1/0;
-					#endif
-                    sDelayedWarpOp = WARP_OP_GAME_OVER;
-                }
+                // if (m->numLives == 0 && INFINITE_LIVES!=0) {
+					// crash the plane with no survivors
+					// #ifdef HARDCORE
+					// int i=1/0;
+					// #endif
+                    // sDelayedWarpOp = WARP_OP_GAME_OVER;
+                // }
                 sDelayedWarpTimer = 48;
                 sSourceWarpNodeId = WARP_NODE_DEATH;
                 play_transition(WARP_TRANSITION_FADE_INTO_BOWSER, 0x30, 0x00, 0x00, 0x00);
@@ -776,8 +776,8 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
             case WARP_OP_WARP_FLOOR:
                 sSourceWarpNodeId = WARP_NODE_WARP_FLOOR;
                 if (area_get_warp_node(sSourceWarpNodeId) == NULL) {
-                    if (m->numLives == 0 && !INFINITE_LIVES) {
-                        sDelayedWarpOp = WARP_OP_GAME_OVER;
+                    if (m->numLives == 0 && INFINITE_LIVES!=0) {
+                        // sDelayedWarpOp = WARP_OP_GAME_OVER;
                     } else {
                         sSourceWarpNodeId = WARP_NODE_DEATH;
                     }
@@ -1012,6 +1012,7 @@ extern Gfx mat_hmc_dl_water_no_nsolid[];
 extern Gfx mat_lll_dl_water_no_nsolid[];
 extern Gfx mat_jrb_dl_water_no_nsolid[];
 extern Gfx mat_bitdw_dl_water_no_nsolid[];
+extern Gfx star_seg3_dl_0302B870[];
 //This is re used from when pos took args from the object pos and converted it
 void ScrollF2(Gfx *F2,u32 x, u32 y){
 	union PosBytes Xspd;
@@ -1036,6 +1037,8 @@ void Scroll_Waters(void){
 	Gfx *F2 = segmented_to_virtual(mat_WaterCube_water_no_nsolid);
 	ScrollF2(F2+12,1,0);
 	ScrollF2(F2+20,0,1);
+	F2 = segmented_to_virtual(star_seg3_dl_0302B870);
+	ScrollF2(F2+10,5,2);
 	//Now do switch based on level
 	switch(gCurrLevelNum){
 		case LEVEL_BOB:

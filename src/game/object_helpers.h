@@ -250,6 +250,7 @@ s32 cur_obj_set_direction_table(s8 *a0);
 s32 cur_obj_progress_direction_table(void);
 void stub_obj_helpers_3(UNUSED s32 sp0, UNUSED s32 sp4);
 void cur_obj_scale_over_time(s32 a0, s32 a1, f32 sp10, f32 sp14);
+void cur_obj_scale_over_Wall(s32 a0, s32 a1, f32 sp10, f32 sp14);
 void cur_obj_set_pos_to_home_with_debug(void);
 s32 cur_obj_is_mario_on_platform(void);
 s32 cur_obj_move_up_and_down(s32 a0);

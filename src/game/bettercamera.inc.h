@@ -274,12 +274,7 @@ static void newcam_rotate_button(void)
     f32 intendedXMag;
     f32 intendedYMag;
     //When you press L and R together, set the flag for centering the camera. Afterwards, start setting the yaw to the Player's yaw at the time.
-    if (((gPlayer1Controller->buttonDown & L_TRIG && gPlayer1Controller->buttonDown & R_TRIG) | (gPlayer1Controller->buttonDown & D_JPAD)) && newcam_modeflags & NC_FLAG_ZOOM)
-    {
-        newcam_yaw_target = -gMarioState->faceAngle[1]-0x4000;
-        newcam_centering = 1;
-		newcam_tilt = 0x800;
-    }
+
     if (newcam_modeflags & NC_FLAG_ZOOM_ULTRA)
     {
         if (gPlayer1Controller->buttonPressed & L_CBUTTONS)
@@ -327,6 +322,32 @@ static void newcam_rotate_button(void)
                 newcam_yaw_target = newcam_yaw_target-(ivrt(0)*0x4000);
             newcam_centering = 1;
         }
+		else
+        if ((gPlayer1Controller->buttonDown & L_JPAD) && newcam_analogue == 0)
+        {
+            newcam_yaw_target = newcam_yaw_target+(ivrt(0)*0x80);
+			newcam_centering = 1;
+        }
+		else
+        if ((gPlayer1Controller->buttonDown & R_JPAD) && newcam_analogue == 0)
+        {
+            newcam_yaw_target = newcam_yaw_target-(ivrt(0)*0x80);
+			newcam_centering = 1;
+        }
+		else
+		if ((gPlayer1Controller->buttonPressed & D_JPAD) && newcam_analogue == 0)
+        {
+        newcam_yaw_target = newcam_yaw_target&0xE000;
+        newcam_centering = 1;
+		newcam_tilt = 0x1000;
+        }
+		else
+		if (gPlayer1Controller->buttonDown & U_JPAD)
+		{
+			newcam_yaw_target = -gMarioState->faceAngle[1]-0x4000;
+			newcam_centering = 1;
+			newcam_tilt = 0x1000;
+		}
 	}
     if ((newcam_modeflags & NC_FLAG_8D || newcam_modeflags & NC_FLAG_4D) && newcam_modeflags & NC_FLAG_YTURN) //8 directional camera rotation input for buttons.
     {
@@ -835,7 +856,7 @@ void newcam_loop(struct Camera *c) {
     newcam_rotate_button();
     newcam_zoom_button();
     newcam_position_cam();
-    newcam_find_fixed();
+    // newcam_find_fixed();
     if (gMarioObject)
         newcam_apply_values(c);
     newcam_fade_target_closeup();

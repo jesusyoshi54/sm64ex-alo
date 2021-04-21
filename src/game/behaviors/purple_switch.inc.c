@@ -16,7 +16,25 @@ void bhv_purple_switch_loop(void) {
          */
         case PURPLE_SWITCH_IDLE:
             cur_obj_set_model(MODEL_PURPLE_SWITCH);
-            cur_obj_scale(1.5f);
+			char *buf[32];
+			sprintf(buf,"time %d",o->oWallAngle);
+			print_text(32,32,buf);
+			//doesn't work :(
+			if (o->oWallAngle>2 && o->oWallAngle<6){
+				cur_obj_scale_over_Wall(2, 3, 1.5f, 0.2f);
+			}
+			else
+			if (o->oWallAngle>5 && o->oWallAngle<9){
+				if(o->oWallAngle==6){
+				cur_obj_play_sound_2(SOUND_GENERAL2_PURPLE_SWITCH);
+				}
+				cur_obj_scale_over_Wall(2, 3, 0.2f, 1.5f);
+			}
+            else{
+				cur_obj_scale(1.5f);
+				o->activeFlags &= ~ACTIVE_FLAG_INITIATED_TIME_STOP;
+			}
+			o->oWallAngle++;
             if (gMarioObject->platform == o && !(gMarioStates[0].action & MARIO_UNKNOWN_13)) {
                 if (lateral_dist_between_objects(o, gMarioObject) < 127.5) {
                     o->oAction = PURPLE_SWITCH_PRESSED;
@@ -34,8 +52,10 @@ void bhv_purple_switch_loop(void) {
                 o->oAction = PURPLE_SWITCH_TICKING;
                 cur_obj_shake_screen(SHAKE_POS_SMALL);
 				bowser = cur_obj_nearest_object_with_behavior(bhvBowser);
-				bowser->oHealth = 0;
-				bowser->oAction = 4;
+				if (bowser){
+					bowser->oHealth = 0;
+					bowser->oAction = 4;
+				}
 
 #ifdef RUMBLE_FEEDBACK
                 queue_rumble_data(5, 80);

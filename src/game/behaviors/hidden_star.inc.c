@@ -58,6 +58,7 @@ void bhv_hidden_star_trigger_loop(void) {
 
 void bhv_bowser_course_red_coin_star_loop(void) {
     gRedCoinsCollected = o->oHiddenStarTriggerCounter;
+	struct Object *Purp;
     switch (o->oAction) {
         case 0:
             if (o->oHiddenStarTriggerCounter == REDS_REQ)
@@ -65,11 +66,19 @@ void bhv_bowser_course_red_coin_star_loop(void) {
             break;
 
         case 1:
-            if (o->oTimer > 2) {
-                spawn_object(o,MODEL_STAR, bhvFloorSwitchHardcodedModel);
-                spawn_mist_particles();
-                o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+            if (o->oTimer == 2) {
+                Purp=spawn_object(o,MODEL_STAR, bhvFloorSwitchHardcodedModel);
+				cutscene_object(CUTSCENE_STAR_SPAWN, Purp);
+				set_time_stop_flags(TIME_STOP_ENABLED | TIME_STOP_MARIO_AND_DOORS);
+				o->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;
+				Purp->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;
             }
+			if (o->oTimer>20){
+				gObjCutsceneDone = TRUE;
+				clear_time_stop_flags(TIME_STOP_ENABLED | TIME_STOP_MARIO_AND_DOORS);
+				o->activeFlags &= ~ACTIVE_FLAG_INITIATED_TIME_STOP;
+				o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+			}
             break;
     }
 }
