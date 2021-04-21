@@ -16,9 +16,6 @@ void bhv_purple_switch_loop(void) {
          */
         case PURPLE_SWITCH_IDLE:
             cur_obj_set_model(MODEL_PURPLE_SWITCH);
-			char *buf[32];
-			sprintf(buf,"time %d",o->oWallAngle);
-			print_text(32,32,buf);
 			//doesn't work :(
 			if (o->oWallAngle>2 && o->oWallAngle<6){
 				cur_obj_scale_over_Wall(2, 3, 1.5f, 0.2f);

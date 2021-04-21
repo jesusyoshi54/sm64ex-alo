@@ -84,7 +84,7 @@ const LevelScript level_castle_grounds_entry[] = {
 		OBJECT(MODEL_NONE, 1, 1737, -1, 0, 0, 0, 0x00040000, bhvFadingWarpUnlock),
 		OBJECT(MODEL_NONE, -3491, 2656, 1084, 0, 0, 0, 0x00050000, bhvFadingWarp),
 		OBJECT(249, -3491, 2637, 1084, 0, 0, 0, 0x00050000, bhvWarpRing),
-		OBJECT(249, 1, 1718, -1, 0, 0, 0, 0x00050000, bhvWarpRingUnlock),
+		OBJECT(249, 1, 1729, -1, 0, 24, 0, 0x00050000, bhvWarpRingUnlock),
 		OBJECT(MODEL_THI_WARP_PIPE, 2500, -194, 815, 0, 0, 0, 0x00020000, bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, 3266, -194, -1064, 0, 0, 0, 0x00010000, bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, 1662, -194, -2286, 0, 0, 0, 0x00030000, bhvWarpPipe),
