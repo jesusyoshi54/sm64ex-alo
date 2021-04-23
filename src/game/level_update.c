@@ -209,6 +209,11 @@ s8 sWarpCheckpointActive = FALSE;
 u8 unused3[4];
 u8 unused4[2];
 
+// Frameskip
+s8 gGameLagged = 0;
+OSTime sOldTime = 0;
+OSTime sDeltaTime = 0;
+
 u16 level_control_timer(s32 timerOp) {
     switch (timerOp) {
         case TIMER_CONTROL_SHOW:
@@ -1127,7 +1132,13 @@ s32 play_mode_normal(void) {
     if (sTimerRunning && gHudDisplay.timer < 17999) {
         gHudDisplay.timer += 1;
     }
+    if (sTimerRunning && gHudDisplay.timer < 17999) {
+        gHudDisplay.timer += 1;
+    }
+
     area_update_objects();
+    scroll_textures();
+
     update_hud_values();
 	Scroll_Waters();
     if (gCurrentArea != NULL) {
@@ -1319,7 +1330,7 @@ s32 update_level(void) {
     s32 changeLevel;
     switch (sCurrPlayMode) {
         case PLAY_MODE_NORMAL:
-            changeLevel = play_mode_normal(); scroll_textures();
+            changeLevel = play_mode_normal();
             break;
         case PLAY_MODE_PAUSED:
             changeLevel = play_mode_paused();

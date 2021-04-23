@@ -212,11 +212,11 @@ Gfx *geo_TextureCall(s32 state, struct GraphNode *node, UNUSED void *context) {
     struct GraphNode *graphNode = node;
     Gfx *dl = NULL;
     Gfx *dlIter = NULL;
-	dl = alloc_display_list(2 * sizeof(*dl));
-	dlIter = dl;
+	// dl = alloc_display_list(2 * sizeof(*dl));
+	// dlIter = dl;
 	OSTime Time = osGetTime();
 	f32 pick;
-	//fantastic programming
+	// fantastic programming
 	if (Check==0){
 		Check=(u16)Time + gSaveBuffer.menuData[0].filler[0];
 		pick = random_floatT(Check);

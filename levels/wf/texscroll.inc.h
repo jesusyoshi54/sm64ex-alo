@@ -1,8 +1,6 @@
 extern void scroll_wf_dl_NurbsPath_005_mesh_layer_7_vtx_0();
 extern void scroll_wf_dl_NurbsPath_008_mesh_layer_7_vtx_0();
 extern void scroll_wf_dl_NurbsPath_014_mesh_layer_7_vtx_0();
-extern void scroll_wf_dl_Rain_Drops_mesh_layer_5_vtx_0();
-extern void scroll_wf_dl_Rain_Drops_001_mesh_layer_5_vtx_0();
 extern void scroll_wf_dl_Waterfall_non_solid_mesh_layer_7_vtx_0();
 extern void scroll_wf_dl_Waterfall_non_solid_002_mesh_layer_7_vtx_0();
 extern void scroll_wf_dl_Waterfall_solid_mesh_layer_7_vtx_0();

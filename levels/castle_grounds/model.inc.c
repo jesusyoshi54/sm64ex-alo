@@ -15822,7 +15822,7 @@ Gfx mat_castle_grounds_dl_water_no_nsolid[] = {
 	gsDPPipeSync(),
 	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_8b, 8, 256, 1, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(1, 0, 0, 252, 124),
-	gsDPSetEnvColor(122, 228, 254, 20),
+	gsDPSetEnvColor(122, 228, 254, 102),
 	gsSPEndDisplayList(),
 };
 

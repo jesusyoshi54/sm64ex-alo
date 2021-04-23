@@ -60,7 +60,8 @@ struct CreditsEntry
     Vec3s marioPos;
     const char **string;
 };
-
+// Frameskip
+extern s8 gGameLagged;
 extern struct CreditsEntry *gCurrCreditsEntry;
 
 extern struct MarioState gMarioStates[];

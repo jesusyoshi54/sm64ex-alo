@@ -6,6 +6,7 @@
 #include "game/area.h"
 #include "game/behavior_actions.h"
 #include "game/game_init.h"
+#include "game/level_update.h" // Frameskip
 #include "game/mario.h"
 #include "game/memory.h"
 #include "game/obj_behaviors_2.h"
@@ -919,7 +920,6 @@ void cur_obj_update(void) {
     f32 distanceFromMario;
     BhvCommandProc bhvCmdProc;
     s32 bhvProcResult;
-
     // Calculate the distance from the object to Mario.
     if (objFlags & OBJ_FLAG_COMPUTE_DIST_TO_MARIO) {
         gCurrentObject->oDistanceToMario = dist_between_objects(gCurrentObject, gMarioObject);
