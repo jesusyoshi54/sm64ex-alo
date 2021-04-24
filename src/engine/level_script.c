@@ -807,13 +807,13 @@ extern int start_demo(int);
 
 static void level_cmd_advdemo(void)
 {
-    start_demo(0);
-    if(gDemoLevelID == 6) {
-        sRegister = gDemoLevels[6];
-        gDemoLevelID = 0;
-    } else {
-        sRegister = gDemoLevels[gDemoLevelID++];
-    }
+    // start_demo(0);
+    // if(gDemoLevelID == 6) {
+        // sRegister = gDemoLevels[6];
+        // gDemoLevelID = 0;
+    // } else {
+        // sRegister = gDemoLevels[gDemoLevelID++];
+    // }
     sCurrentCmd = CMD_NEXT;
 }
 

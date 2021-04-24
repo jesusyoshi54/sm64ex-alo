@@ -44,7 +44,7 @@ s32 run_press_start_demo_timer(s32 timer) {
 
     if (timer == 0) {
         if (!gPlayer1Controller->buttonDown && !gPlayer1Controller->stickMag) {
-            if ((++gDemoCountdown) == PRESS_START_DEMO_TIMER) {
+            if (0) {
                 // start the demo. 800 frames has passed while
                 // player is idle on PRESS START screen.
 #ifndef VERSION_JP

@@ -569,7 +569,7 @@ void read_controller_inputs(void) {
         osRecvMesg(&gSIEventMesgQueue, &D_80339BEC, OS_MESG_BLOCK);
         osContGetReadData(&gControllerPads[0]);
     }
-    run_demo_inputs();
+    // run_demo_inputs();
 
     for (i = 0; i < 2; i++) {
         struct Controller *controller = &gControllers[i];
