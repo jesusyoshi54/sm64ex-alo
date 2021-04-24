@@ -275,7 +275,7 @@ static void newcam_rotate_button(void)
     f32 intendedYMag;
     //When you press L and R together, set the flag for centering the camera. Afterwards, start setting the yaw to the Player's yaw at the time.
 
-    if (newcam_modeflags & NC_FLAG_ZOOM_ULTRA)
+	if (newcam_modeflags & NC_FLAG_ZOOM_ULTRA)
     {
         if (gPlayer1Controller->buttonPressed & L_CBUTTONS)
         {
@@ -297,7 +297,7 @@ static void newcam_rotate_button(void)
 			}
         }
     }
-    if ((newcam_modeflags & NC_FLAG_8D || newcam_modeflags & NC_FLAG_4D) && newcam_modeflags & NC_FLAG_XTURN) //8 directional camera rotation input for buttons.
+    if ((newcam_modeflags & NC_FLAG_8D) && newcam_modeflags & NC_FLAG_XTURN) //8 directional camera rotation input for buttons.
     {
         if ((gPlayer1Controller->buttonPressed & L_CBUTTONS) && newcam_analogue == 0)
         {
@@ -559,6 +559,8 @@ static void newcam_zoom_button(void)
 static void newcam_update_values(void) {
     //For tilt, this just limits it so it doesn't go further than 90 degrees either way. 90 degrees is actually 16384, but can sometimes lead to issues, so I just leave it shy of 90.
     u8 waterflag = 0;
+	newcam_mode = newcam_intendedmode;
+	newcam_modeflags = newcam_mode;
 	if (!newcam_active){
 		newcam_xlu = 255;
 		gCurrentArea->camera->mode = CAMERA_MODE_8_DIRECTIONS;
@@ -752,8 +754,6 @@ static void newcam_position_cam(void) {
 static void newcam_find_fixed(void) {
     u8 i = 0;
     void (*func)();
-    newcam_mode = newcam_intendedmode;
-    newcam_modeflags = newcam_mode;
 
     for (i = 0; i < sizeof(newcam_fixedcam) / sizeof(struct newcam_hardpos); i++) {
         if (newcam_fixedcam[i].newcam_hard_levelID == gCurrLevelNum && newcam_fixedcam[i].newcam_hard_areaID == gCurrAreaIndex) {

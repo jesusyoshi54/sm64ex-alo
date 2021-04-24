@@ -1112,8 +1112,11 @@ void basic_update(UNUSED s16 *arg) {
 int gPressedStart = 0;
 extern s16 gStarFadeDialog;
 extern f32 random_float(void);
+extern void render_fps(void);
 extern s32 sActSelectorMenuTimer;
+
 s32 play_mode_normal(void) {
+	OSTime newTime = osGetTime();
     if (gCurrDemoInput != NULL) {
         print_intro_text();
         if (gPlayer1Controller->buttonPressed & END_DEMO) {
@@ -1135,9 +1138,31 @@ s32 play_mode_normal(void) {
     if (sTimerRunning && gHudDisplay.timer < 17999) {
         gHudDisplay.timer += 1;
     }
-
-    area_update_objects();
-    scroll_textures();
+// Only N64 - shouldn't be necessary in pc-port
+// #ifdef TARGET_N64
+    // sDeltaTime += newTime - sOldTime;
+    // sOldTime = newTime;
+    // gGameLagged = -1;
+	// render_fps();
+    // while (sDeltaTime > 1562744) {
+        // sDeltaTime -= 1562744;
+        // if (sTimerRunning && gHudDisplay.timer < 17999) {
+            // gHudDisplay.timer += 1;
+        // }
+        // gGameLagged += 1;
+        // area_update_objects();
+        // if (gGameLagged && gCurrentArea != NULL && gCurrentArea->camera->cutscene != 0) {
+            // play_cutscene(gCurrentArea->camera);
+        // }
+    // }
+// #else
+    if (sTimerRunning && gHudDisplay.timer < 17999) {
+        gHudDisplay.timer += 1;
+    }
+     
+// #endif
+	area_update_objects();
+	scroll_textures();
 
     update_hud_values();
 	Scroll_Waters();
@@ -1334,15 +1359,23 @@ s32 update_level(void) {
             break;
         case PLAY_MODE_PAUSED:
             changeLevel = play_mode_paused();
+            sDeltaTime = 0;
+            sOldTime = osGetTime();
             break;
         case PLAY_MODE_CHANGE_AREA:
             changeLevel = play_mode_change_area();
+            sDeltaTime = 0;
+            sOldTime = osGetTime();
             break;
         case PLAY_MODE_CHANGE_LEVEL:
             changeLevel = play_mode_change_level();
+            sDeltaTime = 0;
+            sOldTime = osGetTime();
             break;
         case PLAY_MODE_FRAME_ADVANCE:
             changeLevel = play_mode_frame_advance();
+            sDeltaTime = 0;
+            sOldTime = osGetTime();
             break;
     }
 
@@ -1442,6 +1475,8 @@ s32 lvl_init_or_update(s16 initOrUpdate, UNUSED s32 unused) {
     switch (initOrUpdate) {
         case 0:
             result = init_level();
+            sDeltaTime = 0;
+            sOldTime = osGetTime();
             break;
         case 1:
             result = update_level();

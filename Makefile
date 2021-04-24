@@ -653,7 +653,7 @@ ifeq ($(COMPILER_N64),gcc)
   CC        := $(CROSS)gcc
 endif
 
-N64_CFLAGS := -nostdinc -I include/libc -DTARGET_N64 -D_LANGUAGE_C -DNO_LDIV
+N64_CFLAGS := -nostdinc -I include/libc -DTARGET_N64 -D_LANGUAGE_C -DNO_LDIV -nostdlib
 CC_CFLAGS := -fno-builtin -fno-toplevel-reorder
 
 INCLUDE_CFLAGS := -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I .

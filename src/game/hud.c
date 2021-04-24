@@ -386,7 +386,7 @@ void render_hud_camera_status(void) {
 
     cameraLUT = segmented_to_virtual(&main_hud_camera_lut);
     x = GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(54);
-    y = 205;
+    y = 209;
 
     if (sCameraHUD.status == CAM_STATUS_NONE) {
         return;

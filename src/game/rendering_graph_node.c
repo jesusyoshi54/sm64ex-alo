@@ -85,8 +85,8 @@ struct RenderModeContainer renderModeTable_1Cycle[2] = { { {
     { {
     /* z-buffered */
     G_RM_ZB_OPA_SURF,
-    G_RM_ZB_OPA_SURF,
-    G_RM_ZB_OPA_DECAL,
+    G_RM_RA_ZB_OPA_SURF,
+    G_RM_RA_ZB_OPA_DECAL,
     G_RM_RA_ZB_OPA_INTER,
     G_RM_AA_ZB_TEX_EDGE,
     G_RM_AA_ZB_XLU_SURF,
@@ -97,9 +97,9 @@ struct RenderModeContainer renderModeTable_1Cycle[2] = { { {
 /* Rendermode settings for cycle 2 for all 8 layers. */
 struct RenderModeContainer renderModeTable_2Cycle[2] = { { {
     G_RM_OPA_SURF2,
-    G_RM_OPA_SURF2,
-    G_RM_OPA_SURF2,
-    G_RM_OPA_SURF2,
+    G_RM_RA_OPA_SURF2,
+    G_RM_RA_OPA_SURF2,
+    G_RM_RA_OPA_SURF2,
     G_RM_AA_TEX_EDGE2,
     G_RM_AA_XLU_SURF2,
     G_RM_AA_XLU_SURF2,
@@ -108,8 +108,8 @@ struct RenderModeContainer renderModeTable_2Cycle[2] = { { {
     { {
     /* z-buffered */
     G_RM_ZB_OPA_SURF2,
-    G_RM_ZB_OPA_SURF2,
-    G_RM_ZB_OPA_DECAL2,
+    G_RM_RA_ZB_OPA_SURF2,
+    G_RM_RA_ZB_OPA_DECAL2,
     G_RM_AA_ZB_OPA_INTER2,
     G_RM_AA_ZB_TEX_EDGE2,
     G_RM_AA_ZB_XLU_SURF2,
@@ -216,9 +216,11 @@ static void geo_process_master_list(struct GraphNodeMasterList *node) {
 /**
  * Process an orthographic projection node.
  */
+f32 gWidth = 0;
 static void geo_process_ortho_projection(struct GraphNodeOrthoProjection *node) {
     if (node->node.children != NULL) {
         Mtx *mtx = alloc_display_list(sizeof(*mtx));
+		gWidth = gCurGraphNodeRoot->width;
         f32 left = (gCurGraphNodeRoot->x - gCurGraphNodeRoot->width) / 2.0f * node->scale;
         f32 right = (gCurGraphNodeRoot->x + gCurGraphNodeRoot->width) / 2.0f * node->scale;
         f32 top = (gCurGraphNodeRoot->y - gCurGraphNodeRoot->height) / 2.0f * node->scale;

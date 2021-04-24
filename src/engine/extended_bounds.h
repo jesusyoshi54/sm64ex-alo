@@ -39,7 +39,7 @@
 #include "macros.h"
 
 //set this to the extended bounds mode you want, then do "make clean".
-#define EXTENDED_BOUNDS_MODE 4
+#define EXTENDED_BOUNDS_MODE 3
 
 // SURFACE_POOL_SIZE and SURFACE_NODE_POOL_SIZE only matter on N64
 // On non-N64 targets, surface sizes are allocated using SYSTEM_MALLOC

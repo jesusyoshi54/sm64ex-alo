@@ -69,47 +69,6 @@ struct DemoInput *gCurrDemoInput = NULL; // demo input sequence
 u16 gDemoInputListID = 0;
 struct DemoInput gRecordedDemoInput = { 0 }; // possibly removed in EU. TODO: Check
 
-// SDK states that 1 cycle takes about 21.33 nanoseconds
-#define SECONDS_PER_CYCLE 0.00000002133f
-
-#define FPS_COUNTER_X_POS 24
-#define FPS_COUNTER_Y_POS 190
-
-static OSTime gLastOSTime = 0;
-static float gFrameTime = 0.0f;
-static u16 gFrames = 0;
-static u16 gFPS = 0;
-static u8 gRenderFPS = FALSE;
-
-static void calculate_frameTime_from_OSTime(u32 diff) {
-    gFrameTime += diff * SECONDS_PER_CYCLE;
-    gFrames++;
-}
-
-void render_fps(void) {
-    // Toggle rendering framerate with the L button.
-    if (gPlayer1Controller->buttonPressed & L_TRIG) {
-        gRenderFPS ^= 1;
-    }
-
-    if (gRenderFPS) {
-        OSTime newTime = osGetTime();
-
-        calculate_frameTime_from_OSTime(newTime - gLastOSTime);
-
-        // If frame time is longer or equal to a second, update FPS counter.
-        if (gFrameTime >= 1.0f) {
-            gFPS = gFrames;
-            gFrames = 0;
-            gFrameTime -= 1.0f;
-        }
-
-        print_text_fmt_int(FPS_COUNTER_X_POS, FPS_COUNTER_Y_POS, "FPS %d", gFPS);
-
-        gLastOSTime = newTime;
-    }
-}
-
 /**
  * Initializes the Reality Display Processor (RDP).
  * This function initializes settings such as texture filtering mode,
@@ -234,7 +193,6 @@ void clear_viewport(Vp *viewport, s32 color) {
 }
 
 /** Draws the horizontal screen borders */
-extern f32 gWidth;
 void draw_screen_borders(void) {
     gDPPipeSync(gDisplayListHead++);
 
@@ -244,27 +202,12 @@ void draw_screen_borders(void) {
 
     gDPSetFillColor(gDisplayListHead++, GPACK_RGBA5551(0, 0, 0, 0) << 16 | GPACK_RGBA5551(0, 0, 0, 0));
 
-#ifdef TARGET_N64
-	if (gWidth<159.0f){
-	osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
+#if BORDER_HEIGHT != 0
     gDPFillRectangle(gDisplayListHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), 0,
-                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, 21);
+                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, BORDER_HEIGHT - 1);
     gDPFillRectangle(gDisplayListHead++,
-                     GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), SCREEN_HEIGHT - 21,
+                     GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), SCREEN_HEIGHT - BORDER_HEIGHT,
                      GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - 1);
-
-    gDPFillRectangle(gDisplayListHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), 0,
-                     GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0)+15, SCREEN_HEIGHT-1);
-    gDPFillRectangle(gDisplayListHead++,
-                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0)-16, 0,
-                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - 1);
-	}else{
-    // gDPFillRectangle(gDisplayListHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), 0,
-                     // GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, BORDER_HEIGHT - 1);
-    // gDPFillRectangle(gDisplayListHead++,
-                     // GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), SCREEN_HEIGHT - BORDER_HEIGHT,
-                     // GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - 1);
-	}
 #endif
 }
 
@@ -273,6 +216,7 @@ void make_viewport_clip_rect(Vp *viewport) {
     s16 vpPly = (viewport->vp.vtrans[1] - viewport->vp.vscale[1]) / 4 + 1;
     s16 vpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 1;
     s16 vpLry = (viewport->vp.vtrans[1] + viewport->vp.vscale[1]) / 4 - 1;
+
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, vpUlx, vpPly, vpLrx, vpLry);
 }
 
@@ -644,7 +588,6 @@ void init_controllers(void) {
             gControllers[cont].statusData = &gControllerStatuses[port];
             gControllers[cont++].controllerData = &gControllerPads[port];
         }
-
     }
 
 #ifdef BETTERCAMERA

@@ -57,7 +57,7 @@ s8 D_8032C648 = 0;
 s8 gDebugLevelSelect = FALSE;
 s8 D_8032C650 = 0;
 
-s8 gShowProfiler = FALSE;
+s8 gShowProfiler = FALSE; //resource meter
 s8 gShowDebugText = FALSE;
 
 // unused
