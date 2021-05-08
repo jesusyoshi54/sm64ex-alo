@@ -1124,8 +1124,8 @@ void lakitu_zoom(f32 rangeDist, s16 rangePitch) {
         // rangePitch /= 2;
     // }
     if (gCameraMovementFlags & CAM_MOVE_PITCH) {
-		if ((sLakituPitch += rangePitch/2) > rangePitch+0x1800) {
-				sLakituPitch = rangePitch+0x1800;
+		if ((sLakituPitch += rangePitch) > rangePitch+0x1950) {
+				sLakituPitch = rangePitch+0x1950;
 			}
 	}else{
 		if (gCameraMovementFlags & CAM_MOVE_ULTRA_ZOOM_OUT) {
@@ -1137,7 +1137,7 @@ void lakitu_zoom(f32 rangeDist, s16 rangePitch) {
 				sLakituPitch = rangePitch;
 			}
 		} else {
-			if ((sLakituPitch -= rangePitch / 4) < 0) {
+			if ((sLakituPitch -= rangePitch) < 0) {
 				sLakituPitch = 0;
 			}
 		}
@@ -1207,7 +1207,7 @@ void mode_2_directions_camera(struct Camera *c) {
         s8DirModeYawOffset -= DEGREES(45);
         play_sound_cbutton_side();
     }
-    lakitu_zoom(800.f, 0x900);
+    lakitu_zoom(800.f, 0x1150);
 	
 	if (gPlayer1Controller->buttonPressed & R_TRIG){
 	gCameraMovementFlags ^= CAM_MOVE_PITCH;

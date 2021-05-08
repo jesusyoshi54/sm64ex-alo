@@ -91,7 +91,7 @@ themselves."))
 
 DEFINE_DIALOG(DIALOG_009, 1, 4, 60, 310, _("\
 We are doomed to live in sin without him.\n\
-He guides us to the heaven. He is our\n\
+He guides us to the heavens. He is our\n\
 shepherd and guiding star. He allows\n\
 us to escape eternal torture. Deliver us."))
 
@@ -419,7 +419,7 @@ respite.\n\
 The false one promises all but\n\
 has no hand to deliver. You must\n\
 take hold of it within your\n\
-own hands."))
+own."))
 
 DEFINE_DIALOG(DIALOG_045, 1, 5, 60, 300, _("\
 The zealots only see the sheep they\n\
@@ -433,12 +433,15 @@ fountain given, but the one within.\n\
 Only from there will you see\n\
 your reflection."))
 
-DEFINE_DIALOG(DIALOG_046, 1, 5, 60, 300, _("\
+DEFINE_DIALOG(DIALOG_046, 1, 4, 60, 300, _("\
 With every perspective comes a new life.\n\
 In these worlds you shall re-experience\n\
 yourself in a new perspective.\n\
+\n\
 You may have a limited view, but you can\n\
-zoom out far more than normal.\n\
+zoom out far more than normal, and from\n\
+far above as if viewing from\n\
+heaven itself.\n\
 When you are done, look to the heavens\n\
 while standing on the alter of\n\
 reflection to resume your journey."))
@@ -609,7 +612,7 @@ have several new tools for your journey.\n\
 Your camera for one has additional\n\
 controls with the dpad. You can also zoom in\n\
 and out using R, and change modes with L.\n\
-Once you collect 25 jewels of worhship you\n\
+Once you collect 25 jewels of worship you\n\
 may undertake the rite of passage upon\n\
 the stantion above."))
 
