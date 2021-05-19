@@ -1465,12 +1465,14 @@ void common_slide_action(struct MarioState *m, u32 endAction, u32 airAction, s32
 
 s32 common_slide_action_with_jump(struct MarioState *m, u32 stopAction, u32 jumpAction, u32 airAction,
                                   s32 animation) {
-    //cancel butt slide anytime
-	// if (m->actionTimer == 5) {
-        if (m->input & INPUT_A_PRESSED) {
+    //cancel butt slide much easier
+	if (m->actionTimer == 5) {
+        if (m->framesSinceA<3) {
             return set_jumping_action(m, jumpAction, 0);
         }
-        m->actionTimer++;
+	}else{
+		m->actionTimer++;
+	}
 
     if (update_sliding(m, 4.0f)) {
         return set_mario_action(m, stopAction, 0);
