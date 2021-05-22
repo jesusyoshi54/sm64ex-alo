@@ -92,8 +92,8 @@ bool configPrecacheRes = true;
 #endif
 #ifdef BETTERCAMERA
 // BetterCamera settings
-unsigned int configCameraXSens   = 25;
-unsigned int configCameraYSens   = 25;
+unsigned int configCameraXSens   = 15;
+unsigned int configCameraYSens   = 15;
 unsigned int configCameraAggr    = 0;
 unsigned int configCameraPan     = 0;
 unsigned int configCameraDegrade = 10; // 0 - 100%
