@@ -15,6 +15,7 @@ enum newcam_flagvalues
     NC_FLAG_COLLISION = 0x1000, //If this flag is set, the camera will collide and correct itself with terrain.
     NC_FLAG_SLIDECORRECT = 0x2000, //If this flag is set, the camera will attempt to centre itself behind Mario whenever he's sliding.
     NC_FLAG_ZOOM_ULTRA = 0x4000, //If this flag is set, the camera will attempt to centre itself behind Mario whenever he's sliding.
+    NC_FLAG_VERT = 0x8000, //Y axis analog, X axis 8/4 D
 
     NC_MODE_NORMAL = NC_FLAG_XTURN | NC_FLAG_YTURN | NC_FLAG_ZOOM | NC_FLAG_FOCUSX | NC_FLAG_FOCUSY | NC_FLAG_FOCUSZ | NC_FLAG_POSX | NC_FLAG_POSY | NC_FLAG_POSZ | NC_FLAG_COLLISION,
     NC_MODE_SLIDE = NC_FLAG_XTURN | NC_FLAG_YTURN | NC_FLAG_ZOOM | NC_FLAG_FOCUSX | NC_FLAG_FOCUSY | NC_FLAG_FOCUSZ | NC_FLAG_POSX | NC_FLAG_POSY | NC_FLAG_POSZ | NC_FLAG_COLLISION | NC_FLAG_SLIDECORRECT,
