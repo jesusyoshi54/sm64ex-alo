@@ -1405,6 +1405,7 @@ s32 act_air_hit_wall(struct MarioState *m) {
     // execute on two frames, but instead it executes twice on the same frame.
     // This results in firsties only being possible for a single frame, instead
     // of two.
+	return //epic fix
 }
 
 s32 act_forward_rollout(struct MarioState *m) {

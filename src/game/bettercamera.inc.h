@@ -337,14 +337,14 @@ static void newcam_rotate_button(void)
 		else
 		if ((gPlayer1Controller->buttonPressed & D_JPAD) && newcam_analogue == 0)
         {
-        newcam_yaw_target = newcam_yaw_target&0xE000;
+        newcam_yaw_target = (newcam_yaw_target+0x1000)&0xE000;
         newcam_centering = 1;
 		newcam_tilt = 0x1000;
         }
 		else
 		if (gPlayer1Controller->buttonDown & U_JPAD)
 		{
-			newcam_yaw_target = -gMarioState->faceAngle[1]-0x4000;
+			newcam_yaw_target = ((-gMarioState->faceAngle[1]-0x4000)+0x1000)&0xE000; //conversion from sm64 angles to newcam angle system
 			newcam_centering = 1;
 			newcam_tilt = 0x1000;
 		}
@@ -866,7 +866,7 @@ void newcam_loop(struct Camera *c) {
         }
     }
     //Just some visual information on the values of the camera. utilises ifdef because it's better at runtime.
-    #ifdef NEWCAM_DEBUG
+    // #ifdef NEWCAM_DEBUG
     newcam_diagnostics();
-    #endif // NEWCAM_DEBUG
+    // #endif // NEWCAM_DEBUG
 }
