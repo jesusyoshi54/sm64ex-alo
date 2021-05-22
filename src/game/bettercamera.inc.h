@@ -337,14 +337,14 @@ static void newcam_rotate_button(void)
 		else
 		if ((gPlayer1Controller->buttonPressed & D_JPAD) && newcam_analogue == 0)
         {
-        newcam_yaw_target = newcam_yaw_target&0xE000;
+        newcam_yaw_target = (newcam_yaw_target+0x1000)&0xE000;
         newcam_centering = 1;
 		newcam_tilt = 0x1000;
         }
 		else
 		if (gPlayer1Controller->buttonDown & U_JPAD)
 		{
-			newcam_yaw_target = -gMarioState->faceAngle[1]-0x4000;
+			newcam_yaw_target = ((-gMarioState->faceAngle[1]-0x4000)+0x1000)&0xE000;
 			newcam_centering = 1;
 			newcam_tilt = 0x1000;
 		}

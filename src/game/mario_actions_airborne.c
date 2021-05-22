@@ -1202,7 +1202,7 @@ u32 common_air_knockback_step(struct MarioState *m, u32 landAction, u32 hardFall
 }
 
 s32 check_wall_kick(struct MarioState *m) {
-    if ((m->framesSinceA < 4) && m->wallKickTimer != 0 && m->prevAction == ACT_AIR_HIT_WALL && (m->framesSinceGround>m->framesSinceA)) {
+    if ((m->framesSinceA < 2) && m->wallKickTimer != 0 && m->prevAction == ACT_AIR_HIT_WALL && (m->framesSinceGround>m->framesSinceA)) {
         m->faceAngle[1] += 0x8000;
         return set_mario_action(m, ACT_WALL_KICK_AIR, 0);
     }
@@ -1405,6 +1405,7 @@ s32 act_air_hit_wall(struct MarioState *m) {
     // execute on two frames, but instead it executes twice on the same frame.
     // This results in firsties only being possible for a single frame, instead
     // of two.
+	return
 }
 
 s32 act_forward_rollout(struct MarioState *m) {

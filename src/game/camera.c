@@ -1247,10 +1247,10 @@ void mode_8_directions_camera(struct Camera *c) {
         s8DirModeYawOffset += DEGREES(2);
     }
     else if (gPlayer1Controller->buttonPressed & U_JPAD) {
-        s8DirModeYawOffset = -gMarioState->faceAngle[1]-0x8000;
+        s8DirModeYawOffset = (gMarioState->faceAngle[1]+0x9000)&0xE000;
     }
     else if (gPlayer1Controller->buttonPressed & D_JPAD) {
-        s8DirModeYawOffset = s8DirModeYawOffset&0xE000;
+        s8DirModeYawOffset = (s8DirModeYawOffset+0x1000)&0xE000;
     }
     lakitu_zoom(400.f, 0x900);
     c->nextYaw = update_8_directions_camera(c, c->focus, pos);
