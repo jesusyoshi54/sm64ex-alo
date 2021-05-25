@@ -360,6 +360,7 @@ void display_and_vsync(void) {
     osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFrameBuffers[sCurrFBNum]));
     profiler_log_thread5_time(THREAD5_END);
     osRecvMesg(&gGameVblankQueue, &D_80339BEC, OS_MESG_BLOCK);
+	#ifdef TARGET_N64
     // Skip swapping buffers on emulator so that they display immediately as the Gfx task finishes
     if ((*(volatile u32 *)0xA4100010) != 0) { // Read RDP Clock Register, has a value of zero on emulators
         if (++sCurrFBNum == 3) {
@@ -369,6 +370,7 @@ void display_and_vsync(void) {
             frameBufferIndex = 0;
         }
     }
+	#endif
     gGlobalTimer++;
 }
 
