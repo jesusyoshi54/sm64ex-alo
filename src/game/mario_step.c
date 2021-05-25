@@ -329,13 +329,8 @@ s32 perform_ground_step(struct MarioState *m) {
     Vec3f intendedPos;
 
     for (i = 0; i < 4; i++) {
-        s16 moveDir = atan2s(m->vel[2], m->vel[0]);
-        float moveX = sins(moveDir);
-        float moveZ = coss(moveDir);
-        float speedFactor = m->floor->normal.y / sqrtf(sqr(m->floor->normal.y) + sqr(m->floor->normal.x * moveX + m->floor->normal.z * moveZ));
-        
-        intendedPos[0] = m->pos[0] + speedFactor * (m->vel[0] / 4.0f);
-        intendedPos[2] = m->pos[2] + speedFactor * (m->vel[2] / 4.0f);
+        intendedPos[0] = m->pos[0] + m->floor->normal.y * (m->vel[0] / 4.0f);
+        intendedPos[2] = m->pos[2] + m->floor->normal.y * (m->vel[2] / 4.0f);
         intendedPos[1] = m->pos[1];
 
         stepResult = perform_ground_quarter_step(m, intendedPos);
@@ -415,7 +410,7 @@ s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32 stepAr
 
     waterLevel = find_water_level(nextPos[0], nextPos[2], nextPos[1]);
 
-    m->wall = NULL;
+    //m->wall = NULL;
 
     //! The water pseudo floor is not referenced when your intended qstep is
     // out of bounds, so it won't detect you as landing.
@@ -642,12 +637,12 @@ s32 perform_air_step(struct MarioState *m, u32 stepArg) {
         if (quarterStepResult == AIR_STEP_LANDED || quarterStepResult == AIR_STEP_GRABBED_LEDGE
             || quarterStepResult == AIR_STEP_GRABBED_CEILING
             || quarterStepResult == AIR_STEP_HIT_LAVA_WALL) {
-			#ifdef SUPER_MODE
-			extern u8 Super_Jump_Count;
-			extern u8 Super_Can_Jump;
-			Super_Can_Jump=0;
-			Super_Jump_Count=0;
-			#endif
+				#ifdef SUPER_MODE
+			   extern u8 Super_Jump_Count;
+			   extern u8 Super_Can_Jump;
+			   Super_Can_Jump=0;
+			   Super_Jump_Count=0;
+			   #endif
             break;
         }
     }
@@ -658,23 +653,23 @@ s32 perform_air_step(struct MarioState *m, u32 stepArg) {
 
     m->terrainSoundAddend = mario_get_terrain_sound_addend(m);
 
-    if (m->action != ACT_FLYING) {
-		#ifdef CHAOS_LITE
-		extern u8 Grav_Timer;
-		if (m->Chaos_Vals[0]==6 | m->Chaos_Vals[1]==6){
-			if (Grav_Timer){
-				apply_gravity(m);
-			}
-		}else if (m->Chaos_Vals[0]==7 | m->Chaos_Vals[1]==7){
-			apply_gravity(m);
-			apply_gravity(m);
-		}else{
-			apply_gravity(m);
-		}
-		#else
-        apply_gravity(m);
-		#endif
-    }
+     if (m->action != ACT_FLYING) {
+               #ifdef CHAOS_LITE
+               extern u8 Grav_Timer;
+               if (m->Chaos_Vals[0]==6 | m->Chaos_Vals[1]==6){
+                       if (Grav_Timer){
+                               apply_gravity(m);
+                       }
+               }else if (m->Chaos_Vals[0]==7 | m->Chaos_Vals[1]==7){
+                       apply_gravity(m);
+                       apply_gravity(m);
+               }else{
+                       apply_gravity(m);
+               }
+               #else
+         apply_gravity(m);
+               #endif
+     }
     apply_vertical_wind(m);
 
     vec3f_copy(m->marioObj->header.gfx.pos, m->pos);

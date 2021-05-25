@@ -110,7 +110,7 @@ const LevelScript level_bitdw_entry[] = {
 		OBJECT(MODEL_SNUFIT, 7422, 3453, -6814, 0, -180, 0, 0, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 7667, 3192, -9570, 0, -180, 0, 0, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 5393, 2322, -10280, 0, -180, 0, 0, bhvSnufit),
-		OBJECT(MODEL_SNUFIT, 5685, 2134, -3612, 0, -180, 0, 0, bhvSnufit),
+		OBJECT(MODEL_SNUFIT, 6181, 1977, -3643, 0, -180, 0, 0, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 8199, 3453, -5668, 0, -180, 0, 0, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 7926, 3453, -7931, 0, -180, 0, 0, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 7001, 2828, -10021, 0, -180, 0, 0, bhvSnufit),

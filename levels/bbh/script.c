@@ -60,7 +60,7 @@ const LevelScript level_bbh_entry[] = {
 		OBJECT_WITH_ACTS(MODEL_NONE, -1257, 357, -3860, 0, 0, 0, 0x000A0000, bhvAirborneWarp, ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
 		OBJECT_WITH_ACTS(255, 8146, 608, -3899, 0, 180, 0, 0x00020000, WaterCube_UPDown, ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
 		OBJECT_WITH_ACTS(255, 7496, 1250, -1682, 0, 180, 0, 0x00020000, WaterCube_UPDown, ACT_1),
-		OBJECT_WITH_ACTS(255, 2719, 1524, -146, 0, 135, 0, 0x00020000, WaterCube_Static, ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
+		OBJECT_WITH_ACTS(255, 2719, 1714, -146, 0, 135, 0, 0x00020000, WaterCube_Static, ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
 		OBJECT_WITH_ACTS(255, 1633, 505, -13748, 0, 180, 0, 0x00020000, WaterCube_Static, ACT_1),
 		OBJECT_WITH_ACTS(255, 3551, -31, 7782, -2, 90, -2, 0x00020000, WaterCube_Static, ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
 		TERRAIN(bbh_area_1_collision),

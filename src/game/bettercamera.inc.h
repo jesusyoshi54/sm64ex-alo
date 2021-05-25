@@ -344,7 +344,7 @@ static void newcam_rotate_button(void)
 		else
 		if (gPlayer1Controller->buttonDown & U_JPAD)
 		{
-			newcam_yaw_target = ((-gMarioState->faceAngle[1]-0x4000)+0x1000)&0xE000;
+			newcam_yaw_target = ((-gMarioState->faceAngle[1]-0x4000)+0x1000)&0xE000; //conversion from sm64 angles to newcam angle system
 			newcam_centering = 1;
 			newcam_tilt = 0x1000;
 		}
@@ -600,7 +600,6 @@ static void newcam_update_values(void) {
         if (gMarioState->forwardVel > 2)
         waterflag = 1;
     }
-
     // if (waterflag && newcam_modeflags & NC_FLAG_XTURN) {
         // newcam_yaw = (approach_s16_symmetric(newcam_yaw,-gMarioState->faceAngle[1]-0x4000,(gMarioState->forwardVel*128)));
         // if ((signed)gMarioState->forwardVel > 1)

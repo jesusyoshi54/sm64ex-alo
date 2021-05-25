@@ -1394,9 +1394,6 @@ s32 act_air_hit_wall(struct MarioState *m) {
         return set_mario_action(m, ACT_SOFT_BONK, 0);
     }
 
-// #ifdef AVOID_UB
-    
-// #endif
     return set_mario_animation(m, MARIO_ANIM_START_WALLKICK);
 
     //! Missing return statement. The returned value is the result of the call

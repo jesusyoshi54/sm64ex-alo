@@ -920,6 +920,7 @@ s32 update_2_directions_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     f32 focusY;
     f32 yOff = 125.f;
     f32 baseDist = 1000.f;
+	
 
     sAreaYaw = camYaw;
     calc_y_to_curr_floor(&posY, 1.f, 200.f, &focusY, 0.9f, 200.f);
@@ -1212,7 +1213,6 @@ void mode_2_directions_camera(struct Camera *c) {
 	if (gPlayer1Controller->buttonPressed & R_TRIG){
 	gCameraMovementFlags ^= CAM_MOVE_PITCH;
 	}
-	
     c->nextYaw = update_2_directions_camera(c, c->focus, pos);
 	// s8DirModeYawOffset=0xC000;
     c->pos[0] = pos[0];
