@@ -62,7 +62,7 @@ void bhv_red_coin_loop(void) {
             create_sound_spawner(SOUND_GENERAL_RED_COIN);
 #endif
             // Spawn the orange number counter, as long as it isn't the last coin.
-            if (o->parentObj->oHiddenStarTriggerCounter != 8) {
+            if (o->parentObj->oHiddenStarTriggerCounter < REDS_REQ) {
                 spawn_orange_number(o->parentObj->oHiddenStarTriggerCounter, 0, 0, 0);
             }
 

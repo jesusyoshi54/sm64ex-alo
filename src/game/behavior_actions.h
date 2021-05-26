@@ -1,5 +1,14 @@
 #ifndef BEHAVIOR_ACTIONS_H
 #define BEHAVIOR_ACTIONS_H
+#include "types.h"
+
+struct Struct802C0DF0 {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 model;
+    const BehaviorScript *behavior;
+};
 
 void spawn_mist_particles_variable(s32 count, s32 offsetY, f32 size);
 void bhv_spawn_star_no_level_exit(u32);
@@ -17,6 +26,30 @@ void play_penguin_walking_sound(s32 walk);
 s32 update_angle_from_move_flags(s32 *angle);
 void cur_obj_spawn_strong_wind_particles(s32 windSpread, f32 scale, f32 relPosX, f32 relPosY, f32 relPosZ);
 
+#if INCLUDE_MOP
+void bhv_flip_block_loop(void);
+void bhv_noteblock_loop(void);
+void bhv_sandblock_loop(void);
+void bhv_Spring_loop(void);
+void bhv_shrinkplatform_loop(void);
+void bhv_Switchblock_Switch_loop(void);
+void bhv_Switchblock_loop(void);
+void bhv_emitter_loop(void);
+void bhv_flipswitch_panel_starspawn_loop(void);
+void bhv_flipswitch_panel_starspawn_init(void);
+void bhv_flipswitch_panel_loop(void);
+void bhv_flipswitch_panel_init(void);
+void bhv_checkpoint_flag_init(void);
+void bhv_checkpoint_flag_loop(void);
+void bhv_flipswap_loop(void);
+void bhv_pswitch_loop(void);
+void bhv_move_rotate_init(void);
+void bhv_move_rotate_loop(void);
+void bhv_green_switchboard_loop(void);
+void bhv_green_switchboard_init(void);
+#endif
+
+void uv_update_scroll(void);
 void bhv_cap_switch_loop(void);
 void bhv_tiny_star_particles_init(void);
 void bhv_grindel_thwomp_loop(void);

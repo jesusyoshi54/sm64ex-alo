@@ -36,10 +36,14 @@
 
 #include "level_table.h"
 
+
 #define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8)
 #define DEFINE_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10) + 3
 static const LevelScript script_exec_level_table[2
   #include "level_defines.h"
+  #undef DEFINE_LEVEL
+  #define DEFINE_LEVEL(_0, _1) + 3
+  #include "custom_level_defines.h"
 ];
 #undef DEFINE_LEVEL
 #undef STUB_LEVEL
@@ -51,7 +55,8 @@ static const LevelScript goto_mario_head_dizzy[4];
 static const LevelScript script_L5[4];
 
 #define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8)
-#define DEFINE_LEVEL(_0, _1, _2, folder, _4, _5, _6, _7, _8, _9, _10) static const LevelScript script_exec_ ## folder [4 + 1];
+#define DEFINE_LEVEL(_0, _1, _2, folder, _4, _5, _6, _7, _8, _9, _10) static const LevelScript script_exec_ ## folder [4 + 1]; \
+static const LevelScript custom_script_exec_ ## folder [4 + 1];
 
 #include "level_defines.h"
 
@@ -114,6 +119,25 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_EXPLOSION,               explosion_geo),
     LOAD_MODEL_FROM_GEO(MODEL_DIRT_ANIMATION,          dirt_animation_geo),
     LOAD_MODEL_FROM_GEO(MODEL_CARTOON_STAR,            cartoon_star_geo),
+	#if INCLUDE_MOP
+    LOAD_MODEL_FROM_GEO( /* NOTEBLOCK */0x7B,            Noteblock_MOP),
+    LOAD_MODEL_FROM_DL(0x2E,DL_Checkpoint_Flag_MOP_0x606660,1),
+    LOAD_MODEL_FROM_GEO(/* Flipblock */0xF0,FlipBlock_MOP),
+	LOAD_MODEL_FROM_DL(0x2F,DL_Flipswap_Platform_MOP_0x5f9ac0,1),
+	LOAD_MODEL_FROM_DL(0x30,DL_Flipswap_Platform_Border_MOP_0x5f8560,1),
+	LOAD_MODEL_FROM_GEO(0x2A,Flipswitch_Panel_MOP),
+	LOAD_MODEL_FROM_DL(0x2B,DL_Green_Switchboard_MOP_0x5fd8b0,1),
+	LOAD_MODEL_FROM_DL(0x2C,DL_Green_Switchboard_Gears_MOP_0x600460,1),
+	LOAD_MODEL_FROM_DL(0x97,DL_Shrink_Platform_Border_MOP_0x3020860,1),
+	LOAD_MODEL_FROM_DL(0x92 /* Spring*/,DL_Spring_MOP_0x301fc98,1),
+	LOAD_MODEL_FROM_GEO(0x2D,Moving_Rotating_Block_MOP),
+	LOAD_MODEL_FROM_GEO(/* Sandblock */0x99,SandBlock_MOP),
+	LOAD_MODEL_FROM_GEO(/* Shell 1 */0x9B,Shell_1_MOP),
+	LOAD_MODEL_FROM_GEO(/* Shell 2 */0x9D,Shell_2_MOP),
+	LOAD_MODEL_FROM_GEO(/* Shrinkplat */0x98,Shrink_Platform_MOP),
+	LOAD_MODEL_FROM_GEO(/* Switchblock */0xF1,Switchblock_MOP),
+	LOAD_MODEL_FROM_GEO(/* Switchblock switch */0xF2,Switchblock_Switch_MOP),
+	#endif
     FREE_LEVEL_POOL(),
     CALL(/*arg*/ 0, /*func*/ lvl_init_from_save_file),
     LOOP_BEGIN(),
@@ -133,7 +157,7 @@ static const LevelScript script_L1[] = {
 };
 
 static const LevelScript script_L2[] = {
-    EXIT_AND_EXECUTE(/*seg*/ 0x0E, _endingSegmentRomStart, _endingSegmentRomEnd, level_ending_entry),
+    EXIT_AND_EXECUTE(/*seg*/ 0x1A, _endingSegmentRomStart, _endingSegmentRomEnd, level_ending_entry),
 };
 
 static const LevelScript goto_mario_head_regular[] = {
@@ -150,26 +174,57 @@ static const LevelScript script_L5[] = {
 
 // Include the level jumptable.
 
-#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8)
 
-#define DEFINE_LEVEL(_0, levelenum, _2, folder, _4, _5, _6, _7, _8, _9, _10) JUMP_IF(OP_EQ, levelenum, script_exec_ ## folder),
 
 static const LevelScript script_exec_level_table[] = {
     GET_OR_SET(/*op*/ OP_GET, /*var*/ VAR_CURR_LEVEL_NUM),
+#define DEFINE_LEVEL(folder,levelenum) JUMP_IF(OP_EQ, levelenum, custom_script_exec_ ## folder),
+
+    #include "levels/custom_level_defines.h"
+
+#undef DEFINE_LEVEL
+
+#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8)
+#define DEFINE_LEVEL(_0, levelenum, _2, folder, _4, _5, _6, _7, _8, _9, _10) JUMP_IF(OP_EQ, levelenum, script_exec_ ## folder),
     #include "levels/level_defines.h"
     EXIT(),
 };
 #undef DEFINE_LEVEL
 
+#ifdef RM2C
+
+#define DEFINE_LEVEL(folder,_0) \
+static const LevelScript custom_script_exec_ ## folder [] = { \
+    EXECUTE(0x19, _ ## folder ## _segment_19SegmentRomStart, _ ## folder ## _segment_19SegmentRomEnd, level_ ## folder ## _custom_entry), \
+    RETURN(), \
+};
+
+#include "levels/custom_level_defines.h"
+
+#undef DEFINE_LEVEL
 #define DEFINE_LEVEL(_0, _1, _2, folder, _4, _5, _6, _7, _8, _9, _10) \
 static const LevelScript script_exec_ ## folder [] = { \
-    EXECUTE(0x0E, _ ## folder ## SegmentRomStart, _ ## folder ## SegmentRomEnd, level_ ## folder ## _entry), \
+    EXECUTE(0x1A, _ ## folder ## SegmentRomStart, _ ## folder ## SegmentRomEnd, level_ ## folder ## _entry), \
     RETURN(), \
 };
 
 #include "levels/level_defines.h"
 #undef STUB_LEVEL
 #undef DEFINE_LEVEL
+
+#else
+
+#define DEFINE_LEVEL(_0, _1, _2, folder, _4, _5, _6, _7, _8, _9, _10) \
+static const LevelScript script_exec_ ## folder [] = { \
+    EXECUTE(0x1A, _ ## folder ## SegmentRomStart, _ ## folder ## SegmentRomEnd, level_ ## folder ## _entry), \
+    RETURN(), \
+};
+
+#include "levels/level_defines.h"
+#undef STUB_LEVEL
+#undef DEFINE_LEVEL
+
+#endif
 
 const LevelScript script_func_global_1[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BLUE_COIN_SWITCH,        blue_coin_switch_geo),
@@ -260,6 +315,7 @@ const LevelScript script_func_global_8[] = {
 const LevelScript script_func_global_9[] = {
     LOAD_MODEL_FROM_DL( MODEL_CAP_SWITCH_EXCLAMATION,  cap_switch_exclamation_seg5_dl_05002E00, LAYER_ALPHA),
     LOAD_MODEL_FROM_GEO(MODEL_CAP_SWITCH,              cap_switch_geo),
+    LOAD_MODEL_FROM_GEO(87,              springboard_bottom_geo),
     LOAD_MODEL_FROM_DL( MODEL_CAP_SWITCH_BASE,         cap_switch_base_seg5_dl_05003120,        LAYER_OPAQUE),
     RETURN(),
 };

@@ -14,6 +14,11 @@
     DECLARE_SEGMENT(name) \
     DECLARE_SEGMENT(name##_segment_7)
 
+#define DECLARE_CUSTOM_LEVEL_SEGMENT(name) \
+    DECLARE_SEGMENT(name) \
+    DECLARE_SEGMENT(name##_segment_E) \
+    DECLARE_SEGMENT(name##_segment_19)
+
 DECLARE_ACTOR_SEGMENT(common0)
 DECLARE_ACTOR_SEGMENT(common1)
 DECLARE_ACTOR_SEGMENT(group0)
@@ -58,6 +63,20 @@ DECLARE_LEVEL_SEGMENT(ending)
 
 #undef STUB_LEVEL
 #undef DEFINE_LEVEL
+
+#define DEFINE_LEVEL(folder,_0) DECLARE_CUSTOM_LEVEL_SEGMENT(folder)
+
+#include "levels/custom_level_defines.h"
+
+#undef DEFINE_LEVEL
+
+#define MIO0_SEG(name, addr) \
+    extern u8 _##name##_mio0SegmentRomStart[]; \
+    extern u8 _##name##_mio0SegmentRomEnd[];
+
+#include "textures/skyboxes/Skybox_Rules.ld"
+
+#undef MiO0_SEG
 
 DECLARE_SEGMENT(segment2_mio0)
 

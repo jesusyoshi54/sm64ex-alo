@@ -2153,7 +2153,23 @@ void shade_screen(void) {
     gSPDisplayList(gDisplayListHead++, dl_draw_text_bg_box);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 }
+#if USE3DCOINS
+//this obviously isn't a real symbol, hopefully this erroring will alert you
+//to put the real extern here
+extern Gfx REDCOINSDL[];
+void print_animated_red_coin(s16 x, s16 y) {
+    s32 timer = gGlobalTimer;
 
+    create_dl_translation_matrix(MENU_MTX_PUSH, x, y, 0);
+    create_dl_scale_matrix(MENU_MTX_NOPUSH, 0.2f, 0.2f, 1.0f);
+	//I rotate Z because the coins will clip near plane if I do y
+    create_dl_rotation_matrix(MENU_MTX_NOPUSH, (f32)timer*5, 0.0f, 0.0f, 1.0f);
+    gDPSetRenderMode(gDisplayListHead++, G_RM_TEX_EDGE, G_RM_TEX_EDGE2);
+	gSPDisplayList(gDisplayListHead++, REDCOINSDL);
+    gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+}
+#else
 void print_animated_red_coin(s16 x, s16 y) {
     s32 timer = gGlobalTimer;
 
@@ -2179,7 +2195,7 @@ void print_animated_red_coin(s16 x, s16 y) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 }
-
+#endif
 void render_pause_red_coins(void) {
     s8 x;
 

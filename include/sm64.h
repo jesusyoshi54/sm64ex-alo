@@ -14,6 +14,9 @@
 #include "surface_terrains.h"
 #include "macros.h"
 
+//defines
+#include "game/tweaks.inc.c"
+
 #if defined(__GNUC__) && defined(TARGET_N64)
 void *memset(void *dest, int c, size_t n);
 int memcmp(const void *str1, const void *str2, size_t n);

@@ -854,5 +854,6 @@ s8 UNUSED debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/floating_box.inc.c"
 #include "behaviors/decorative_pendulum.inc.c"
 #include "behaviors/treasure_chest.inc.c"
+
 #include "behaviors/mips.inc.c"
 #include "behaviors/yoshi.inc.c"

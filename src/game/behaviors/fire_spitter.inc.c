@@ -1,7 +1,11 @@
-
+#ifdef BUFFED_ENEMIES
+#define FIRE_SPITTER_TIMER 50
+#else
+#define FIRE_SPITTER_TIMER 150
+#endif
 static void fire_spitter_act_idle(void) {
     approach_f32_ptr(&o->header.gfx.scale[0], 0.2f, 0.002f);
-    if (o->oTimer > 150 && o->oDistanceToMario < 800.0f && !(o->oMoveFlags & OBJ_MOVE_MASK_IN_WATER)) {
+    if (o->oTimer > FIRE_SPITTER_TIMER && o->oDistanceToMario < 800.0f && !(o->oMoveFlags & OBJ_MOVE_MASK_IN_WATER)) {
         o->oAction = FIRE_SPITTER_ACT_SPIT_FIRE;
         o->oFireSpitterScaleVel = 0.05f;
     }

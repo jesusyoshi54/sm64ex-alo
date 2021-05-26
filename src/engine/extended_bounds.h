@@ -24,6 +24,10 @@
         level boundaries are 4 times as big (-32768 to 32767)
         Collision calculations remain as fast as vanilla, at the cost of using far more RAM (16 times vanilla).
         64x64 collision cells.
+	4: 4x extended bounds (Mem saver)
+        level boundaries are 4 times as big (-32768 to 32767)
+        Collision cells are the same size as vanilla, at the cost of being much slower.
+        32x32 collision cells.
     
 
     If you see "SURFACE POOL FULL" or "SURFACE NODE POOL FULL" in game, you should increase 
@@ -35,7 +39,7 @@
 #include "macros.h"
 
 //set this to the extended bounds mode you want, then do "make clean".
-#define EXTENDED_BOUNDS_MODE 3
+#define EXTENDED_BOUNDS_MODE 4
 
 // SURFACE_POOL_SIZE and SURFACE_NODE_POOL_SIZE only matter on N64
 // On non-N64 targets, surface sizes are allocated using SYSTEM_MALLOC
@@ -82,6 +86,10 @@
     #undef LEVEL_BOUNDARY_MAX
     #define LEVEL_BOUNDARY_MAX 0x8000L
     #define CELL_SIZE          0x400
+#elif EXTENDED_BOUNDS_MODE == 4
+    #undef LEVEL_BOUNDARY_MAX
+    #define LEVEL_BOUNDARY_MAX 0x8000L
+    #define CELL_SIZE          0x800
 #endif
 
 STATIC_ASSERT(LEVEL_BOUNDARY_MAX != 0, "You must set a valid extended bounds mode!");

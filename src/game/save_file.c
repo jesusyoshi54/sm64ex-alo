@@ -385,6 +385,7 @@ static void save_file_bswap(struct SaveBuffer *buf) {
 #endif
 
 void save_file_do_save(s32 fileIndex) {
+	#ifndef HARDCORE
     if (fileIndex < 0 || fileIndex >= NUM_SAVE_FILES)
         return;
 
@@ -415,6 +416,7 @@ void save_file_do_save(s32 fileIndex) {
         gSaveFileModified = FALSE;
     }
     save_main_menu_data();
+#endif
 #endif
 }
 

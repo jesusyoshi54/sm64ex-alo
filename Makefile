@@ -27,6 +27,43 @@ NON_MATCHING ?= 1
 # Compiler to use in N64 (ido or gcc)
 COMPILER_N64 ?= gcc
 
+# Accept RM2C level folder output
+RM2C ?= 1
+
+#Game wide edits to add optional challenges
+
+#Makes enemies move faster or attack more often generally
+BUFFED_ENEMIES ?= 0
+#Coins do not restore HP, may make several hacks impossible
+COINS_NO_HEAL ?= 0
+#Slowly drains HP over time continuously. About 1/4 strength of toxic gas.
+DRAIN_HP_CONSTANT ?= 0
+#Doubles lava damage
+DOUBLE_LAVA_DMG ?= 0
+#Doubles Koopa Speed (may cause the turtle to get stuck in places)
+DOUBLE_KOOPA_SPEED ?= 0
+#Basically chaos edition but light. Only edits that are manageable e.g. messing with mario's model/size/colors
+#or his physics somewhat. Two edits at a time, swaps out on 15s timer.
+CHAOS_LITE ?= 0
+#Pannen meme challenges. These cause the equivalent button press to remove 1 HP
+A_BTN_DRAIN ?= 0
+B_BTN_DRAIN ?= 0
+Z_BTN_DRAIN ?= 0
+#For those hardcore players. Saving is disabled and the game force crashes when you get zero lives.
+HARDCORE ?= 0
+#Max HP is set to 1. For the sake of playability, water HP drain is removed in this mode.
+DAREDEVIL ?= 0
+#A 1 up spawns with you and chases you. Collecing it kills you
+GREEN_DEMON ?= 0
+#SR7 like badges. There is a wallkick badge, triple jump badge and mid air jump badge (I guess as an option to make things more exciting)
+MOVE_BADGES ?= 0
+#ASA Super mode basically. Can do two mid air jumps
+SUPER_MODE ?= 0
+
+#Debug stuff to make testing easier
+#inside pause menu of levels
+LEVEL_SELECT ?= 0
+
 # Build for original N64 (no pc code)
 TARGET_N64 = 1
 # Build and optimize for Raspberry Pi(s)
@@ -52,7 +89,7 @@ NODRAWINGDISTANCE ?= 0
 # Disable QoL fixes by default (helps with them purists)
 QOL_FIXES ?= 1
 # Enable extended options menu by default
-EXT_OPTIONS_MENU ?= 1
+EXT_OPTIONS_MENU ?= 0
 # Disable text-based save-files by default
 TEXTSAVES ?= 0
 # Load resources from external files
@@ -62,13 +99,13 @@ DISCORDRPC ?= 0
 # Enable rumble functions (Originally in Shindou)
 RUMBLE_FEEDBACK ?= 0
 # Enable PC Port defines
-PC_PORT_DEFINES ?= 1
+PC_PORT_DEFINES ?= 0
 
 # Various workarounds for weird toolchains
 NO_BZERO_BCOPY ?= 0
 NO_LDIV ?= 0
 # Check if is compiling on a console
-TARGET_GAME_CONSOLE ?= 1
+TARGET_GAME_CONSOLE ?= 0
 
 # Backend selection
 
@@ -85,7 +122,7 @@ CONTROLLER_API ?= SDL2
 .PHONY: RM2CPC
 RM2CPC:
 	$(info "Running make -j4 TARGET_N64=0 TARGET_ARCH=native WINDOWS_BUILD=1 TARGET_GAME_CONSOLE=0 DEBUG=1 NODRAWINGDISTANCE=1")
-	make -j4 TARGET_N64=0 TARGET_ARCH=native WINDOWS_BUILD=1 TARGET_GAME_CONSOLE=0 DEBUG=1 NODRAWINGDISTANCE=1
+	make TARGET_N64=0 TARGET_ARCH=native WINDOWS_BUILD=1 TARGET_GAME_CONSOLE=0 DEBUG=1 NODRAWINGDISTANCE=1 -j4
 
 
 ifeq ($(TARGET_WII_U),1)
@@ -489,7 +526,7 @@ endif
 include Makefile.split
 
 # Source code files
-LEVEL_C_FILES := $(wildcard levels/*/leveldata.c) $(wildcard levels/*/script.c) $(wildcard levels/*/geo.c)
+LEVEL_C_FILES := $(wildcard levels/*/leveldata.c) $(wildcard levels/*/script.c) $(wildcard levels/*/geo.c) $(wildcard levels/*/custom.geo.c) $(wildcard levels/*/custom.script.c) $(wildcard levels/*/custom.leveldata.c)
 C_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c)) $(LEVEL_C_FILES)
 
 ifeq ($(TARGET_N64),1)
@@ -617,7 +654,7 @@ ifeq ($(COMPILER_N64),gcc)
 endif
 
 N64_CFLAGS := -nostdinc -I include/libc -DTARGET_N64 -D_LANGUAGE_C -DNO_LDIV
-CC_CFLAGS := -fno-builtin
+CC_CFLAGS := -fno-builtin -fno-toplevel-reorder
 
 INCLUDE_CFLAGS := -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I .
 
@@ -635,7 +672,7 @@ LDFLAGS := -T undefined_syms.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/
 ENDIAN_BITWIDTH := $(BUILD_DIR)/endian-and-bitwidth
 
 ifeq ($(COMPILER_N64),gcc)
-  CFLAGS := -march=vr4300 -mfix4300 -mabi=32 -mno-shared -G 0 $(COMMON_CFLAGS) -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I . -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
+  CFLAGS := -march=vr4300 -mfix4300 -mabi=32 -mno-shared -G 0 $(COMMON_CFLAGS) -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I . -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -fno-toplevel-reorder
 endif
 
 # Check for Puppycam option
@@ -643,6 +680,88 @@ ifeq ($(BETTERCAMERA),1)
   CC_CHECK += -DBETTERCAMERA
   CFLAGS += -DBETTERCAMERA
   EXT_OPTIONS_MENU := 1
+endif
+
+# Add RM2C to flags, add var for internal name
+ifeq ($(RM2C),1)
+  CC_CHECK += -DRM2C
+  CFLAGS += -DRM2C
+endif
+
+#game wide edits
+ifeq ($(BUFFED_ENEMIES),1)
+  CC_CHECK += -DBUFFED_ENEMIES
+  CFLAGS += -DBUFFED_ENEMIES
+endif
+
+ifeq ($(COINS_NO_HEAL),1)
+  CC_CHECK += -DCOINS_NO_HEAL
+  CFLAGS += -DCOINS_NO_HEAL
+endif
+
+ifeq ($(DRAIN_HP_CONSTANT),1)
+  CC_CHECK += -DDRAIN_HP_CONSTANT
+  CFLAGS += -DDRAIN_HP_CONSTANT
+endif
+
+ifeq ($(DOUBLE_LAVA_DMG),1)
+  CC_CHECK += -DDOUBLE_LAVA_DMG
+  CFLAGS += -DDOUBLE_LAVA_DMG
+endif
+
+ifeq ($(DOUBLE_KOOPA_SPEED),1)
+  CC_CHECK += -DDOUBLE_KOOPA_SPEED
+  CFLAGS += -DDOUBLE_KOOPA_SPEED
+endif
+
+ifeq ($(CHAOS_LITE),1)
+  CC_CHECK += -DCHAOS_LITE
+  CFLAGS += -DCHAOS_LITE
+endif
+
+ifeq ($(A_BTN_DRAIN),1)
+  CC_CHECK += -DA_BTN_DRAIN
+  CFLAGS += -DA_BTN_DRAIN
+endif
+
+ifeq ($(B_BTN_DRAIN),1)
+  CC_CHECK += -DB_BTN_DRAIN
+  CFLAGS += -DB_BTN_DRAIN
+endif
+
+ifeq ($(Z_BTN_DRAIN),1)
+  CC_CHECK += -DZ_BTN_DRAIN
+  CFLAGS += -DZ_BTN_DRAIN
+endif
+
+ifeq ($(HARDCORE),1)
+  CC_CHECK += -DHARDCORE
+  CFLAGS += -DHARDCORE
+endif
+
+ifeq ($(DAREDEVIL),1)
+  CC_CHECK += -DDAREDEVIL
+  CFLAGS += -DDAREDEVIL
+endif
+
+ifeq ($(GREEN_DEMON),1)
+  CC_CHECK += -DGREEN_DEMON
+  CFLAGS += -DGREEN_DEMON
+endif
+
+ifeq ($(MOVE_BADGES),1)
+  CC_CHECK += -DMOVE_BADGES
+  CFLAGS += -DMOVE_BADGES
+endif
+
+ifeq ($(SUPER_MODE),1)
+  CC_CHECK += -DSUPER_MODE
+  CFLAGS += -DSUPER_MODE
+endif
+
+ifeq ($(LEVEL_SELECT),1)
+  CC_CHECK += -DLEVEL_SELECT
+  CFLAGS += -DLEVEL_SELECT
 endif
 
 # Check for extended options menu option
@@ -823,22 +942,22 @@ endif
 
 ifeq ($(WINDOWS_BUILD),1)
   CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
-  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv
+  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -fno-toplevel-reorder
 
 else ifeq ($(TARGET_WEB),1)
   CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -s USE_SDL=2
-  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -s USE_SDL=2
+  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -s USE_SDL=2 -fno-toplevel-reorder
 
 # Linux / Other builds below
 else
   CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
-  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv
+  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -fno-toplevel-reorder
 
 endif
 
 ifeq ($(TARGET_WII_U),1)
   CC_CHECK += -ffunction-sections $(MACHDEP) -ffast-math -D__WIIU__ -D__WUT__ $(INCLUDE)
-  CFLAGS += -ffunction-sections $(MACHDEP) -ffast-math -D__WIIU__ -D__WUT__ $(INCLUDE)
+  CFLAGS += -ffunction-sections $(MACHDEP) -ffast-math -D__WIIU__ -D__WUT__ $(INCLUDE) -fno-toplevel-reorder
 endif
 
 ifeq ($(TARGET_N3DS),1)
@@ -846,12 +965,12 @@ ifeq ($(TARGET_N3DS),1)
   LIBDIRS  := $(CTRULIB)
   export LIBPATHS  :=  $(foreach dir,$(LIBDIRS),-L$(dir)/lib)
   CC_CHECK += -mtp=soft -DARM11 -DosGetTime=n64_osGetTime -D_3DS -march=armv6k -mtune=mpcore -mfloat-abi=hard -mword-relocations -fomit-frame-pointer -ffast-math $(foreach dir,$(LIBDIRS),-I$(dir)/include)
-  CFLAGS += -mtp=soft -DARM11 -DosGetTime=n64_osGetTime -D_3DS -march=armv6k -mtune=mpcore -mfloat-abi=hard -mword-relocations -fomit-frame-pointer -ffast-math $(foreach dir,$(LIBDIRS),-I$(dir)/include)
+  CFLAGS += -mtp=soft -DARM11 -DosGetTime=n64_osGetTime -D_3DS -march=armv6k -mtune=mpcore -mfloat-abi=hard -mword-relocations -fomit-frame-pointer -ffast-math $(foreach dir,$(LIBDIRS),-I$(dir)/include) -fno-toplevel-reorder
 endif
 
 ifeq ($(TARGET_SWITCH),1)
   CC_CHECK := $(CC) $(NXARCH) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -D__SWITCH__=1
-  CFLAGS := $(NXARCH) $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -ftls-model=local-exec -fPIE -fwrapv -D__SWITCH__=1
+  CFLAGS := $(NXARCH) $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -ftls-model=local-exec -fPIE -fwrapv -D__SWITCH__=1 -fno-toplevel-reorder
 endif
 
 # Check for enhancement options
@@ -861,6 +980,87 @@ ifeq ($(BETTERCAMERA),1)
   CC_CHECK += -DBETTERCAMERA
   CFLAGS += -DBETTERCAMERA
   EXT_OPTIONS_MENU := 1
+endif
+
+# Add RM2C to flags, add var for internal name
+ifeq ($(RM2C),1)
+  CC_CHECK += -DRM2C
+  CFLAGS += -DRM2C
+endif
+
+ifeq ($(BUFFED_ENEMIES),1)
+  CC_CHECK += -DBUFFED_ENEMIES
+  CFLAGS += -DBUFFED_ENEMIES
+endif
+
+ifeq ($(COINS_NO_HEAL),1)
+  CC_CHECK += -DCOINS_NO_HEAL
+  CFLAGS += -DCOINS_NO_HEAL
+endif
+
+ifeq ($(DRAIN_HP_CONSTANT),1)
+  CC_CHECK += -DDRAIN_HP_CONSTANT
+  CFLAGS += -DDRAIN_HP_CONSTANT
+endif
+
+ifeq ($(DOUBLE_LAVA_DMG),1)
+  CC_CHECK += -DDOUBLE_LAVA_DMG
+  CFLAGS += -DDOUBLE_LAVA_DMG
+endif
+
+ifeq ($(DOUBLE_KOOPA_SPEED),1)
+  CC_CHECK += -DDOUBLE_KOOPA_SPEED
+  CFLAGS += -DDOUBLE_KOOPA_SPEED
+endif
+
+ifeq ($(CHAOS_LITE),1)
+  CC_CHECK += -DCHAOS_LITE
+  CFLAGS += -DCHAOS_LITE
+endif
+
+ifeq ($(A_BTN_DRAIN),1)
+  CC_CHECK += -DA_BTN_DRAIN
+  CFLAGS += -DA_BTN_DRAIN
+endif
+
+ifeq ($(B_BTN_DRAIN),1)
+  CC_CHECK += -DB_BTN_DRAIN
+  CFLAGS += -DB_BTN_DRAIN
+endif
+
+ifeq ($(Z_BTN_DRAIN),1)
+  CC_CHECK += -DZ_BTN_DRAIN
+  CFLAGS += -DZ_BTN_DRAIN
+endif
+
+ifeq ($(HARDCORE),1)
+  CC_CHECK += -DHARDCORE
+  CFLAGS += -DHARDCORE
+endif
+
+ifeq ($(DAREDEVIL),1)
+  CC_CHECK += -DDAREDEVIL
+  CFLAGS += -DDAREDEVIL
+endif
+
+ifeq ($(GREEN_DEMON),1)
+  CC_CHECK += -DGREEN_DEMON
+  CFLAGS += -DGREEN_DEMON
+endif
+
+ifeq ($(MOVE_BADGES),1)
+  CC_CHECK += -DMOVE_BADGES
+  CFLAGS += -DMOVE_BADGES
+endif
+
+ifeq ($(SUPER_MODE),1)
+  CC_CHECK += -DSUPER_MODE
+  CFLAGS += -DSUPER_MODE
+endif
+
+ifeq ($(LEVEL_SELECT),1)
+  CC_CHECK += -DLEVEL_SELECT
+  CFLAGS += -DLEVEL_SELECT
 endif
 
 ifeq ($(TEXTSAVES),1)
@@ -989,6 +1189,7 @@ MIO0TOOL = $(TOOLS_DIR)/mio0
 N64CKSUM = $(TOOLS_DIR)/n64cksum
 N64GRAPHICS = $(TOOLS_DIR)/n64graphics
 N64GRAPHICS_CI = $(TOOLS_DIR)/n64graphics_ci
+BINPNG = $(TOOLS_DIR)/BinPNG.py
 TEXTCONV = $(TOOLS_DIR)/textconv
 AIFF_EXTRACT_CODEBOOK = $(TOOLS_DIR)/aiff_extract_codebook
 VADPCM_ENC = $(TOOLS_DIR)/vadpcm_enc
@@ -1208,14 +1409,14 @@ $(BUILD_DIR)/%.inc.c: %.png
 ifeq ($(EXTERNAL_DATA),0)
 
 # Color Index CI8
-$(BUILD_DIR)/%.ci8: %.ci8.png
-	$(call print,Converting:,$<,$@)
-	$(V)$(N64GRAPHICS_CI) -i $@ -g $< -f ci8
+$(BUILD_DIR)/%.ci8.inc.c: %.ci8.png
+	$(call print,Converting CI:,$<,$@)
+	python3 $(BINPNG) $< $@ 8
 
 # Color Index CI4
-$(BUILD_DIR)/%.ci4: %.ci4.png
-	$(call print,Converting:,$<,$@)
-	$(V)$(N64GRAPHICS_CI) -i $@ -g $< -f ci4
+$(BUILD_DIR)/%.ci4.inc.c: %.ci4.png
+	$(call print,Converting CI:,$<,$@)
+	python3 $(BINPNG) $< $@ 4
 
 endif
 
@@ -1231,7 +1432,7 @@ $(BUILD_DIR)/%.elf: $(BUILD_DIR)/%.o
 # Override for level.elf, which otherwise matches the above pattern
 .SECONDEXPANSION:
 $(BUILD_DIR)/levels/%/leveldata.elf: $(BUILD_DIR)/levels/%/leveldata.o $(BUILD_DIR)/bin/$$(TEXTURE_BIN).elf
-	$(call print,Linking ELF file:,$<,$@)
+	$(call print,Linking Level ELF file:,$<,$@)
 	$(V)$(LD) -e 0 -Ttext=$(SEGMENT_ADDRESS) -Map $@.map --just-symbols=$(BUILD_DIR)/bin/$(TEXTURE_BIN).elf -o $@ $<
 
 $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf

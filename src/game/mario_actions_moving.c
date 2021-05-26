@@ -439,11 +439,35 @@ void update_walking_speed(struct MarioState *m) {
     f32 maxTargetSpeed;
     f32 targetSpeed;
 
-    if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
+    #ifdef CHAOS_LITE
+	if (m->Chaos_Vals[0]==13 | m->Chaos_Vals[1]==13){
+		if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
+			maxTargetSpeed = 12.0f;
+		} else {
+			maxTargetSpeed = 16.0f;
+		}
+	}else if (m->Chaos_Vals[0]==12 | m->Chaos_Vals[1]==12){
+		m->intendedMag*=2;
+		m->forwardVel+=2;
+		if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
+			maxTargetSpeed = 36.0f;
+		} else {
+			maxTargetSpeed = 64.0f;
+		}
+	}else{
+		if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
+			maxTargetSpeed = 24.0f;
+		} else {
+			maxTargetSpeed = 32.0f;
+		}
+	}
+	#else
+	if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
         maxTargetSpeed = 24.0f;
     } else {
         maxTargetSpeed = 32.0f;
     }
+	#endif
 
     targetSpeed = m->intendedMag < maxTargetSpeed ? m->intendedMag : maxTargetSpeed;
 
@@ -459,9 +483,25 @@ void update_walking_speed(struct MarioState *m) {
         m->forwardVel -= 1.0f;
     }
 
-    if (m->forwardVel > 48.0f) {
+    #ifdef CHAOS_LITE
+	if (m->Chaos_Vals[0]==13 | m->Chaos_Vals[1]==13){
+		if (m->forwardVel > 24.0f) {
+			m->forwardVel = 24.0f;
+		}
+	}else if (m->Chaos_Vals[0]==12 | m->Chaos_Vals[1]==12){
+		if (m->forwardVel > 64.0f) {
+			m->forwardVel = 64.0f;
+		}
+	}else{
+		if (m->forwardVel > 48.0f) {
+			m->forwardVel = 48.0f;
+		}
+	}
+	#else
+	if (m->forwardVel > 48.0f) {
         m->forwardVel = 48.0f;
     }
+	#endif
 
 #ifdef CHEATS_ACTIONS
     /* Handles the "Super responsive controls" cheat. The content of the "else" is Mario's original code for turning around.*/
@@ -1425,13 +1465,14 @@ void common_slide_action(struct MarioState *m, u32 endAction, u32 airAction, s32
 
 s32 common_slide_action_with_jump(struct MarioState *m, u32 stopAction, u32 jumpAction, u32 airAction,
                                   s32 animation) {
-    if (m->actionTimer == 5) {
-        if (m->input & INPUT_A_PRESSED) {
+    //cancel butt slide much easier
+	if (m->actionTimer == 5) {
+        if (m->framesSinceA<3) {
             return set_jumping_action(m, jumpAction, 0);
         }
-    } else {
-        m->actionTimer++;
-    }
+	}else{
+		m->actionTimer++;
+	}
 
     if (update_sliding(m, 4.0f)) {
         return set_mario_action(m, stopAction, 0);
@@ -1499,7 +1540,7 @@ s32 act_crouch_slide(struct MarioState *m) {
 }
 
 s32 act_slide_kick_slide(struct MarioState *m) {
-    if (m->input & INPUT_A_PRESSED) {
+    if (m->input & (INPUT_A_PRESSED | INPUT_B_PRESSED)) {
 #ifdef RUMBLE_FEEDBACK
         queue_rumble_data(5, 80);
 #endif

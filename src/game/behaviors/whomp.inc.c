@@ -26,7 +26,7 @@ void whomp_act_0(void) {
                 seq_player_lower_volume(SEQ_PLAYER_LEVEL, 60, 40);
             } else {
                 cur_obj_set_pos_to_home();
-                o->oHealth = 3;
+                o->oHealth = KING_WHOMP_HEALTH;
             }
         } else if (cur_obj_update_dialog_with_cutscene(2, 1, CUTSCENE_DIALOG, DIALOG_114))
             o->oAction = 2;

@@ -3,6 +3,8 @@
 
 #include "types.h"
 
+extern const BehaviorScript editor_Scroll_Texture[];
+extern const BehaviorScript RM_Scroll_Texture[];
 extern const BehaviorScript bhvStarDoor[];
 extern const BehaviorScript bhvMrI[];
 extern const BehaviorScript bhvMrIBody[];
@@ -167,7 +169,10 @@ extern const BehaviorScript bhvFlameBouncing[];
 extern const BehaviorScript bhvFlameMovingForwardGrowing[];
 extern const BehaviorScript bhvFlameBowser[];
 extern const BehaviorScript bhvFlameLargeBurningOut[];
+extern const BehaviorScript bhvFish2[];
+extern const BehaviorScript bhvFish3[];
 extern const BehaviorScript bhvBlueFish[];
+extern const BehaviorScript bhvLargeFishGroup[];
 extern const BehaviorScript bhvTankFishGroup[];
 extern const BehaviorScript bhvCheckerboardElevatorGroup[];
 extern const BehaviorScript bhvCheckerboardPlatformSub[];
@@ -545,5 +550,28 @@ extern const BehaviorScript bhvEndBirds1[];
 extern const BehaviorScript bhvEndBirds2[];
 extern const BehaviorScript bhvIntroScene[];
 extern const BehaviorScript bhvUnusedFakeStar[];
+
+
+#if INCLUDE_MOP
+extern const BehaviorScript bhvFlipBlock_MOP[];
+extern const BehaviorScript bhvNoteblock_MOP[];
+extern const BehaviorScript bhvSandBlock_MOP[];
+extern const BehaviorScript bhvSpring_MOP[];
+extern const BehaviorScript bhvShell_1_MOP[];
+extern const BehaviorScript bhvShell_2_MOP[];
+extern const BehaviorScript bhvJukebox_MOP[];
+extern const BehaviorScript bhvShrink_Platform_MOP[];
+extern const BehaviorScript bhvSwitchblock_MOP[];
+extern const BehaviorScript bhvSwitchblock_Switch_MOP[];
+extern const BehaviorScript bhvCheckpoint_Flag_MOP[];
+extern const BehaviorScript bhvFlipswitch_Panel_StarSpawn_MOP[];
+extern const BehaviorScript bhvFlipswitch_Panel_MOP[];
+extern const BehaviorScript bhvEmitter_MOP[];
+extern const BehaviorScript bhvFlipswap_Platform_MOP[];
+extern const BehaviorScript bhvMoving_Rotating_Block_MOP[];
+extern const BehaviorScript bhvBeta_Blarrg_MOP[];
+extern const BehaviorScript bhvPSwitch_MOP[];
+extern const BehaviorScript bhvGreen_Switchboard_MOP[];
+#endif
 
 #endif // BEHAVIOR_DATA_H

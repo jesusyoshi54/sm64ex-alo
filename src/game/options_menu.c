@@ -223,7 +223,6 @@ struct SubMenu {
 static void optmenu_act_exit(UNUSED struct Option *self, s32 arg) {
     if (!arg) game_exit(); // only exit on A press and not directions
 }
-#endif
 
 static void optvideo_reset_window(UNUSED struct Option *self, s32 arg) {
     if (!arg) {
@@ -236,14 +235,14 @@ static void optvideo_reset_window(UNUSED struct Option *self, s32 arg) {
 static void optvideo_apply(UNUSED struct Option *self, s32 arg) {
     if (!arg) configWindow.settings_changed = true;
 }
-
+#endif
 /* submenu option lists */
 
 #ifdef BETTERCAMERA
 static struct Option optsCamera[] = {
     DEF_OPT_TOGGLE( optsCameraStr[9], &configEnableCamera ),
-    DEF_OPT_TOGGLE( optsCameraStr[6], &configCameraAnalog ),
 #ifndef TARGET_N64
+	DEF_OPT_TOGGLE( optsCameraStr[6], &configCameraAnalog ),
     DEF_OPT_TOGGLE( optsCameraStr[7], &configCameraMouse ),
 #endif
     DEF_OPT_TOGGLE( optsCameraStr[2], &configCameraInvertX ),
@@ -573,9 +572,6 @@ void optmenu_toggle(void) {
         play_sound(SOUND_MENU_MARIO_CASTLE_WARP2, gGlobalSoundSource);
         #endif
         optmenu_open = 0;
-        #ifdef BETTERCAMERA
-        newcam_init_settings(); // load bettercam settings from config vars
-        #endif
 #ifndef TARGET_N64
         controller_reconfigure(); // rebind using new config values
         configfile_save(configfile_name());

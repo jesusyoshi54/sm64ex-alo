@@ -6,6 +6,9 @@ void bhv_1up_interact(void) {
     if (obj_check_if_collided_with_object(o, gMarioObject) == 1) {
         play_sound(SOUND_GENERAL_COLLECT_1UP, gGlobalSoundSource);
         gMarioState->numLives++;
+		#ifdef GREEN_DEMON
+		gMarioState->health = 0;
+		#endif
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
 #ifdef RUMBLE_FEEDBACK
         queue_rumble_data(5, 80);
@@ -270,7 +273,11 @@ void bhv_1up_hidden_in_pole_loop(void) {
             o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
             if (o->o1UpHiddenUnkF4 == o->oBehParams2ndByte) {
                 o->oVelY = 40.0f;
-                o->oAction = 3;
+				#ifdef GREEN_DEMON
+                o->oAction = 4;
+				#else
+				o->oAction = 3;
+				#endif
                 o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
                 play_sound(SOUND_GENERAL2_1UP_APPEAR, gGlobalSoundSource);
             }
@@ -285,15 +292,27 @@ void bhv_1up_hidden_in_pole_loop(void) {
             sp26 = object_step();
             if (o->oTimer >= 18)
                 spawn_object(o, MODEL_NONE, bhvSparkleSpawn);
-
-            one_up_loop_in_air();
-
-            if (o->oTimer == 37) {
-                cur_obj_become_tangible();
-                o->oAction = 1;
-                o->oForwardVel = 10.0f;
-            }
-            break;
+				one_up_loop_in_air();
+				#ifdef GREEN_DEMON
+				if (o->oTimer == 150) {
+					cur_obj_become_tangible();
+					o->oAction = 1;
+					o->oForwardVel = 10.0f;
+				}
+				break;
+		case 4:
+			if(gMarioState->action & ACT_GROUP_MASK!=ACT_GROUP_CUTSCENE){
+				o->oAction = 3;
+			}
+			break;
+				#else
+				if (o->oTimer == 37) {
+					cur_obj_become_tangible();
+					o->oAction = 1;
+					o->oForwardVel = 10.0f;
+				}
+				break;
+				#endif
     }
 }
 

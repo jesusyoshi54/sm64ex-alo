@@ -31,7 +31,7 @@
 #include "pc/pc_main.h"
 
 // TODO: put this elsewhere
-enum SaveOption { SAVE_OPT_SAVE_AND_CONTINUE = 1, SAVE_OPT_SAVE_AND_QUIT, SAVE_OPT_SAVE_EXIT_GAME, SAVE_OPT_CONTINUE_DONT_SAVE };
+enum SaveOption { SAVE_OPT_SAVE_AND_CONTINUE = 1, SAVE_OPT_SAVE_AND_QUIT, SAVE_OPT_CONTINUE_DONT_SAVE };
 
 static struct Object *sIntroWarpPipeObj;
 static struct Object *sEndPeachObj;
@@ -50,7 +50,7 @@ static s8 D_8032CBE4 = 0;
 static s8 D_8032CBE8 = 0;
 static s8 D_8032CBEC[7] = { 2, 3, 2, 1, 2, 3, 2 };
 
-static u8 sStarsNeededForDialog[] = { 1, 3, 8, 30, 50, 70 };
+static u8 sStarsNeededForDialog[] = {STAR_MILESTONES};
 
 /**
  * Data for the jumbo star cutscene. It specifies the flight path after triple
@@ -256,26 +256,24 @@ void handle_save_menu(struct MarioState *m) {
     // wait for the menu to show up
     if (is_anim_past_end(m) && gSaveOptSelectIndex != 0) {
         // save and continue / save and quit
-        if (gSaveOptSelectIndex == SAVE_OPT_SAVE_AND_CONTINUE || gSaveOptSelectIndex == SAVE_OPT_SAVE_EXIT_GAME || gSaveOptSelectIndex == SAVE_OPT_SAVE_AND_QUIT) {
+        if (gSaveOptSelectIndex == SAVE_OPT_SAVE_AND_CONTINUE || gSaveOptSelectIndex == SAVE_OPT_SAVE_AND_QUIT) {
             save_file_do_save(gCurrSaveFileNum - 1);
 
             if (gSaveOptSelectIndex == SAVE_OPT_SAVE_AND_QUIT) {
                 fade_into_special_warp(-2, 0); // reset game
-            } else if (gSaveOptSelectIndex == SAVE_OPT_SAVE_EXIT_GAME) {
-                //initiate_warp(LEVEL_CASTLE, 1, 0x1F, 0);
-                fade_into_special_warp(0, 0);
-#ifndef TARGET_N64
-                game_exit();
-#endif
             }
         }
 
-        // not quitting
-        if (gSaveOptSelectIndex != SAVE_OPT_SAVE_EXIT_GAME) {
+        // continue no save
+        if (gSaveOptSelectIndex != SAVE_OPT_SAVE_AND_QUIT) {
             disable_time_stop();
             m->faceAngle[1] += 0x8000;
             // figure out what dialog to show, if we should
-            dialogID = get_star_collection_dialog(m);
+			if (SHOW_STAR_MILESTONES){
+				dialogID = get_star_collection_dialog(m);
+			} else {
+				dialogID = 0;
+			}
             if (dialogID != 0) {
 				//I don't want to deal with this
                 // play_peachs_jingle();
@@ -644,7 +642,11 @@ void general_star_dance_handler(struct MarioState *m, s32 isInWater) {
     } else if (m->actionState == 2 && is_anim_at_end(m)) {
         disable_time_stop();
         enable_background_sound();
-        dialogID = get_star_collection_dialog(m);
+		if (SHOW_STAR_MILESTONES){
+			dialogID = get_star_collection_dialog(m);
+		} else {
+			dialogID = 0;
+		}
         if (dialogID != 0) {
             // look up for dialog
             set_mario_action(m, ACT_READING_AUTOMATIC_DIALOG, dialogID);

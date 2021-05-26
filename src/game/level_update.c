@@ -324,17 +324,17 @@ void set_mario_initial_cap_powerup(struct MarioState *m) {
     switch (capCourseIndex) {
         case COURSE_COTMC - COURSE_CAP_COURSES:
             m->flags |= MARIO_METAL_CAP | MARIO_CAP_ON_HEAD;
-            m->capTimer = 1500;
+            m->capTimer = MC_LEVEL_TIME;
             break;
 
         case COURSE_TOTWC - COURSE_CAP_COURSES:
             m->flags |= MARIO_WING_CAP | MARIO_CAP_ON_HEAD;
-            m->capTimer = 3600;
+            m->capTimer = WC_LEVEL_TIME;
             break;
 
         case COURSE_VCUTM - COURSE_CAP_COURSES:
             m->flags |= MARIO_VANISH_CAP | MARIO_CAP_ON_HEAD;
-            m->capTimer = 1500;
+            m->capTimer = VC_LEVEL_TIME;
             break;
     }
 }
@@ -764,7 +764,11 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                 break;
 
             case WARP_OP_DEATH:
-                if (m->numLives == 0) {
+                if (m->numLives == 0 && INFINITE_LIVES) {
+					//crash the plane with no survivors
+					#ifdef HARDCORE
+					int i=1/0;
+					#endif
                     sDelayedWarpOp = WARP_OP_GAME_OVER;
                 }
                 sDelayedWarpTimer = 48;
@@ -776,7 +780,7 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
             case WARP_OP_WARP_FLOOR:
                 sSourceWarpNodeId = WARP_NODE_WARP_FLOOR;
                 if (area_get_warp_node(sSourceWarpNodeId) == NULL) {
-                    if (m->numLives == 0) {
+                    if (m->numLives == 0 && !INFINITE_LIVES) {
                         sDelayedWarpOp = WARP_OP_GAME_OVER;
                     } else {
                         sSourceWarpNodeId = WARP_NODE_DEATH;
@@ -1069,7 +1073,18 @@ s32 play_mode_normal(void) {
 
     return 0;
 }
-
+#ifdef LEVEL_SELECT
+static char buf[32];
+static u8 LevelWarp=9;
+static u8 AreaWarp=1;
+static u8 WarpID=10;
+static u8 SelIndex=0;
+static u8 *LSScrolls[]={
+	&LevelWarp,
+	&AreaWarp,
+	&WarpID,
+};
+#endif
 s32 play_mode_paused(void) {
     if (gPauseScreenMode == 0) {
         set_menu_mode(RENDER_PAUSE_SCREEN);
@@ -1090,14 +1105,31 @@ s32 play_mode_paused(void) {
         }
         
         // gCameraMovementFlags &= ~CAM_MOVE_PAUSE_SCREEN;
-    } 
+    }
+#ifndef TARGET_N64
     else if (gPauseScreenMode == 3) {
         // We should only be getting "int 3" to here
         initiate_warp(gCurrLevelNum, gCurrAreaIndex^3, 10, 0);
         fade_into_special_warp(0, 0);
 		gSavedCourseNum = COURSE_NONE;
     }
-
+#endif
+	//very cringe code
+	#ifdef LEVEL_SELECT
+	handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, &SelIndex, 0, 2);
+	handle_menu_scrolling(MENU_SCROLL_VERTICAL, LSScrolls[SelIndex], 0, 255);
+	sprintf(buf,"DEBUG L-L SELECT DUP to Warp\n");
+	print_text(32,188,buf);
+	sprintf(buf," LE-EL %d   AREA %d   ID %d",LevelWarp,AreaWarp,WarpID);
+	print_text(32,160,buf);
+	//star glyph
+	sprintf(buf,"-");
+	print_text(32+110*SelIndex,160,buf);
+	if (gPlayer1Controller->buttonPressed&U_JPAD){
+        initiate_warp(LevelWarp,AreaWarp,WarpID, 0);
+        fade_into_special_warp(0, 0);
+	}
+	#endif
     return 0;
 }
 
@@ -1274,21 +1306,10 @@ s32 init_level(void) {
                     if (save_file_exists(gCurrSaveFileNum - 1)) {
                         set_mario_action(gMarioState, ACT_IDLE, 0);
                         val4 = 0;
-                    } else
-// #ifndef TARGET_N64
-                        // if (gCLIOpts.SkipIntro == 0 && configSkipIntro == 0) {
-                            // set_mario_action(gMarioState, ACT_INTRO_CUTSCENE, 0);
-                            // val4 = 1;
-// #else
-                        {
-// #if !SKIP_INTRO_CUTSCENE
-                        // set_mario_action(gMarioState, ACT_INTRO_CUTSCENE, 0);
-                        // val4 = 1;
-// #else
+                    } else {
+
                         set_mario_action(gMarioState, ACT_IDLE, 0);
                         val4 = 0;
-// #endif
-// #endif
                     }
                 }
             }
@@ -1314,6 +1335,10 @@ s32 init_level(void) {
     if (gMarioState->action == ACT_INTRO_CUTSCENE) {
         sound_banks_disable(SEQ_PLAYER_SFX, SOUND_BANKS_DISABLED_DURING_INTRO_CUTSCENE);
     }
+	#ifdef GREEN_DEMON
+	extern const BehaviorScript bhvHidden1upInPole[];
+	spawn_object(gMarioObject, MODEL_1UP, bhvHidden1upInPole);
+	#endif
 
     return 1;
 }

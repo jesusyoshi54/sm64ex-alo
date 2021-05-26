@@ -30,7 +30,7 @@ void king_bobomb_act_0(void) {
         gSecondCameraFocus = o;
         cur_obj_init_animation_with_sound(5);
         cur_obj_set_pos_to_home();
-        o->oHealth = 3;
+        o->oHealth = KING_BOMB_HEALTH;
         if (cur_obj_can_mario_activate_textbox_2(500.0f, 100.0f)) {
             o->oSubAction++;
             seq_player_lower_volume(SEQ_PLAYER_LEVEL, 60, 40);
@@ -67,8 +67,8 @@ void king_bobomb_act_2(void) {
         } else
             cur_obj_init_animation_with_sound(11);
         if (o->oKingBobombUnk108 == 0) {
-            o->oForwardVel = 3.0f;
-            cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x100);
+            o->oForwardVel = KING_BOMB_FVEL;
+            cur_obj_rotate_yaw_toward(o->oAngleToMario, KING_BOMB_YAWVEL);
         } else {
             o->oForwardVel = 0.0f;
             o->oKingBobombUnk108--;

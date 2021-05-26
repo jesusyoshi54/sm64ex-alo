@@ -61,7 +61,11 @@ void bhv_flamethrower_loop(void) {
         flame = spawn_object_relative(o->oBehParams2ndByte, 0, 0, 0, o, model, bhvFlamethrowerFlame);
         flame->oForwardVel = flameVel;
         cur_obj_play_sound_1(SOUND_AIR_BLOW_FIRE);
+#ifdef BUFFED_ENEMIES
+    } else if (o->oTimer > 10)
+#else
     } else if (o->oTimer > 60)
+#endif
         o->oAction = 0;
 }
 

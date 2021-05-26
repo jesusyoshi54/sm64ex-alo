@@ -741,12 +741,14 @@ void reset_mario_pitch(struct MarioState *m) {
 
 u32 interact_coin(struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
     m->numCoins += o->oDamageOrCoinValue;
+	#ifndef COINS_NO_HEAL
     m->healCounter += 4 * o->oDamageOrCoinValue;
+	#endif
 
     o->oInteractStatus = INT_STATUS_INTERACTED;
 
-    if (COURSE_IS_MAIN_COURSE(gCurrCourseNum) && m->numCoins - o->oDamageOrCoinValue < 100
-        && m->numCoins >= 100) {
+    if (COURSE_IS_MAIN_COURSE(gCurrCourseNum) && m->numCoins - o->oDamageOrCoinValue < COINS_REQ_COINSTAR
+        && m->numCoins >= COINS_REQ_COINSTAR) {
         bhv_spawn_star_no_level_exit(6);
     }
 #ifdef RUMBLE_FEEDBACK
@@ -1505,20 +1507,9 @@ u32 interact_pole(struct MarioState *m, UNUSED u32 interactType, struct Object *
     s32 actionId = m->action & ACT_ID_MASK;
     if (actionId >= 0x080 && actionId < 0x0A0) {
         if (!(m->prevAction & ACT_FLAG_ON_POLE) || m->usedObj != o) {
-#if SH_CHANGES
-            f32 velConv = m->forwardVel; // conserve the velocity.
-            struct Object *marioObj = m->marioObj;
-            u32 lowSpeed;
-#else
             u32 lowSpeed = (m->forwardVel <= 10.0f);
             struct Object *marioObj = m->marioObj;
-#endif
-
             mario_stop_riding_and_holding(m);
-
-#if SH_CHANGES
-            lowSpeed = (velConv <= 10.0f);
-#endif
 
             m->interactObj = o;
             m->usedObj = o;
@@ -1527,7 +1518,9 @@ u32 interact_pole(struct MarioState *m, UNUSED u32 interactType, struct Object *
 
             marioObj->oMarioPoleUnk108 = 0;
             marioObj->oMarioPoleYawVel = 0;
-            marioObj->oMarioPolePos = m->pos[1] - o->oPosY;
+            marioObj->oMarioPolePos = (m->pos[1] - o->oPosY) < 0
+                ? -o->hitboxDownOffset
+                : (m->pos[1] - o->oPosY);
 
             if (lowSpeed) {
                 return set_mario_action(m, ACT_GRAB_POLE_SLOW, 0);
@@ -1535,11 +1528,7 @@ u32 interact_pole(struct MarioState *m, UNUSED u32 interactType, struct Object *
 
             //! @bug Using m->forwardVel here is assumed to be 0.0f due to the set from earlier.
             //       This is fixed in the Shindou version.
-#if SH_CHANGES
-            marioObj->oMarioPoleYawVel = (s32)(velConv * 0x100 + 0x1000);
-#else
             marioObj->oMarioPoleYawVel = (s32)(m->forwardVel * 0x100 + 0x1000);
-#endif
             reset_mario_pitch(m);
 #ifdef RUMBLE_FEEDBACK
             queue_rumble_data(5, 80);
@@ -1586,17 +1575,17 @@ u32 interact_cap(struct MarioState *m, UNUSED u32 interactType, struct Object *o
 
         switch (capFlag) {
             case MARIO_VANISH_CAP:
-                capTime = 1500;
+                capTime = VC_TIME;
                 capMusic = SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP);
                 break;
 
             case MARIO_METAL_CAP:
-                capTime = 1500;
+                capTime = MC_TIME;
                 capMusic = SEQUENCE_ARGS(4, SEQ_EVENT_METAL_CAP);
                 break;
 
             case MARIO_WING_CAP:
-                capTime = 3600;
+                capTime = WC_TIME;
                 capMusic = SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP);
                 break;
         }
@@ -1839,9 +1828,13 @@ void pss_end_slide(struct MarioState *m) {
     //! This flag isn't set on death or level entry, allowing double star spawn
     if (sPssSlideStarted) {
         u16 slideTime = level_control_timer(TIMER_CONTROL_STOP);
-        if (slideTime < 630) {
+        if (slideTime < SLIDE_TIME) {
             m->marioObj->oBehParams = (1 << 24);
-			spawn_default_star(-6358.0f, -4300.0f, 4700.0f);
+			#ifdef RM2C
+            spawn_default_star(PssSlideStarPos);
+			#else
+            spawn_default_star(-6358.0f, -4300.0f, 4700.0f);
+			#endif
         }
         sPssSlideStarted = FALSE;
     }
