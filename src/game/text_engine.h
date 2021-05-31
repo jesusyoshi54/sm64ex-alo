@@ -6,7 +6,9 @@
 #define NumEngines 3
 
 struct TEState{
-	/* 0x00 */ u8 state;
+	/* N//A */ u8 state;
+	/* 0x60 */ u8 ShakeScreen;
+	/* 0x61 */ u8 PlainText;
 	/* 0x00 */ u32 LastVI;
 	/* 0x04 */ s16 TempXOrigin;
 	/* 0x06 */ s16 TempYOrigin;
@@ -54,8 +56,6 @@ struct TEState{
 	/* 0x5A */ u8 NumDialogs;
 	/* 0x5B */ u8 HoveredDialog;
 	/* 0x5C */ u8 *DialogEnd;
-	/* 0x60 */ u8 ShakeScreen;
-	/* 0x61 */ u8 PlainText;
 	/* 0x62 */ u32 VICounter;
 	/* 0x64 */ Gfx *TextEndDL; //gDisplayListHead of last text. In place due to some jank might not keep
 	/* 0x68 */ u8 *BufferStrPtr; //Used so buffer knows where to go back and clear
@@ -170,7 +170,6 @@ s8 TE_non_buffer_pad(struct TEState *CurEng,u8 *str);
 s8 TE_scale_text(struct TEState *CurEng,u8 *str);
 s8 TE_enable_dialog_options(struct TEState *CurEng,u8 *str);
 s8 TE_dialog_response(struct TEState *CurEng,u8 *str);
-s8 TE_general_text(struct TEState *CurEng,u8 *str);
 s8 TE_enable_screen_shake(struct TEState *CurEng,u8 *str);
 s8 TE_disable_screen_shake(struct TEState *CurEng,u8 *str);
 //camera cmds

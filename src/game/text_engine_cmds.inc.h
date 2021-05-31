@@ -121,7 +121,7 @@ s8 TE_jump_cmds(struct TEState *CurEng,u8 cmd,u8 *str){
 			Loop = TE_dialog_response(CurEng,str);
 			break;
 		case 0x87:
-			Loop = TE_general_text(CurEng,str);
+			Loop = TE_advBlen(CurEng,1);
 			break;
 		case 0x88:
 			Loop = TE_enable_screen_shake(CurEng,str);
@@ -210,12 +210,11 @@ s8 TE_display_usr_str(struct TEState *CurEng,u8 *str){
 	CurEng->TempStr = &UserInputs[str[1]][CurEng->state];
 	return 1;
 }
-//44 cmd not done
+//44 cmd works
 s8 TE_set_scissor(struct TEState *CurEng,u8 *str){
-	// TE_print(CurEng);
-	// CurEng->ReturnStr = CurEng->TempStr+2+CurEng->CurPos;
-	// CurEng->TempStr = &UserInputs[str[1]][CurEng->state];
 	TE_print(CurEng);
+	gDPSetScissor(gDisplayListHead++,G_SC_NON_INTERLACE,TE_get_u16(str),SCREEN_HEIGHT-TE_get_u16(str+6),TE_get_u16(str+2),SCREEN_HEIGHT-TE_get_u16(str+4));
+	CurEng->ScissorSet = 1;
 	return TE_print_adv(CurEng,9);
 }
 //45 cmd
@@ -613,17 +612,15 @@ s8 TE_moving_shaded_bg_box(struct TEState *CurEng,u8 *str){
 	TE_bg_box_finish(CurEng);
 	return TE_print_adv(CurEng,13);
 }
-//82 cmd not done
+//82 cmd works
 s8 TE_set_cutscene(struct TEState *CurEng,u8 *str){
-	TE_bg_box_setup(CurEng);
-	TE_bg_coords(CurEng,str);
-	u32 *ptr = segmented_to_virtual(TE_get_u32(str+8));
-	gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
-	//pkt, timg, fmt, siz, width, height, pal, cms, cmt, masks, maskt, shifts, shiftt
-	gDPLoadTextureBlock(gDisplayListHead++,ptr,G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0,G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
-	gSPDisplayList(gDisplayListHead++, dl_draw_text_bg_box_TE);
-	TE_bg_box_finish(CurEng);
-	return TE_print_adv(CurEng,13);
+	if(str[1] == 0 && gCurrentArea->camera->cutscene == 0){
+		reset_camera(gCurrentArea->camera);
+	}else{
+		gCurrentArea->camera->cutscene = str[1];
+		TE_add_to_cmd_buffer(CurEng,str,2);
+	}
+	return TE_advBlen(CurEng,2);
 }
 //84 cmd works
 s8 TE_scale_text(struct TEState *CurEng,u8 *str){
@@ -641,28 +638,26 @@ s8 TE_enable_dialog_options(struct TEState *CurEng,u8 *str){
 }
 //86 cmd not done
 s8 TE_dialog_response(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
+	CurEng->ShakeScreen |= 1;
 	return TE_print_adv(CurEng,9);
 }
-//87 cmd not done
-s8 TE_general_text(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
-}
-//88 cmd not done
+//88 cmd works
 s8 TE_enable_screen_shake(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
+	CurEng->ShakeScreen = 1;
+	return TE_advBlen(CurEng,1);
 }
-//89 cmd not done
+//89 cmd works
 s8 TE_disable_screen_shake(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
+	CurEng->ShakeScreen = 0;
+	return TE_advBlen(CurEng,1);
 }
 //8F cmd not done
 s8 TE_trigger_warp(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
+	sDelayedWarpOp = 1;
+	sDelayedWarpTimer = TE_get_u16(str);
+	sSourceWarpNodeId = str[3];
+	TE_add_to_cmd_buffer(CurEng,str,4);
+	return TE_print_adv(CurEng,4);
 }
 //93 cmd not done
 s8 TE_start_bracket(struct TEState *CurEng,u8 *str){

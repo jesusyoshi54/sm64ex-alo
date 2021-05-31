@@ -5,6 +5,8 @@
 #include "rendering_graph_node.h"
 #include "sm64.h"
 #include "main.h"
+#include "mario.h"
+#include "object_list_processor.h"
 #include "area.h"
 #include "audio/external.h"
 #include "text_engine.h"
@@ -14,7 +16,7 @@
 #include "object_helpers.h"
 
 extern u8 gDialogCharWidths[256];
-
+extern struct MarioState *gMarioState;
 volatile struct TEState TE_Engines[NumEngines];
 u8 StrBuffer[NumEngines][0x100];
 u8 CmdBuffer[NumEngines][0x400];
@@ -26,7 +28,11 @@ u8 UserInputs[NumEngines][16][16]; //16 length 16 strings
 
 u8 TestStr[] = {
 	/* speed */0x40,0,4,0x76,0,1,2,3,
-	/* mosaic BG */0x7d,0,0,1,0x40,0,0,0,240,2,0,0,0,2,2,
+	/* shake screen */0x88,1,0x74,1,0,0x89,0,
+	/* scissor */0x44,0,0,0,90,0,0,0,80,
+	/* a btn box*/ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0x71,
+	/* shade BG */0x7f,0,20,0,0xE0,0,20,0,120,0,0,0,0x80,
+	/* mosaic BG */0x7d,0,20,0,0xE0,0,20,0,120,2,0,0,0,2,2,
 	/* color */0x42,0xFF,0,0,0xFF,4,5,6,4,5,6,
 	/* play music */0x79,4,
 	/* a btn box*/ 0x71,
@@ -133,8 +139,13 @@ void RunTextEngine(void){
 		//disable plain text
 		TE_print(CurEng);
 		printnone:
-		//check scissor
-		//shake screen
+		if(CurEng->ScissorSet){
+			gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+			CurEng->ScissorSet = 0;
+		}
+		if(CurEng->ShakeScreen){
+			set_camera_shake_from_point(SHAKE_POS_SMALL,gMarioState->pos[0],gMarioState->pos[1],gMarioState->pos[2]);
+		}
 		TE_flush_str_buff(CurEng);
 		TE_end_ia8();
 		//write end string DL ptr
