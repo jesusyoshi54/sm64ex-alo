@@ -6,6 +6,7 @@
 #include "sm64.h"
 #include "main.h"
 #include "mario.h"
+#include "engine/math_util.h"
 #include "object_list_processor.h"
 #include "area.h"
 #include "audio/external.h"
@@ -17,6 +18,10 @@
 
 extern u8 gDialogCharWidths[256];
 extern struct MarioState *gMarioState;
+extern s16 sDelayedWarpOp;
+extern s16 sDelayedWarpTimer;
+extern s16 sSourceWarpNodeId;
+
 volatile struct TEState TE_Engines[NumEngines];
 u8 StrBuffer[NumEngines][0x100];
 u8 CmdBuffer[NumEngines][0x400];
@@ -26,13 +31,16 @@ u8 UserInputs[NumEngines][16][16]; //16 length 16 strings
 //asm return values
 
 
-u8 TestStr[] = {
+char TestStr[] = {
 	/* speed */0x40,0,4,0x76,0,1,2,3,
-	/* shake screen */0x88,1,0x74,1,0,0x89,0,
-	/* scissor */0x44,0,0,0,90,0,0,0,80,
-	/* a btn box*/ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0x71,
-	/* shade BG */0x7f,0,20,0,0xE0,0,20,0,120,0,0,0,0x80,
-	/* mosaic BG */0x7d,0,20,0,0xE0,0,20,0,120,2,0,0,0,2,2,
+	/* dialog option */0x85,1,10,5,5,5,5,0xff,6,6,6,6,6,6,6,0xff,
+	/* dialog re*/ 0,0,0,0,0x86,0,2,2,2,2,2,2,0xff,0x95,0,0x86,1,0x96,1,0x86,0x1,0x96,0,1,3,3,3,3,3,3,0x71,
+	/* dialog re*/0x86,1,5,5,5,5,5,5,0x71,
+	/* transition */0x9b,255,0,0x40,0,0x9c,255,0,0x40,0,0,20,0,10,0,0,0,0x71,
+	/* bg tr */0xaa,0,0x18,0xFF,0xE8,0,0x18,0xFF,0xE8,
+	/* shade BG */0x7f,0,0x20,0,0x50,0,0x20,0,0x50,2,0,0,0x80,2,2,
+	/* bg tr */0xaa,0,0x18,0xFF,0xE8,0,0x18,0xFF,0xE8,
+	/* scissor */0x44,0,0x20,0,0x50,0,0x20,0,0x50,
 	/* color */0x42,0xFF,0,0,0xFF,4,5,6,4,5,6,
 	/* play music */0x79,4,
 	/* a btn box*/ 0x71,
@@ -93,10 +101,6 @@ void RunTextEngine(void){
 				//goto
 			}
 			if(!(CurChar<0x40||(CurChar>0x4F&&CurChar<0x70)||(CurChar>0xCF&&CurChar<0xFE)||CurChar==0x9E||CurChar==0x9F)){
-				//terminator
-				if (CurChar==0xFF){
-					goto nonewchar;
-				}
 				//parse cmds and use switch
 				loop = TE_jump_cmds(CurEng,CurChar,str);
 				loopswitch:
@@ -136,9 +140,9 @@ void RunTextEngine(void){
 			}
 		//no new char. end loop
 		nonewchar:
-		//disable plain text
 		TE_print(CurEng);
 		printnone:
+		CurEng->PlainText = 0;
 		if(CurEng->ScissorSet){
 			gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 			CurEng->ScissorSet = 0;
@@ -174,9 +178,88 @@ void TE_frame_init(struct TEState *CurEng){
 	StrBuffer[CurEng->state][0] = 0xFF;
 }
 
-void TE_print(struct TEState *CurEng){
+void TE_transition_print(struct TEState *CurEng){
+	if(CurEng->TrEnd.TransVI != 0){
+		CurEng->LastVI = gNumVblanks;
+		if(CurEng->TrEnd.TransLength == 0){
+			TE_set_env(CurEng);
+			print_generic_string(CurEng->TempX+CurEng->TransX,CurEng->TempY+CurEng->TransY,&StrBuffer[CurEng->state]);
+			return;
+		}else{
+			TE_transition_active(CurEng,&CurEng->TrEnd,0);
+			return;
+		}
+	}
+	if(CurEng->TrStart.TransVI != 0){
+		if(CurEng->TrStart.TransLength == 0){
+			TE_set_env(CurEng);
+			print_generic_string(CurEng->TempX+CurEng->TransX,CurEng->TempY+CurEng->TransY,&StrBuffer[CurEng->state]);
+			return;
+		}else{
+			TE_transition_active(CurEng,&CurEng->TrStart,1);
+			return;
+		}
+	}
 	TE_set_env(CurEng);
-	print_generic_string(CurEng->TempX,CurEng->TempY,&StrBuffer[CurEng->state]);
+	print_generic_string(CurEng->TempX+CurEng->TransX,CurEng->TempY+CurEng->TransY,&StrBuffer[CurEng->state]);
+	return;
+}
+void TE_transition_active(struct TEState *CurEng,struct Transition *Tr,u8 flip){
+	//on a start transition, you start from the struct alpha and end at env stored one
+	s16 TarAlpha;
+	s16 CurAlpha;
+	if (flip){
+		TarAlpha = CurEng->EnvColorByte[3];
+		CurAlpha = Tr->TransAlpha;
+	}else{
+		CurAlpha = CurEng->EnvColorByte[3];
+		TarAlpha = Tr->TransAlpha;
+	}
+	u32 Env = CurEng->EnvColorWord;
+	u32 Time = (gNumVblanks-Tr->TransVI);
+	f32 Pct = ((f32) Time) / ((f32) Tr->TransLength);
+	f32 Spd = ((f32)Tr->TransSpeed)/((f32) Tr->TransLength);
+	u16 Dir = Tr->TransDir<<16;
+	u16 Yoff = (u16) (sins(Dir)*Spd*Time);
+	u16 Xoff = (u16) (coss(Dir)*Spd*Time);
+	//should never be true really
+	if (Pct>1.0f){
+		Pct = 1.0f;
+		Time = Tr->TransLength;
+		//disable start transition and set temp X+Y offsets to match total distance traveled
+		if (flip){
+			Tr->TransVI = 0;
+			CurEng->TransX = Xoff;
+			CurEng->TransY = Yoff;
+			Xoff = 0;
+			Yoff = 0;
+		}
+	}
+	TarAlpha = CurAlpha + (TarAlpha-CurAlpha)*Pct;
+	CurEng->EnvColorWord = (CurEng->EnvColorWord&0xFFFFFF00) | (u8) TarAlpha;
+	TE_set_env(CurEng);
+	CurEng->EnvColorWord = Env;
+	if (flip){
+		CurEng->TrPct = 1.0f-Pct;
+	}else{
+		CurEng->TrPct = Pct;
+	}
+	print_generic_string(CurEng->TempX+Xoff+CurEng->TransX,CurEng->TempY+Yoff+CurEng->TransY,&StrBuffer[CurEng->state]);
+}
+
+void TE_print(struct TEState *CurEng){
+	//print shadow with plaintext
+	if(CurEng->PlainText){
+		u32 Env = CurEng->EnvColorWord;
+		CurEng->EnvColorWord = 0x10101000 | CurEng->EnvColorByte[3];
+		CurEng->TempX += 1;
+		CurEng->TempY -= 1;
+		TE_transition_print(CurEng);
+		CurEng->TempX -= 1;
+		CurEng->TempY += 1;
+		CurEng->EnvColorWord = Env;
+	}
+	TE_transition_print(CurEng);
 	TE_flush_str_buff(CurEng);
 	TE_reset_Xpos(CurEng);
 	gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);

@@ -138,13 +138,13 @@ s8 TE_jump_cmds(struct TEState *CurEng,u8 cmd,u8 *str){
 			Loop = TE_start_bracket(CurEng,str);
 			break;
 		case 0x94:
-			Loop = TE_end_bracket(CurEng,str);
+			Loop = TE_advBlen(CurEng,2);
 			break;
 		case 0x95:
-			Loop = TE_mask_nested_dialog_option(CurEng,str);
+			Loop = TE_advBlen(CurEng,2);
 			break;
 		case 0x96:
-			Loop = TE_end_mask_nested_dialog_option(CurEng,str);
+			Loop = TE_advBlen(CurEng,2);
 			break;
 		case 0x97:
 			Loop = TE_set_return(CurEng,str);
@@ -167,6 +167,15 @@ s8 TE_jump_cmds(struct TEState *CurEng,u8 cmd,u8 *str){
 		//transitions
 		case 0x9D:
 			Loop = TE_advBlen(CurEng,1);
+			break;
+		case 0xAA:
+			Loop = TE_box_transition(CurEng,str);
+			break;
+		case 0xFE:
+			Loop = TE_line_break(CurEng,str);
+			break;
+		case 0xFF:
+			Loop = TE_terminator(CurEng,str);
 			break;
 		//more camera/object cmds + function cmds
 	}
@@ -206,15 +215,16 @@ s8 TE_set_env_color(struct TEState *CurEng,u8 *str){
 //43 cmd
 s8 TE_display_usr_str(struct TEState *CurEng,u8 *str){
 	TE_print(CurEng);
-	CurEng->ReturnStr = CurEng->TempStr+2+CurEng->CurPos;
+	CurEng->ReturnUsrStr = CurEng->TempStr+2+CurEng->CurPos;
 	CurEng->TempStr = &UserInputs[str[1]][CurEng->state];
 	return 1;
 }
 //44 cmd works
 s8 TE_set_scissor(struct TEState *CurEng,u8 *str){
 	TE_print(CurEng);
-	gDPSetScissor(gDisplayListHead++,G_SC_NON_INTERLACE,TE_get_u16(str),SCREEN_HEIGHT-TE_get_u16(str+6),TE_get_u16(str+2),SCREEN_HEIGHT-TE_get_u16(str+4));
+	gDPSetScissor(gDisplayListHead++,G_SC_NON_INTERLACE,TE_get_u16(str)+CurEng->BoxTrXi,SCREEN_HEIGHT-TE_get_u16(str+6)-CurEng->BoxTrYf,TE_get_u16(str+2)+CurEng->BoxTrXf,SCREEN_HEIGHT-TE_get_u16(str+4)-CurEng->BoxTrYi);
 	CurEng->ScissorSet = 1;
+	TE_clear_box_tr(CurEng);
 	return TE_print_adv(CurEng,9);
 }
 //45 cmd
@@ -222,7 +232,7 @@ s8 TE_return_usr_str(struct TEState *CurEng,u8 *str){
 	TE_print(CurEng);
 	CurEng->TempStrEnd-=CurEng->CurPos;
 	CurEng->CurPos=0;
-	CurEng->TempStr = CurEng->ReturnStr;
+	CurEng->TempStr = CurEng->ReturnUsrStr;
 	return 1;
 }
 //46 cmd works
@@ -309,14 +319,17 @@ s8 TE_make_keyboard(struct TEState *CurEng,u8 *str){
 }
 //generic text box handler
 s8 TE_next_box(struct TEState *CurEng,u8 *str){
-	CurEng->TransEndVI = 0;
+	CurEng->TrEnd.TransVI = 0;
 	CurEng->KeyboardState &= 0x7F;
-	if(CurEng->TransStartLength != 0){
-		CurEng->TransStartVI = gNumVblanks;
+	if(CurEng->TrStart.TransLength != 0){
+		CurEng->TrStart.TransVI = gNumVblanks;
 	}
 	CurEng->OgStr = CurEng->CurPos+CurEng->TempStr+1;
 	CurEng->CurPos = 0;
 	CurEng->StrEnd = 0;
+	CurEng->TransX = 0;
+	CurEng->TransY = 0;
+	TE_clear_box_tr(CurEng);
 	if(CurEng->NewSpeed != 0x1234){
 		CurEng->VIpChar = CurEng->NewSpeed;
 	}
@@ -326,15 +339,15 @@ s8 TE_next_box(struct TEState *CurEng,u8 *str){
 //70 cmd works
 s8 TE_auto_goto_next_box(struct TEState *CurEng,u8 *str){
 	CurEng->LastVI = gNumVblanks;
-	if(CurEng->TransEndLength == 0){
+	if(CurEng->TrEnd.TransLength == 0){
 		return TE_next_box(CurEng, str);
 	}else{
-		if(CurEng->TransEndVI == 0){
-			CurEng->TransEndVI = gNumVblanks;
+		if(CurEng->TrEnd.TransVI == 0){
+			CurEng->TrEnd.TransVI = gNumVblanks;
 			return 0;
 		}
 		else{
-			if(gNumVblanks >= (CurEng->TransEndLength+CurEng->TransEndVI)){
+			if(gNumVblanks >= (CurEng->TrEnd.TransLength+CurEng->TrEnd.TransVI)){
 				return TE_next_box(CurEng, str);
 			}
 			return 0;
@@ -343,6 +356,9 @@ s8 TE_auto_goto_next_box(struct TEState *CurEng,u8 *str){
 }
 //71 cmd works
 s8 TE_Abtn_goto_next_box(struct TEState *CurEng,u8 *str){
+	if(CurEng->TrStart.TransVI != 0){
+		return 0;
+	}
 	u8 arrow = 0xFF;
 	u8 check = CurEng->KeyboardState&0x80;
 	CurEng->KeyboardState |= 0x80;
@@ -350,7 +366,7 @@ s8 TE_Abtn_goto_next_box(struct TEState *CurEng,u8 *str){
 	if(check == 0){
 		return 0;
 	}
-	if(CurEng->TransEndVI != 0){
+	if(CurEng->TrEnd.TransVI != 0){
 		return TE_auto_goto_next_box(CurEng,str);
 	}
 	if(gNumVblanks & 0x20){
@@ -454,12 +470,12 @@ s8 TE_clean_buffer(struct TEState *CurEng,u8 *str){
 }
 //generic string ender
 s8 TE_end_str(struct TEState *CurEng){
-	if(CurEng->TransEndLength != 0){
-		if(CurEng->TransEndVI == 0){
-			CurEng->TransEndVI = gNumVblanks;
+	if(CurEng->TrEnd.TransLength != 0){
+		if(CurEng->TrEnd.TransVI == 0){
+			CurEng->TrEnd.TransVI = gNumVblanks;
 			return 0;
 		}
-		if(gNumVblanks >= (CurEng->TransEndLength+CurEng->TransEndVI)){
+		if(gNumVblanks >= (CurEng->TrEnd.TransLength+CurEng->TrEnd.TransVI)){
 			return TE_reset_str(CurEng);
 		}
 		return 0;
@@ -477,6 +493,9 @@ s8 TE_reset_str(struct TEState *CurEng){
 }
 //7b cmd works
 s8 TE_Abtn_end_string(struct TEState *CurEng,u8 *str){
+	if(CurEng->TrStart.TransVI != 0){
+		return 0;
+	}
 	u8 arrow = 0xFF;
 	u8 check = CurEng->KeyboardState&0x80;
 	CurEng->KeyboardState |= 0x80;
@@ -489,7 +508,7 @@ s8 TE_Abtn_end_string(struct TEState *CurEng,u8 *str){
 	}
 	StrBuffer[CurEng->state][CurEng->CurPos] = arrow;
 	StrBuffer[CurEng->state][CurEng->CurPos+1] = 0xFF;
-	if(CurEng->TransEndVI != 0){
+	if(CurEng->TrEnd.TransVI != 0){
 		return TE_end_str(CurEng);
 	}
 	if(gPlayer1Controller->buttonPressed&A_BUTTON){
@@ -518,29 +537,46 @@ void TE_bg_box_finish(struct TEState *CurEng){
 	TE_fix_scale_Xpos(CurEng);
 	gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 }
+void TE_clear_box_tr(struct TEState *CurEng){
+	CurEng->BoxTrXi = 0;
+	CurEng->BoxTrXf = 0;
+	CurEng->BoxTrYi = 0;
+	CurEng->BoxTrYf = 0;
+}
 void TE_bg_box_setup(struct TEState *CurEng){
-	TE_set_env(CurEng);
-	print_generic_string(CurEng->TempX,CurEng->TempY,&StrBuffer[CurEng->state]);
+	//print shadow with plaintext
+	if(CurEng->PlainText){
+		u32 Env = CurEng->EnvColorWord;
+		CurEng->EnvColorWord = 0x10101000 | CurEng->EnvColorByte[3];
+		CurEng->TempX += 1;
+		CurEng->TempY -= 1;
+		TE_transition_print(CurEng);
+		CurEng->TempX -= 1;
+		CurEng->TempY += 1;
+		CurEng->EnvColorWord = Env;
+	}
+	TE_transition_print(CurEng);
 	TE_flush_str_buff(CurEng);
+	TE_reset_Xpos(CurEng);
 	gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 }
 void TE_bg_coords(struct TEState *CurEng,u8 *str){
-	f32 x1 = (f32) TE_get_u16(str);
-	f32 y1 = (f32) TE_get_u16(str+4);
-	f32 x2 = (f32) TE_get_u16(str+2);
-	f32 y2 = (f32) TE_get_u16(str+6);
+	f32 x1 = (f32) (TE_get_u16(str)+CurEng->BoxTrXi);
+	f32 y1 = (f32) (TE_get_u16(str+4)+CurEng->BoxTrYi);
+	f32 x2 = (f32) (TE_get_u16(str+2)+CurEng->BoxTrXf);
+	f32 y2 = (f32) (TE_get_u16(str+6)+CurEng->BoxTrYf);
 	create_dl_scale_matrix(MENU_MTX_PUSH, (x2-x1)/130.0f,(y2-y1)/80.0f, 1.0f);
-	create_dl_translation_matrix(MENU_MTX_NOPUSH, 130.0f*(x1/(x2-x1)),80.0f*y2/(y2-y1), 0.0f);
+	create_dl_translation_matrix(MENU_MTX_NOPUSH, 130.0f*(x1/(x2-x1)),80.0f*y2/(y2-y1), 1.0f);
 }
 //7d cmd works
 s8 TE_mosaic_bg_box(struct TEState *CurEng,u8 *str){
 	u8 i;
 	u8 j;
 	TE_bg_box_setup(CurEng);
-	f32 x1 = (f32) TE_get_u16(str);
-	f32 y1 = (f32) TE_get_u16(str+4);
-	f32 x2 = (f32) TE_get_u16(str+2);
-	f32 y2 = (f32) TE_get_u16(str+6);
+	f32 x1 = (f32) (TE_get_u16(str)+CurEng->BoxTrXi);
+	f32 y1 = (f32) (TE_get_u16(str+4)+CurEng->BoxTrYi);
+	f32 x2 = (f32) (TE_get_u16(str+2)+CurEng->BoxTrXf);
+	f32 y2 = (f32) (TE_get_u16(str+6)+CurEng->BoxTrYf);
 	f32 lenX = (f32) str[13];
 	f32 lenY = (f32) str[14];
 	u32 *ptr = segmented_to_virtual(TE_get_u32(str+8));
@@ -553,7 +589,7 @@ s8 TE_mosaic_bg_box(struct TEState *CurEng,u8 *str){
 			xOff = i*130.0f;
 			yOff = j*80.0f;
 			create_dl_scale_matrix(MENU_MTX_PUSH, W/130.0f,H/80.0f, 1.0f);
-			create_dl_translation_matrix(MENU_MTX_NOPUSH, xOff+(130.0f*x1/W),(80.0f*y2/H)-yOff, 0.0f);
+			create_dl_translation_matrix(MENU_MTX_NOPUSH, xOff+(130.0f*x1/W),(80.0f*y2/H)-yOff, 1.0f);
 			gDPLoadTextureBlock(gDisplayListHead++,ptr+(i*0x200)+(str[13]*j*0x200),G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0,G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
 			gSPDisplayList(gDisplayListHead++, dl_draw_text_bg_box_TE);
 			gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -563,6 +599,7 @@ s8 TE_mosaic_bg_box(struct TEState *CurEng,u8 *str){
 	gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 	create_dl_scale_matrix(MENU_MTX_PUSH, CurEng->ScaleF[0], CurEng->ScaleF[1], 1.0f);
 	TE_fix_scale_Xpos(CurEng);
+	TE_clear_box_tr(CurEng);
 	return TE_print_adv(CurEng,15);
 }
 //7e cmd not done
@@ -631,15 +668,60 @@ s8 TE_scale_text(struct TEState *CurEng,u8 *str){
 	TE_fix_scale_Xpos(CurEng);
 	return TE_print_adv(CurEng,9);
 }
-//85 cmd not done
+//85 cmd works
 s8 TE_enable_dialog_options(struct TEState *CurEng,u8 *str){
+	u8 arrow = 0x9E;
 	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
+	CurEng->TempY -= 0xD;
+	CurEng->TempYOrigin -= 0xD;
+	CurEng->TempXOrigin -= 1;
+	CurEng->NumDialogs = str[1];
+	if(CurEng->DialogEnd != 0){
+		if(gPlayer1Controller->buttonPressed&A_BUTTON){
+			CurEng->OgStr = CurEng->DialogEnd;
+			CurEng->DialogEnd = 0;
+			CurEng->CurPos = 0;
+			CurEng->StrEnd = 0;
+			CurEng->NumDialogs = 0;
+			CurEng->DisplayingDialog = 0;
+			CurEng->LastVI = gNumVblanks;
+			CurEng->ReturnedDialog = CurEng->HoveredDialog;
+			return -1;
+		}else{
+			handle_menu_scrolling(MENU_SCROLL_VERTICAL,&CurEng->HoveredDialog,0,CurEng->NumDialogs);
+			if(CurEng->HoveredDialog == 0){
+				arrow = 0x53;
+			}
+		}
+	}
+	StrBuffer[CurEng->state][0] = arrow;
+	StrBuffer[CurEng->state][1] = 0xFF;
+	CurEng->TempX = CurEng->TempXOrigin;
+	TE_print(CurEng);
+	CurEng->TempXOrigin += gDialogCharWidths[0x53];
+	CurEng->TempX = CurEng->TempXOrigin;
+	CurEng->DisplayingDialog = 0;
+	return TE_print_adv(CurEng,2);
 }
-//86 cmd not done
+//86 cmd works
 s8 TE_dialog_response(struct TEState *CurEng,u8 *str){
-	CurEng->ShakeScreen |= 1;
-	return TE_print_adv(CurEng,9);
+	if(CurEng->ReturnedDialog == str[1]){
+		return TE_advBlen(CurEng,2);
+	}else{
+		str += 2;
+		CurEng->TempStr += 2;
+		while(str[0] != 0x86 || str[1] != CurEng->ReturnedDialog){
+			if(str[0] == 0x95){
+				str = TE_mask_nested_dialog_option(CurEng,str);
+			}else if(str[0] == 0x87){
+				return TE_advBlen(CurEng,1);
+			}else{
+				str += 1;
+				CurEng->TempStr += 1;
+			}
+		}
+		TE_advBlen(CurEng,2);
+	}
 }
 //88 cmd works
 s8 TE_enable_screen_shake(struct TEState *CurEng,u8 *str){
@@ -651,61 +733,120 @@ s8 TE_disable_screen_shake(struct TEState *CurEng,u8 *str){
 	CurEng->ShakeScreen = 0;
 	return TE_advBlen(CurEng,1);
 }
-//8F cmd not done
+//8F cmd works
 s8 TE_trigger_warp(struct TEState *CurEng,u8 *str){
 	sDelayedWarpOp = 1;
 	sDelayedWarpTimer = TE_get_u16(str);
 	sSourceWarpNodeId = str[3];
 	TE_add_to_cmd_buffer(CurEng,str,4);
-	return TE_print_adv(CurEng,4);
+	return TE_advBlen(CurEng,4);
 }
-//93 cmd not done
+//93 cmd works
 s8 TE_start_bracket(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
+	u8 key = str[1];
+	str += 2;
+	CurEng->TempStr += 2;
+	while(str[0] != 0x94 || str[1] != key){
+		str += 1;
+		CurEng->TempStr += 1;
+	}
+	str += 2;
+	CurEng->TempStr += 2;
+	return 1;
 }
-//94 cmd not done
-s8 TE_end_bracket(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
+//95 cmd works
+u8 * TE_mask_nested_dialog_option(struct TEState *CurEng,u8 *str){
+	u8 key = str[1];
+	str += 2;
+	CurEng->TempStr += 2;
+	while(str[0] != 0x96 || str[1] != key){
+		str += 1;
+		CurEng->TempStr += 1;
+	}
+	str += 2;
+	CurEng->TempStr += 2;
+	return str;
 }
-//95 cmd not done
-s8 TE_mask_nested_dialog_option(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
-}
-//96 cmd not done
-s8 TE_end_mask_nested_dialog_option(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
-}
-//97 cmd not done
+//97 cmd works
 s8 TE_set_return(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
+	CurEng->ReturnStr[str[1]] = str+2;
+	return TE_advBlen(CurEng,2);
 }
-//98 cmd not done
+//98 cmd works
 s8 TE_goto_return(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
+	if(CurEng->ReturnStr[str[1]] == 0){
+		return TE_advBlen(CurEng,2);
+	}else{
+		CurEng->OgStr = CurEng->ReturnStr[str[1]];
+		CurEng->StrEnd = 0;
+		if(CurEng->NewSpeed != 0x1234){
+			CurEng->VIpChar = CurEng->NewSpeed;
+		}
+		return -1;
+	}
 }
-//99 cmd not done
+//99 cmd works
 s8 TE_enable_plaintext(struct TEState *CurEng,u8 *str){
 	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
+	CurEng->PlainText = 1;
+	return TE_print_adv(CurEng,1);
 }
-//9a cmd not done
+//9a cmd works
 s8 TE_disable_plaintext(struct TEState *CurEng,u8 *str){
 	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
+	CurEng->PlainText = 0;
+	return TE_print_adv(CurEng,1);
 }
-//9c cmd not done
+//9b cmd works
 s8 TE_enable_end_transition(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
+	CurEng->TrEnd.TransLength = str[1];
+	CurEng->TrEnd.TransAlpha = str[2];
+	CurEng->TrEnd.TransDir = str[3];
+	CurEng->TrEnd.TransSpeed = str[4];
+	return TE_advBlen(CurEng,5);
 }
-//9d cmd not done
+//9c cmd works
 s8 TE_enable_start_transition(struct TEState *CurEng,u8 *str){
+	CurEng->TrStart.TransLength = str[1];
+	CurEng->TrStart.TransAlpha = str[2];
+	CurEng->TrStart.TransDir = str[3];
+	CurEng->TrStart.TransSpeed = str[4];
+	return TE_advBlen(CurEng,5);
+}
+
+//aa cmd works
+s8 TE_box_transition(struct TEState *CurEng,u8 *str){
+	CurEng->BoxTrXi = (s16) (TE_get_s16(str)*CurEng->TrPct);
+	CurEng->BoxTrXf = (s16) (TE_get_s16(str+2)*CurEng->TrPct);
+	CurEng->BoxTrYi = (s16) (TE_get_s16(str+4)*CurEng->TrPct);
+	CurEng->BoxTrYf = (s16) (TE_get_s16(str+6)*CurEng->TrPct);
+	return TE_advBlen(CurEng,9);
+}
+//fe cmd works
+s8 TE_line_break(struct TEState *CurEng,u8 *str){
 	TE_print(CurEng);
-	return TE_print_adv(CurEng,9);
+	CurEng->TotalXOff = 0;
+	CurEng->TempX = CurEng->TempXOrigin-1;
+	CurEng->TempY = CurEng->TempYOrigin-0xD;
+	return TE_print_adv(CurEng,1);
+}
+//ff cmd works
+s8 TE_terminator(struct TEState *CurEng,u8 *str){
+	TE_print(CurEng);
+	if(CurEng->DisplayingDialog == CurEng->NumDialogs){
+		CurEng->DialogEnd = str+1;
+		return -1;
+	}
+	CurEng->DisplayingDialog += 1;
+	CurEng->TempX = CurEng->TempXOrigin-1;
+	CurEng->TempY = CurEng->TempYOrigin-0xD;
+	if(CurEng->HoveredDialog == CurEng->DisplayingDialog){
+		StrBuffer[CurEng->state][0] = 0x53;
+		StrBuffer[CurEng->state][1] = 0xFF;
+		CurEng->TempX -= gDialogCharWidths[0x53];
+		TE_print(CurEng);
+		CurEng->TempX = CurEng->TempXOrigin-1;
+	}
+	CurEng->TotalXOff = 0;
+	return TE_print_adv(CurEng,1);
 }
