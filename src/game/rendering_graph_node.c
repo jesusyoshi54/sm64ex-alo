@@ -10,6 +10,7 @@
 #include "rendering_graph_node.h"
 #include "shadow.h"
 #include "sm64.h"
+#include "text_engine.h"
 
 /**
  * This file contains the code that processes the scene graph for rendering.
@@ -211,6 +212,7 @@ static void geo_process_master_list(struct GraphNodeMasterList *node) {
         geo_process_master_list_sub(node);
         gCurGraphNodeMasterList = NULL;
     }
+	RunTextEngine();
 }
 
 /**
