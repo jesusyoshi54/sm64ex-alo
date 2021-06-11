@@ -103,6 +103,7 @@ union WordByte{
 };
 
 extern const Gfx dl_draw_text_bg_box_TE[];
+extern char Test2[];
 extern char TestStr[];
 extern u8 StrBuffer[NumEngines][0x100];
 extern volatile struct TEState TE_Engines[NumEngines];

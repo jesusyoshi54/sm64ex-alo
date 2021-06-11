@@ -1190,6 +1190,7 @@ N64CKSUM = $(TOOLS_DIR)/n64cksum
 N64GRAPHICS = $(TOOLS_DIR)/n64graphics
 N64GRAPHICS_CI = $(TOOLS_DIR)/n64graphics_ci
 BINPNG = $(TOOLS_DIR)/BinPNG.py
+TECONV = $(TOOLS_DIR)/TE_encode.py
 TEXTCONV = $(TOOLS_DIR)/textconv
 AIFF_EXTRACT_CODEBOOK = $(TOOLS_DIR)/aiff_extract_codebook
 VADPCM_ENC = $(TOOLS_DIR)/vadpcm_enc
@@ -1380,6 +1381,15 @@ ifeq ($(TARGET_GAME_CONSOLE),0)
   endif
 endif
 endif
+
+# TE files
+TE_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*_te.py))
+# TE h files
+TEH_FILES := $(foreach file,$(TE_FILES),$(BUILD_DIR)/$(file:.te.h=.py))
+#create text engine encoded strings
+$(TEH_FILES): $(TE_FILES)
+	$(call print,Converting TE string:,$<,$@)
+	python3 $(TECONV) $< $@
 
 ################################################################
 # Texture Generation                                           #
@@ -1645,7 +1655,7 @@ $(BUILD_DIR)/libgoddard.a: $(GODDARD_O_FILES)
 	$(V)$(AR) rcs -o $@ $(GODDARD_O_FILES)
 
 # Link SM64 ELF file
-$(ELF): $(O_FILES) $(MIO0_OBJ_FILES) $(SOUND_OBJ_FILES) $(SEG_FILES) $(BUILD_DIR)/$(LD_SCRIPT) undefined_syms.txt $(BUILD_DIR)/libultra.a $(BUILD_DIR)/libgoddard.a
+$(ELF): $(O_FILES) $(MIO0_OBJ_FILES) $(SOUND_OBJ_FILES) $(SEG_FILES) $(BUILD_DIR)/$(LD_SCRIPT) undefined_syms.txt $(BUILD_DIR)/libultra.a $(BUILD_DIR)/libgoddard.a $(TEH_FILES)
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) -L $(BUILD_DIR) $(LDFLAGS) -o $@ $(O_FILES) $(LIBS) -lultra -lgoddard
 
