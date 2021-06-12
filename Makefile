@@ -1356,7 +1356,16 @@ ALL_DIRS := $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(ASM_DIRS) $(GOD
 # Make sure build directory exists before compiling anything
 DUMMY != mkdir -p $(ALL_DIRS)
 
-$(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_menu_strings.h
+# TE files
+TE_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*_te.py))
+# TE h files
+TEH_FILES := $(foreach file,$(TE_FILES),$(BUILD_DIR)/$(file:.te.h=.py))
+#create text engine encoded strings
+$(TEH_FILES): $(TE_FILES)
+	$(call print,Converting TE string:,$<,$@)
+	python3 $(TECONV) $< $@
+#make menu strings dependent on TE files so they're built into final file
+$(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_menu_strings.h $(TEH_FILES)
 $(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_options_strings.h
 
 ifeq ($(VERSION),eu)
@@ -1381,15 +1390,6 @@ ifeq ($(TARGET_GAME_CONSOLE),0)
   endif
 endif
 endif
-
-# TE files
-TE_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*_te.py))
-# TE h files
-TEH_FILES := $(foreach file,$(TE_FILES),$(BUILD_DIR)/$(file:.te.h=.py))
-#create text engine encoded strings
-$(TEH_FILES): $(TE_FILES)
-	$(call print,Converting TE string:,$<,$@)
-	python3 $(TECONV) $< $@
 
 ################################################################
 # Texture Generation                                           #
@@ -1655,7 +1655,7 @@ $(BUILD_DIR)/libgoddard.a: $(GODDARD_O_FILES)
 	$(V)$(AR) rcs -o $@ $(GODDARD_O_FILES)
 
 # Link SM64 ELF file
-$(ELF): $(O_FILES) $(MIO0_OBJ_FILES) $(SOUND_OBJ_FILES) $(SEG_FILES) $(BUILD_DIR)/$(LD_SCRIPT) undefined_syms.txt $(BUILD_DIR)/libultra.a $(BUILD_DIR)/libgoddard.a $(TEH_FILES)
+$(ELF): $(O_FILES) $(MIO0_OBJ_FILES) $(SOUND_OBJ_FILES) $(SEG_FILES) $(BUILD_DIR)/$(LD_SCRIPT) undefined_syms.txt $(BUILD_DIR)/libultra.a $(BUILD_DIR)/libgoddard.a
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) -L $(BUILD_DIR) $(LDFLAGS) -o $@ $(O_FILES) $(LIBS) -lultra -lgoddard
 
