@@ -15,11 +15,13 @@ struct TEState{
 	/* N//A */ u8 state;
 	/* 0x60 */ u8 ShakeScreen;
 	/* 0x61 */ u8 PlainText;
+	/* 0x61 */ u8 CurUsrStr;
 	/* 0x00 */ u32 LastVI;
 	/* 0x04 */ s16 TempXOrigin;
 	/* 0x06 */ s16 TempYOrigin;
 	/* 0x08 */ s16 VIpChar; //VIs per char, negative for char per VI
 	/* 0x0A */ u8  KeyboardState; //also used to keep track of box ends
+	/* NEW  */ s8  KeyboardChar; //which letter is being drawn on the keyboard
 	/* 0x0B */ u8  WobbleHeight;
 	/* 0x0C */ u8 *TempStr;
 	/* 0x10 */ s16 TempX;
@@ -57,10 +59,10 @@ struct TEState{
 	};
 	/* 0x40 */ u8 *StrRemoval;
 	//For user input on keyboard
-	/* 0x44 */ u8 UserInput;
+	/* 0x44 */ u8 UserInput; //the location of the currently edited char in usr str
 	/* 0x45 */ u8 ShiftPressed;
-	/* 0x46 */ u8 IntendedLetter;
-	/* 0x47 */ u8 SelLetter;
+	/* 0x46 */ s8 IntendedLetter;
+	/* 0x47 */ u8 SelLetter; //the letter thats currently hovered over
 	/* 0x48 */ u32 KeyboardTimer;
 	/* 0x4C */ u8 *PreKeyboardStr;
 	/* 0x50 */ u8 *InputStr;
@@ -102,7 +104,10 @@ union WordByte{
 	char col[4];
 };
 
+extern const Texture sky_09000000[];
 extern const Gfx dl_draw_text_bg_box_TE[];
+extern char TE_KEYBOARD_lower[];
+extern char TE_KEYBOARD_upper[];
 extern char Test2[];
 extern char TestStr[];
 extern u8 StrBuffer[NumEngines][0x100];
@@ -127,6 +132,7 @@ s8 TE_print_adv(struct TEState *CurEng,u16 len);
 u16 TE_get_u16(u8 *str);
 s16 TE_get_s16(u8 *str);
 u32 TE_get_u32(u8 *str);
+u32 TE_get_ptr(u8 *strArgs,u8 *str);
 s32 TE_get_s32(u8 *str);
 s8 TE_end_str(struct TEState *CurEng);
 s8 TE_reset_str(struct TEState *CurEng);
@@ -155,6 +161,9 @@ s8 TE_en_A_spd_incr(struct TEState *CurEng,u8 *str);
 s8 TE_dis_A_spd_incr(struct TEState *CurEng,u8 *str);
 s8 TE_always_allow_keyboard(struct TEState *CurEng,u8 *str);
 s8 TE_make_keyboard(struct TEState *CurEng,u8 *str);
+s8 TE_draw_keyboard(struct TEState *CurEng,u8 *str);
+s8 TE_keyboard_sel(struct TEState *CurEng,u8 *str,u8 state);
+s8 TE_add_usr_str(struct TEState *CurEng,u8 *str);
 s8 TE_next_box(struct TEState *CurEng,u8 *str);
 s8 TE_auto_goto_next_box(struct TEState *CurEng,u8 *str);
 s8 TE_Abtn_goto_next_box(struct TEState *CurEng,u8 *str);

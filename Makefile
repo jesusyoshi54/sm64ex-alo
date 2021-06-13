@@ -1365,7 +1365,7 @@ $(TEH_FILES): $(TE_FILES)
 	$(call print,Converting TE string:,$<,$@)
 	python3 $(TECONV) $< $@
 #make menu strings dependent on TE files so they're built into final file
-$(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_menu_strings.h $(TEH_FILES)
+$(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_menu_strings.h $(TEH_FILES) $(TE_FILES)
 $(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_options_strings.h
 
 ifeq ($(VERSION),eu)

@@ -1032,12 +1032,12 @@ s32 play_mode_normal(void) {
 	struct TEState CurEng;
 	if (gPlayer1Controller->buttonDown&Z_TRIG){
 		CurEng = TE_Engines[0];
-		sprintf(buf,"hvd %d",absi(CurEng.HoveredDialog));
+		sprintf(buf,"usr %d",CurEng.UserInput);
 		print_text(32,32,buf);
-		sprintf(buf,"T len %d",CurEng.TrEnd.TransLength);
+		sprintf(buf,"in %d",CurEng.IntendedLetter);
 		print_text(32,64,buf);
-		sprintf(buf,"str %x",CurEng.DialogEnd);
-		print_text(32,96,buf);
+		// sprintf(buf,"str %x",CurEng.DialogEnd);
+		// print_text(32,96,buf);
 	}
     // If either initiate_painting_warp or initiate_delayed_warp initiated a
     // warp, change play mode accordingly.

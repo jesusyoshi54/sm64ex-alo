@@ -1,5 +1,5 @@
 #include <PR/ultratypes.h>
-
+#include <PR/gbi.h>
 #include "gfx_dimensions.h"
 #include "print.h"
 #include "rendering_graph_node.h"
@@ -34,21 +34,7 @@ u8 UserInputs[NumEngines][16][16]; //16 length 16 strings
 //my char and ptr arrays
 #include "src/game/Keyboard_te.h"
 char TestStr[] = {
-	/* speed */0x40,0,4,0x76,0,1,2,3,
-	/* dialog option */0x85,1,10,5,5,5,5,0xff,6,6,6,6,6,6,6,0xff,
-	/* dialog re*/ 0,0,0,0,0x86,0,2,2,2,2,2,2,0xff,0x95,0,0x86,1,0x96,1,0x86,0x1,0x96,0,1,3,3,3,3,3,3,0x71,
-	/* dialog re*/0x86,1,5,5,5,5,5,5,0x71,
-	/* transition */0x9b,255,0,0x40,0,0x9c,255,0,0x40,0,0,20,0,10,0,0,0,0x71,
-	/* bg tr */0xaa,0,0x18,0xFF,0xE8,0,0x18,0xFF,0xE8,
-	/* shade BG */0x7f,0,0x20,0,0x50,0,0x20,0,0x50,2,0,0,0x80,2,2,
-	/* bg tr */0xaa,0,0x18,0xFF,0xE8,0,0x18,0xFF,0xE8,
-	/* scissor */0x44,0,0x20,0,0x50,0,0x20,0,0x50,
-	/* color */0x42,0xFF,0,0,0xFF,4,5,6,4,5,6,
-	/* play music */0x79,4,
-	/* a btn box*/ 0x71,
-	/* scale */0x84,0x40,0,0,0,0x3f,0x80,0,0,
-	/* scale */5,5,5,5,5,5,5,5,
-	/* blank */0x72,0,60,3,3,3,3,3,3,3,3,3,
+	/* speed */0x4f,0,1,3,
 	7,8,9,0x7b
 };
 
@@ -100,10 +86,14 @@ void RunTextEngine(void){
 				goto loopswitch;
 			}
 			//draw keyboard
-			if (CurEng->UserInput){
-				//goto
+			if (CurEng->KeyboardState==1){
+				loop = TE_draw_keyboard(CurEng,str);
+				goto loopswitch;
 			}
 			if(!(CurChar<0x40||(CurChar>0x4F&&CurChar<0x70)||(CurChar>0xCF&&CurChar<0xFE)||CurChar==0x9E||CurChar==0x9F)){
+				static char buf[32];
+				sprintf(buf,"%d",CurChar);
+				// print_text(32,96,buf);
 				//parse cmds and use switch
 				loop = TE_jump_cmds(CurEng,CurChar,str);
 				loopswitch:
@@ -115,6 +105,25 @@ void RunTextEngine(void){
 						goto printnone;
 					else if (loop==-2)
 						goto printnone;
+			}
+			//keep track of current keyboard index while drawing keyboard
+			if (CurEng->KeyboardState==2 && CurChar!=0x9E){
+				CurEng->KeyboardChar+=1;
+				//space
+				if(CurEng->IntendedLetter==42){
+				}
+				//end
+				if(CurEng->IntendedLetter==43){
+				}
+				if((CurEng->KeyboardChar-1)==CurEng->IntendedLetter){
+					loop = TE_keyboard_sel(CurEng,str,1);
+					TE_add_char2buf(CurEng);
+					goto loopswitch;
+				}
+				if((CurEng->KeyboardChar-2)==CurEng->IntendedLetter){
+					loop = TE_keyboard_sel(CurEng,str,0);
+					goto loopswitch;
+				}
 			}
 			//normal character is detected
 			if(CurEng->TempStrEnd!=CurEng->CurPos){
@@ -377,7 +386,7 @@ void TE_reset_Xpos(struct TEState *CurEng){
 }
 
 void TE_fix_scale_Xpos(struct TEState *CurEng){
-	create_dl_translation_matrix(MENU_MTX_NOPUSH, (f32)CurEng->TempX*(1.0f/CurEng->ScaleF[0]-1.0f), (f32)CurEng->TempY*(1.0f/CurEng->ScaleF[1]-1.0f), 0);
+	create_dl_translation_matrix(MENU_MTX_NOPUSH, ((f32)CurEng->TempX)*((1.0f/CurEng->ScaleF[0])-1.0f), ((f32)(CurEng->TempY)*((1.0f/CurEng->ScaleF[1])-1.0f)), 0);
 }
 
 //gets str ready to display characters
@@ -411,4 +420,11 @@ u32 TE_get_u32(u8 *str){
 	u32 res;
 	res = (str[1]<<24)+(str[2]<<16)+(str[3]<<8)+str[4];
 	return res;
+}
+
+u32 TE_get_ptr(u8 *strArgs,u8 *str){
+	u16 pos = TE_get_u16(strArgs);
+	u16 ptr = TE_get_u16(strArgs+2);
+	u32 **Ptrptr = str-4-pos;
+	return *Ptrptr[pos];
 }

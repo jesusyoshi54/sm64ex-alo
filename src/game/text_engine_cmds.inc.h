@@ -261,7 +261,7 @@ s8 TE_change_origin(struct TEState *CurEng,u8 *str){
 //48 cmd
 s8 TE_jump_str(struct TEState *CurEng,u8 *str){
 	TE_print(CurEng);
-	CurEng->TempStr = segmented_to_virtual(TE_get_u32(str));
+	CurEng->TempStr = segmented_to_virtual(TE_get_ptr(str,str));
 	CurEng->CurPos = 0;
 	return 1;
 }
@@ -269,25 +269,25 @@ s8 TE_jump_str(struct TEState *CurEng,u8 *str){
 s8 TE_translate_offset(struct TEState *CurEng,u8 *str){
 	TE_print(CurEng);
 	CurEng->TempX = CurEng->TempX+TE_get_s16(str);
-	CurEng->TempY = CurEng->TempY+TE_get_s16(str);
+	CurEng->TempY = CurEng->TempY+TE_get_s16(str+2);
 	CurEng->TempXOrigin = CurEng->TempX;
 	CurEng->TempYOrigin = CurEng->TempY;
 	return TE_print_adv(CurEng,5);
 }
-//4A cmd not done
-s8 TE_text_moving(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	CurEng->TempX = TE_get_s16(str);
-	CurEng->TempY = TE_get_s16(str);
-	CurEng->TempXOrigin = CurEng->TempX;
-	CurEng->TempYOrigin = CurEng->TempY;
-	return TE_print_adv(CurEng,5);
-}
-//4B cmd works
+//4A cmd works
 s8 TE_translate_absolute(struct TEState *CurEng,u8 *str){
 	TE_print(CurEng);
 	CurEng->TempX = TE_get_s16(str);
-	CurEng->TempY = TE_get_s16(str);
+	CurEng->TempY = TE_get_s16(str+2);
+	CurEng->TempXOrigin = CurEng->TempX;
+	CurEng->TempYOrigin = CurEng->TempY;
+	return TE_print_adv(CurEng,5);
+}
+//4B cmd not done
+s8 TE_text_moving(struct TEState *CurEng,u8 *str){
+	TE_print(CurEng);
+	CurEng->TempX = TE_get_s16(str);
+	CurEng->TempY = TE_get_s16(str+2);
 	CurEng->TempXOrigin = CurEng->TempX;
 	CurEng->TempYOrigin = CurEng->TempY;
 	return TE_print_adv(CurEng,5);
@@ -314,8 +314,121 @@ s8 TE_always_allow_keyboard(struct TEState *CurEng,u8 *str){
 }
 //4F cmd not done
 s8 TE_make_keyboard(struct TEState *CurEng,u8 *str){
-	CurEng->KeyboardState |= 1;
-	return TE_advBlen(CurEng,1);
+	if(CurEng->KeyboardState == 2){
+		return TE_add_usr_str(CurEng,str);
+	}
+	if(CurEng->KeyboardState == 3){
+		CurEng->KeyboardState = 1;
+		CurEng->KeyboardChar = 0;
+		return -1;
+	}
+	CurEng->KeyboardState = 1;
+	CurEng->InputStr = 0;
+	CurEng->UserInput = 0;
+	CurEng->IntendedLetter = 0;
+	CurEng->ShiftPressed = 0;
+	CurEng->PreKeyboardStr = str;
+	u8 ind = str[1];
+	u8 i;
+	CurEng->CurUsrStr = ind;
+	//fill in user input
+	for (i=0; i<15;i++){
+		UserInputs[CurEng->state][ind][i] = 0x9f;
+	}
+	UserInputs[CurEng->state][ind][15] = 0x45;
+	return -1;
+}
+s8 TE_add_usr_str(struct TEState *CurEng,u8 *str){
+	CurEng->KeyboardState = 3;
+	str[2] = 0x43;
+	str[3] = CurEng->CurUsrStr;
+	return TE_advBlen(CurEng,2);
+}
+s8 TE_draw_keyboard(struct TEState *CurEng,u8 *str){
+	//draw user input
+	//draw keyboard
+	CurEng->KeyboardState = 2;
+	if(CurEng->ShiftPressed){
+		CurEng->TempStr = &TE_KEYBOARD_upper;
+	}else{
+		CurEng->TempStr = &TE_KEYBOARD_lower;
+	}
+	if(gNumVblanks != CurEng->KeyboardTimer){
+		if(gPlayer1Controller->buttonPressed&A_BUTTON){
+			CurEng->KeyboardTimer = gNumVblanks;
+			//handle shift, end and backspace
+			switch(CurEng->SelLetter){
+				//shift
+				case 0x50:
+					CurEng->ShiftPressed^=1;
+					break;
+				//backspace
+				case 0x52:
+					if(CurEng->UserInput>0){
+						UserInputs[CurEng->state][CurEng->CurUsrStr][CurEng->UserInput-1] = 0x9F;
+						CurEng->UserInput-=1;
+					}
+					break;
+				default:
+					//end string
+					if(CurEng->IntendedLetter == 43){
+						CurEng->TempStr = CurEng->PreKeyboardStr+2;
+						TE_add_to_cmd_buffer(CurEng,CurEng->PreKeyboardStr,2);
+						return -1;
+					}
+					//space
+					u8 letter = CurEng->SelLetter;
+					if(CurEng->IntendedLetter == 42){
+						letter = 0x9e;
+					}
+					if(CurEng->UserInput<15){
+						UserInputs[CurEng->state][CurEng->CurUsrStr][CurEng->UserInput] = letter;
+						CurEng->UserInput+=1;
+					}
+					break;
+			}
+		}else if(gPlayer1Controller->buttonPressed&B_BUTTON && CurEng->UserInput>0){
+			CurEng->KeyboardTimer = gNumVblanks;
+			UserInputs[CurEng->state][CurEng->CurUsrStr][CurEng->UserInput-1] = 0x9F;
+			CurEng->UserInput-=1;
+		}
+	}
+	if(gNumVblanks - CurEng->KeyboardTimer>0x2){
+		CurEng->KeyboardTimer = gNumVblanks;
+		//for overflow
+		s8 vert = 0;
+		handle_menu_scrolling(MENU_SCROLL_VERTICAL,&vert,-1,1);
+		handle_menu_scrolling(MENU_SCROLL_HORIZONTAL,&CurEng->IntendedLetter,-1,44);
+		//another very large inefficiency
+		if (vert==1){
+			CurEng->IntendedLetter+=10;
+			if(CurEng->IntendedLetter>43){
+				CurEng->IntendedLetter = 0;
+			}
+		}else if(vert==-1){
+			CurEng->IntendedLetter-=10;
+			if(CurEng->IntendedLetter<0){
+				CurEng->IntendedLetter = 42;
+			}
+		}if(CurEng->IntendedLetter==44){
+			CurEng->IntendedLetter = 0;
+		}
+		else if(CurEng->IntendedLetter==-1){
+			CurEng->IntendedLetter = 43;
+		}
+	}
+	return 1;
+}
+//draw the BG as black for selected letter
+s8 TE_keyboard_sel(struct TEState *CurEng,u8 *str,u8 state){
+	TE_print(CurEng);
+	if(state){
+		gDPSetCombineMode(gDisplayListHead++,G_CC_MODULATEI,G_CC_MODULATEI);
+		CurEng->SelLetter = str[0];
+	}else{
+		gDPSetCombineMode(gDisplayListHead++,G_CC_FADEA,G_CC_FADEA);
+	}
+	return TE_print_adv(CurEng,0);
 }
 //generic text box handler
 s8 TE_next_box(struct TEState *CurEng,u8 *str){
@@ -579,7 +692,7 @@ s8 TE_mosaic_bg_box(struct TEState *CurEng,u8 *str){
 	f32 y2 = (f32) (TE_get_u16(str+6)+CurEng->BoxTrYf);
 	f32 lenX = (f32) str[13];
 	f32 lenY = (f32) str[14];
-	u32 *ptr = segmented_to_virtual(TE_get_u32(str+8));
+	u32 *ptr = segmented_to_virtual(TE_get_ptr(str+8,str));
 	f32 W = (x2-x1)/lenX;
 	f32 H = (y2-y1)/lenY;
 	f32 xOff;
@@ -606,7 +719,7 @@ s8 TE_mosaic_bg_box(struct TEState *CurEng,u8 *str){
 s8 TE_moving_textured_bg_box(struct TEState *CurEng,u8 *str){
 	TE_bg_box_setup(CurEng);
 	TE_bg_coords(CurEng,str);
-	u32 *ptr = segmented_to_virtual(TE_get_u32(str+8));
+	u32 *ptr = segmented_to_virtual(TE_get_ptr(str+8,str));
 	gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 	//pkt, timg, fmt, siz, width, height, pal, cms, cmt, masks, maskt, shifts, shiftt
 	gDPLoadTextureBlock(gDisplayListHead++,ptr,G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0,G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
@@ -630,7 +743,7 @@ s8 TE_shaded_bg_box(struct TEState *CurEng,u8 *str){
 s8 TE_textured_bg_box(struct TEState *CurEng,u8 *str){
 	TE_bg_box_setup(CurEng);
 	TE_bg_coords(CurEng,str);
-	u32 *ptr = segmented_to_virtual(TE_get_u32(str+8));
+	u32 *ptr = segmented_to_virtual(TE_get_ptr(str+8,str));
 	//pkt, timg, fmt, siz, width, height, pal, cms, cmt, masks, maskt, shifts, shiftt
 	gDPLoadTextureBlock(gDisplayListHead++,ptr,G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0,G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
 	gSPDisplayList(gDisplayListHead++, dl_draw_text_bg_box_TE);
@@ -641,7 +754,7 @@ s8 TE_textured_bg_box(struct TEState *CurEng,u8 *str){
 s8 TE_moving_shaded_bg_box(struct TEState *CurEng,u8 *str){
 	TE_bg_box_setup(CurEng);
 	TE_bg_coords(CurEng,str);
-	u32 *ptr = segmented_to_virtual(TE_get_u32(str+8));
+	u32 *ptr = segmented_to_virtual(TE_get_ptr(str+8,str));
 	gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 	//pkt, timg, fmt, siz, width, height, pal, cms, cmt, masks, maskt, shifts, shiftt
 	gDPLoadTextureBlock(gDisplayListHead++,ptr,G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0,G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
@@ -661,9 +774,23 @@ s8 TE_set_cutscene(struct TEState *CurEng,u8 *str){
 }
 //84 cmd works
 s8 TE_scale_text(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
+	//TE print but with scale placed after resetting X pos
+	if(CurEng->PlainText){
+		u32 Env = CurEng->EnvColorWord;
+		CurEng->EnvColorWord = 0x10101000 | CurEng->EnvColorByte[3];
+		CurEng->TempX += 1;
+		CurEng->TempY -= 1;
+		TE_transition_print(CurEng);
+		CurEng->TempX -= 1;
+		CurEng->TempY += 1;
+		CurEng->EnvColorWord = Env;
+	}
+	TE_transition_print(CurEng);
+	TE_flush_str_buff(CurEng);
+	TE_reset_Xpos(CurEng);
 	CurEng->ScaleU[0] = TE_get_u32(str);
 	CurEng->ScaleU[1] = TE_get_u32(str+4);
+	gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 	create_dl_scale_matrix(MENU_MTX_PUSH, CurEng->ScaleF[0], CurEng->ScaleF[1], 1.0f);
 	TE_fix_scale_Xpos(CurEng);
 	return TE_print_adv(CurEng,9);
@@ -824,10 +951,26 @@ s8 TE_box_transition(struct TEState *CurEng,u8 *str){
 }
 //fe cmd works
 s8 TE_line_break(struct TEState *CurEng,u8 *str){
-	TE_print(CurEng);
-	CurEng->TotalXOff = 0;
+	//modified print function to make printing not fuck with X pos
+	//rather inefficient but I'm lazy
+	if(CurEng->PlainText){
+		u32 Env = CurEng->EnvColorWord;
+		CurEng->EnvColorWord = 0x10101000 | CurEng->EnvColorByte[3];
+		CurEng->TempX += 1;
+		CurEng->TempY -= 1;
+		TE_transition_print(CurEng);
+		CurEng->TempX -= 1;
+		CurEng->TempY += 1;
+		CurEng->EnvColorWord = Env;
+	}
+	TE_transition_print(CurEng);
+	TE_flush_str_buff(CurEng);
 	CurEng->TempX = CurEng->TempXOrigin-1;
-	CurEng->TempY = CurEng->TempYOrigin-0xD;
+	CurEng->TempY -= ((u16) 0xD*CurEng->ScaleF[1]);
+	CurEng->TotalXOff = 0;
+	gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+	create_dl_scale_matrix(MENU_MTX_PUSH, CurEng->ScaleF[0], CurEng->ScaleF[1], 1.0f);
+	TE_fix_scale_Xpos(CurEng);
 	return TE_print_adv(CurEng,1);
 }
 //ff cmd works

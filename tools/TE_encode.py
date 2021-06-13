@@ -108,6 +108,7 @@ def Write(out,Test,name):
 	if Ptrs:
 		Z+= ','.join(Ptrs)
 		o.write(Z + '\n};\n')
+		o.write("u32 %s = &%s;\n"%(name+'_ptrptr',name+'_ptrlist'))
 	o.write(E)
 
 if __name__ == "__main__":
