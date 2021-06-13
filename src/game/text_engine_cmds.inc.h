@@ -212,11 +212,12 @@ s8 TE_set_env_color(struct TEState *CurEng,u8 *str){
 	CurEng->EnvColorWord = TE_get_u32(str);
 	return TE_print_adv(CurEng,5);
 }
-//43 cmd
+//43 cmd works
 s8 TE_display_usr_str(struct TEState *CurEng,u8 *str){
 	TE_print(CurEng);
 	CurEng->ReturnUsrStr = CurEng->TempStr+2+CurEng->CurPos;
-	CurEng->TempStr = &UserInputs[str[1]][CurEng->state];
+	CurEng->TempStr = &UserInputs[CurEng->state][str[1]];
+	CurEng->CurPos=0;
 	return 1;
 }
 //44 cmd works
@@ -227,7 +228,7 @@ s8 TE_set_scissor(struct TEState *CurEng,u8 *str){
 	TE_clear_box_tr(CurEng);
 	return TE_print_adv(CurEng,9);
 }
-//45 cmd
+//45 cmd works
 s8 TE_return_usr_str(struct TEState *CurEng,u8 *str){
 	TE_print(CurEng);
 	CurEng->TempStrEnd-=CurEng->CurPos;
@@ -258,7 +259,7 @@ s8 TE_change_origin(struct TEState *CurEng,u8 *str){
 	CurEng->TempYOrigin = CurEng->StartY;
 	return TE_advBlen(CurEng,5);
 }
-//48 cmd
+//48 cmd works
 s8 TE_jump_str(struct TEState *CurEng,u8 *str){
 	TE_print(CurEng);
 	CurEng->TempStr = segmented_to_virtual(TE_get_ptr(str,str));
@@ -307,13 +308,26 @@ s8 TE_dis_A_spd_incr(struct TEState *CurEng,u8 *str){
 	}
 	return TE_advBlen(CurEng,1);
 }
-//4E cmd not done
+//4E cmd works
 s8 TE_always_allow_keyboard(struct TEState *CurEng,u8 *str){
-	CurEng->KeyboardState |= 1;
+	CurEng->KeyboardReset |= 1;
 	return TE_advBlen(CurEng,1);
 }
-//4F cmd not done
+//4F cmd works
 s8 TE_make_keyboard(struct TEState *CurEng,u8 *str){
+	//end keyboard
+	if(CurEng->KeyboardState == 5){
+		CurEng->TempStr = CurEng->PreKeyboardStr+2;
+		UserInputs[CurEng->state][CurEng->CurUsrStr][CurEng->UserInput] = 0x45;
+		if(CurEng->KeyboardReset==0){
+			CurEng->PreKeyboardStr[0] = 0x83;
+			CurEng->PreKeyboardStr[1] = 0x83;
+			CurEng->KeyboardReset &= -2;
+		}
+		CurEng->KeyboardState = 0;
+		TE_add_to_cmd_buffer(CurEng,CurEng->PreKeyboardStr,2);
+		return -1;
+	}
 	if(CurEng->KeyboardState == 2){
 		return TE_add_usr_str(CurEng,str);
 	}
@@ -371,14 +385,13 @@ s8 TE_draw_keyboard(struct TEState *CurEng,u8 *str){
 					break;
 				default:
 					//end string
-					if(CurEng->IntendedLetter == 43){
-						CurEng->TempStr = CurEng->PreKeyboardStr+2;
-						TE_add_to_cmd_buffer(CurEng,CurEng->PreKeyboardStr,2);
+					if(CurEng->IntendedLetter == 42){
+						CurEng->KeyboardState = 5;
 						return -1;
 					}
 					//space
 					u8 letter = CurEng->SelLetter;
-					if(CurEng->IntendedLetter == 42){
+					if(CurEng->IntendedLetter == 41){
 						letter = 0x9e;
 					}
 					if(CurEng->UserInput<15){
@@ -402,7 +415,10 @@ s8 TE_draw_keyboard(struct TEState *CurEng,u8 *str){
 		//another very large inefficiency
 		if (vert==1){
 			CurEng->IntendedLetter+=10;
-			if(CurEng->IntendedLetter>43){
+			if(CurEng->IntendedLetter>43 && CurEng->IntendedLetter<50){
+				CurEng->IntendedLetter = 41;
+			}
+			else if(CurEng->IntendedLetter>43){
 				CurEng->IntendedLetter = 0;
 			}
 		}else if(vert==-1){
@@ -433,7 +449,7 @@ s8 TE_keyboard_sel(struct TEState *CurEng,u8 *str,u8 state){
 //generic text box handler
 s8 TE_next_box(struct TEState *CurEng,u8 *str){
 	CurEng->TrEnd.TransVI = 0;
-	CurEng->KeyboardState &= 0x7F;
+	CurEng->KeyboardReset &= 0x7F;
 	if(CurEng->TrStart.TransLength != 0){
 		CurEng->TrStart.TransVI = gNumVblanks;
 	}
@@ -473,8 +489,8 @@ s8 TE_Abtn_goto_next_box(struct TEState *CurEng,u8 *str){
 		return 0;
 	}
 	u8 arrow = 0xFF;
-	u8 check = CurEng->KeyboardState&0x80;
-	CurEng->KeyboardState |= 0x80;
+	u8 check = CurEng->KeyboardReset&0x80;
+	CurEng->KeyboardReset |= 0x80;
 	CurEng->LastVI = gNumVblanks;
 	if(check == 0){
 		return 0;
@@ -610,8 +626,8 @@ s8 TE_Abtn_end_string(struct TEState *CurEng,u8 *str){
 		return 0;
 	}
 	u8 arrow = 0xFF;
-	u8 check = CurEng->KeyboardState&0x80;
-	CurEng->KeyboardState |= 0x80;
+	u8 check = CurEng->KeyboardReset&0x80;
+	CurEng->KeyboardReset |= 0x80;
 	CurEng->LastVI = gNumVblanks;
 	if(check == 0){
 		return 0;
@@ -940,7 +956,6 @@ s8 TE_enable_start_transition(struct TEState *CurEng,u8 *str){
 	CurEng->TrStart.TransSpeed = str[4];
 	return TE_advBlen(CurEng,5);
 }
-
 //aa cmd works
 s8 TE_box_transition(struct TEState *CurEng,u8 *str){
 	CurEng->BoxTrXi = (s16) (TE_get_s16(str)*CurEng->TrPct);

@@ -994,8 +994,6 @@ void basic_update(UNUSED s16 *arg) {
 }
 
 int gPressedStart = 0;
-#include "text_engine.h"
-static char buf[32];
 s32 play_mode_normal(void) {
     if (gCurrDemoInput != NULL) {
         print_intro_text();
@@ -1025,20 +1023,6 @@ s32 play_mode_normal(void) {
 
     initiate_painting_warp();
     initiate_delayed_warp();
-	if (gPlayer1Controller->buttonPressed&L_TRIG){
-		SetupTextEngine(32,64,TestStr,0);
-	}
-	//debug prints
-	struct TEState CurEng;
-	if (gPlayer1Controller->buttonDown&Z_TRIG){
-		CurEng = TE_Engines[0];
-		sprintf(buf,"usr %d",CurEng.UserInput);
-		print_text(32,32,buf);
-		sprintf(buf,"in %d",CurEng.IntendedLetter);
-		print_text(32,64,buf);
-		// sprintf(buf,"str %x",CurEng.DialogEnd);
-		// print_text(32,96,buf);
-	}
     // If either initiate_painting_warp or initiate_delayed_warp initiated a
     // warp, change play mode accordingly.
     if (sCurrPlayMode == PLAY_MODE_NORMAL) {

@@ -20,8 +20,9 @@ struct TEState{
 	/* 0x04 */ s16 TempXOrigin;
 	/* 0x06 */ s16 TempYOrigin;
 	/* 0x08 */ s16 VIpChar; //VIs per char, negative for char per VI
-	/* 0x0A */ u8  KeyboardState; //also used to keep track of box ends
+	/* 0x0A */ u8  KeyboardState;
 	/* NEW  */ s8  KeyboardChar; //which letter is being drawn on the keyboard
+	/* NEW  */ s8  KeyboardReset; //also used to keep track of box ends
 	/* 0x0B */ u8  WobbleHeight;
 	/* 0x0C */ u8 *TempStr;
 	/* 0x10 */ s16 TempX;
@@ -108,8 +109,6 @@ extern const Texture sky_09000000[];
 extern const Gfx dl_draw_text_bg_box_TE[];
 extern char TE_KEYBOARD_lower[];
 extern char TE_KEYBOARD_upper[];
-extern char Test2[];
-extern char TestStr[];
 extern u8 StrBuffer[NumEngines][0x100];
 extern volatile struct TEState TE_Engines[NumEngines];
 void SetupTextEngine(s16 x, s16 y, u8 *str, u8 state);

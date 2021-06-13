@@ -1202,7 +1202,7 @@ u32 common_air_knockback_step(struct MarioState *m, u32 landAction, u32 hardFall
 }
 
 s32 check_wall_kick(struct MarioState *m) {
-    if ((m->input & INPUT_A_PRESSED) && m->wallKickTimer != 0 && m->prevAction == ACT_AIR_HIT_WALL) {
+    if ((m->framesSinceA < 2) && m->wallKickTimer != 0 && m->prevAction == ACT_AIR_HIT_WALL) {
         m->faceAngle[1] += 0x8000;
         return set_mario_action(m, ACT_WALL_KICK_AIR, 0);
     }
@@ -1394,7 +1394,7 @@ s32 act_air_hit_wall(struct MarioState *m) {
         return set_mario_action(m, ACT_SOFT_BONK, 0);
     }
 
-    return set_mario_animation(m, MARIO_ANIM_START_WALLKICK);
+    set_mario_animation(m, MARIO_ANIM_START_WALLKICK);
 
     //! Missing return statement. The returned value is the result of the call
     // to set_mario_animation. In practice, this value is nonzero.

@@ -33,10 +33,6 @@ u8 UserInputs[NumEngines][16][16]; //16 length 16 strings
 
 //my char and ptr arrays
 #include "src/game/Keyboard_te.h"
-char TestStr[] = {
-	/* speed */0x4f,0,1,3,
-	7,8,9,0x7b
-};
 
 
 void SetupTextEngine(s16 x, s16 y, u8 *str, u8 state){
@@ -90,6 +86,10 @@ void RunTextEngine(void){
 				loop = TE_draw_keyboard(CurEng,str);
 				goto loopswitch;
 			}
+			if (CurEng->KeyboardState==5){
+				loop = TE_make_keyboard(CurEng,str);
+				goto loopswitch;
+			}
 			if(!(CurChar<0x40||(CurChar>0x4F&&CurChar<0x70)||(CurChar>0xCF&&CurChar<0xFE)||CurChar==0x9E||CurChar==0x9F)){
 				static char buf[32];
 				sprintf(buf,"%d",CurChar);
@@ -108,13 +108,15 @@ void RunTextEngine(void){
 			}
 			//keep track of current keyboard index while drawing keyboard
 			if (CurEng->KeyboardState==2 && CurChar!=0x9E){
-				CurEng->KeyboardChar+=1;
-				//space
-				if(CurEng->IntendedLetter==42){
+				//the worst conditional of all time
+				if(CurEng->IntendedLetter>=41 && CurChar == 0x19 && CurEng->KeyboardChar==42){
+					CurEng->KeyboardChar-=4;
 				}
 				//end
-				if(CurEng->IntendedLetter==43){
+				if(CurEng->IntendedLetter>=41 && CurChar == 0x17 && CurEng->KeyboardChar==43){
+					CurEng->KeyboardChar-=2;
 				}
+				CurEng->KeyboardChar+=1;
 				if((CurEng->KeyboardChar-1)==CurEng->IntendedLetter){
 					loop = TE_keyboard_sel(CurEng,str,1);
 					TE_add_char2buf(CurEng);
@@ -425,6 +427,7 @@ u32 TE_get_u32(u8 *str){
 u32 TE_get_ptr(u8 *strArgs,u8 *str){
 	u16 pos = TE_get_u16(strArgs);
 	u16 ptr = TE_get_u16(strArgs+2);
-	u32 **Ptrptr = str-4-pos;
-	return *Ptrptr[pos];
+	str = (u32)str-4-pos;
+	u32 **Ptrptr = str;
+	return *Ptrptr[ptr];
 }

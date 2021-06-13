@@ -845,7 +845,7 @@ s32 check_common_landing_cancels(struct MarioState *m, u32 action) {
         return set_mario_action(m, ACT_IDLE, 0);
     }
 
-    if (m->input & INPUT_A_PRESSED) {
+    if (m->framesSinceA < 2) {
         if (!action) {
             return set_jump_from_landing(m);
         } else {
