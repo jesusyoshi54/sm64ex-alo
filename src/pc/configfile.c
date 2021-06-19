@@ -62,6 +62,22 @@ unsigned int configMusicVolume = MAX_VOLUME;
 unsigned int configSfxVolume = MAX_VOLUME;
 unsigned int configEnvVolume = MAX_VOLUME;
 
+//challenge configs
+bool         configBE = false;
+bool         configCNH = false;
+bool         configDHP = false;
+bool         configDLD = false;
+bool         configDKS = false;
+bool         configCL = false;
+bool         configABC = false;
+bool         configBBC = false;
+bool         configZBC = false;
+bool         configHC = false;
+bool         configGD = false;
+bool         configMB = false;
+bool         configSM = false;
+bool         configDD = false;
+
 #ifdef TARGET_WII_U
 bool configN64FaceButtons = 0;
 #else

@@ -29,37 +29,8 @@ COMPILER_N64 ?= gcc
 
 # Accept RM2C level folder output
 RM2C ?= 0
-
-#Game wide edits to add optional challenges
-
-#Makes enemies move faster or attack more often generally
-BUFFED_ENEMIES ?= 0
-#Coins do not restore HP, may make several hacks impossible
-COINS_NO_HEAL ?= 0
-#Slowly drains HP over time continuously. About 1/4 strength of toxic gas.
-DRAIN_HP_CONSTANT ?= 0
-#Doubles lava damage
-DOUBLE_LAVA_DMG ?= 0
-#Doubles Koopa Speed (may cause the turtle to get stuck in places)
-DOUBLE_KOOPA_SPEED ?= 0
-#Basically chaos edition but light. Only edits that are manageable e.g. messing with mario's model/size/colors
-#or his physics somewhat. Two edits at a time, swaps out on 15s timer.
-CHAOS_LITE ?= 0
-#Pannen meme challenges. These cause the equivalent button press to remove 1 HP
-A_BTN_DRAIN ?= 0
-B_BTN_DRAIN ?= 0
-Z_BTN_DRAIN ?= 0
-#For those hardcore players. Saving is disabled and the game force crashes when you get zero lives.
-HARDCORE ?= 0
-#Max HP is set to 1. For the sake of playability, water HP drain is removed in this mode.
-DAREDEVIL ?= 0
-#A 1 up spawns with you and chases you. Collecing it kills you
-GREEN_DEMON ?= 0
-#SR7 like badges. There is a wallkick badge, triple jump badge and mid air jump badge (I guess as an option to make things more exciting)
-MOVE_BADGES ?= 0
-#ASA Super mode basically. Can do two mid air jumps
-SUPER_MODE ?= 0
-
+#add in text engine
+TE ?= 0
 #Debug stuff to make testing easier
 #inside pause menu of levels
 LEVEL_SELECT ?= 0
@@ -687,76 +658,9 @@ ifeq ($(RM2C),1)
   CC_CHECK += -DRM2C
   CFLAGS += -DRM2C
 endif
-
-#game wide edits
-ifeq ($(BUFFED_ENEMIES),1)
-  CC_CHECK += -DBUFFED_ENEMIES
-  CFLAGS += -DBUFFED_ENEMIES
-endif
-
-ifeq ($(COINS_NO_HEAL),1)
-  CC_CHECK += -DCOINS_NO_HEAL
-  CFLAGS += -DCOINS_NO_HEAL
-endif
-
-ifeq ($(DRAIN_HP_CONSTANT),1)
-  CC_CHECK += -DDRAIN_HP_CONSTANT
-  CFLAGS += -DDRAIN_HP_CONSTANT
-endif
-
-ifeq ($(DOUBLE_LAVA_DMG),1)
-  CC_CHECK += -DDOUBLE_LAVA_DMG
-  CFLAGS += -DDOUBLE_LAVA_DMG
-endif
-
-ifeq ($(DOUBLE_KOOPA_SPEED),1)
-  CC_CHECK += -DDOUBLE_KOOPA_SPEED
-  CFLAGS += -DDOUBLE_KOOPA_SPEED
-endif
-
-ifeq ($(CHAOS_LITE),1)
-  CC_CHECK += -DCHAOS_LITE
-  CFLAGS += -DCHAOS_LITE
-endif
-
-ifeq ($(A_BTN_DRAIN),1)
-  CC_CHECK += -DA_BTN_DRAIN
-  CFLAGS += -DA_BTN_DRAIN
-endif
-
-ifeq ($(B_BTN_DRAIN),1)
-  CC_CHECK += -DB_BTN_DRAIN
-  CFLAGS += -DB_BTN_DRAIN
-endif
-
-ifeq ($(Z_BTN_DRAIN),1)
-  CC_CHECK += -DZ_BTN_DRAIN
-  CFLAGS += -DZ_BTN_DRAIN
-endif
-
-ifeq ($(HARDCORE),1)
-  CC_CHECK += -DHARDCORE
-  CFLAGS += -DHARDCORE
-endif
-
-ifeq ($(DAREDEVIL),1)
-  CC_CHECK += -DDAREDEVIL
-  CFLAGS += -DDAREDEVIL
-endif
-
-ifeq ($(GREEN_DEMON),1)
-  CC_CHECK += -DGREEN_DEMON
-  CFLAGS += -DGREEN_DEMON
-endif
-
-ifeq ($(MOVE_BADGES),1)
-  CC_CHECK += -DMOVE_BADGES
-  CFLAGS += -DMOVE_BADGES
-endif
-
-ifeq ($(SUPER_MODE),1)
-  CC_CHECK += -DSUPER_MODE
-  CFLAGS += -DSUPER_MODE
+ifeq ($(TE),1)
+  CC_CHECK += -DTE
+  CFLAGS += -DTE
 endif
 
 ifeq ($(LEVEL_SELECT),1)
@@ -988,76 +892,6 @@ ifeq ($(RM2C),1)
   CFLAGS += -DRM2C
 endif
 
-ifeq ($(BUFFED_ENEMIES),1)
-  CC_CHECK += -DBUFFED_ENEMIES
-  CFLAGS += -DBUFFED_ENEMIES
-endif
-
-ifeq ($(COINS_NO_HEAL),1)
-  CC_CHECK += -DCOINS_NO_HEAL
-  CFLAGS += -DCOINS_NO_HEAL
-endif
-
-ifeq ($(DRAIN_HP_CONSTANT),1)
-  CC_CHECK += -DDRAIN_HP_CONSTANT
-  CFLAGS += -DDRAIN_HP_CONSTANT
-endif
-
-ifeq ($(DOUBLE_LAVA_DMG),1)
-  CC_CHECK += -DDOUBLE_LAVA_DMG
-  CFLAGS += -DDOUBLE_LAVA_DMG
-endif
-
-ifeq ($(DOUBLE_KOOPA_SPEED),1)
-  CC_CHECK += -DDOUBLE_KOOPA_SPEED
-  CFLAGS += -DDOUBLE_KOOPA_SPEED
-endif
-
-ifeq ($(CHAOS_LITE),1)
-  CC_CHECK += -DCHAOS_LITE
-  CFLAGS += -DCHAOS_LITE
-endif
-
-ifeq ($(A_BTN_DRAIN),1)
-  CC_CHECK += -DA_BTN_DRAIN
-  CFLAGS += -DA_BTN_DRAIN
-endif
-
-ifeq ($(B_BTN_DRAIN),1)
-  CC_CHECK += -DB_BTN_DRAIN
-  CFLAGS += -DB_BTN_DRAIN
-endif
-
-ifeq ($(Z_BTN_DRAIN),1)
-  CC_CHECK += -DZ_BTN_DRAIN
-  CFLAGS += -DZ_BTN_DRAIN
-endif
-
-ifeq ($(HARDCORE),1)
-  CC_CHECK += -DHARDCORE
-  CFLAGS += -DHARDCORE
-endif
-
-ifeq ($(DAREDEVIL),1)
-  CC_CHECK += -DDAREDEVIL
-  CFLAGS += -DDAREDEVIL
-endif
-
-ifeq ($(GREEN_DEMON),1)
-  CC_CHECK += -DGREEN_DEMON
-  CFLAGS += -DGREEN_DEMON
-endif
-
-ifeq ($(MOVE_BADGES),1)
-  CC_CHECK += -DMOVE_BADGES
-  CFLAGS += -DMOVE_BADGES
-endif
-
-ifeq ($(SUPER_MODE),1)
-  CC_CHECK += -DSUPER_MODE
-  CFLAGS += -DSUPER_MODE
-endif
-
 ifeq ($(LEVEL_SELECT),1)
   CC_CHECK += -DLEVEL_SELECT
   CFLAGS += -DLEVEL_SELECT
@@ -1190,6 +1024,7 @@ N64CKSUM = $(TOOLS_DIR)/n64cksum
 N64GRAPHICS = $(TOOLS_DIR)/n64graphics
 N64GRAPHICS_CI = $(TOOLS_DIR)/n64graphics_ci
 BINPNG = $(TOOLS_DIR)/BinPNG.py
+TECONV = $(TOOLS_DIR)/TE_encode.py
 TEXTCONV = $(TOOLS_DIR)/textconv
 AIFF_EXTRACT_CODEBOOK = $(TOOLS_DIR)/aiff_extract_codebook
 VADPCM_ENC = $(TOOLS_DIR)/vadpcm_enc
@@ -1354,7 +1189,17 @@ ALL_DIRS := $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(ASM_DIRS) $(GOD
 
 # Make sure build directory exists before compiling anything
 DUMMY != mkdir -p $(ALL_DIRS)
-
+ifeq ($(TE),1)
+	# TE files
+	TE_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*_te.py))
+	# TE h files
+	TEH_FILES := $(foreach file,$(TE_FILES),$(BUILD_DIR)/$(file:.h=.py))
+	#create text engine encoded strings
+	$(TEH_FILES):$(TE_FILES)
+		$(call print,Converting TE string:,$<,$@)
+		python3 $(TECONV) $< $@
+endif
+#make menu strings dependent on TE files so they're built into final file
 $(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_menu_strings.h
 $(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_options_strings.h
 
@@ -1373,7 +1218,11 @@ else
 $(BUILD_DIR)/src/menu/file_select.o: $(BUILD_DIR)/include/text_strings.h
 $(BUILD_DIR)/src/menu/star_select.o: $(BUILD_DIR)/include/text_strings.h
 $(BUILD_DIR)/src/game/ingame_menu.o: $(BUILD_DIR)/include/text_strings.h
+ifeq ($(TE),1)
+$(BUILD_DIR)/src/game/options_menu.o: $(BUILD_DIR)/include/text_strings.h $(TEH_FILES)
+else
 $(BUILD_DIR)/src/game/options_menu.o: $(BUILD_DIR)/include/text_strings.h
+endif
 ifeq ($(TARGET_GAME_CONSOLE),0)
   ifeq ($(DISCORDRPC),1)
     $(BUILD_DIR)/src/pc/discord/discordrpc.o: $(BUILD_DIR)/include/text_strings.h

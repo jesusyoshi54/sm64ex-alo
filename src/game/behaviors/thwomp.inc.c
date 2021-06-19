@@ -2,21 +2,21 @@
 
 void grindel_thwomp_act_4(void) {
     if (o->oTimer == 0)
-#ifdef BUFFED_ENEMIES
+if(configBE){
+        o->oThwompRandomTimer = random_float() * 1.0f + 5.0f;
+}else{
         o->oThwompRandomTimer = random_float() * 2.0f + 10.0f;
-#else
-        o->oThwompRandomTimer = random_float() * 2.0f + 10.0f;
-#endif
+}
     if (o->oTimer > o->oThwompRandomTimer)
         o->oAction = 0;
 }
 
 void grindel_thwomp_act_2(void) {
-#ifdef BUFFED_ENEMIES
+if(configBE){
+    o->oVelY += -12.0f;
+}else{
     o->oVelY += -8.0f;
-#else
-    o->oVelY += -8.0f;
-#endif
+}
     o->oPosY += o->oVelY;
     if (o->oPosY < o->oHomeY) {
         o->oPosY = o->oHomeY;
@@ -37,11 +37,11 @@ void grindel_thwomp_act_3(void) {
 
 void grindel_thwomp_act_1(void) {
     if (o->oTimer == 0)
-#ifdef BUFFED_ENEMIES
+if(configBE){
+        o->oThwompRandomTimer = random_float() * 2.0f + 10.0f;
+}else{
         o->oThwompRandomTimer = random_float() * 5.0f + 10.0f;
-#else
-        o->oThwompRandomTimer = random_float() * 5.0f + 10.0f;
-#endif
+}
     if (o->oTimer > o->oThwompRandomTimer)
         o->oAction = 2;
 }

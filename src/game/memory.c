@@ -113,7 +113,7 @@ void *get_segment_base_addr(s32 segment) {
 
 #ifndef NO_SEGMENTED_MEMORY
 void *segmented_to_virtual(const void *addr) {
-    size_t segment = (uintptr_t) addr >> 24;
+    size_t segment = (((uintptr_t) addr) >> 24)&0x7F;
     size_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
     return (void *) ((sSegmentTable[segment] + offset) | 0x80000000);

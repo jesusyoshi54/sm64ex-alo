@@ -766,8 +766,8 @@ void handle_menu_scrolling(s8 scrollDirection, s8 *currentIndex, s8 minIndex, s8
         }
     }
 
-    if (gMenuHoldKeyTimer == 10) {
-        gMenuHoldKeyTimer = 8;
+    if (gMenuHoldKeyTimer == 40) {
+        gMenuHoldKeyTimer = 38;
         gMenuHoldKeyIndex = 0;
     } else {
         gMenuHoldKeyTimer++;

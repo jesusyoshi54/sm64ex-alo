@@ -68,6 +68,7 @@ static const u8 optMainStr[][32] = {
     { TEXT_OPT_AUDIO },
     { TEXT_EXIT_GAME },
     { TEXT_OPT_CHEATS },
+    { TEXT_OPT_CHALLENGE },
 };
 
 static const u8 optsCameraStr[][32] = {
@@ -101,6 +102,23 @@ static const u8 optsAudioStr[][32] = {
     { TEXT_OPT_MUSVOLUME },
     { TEXT_OPT_SFXVOLUME },
     { TEXT_OPT_ENVVOLUME },
+};
+
+static const u8 optsChallengeStr[][112] = {
+    { TEXT_OPT_CHALLENGE1 },
+    { TEXT_OPT_CHALLENGE2 },
+    { TEXT_OPT_CHALLENGE3 },
+    { TEXT_OPT_CHALLENGE4 },
+    { TEXT_OPT_CHALLENGE5 },
+    { TEXT_OPT_CHALLENGE6 },
+    { TEXT_OPT_CHALLENGE7 },
+    { TEXT_OPT_CHALLENGE8 },
+    { TEXT_OPT_CHALLENGE9 },
+    { TEXT_OPT_CHALLENGE10 },
+    { TEXT_OPT_CHALLENGE11 },
+    { TEXT_OPT_CHALLENGE12 },
+    { TEXT_OPT_CHALLENGE13 },
+    { TEXT_OPT_CHALLENGE14 }
 };
 
 static const u8 optsCheatsStr[][64] = {
@@ -304,6 +322,41 @@ static struct Option optsAudio[] = {
     DEF_OPT_SCROLL( optsAudioStr[3], &configEnvVolume, 0, MAX_VOLUME, 1),
 };
 
+#ifdef TARGET_N64
+//challenge configs
+bool         configBE = false;
+bool         configCNH = false;
+bool         configDHP = false;
+bool         configDLD = false;
+bool         configDKS = false;
+bool         configCL = false;
+bool         configABC = false;
+bool         configBBC = false;
+bool         configZBC = false;
+bool         configHC = false;
+bool         configDD = false;
+bool         configGD = false;
+bool         configMB = false;
+bool         configSM = false;
+#endif
+
+static struct Option optsChallenges[] = {
+    DEF_OPT_TOGGLE( optsChallengeStr[0], &configBE ),
+    DEF_OPT_TOGGLE( optsChallengeStr[1], &configCNH ),
+    DEF_OPT_TOGGLE( optsChallengeStr[2], &configDHP ),
+    DEF_OPT_TOGGLE( optsChallengeStr[3], &configDLD ),
+    DEF_OPT_TOGGLE( optsChallengeStr[4], &configDKS ),
+    DEF_OPT_TOGGLE( optsChallengeStr[5], &configCL ),
+    DEF_OPT_TOGGLE( optsChallengeStr[6], &configABC ),
+    DEF_OPT_TOGGLE( optsChallengeStr[7], &configBBC ),
+    DEF_OPT_TOGGLE( optsChallengeStr[8], &configZBC ),
+    DEF_OPT_TOGGLE( optsChallengeStr[9], &configHC ),
+    DEF_OPT_TOGGLE( optsChallengeStr[13], &configDD ),
+    DEF_OPT_TOGGLE( optsChallengeStr[10], &configGD ),
+    DEF_OPT_TOGGLE( optsChallengeStr[11], &configMB ),
+    DEF_OPT_TOGGLE( optsChallengeStr[12], &configSM )
+};
+
 #ifdef CHEATS_ACTIONS
 static struct Option optsCheats[] = {
     DEF_OPT_TOGGLE( optsCheatsStr[0], &Cheats.EnableCheats ),
@@ -331,6 +384,7 @@ static struct SubMenu menuVideo    = DEF_SUBMENU( optMainStr[3], optsVideo );
 #endif
 
 static struct SubMenu menuAudio    = DEF_SUBMENU( optMainStr[4], optsAudio );
+static struct SubMenu menuChallenges    = DEF_SUBMENU( optMainStr[7], optsChallenges );
 
 #ifdef CHEATS_ACTIONS
 static struct SubMenu menuCheats   = DEF_SUBMENU( optMainStr[6], optsCheats );
@@ -349,6 +403,7 @@ static struct Option optsMain[] = {
 #endif
 
     DEF_OPT_SUBMENU( optMainStr[4], &menuAudio ),
+    DEF_OPT_SUBMENU( optMainStr[7], &menuChallenges ),
 
 #ifdef CHEATS_ACTIONS
     // NOTE: always keep cheats the last option here because of the half-assed way I toggle them
@@ -572,6 +627,7 @@ void optmenu_toggle(void) {
         play_sound(SOUND_MENU_MARIO_CASTLE_WARP2, gGlobalSoundSource);
         #endif
         optmenu_open = 0;
+		save_file_set_challenges();
 #ifndef TARGET_N64
         controller_reconfigure(); // rebind using new config values
         configfile_save(configfile_name());

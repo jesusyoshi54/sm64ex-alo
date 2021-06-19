@@ -32,7 +32,7 @@
 #include "spawn_object.h"
 #include "spawn_sound.h"
 #include "rumble_init.h"
-
+#include "pc/configfile.h"
 /**
  * @file obj_behaviors.c
  * This file contains a portion of the obj behaviors and many helper functions for those

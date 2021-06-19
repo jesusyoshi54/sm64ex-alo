@@ -43,7 +43,7 @@
 #include "spawn_object.h"
 #include "spawn_sound.h"
 #include "rumble_init.h"
-
+#include "pc/configfile.h"
 #define o gCurrentObject
 
 struct WFRotatingPlatformData {

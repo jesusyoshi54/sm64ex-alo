@@ -44,7 +44,7 @@
 #include "save_file.h"
 #include "seq_ids.h"
 #include "spawn_sound.h"
-
+#include "pc/configfile.h"
 #define POS_OP_SAVE_POSITION 0
 #define POS_OP_COMPUTE_VELOCITY 1
 #define POS_OP_RESTORE_POSITION 2
@@ -614,30 +614,30 @@ static s32 obj_resolve_collisions_and_turn(s16 targetYaw, s16 turnSpeed) {
 }
 
 static void obj_die_if_health_non_positive(void) {
-    if (o->oHealth <= 0) {
-        if (o->oDeathSound == 0) {
-            spawn_mist_particles_with_sound(SOUND_OBJ_DEFAULT_DEATH);
-        } else if (o->oDeathSound > 0) {
-            spawn_mist_particles_with_sound(o->oDeathSound);
-        } else {
-            spawn_mist_particles();
-        }
+	if (o->oHealth <= 0) {
+		if (o->oDeathSound == 0) {
+			spawn_mist_particles_with_sound(SOUND_OBJ_DEFAULT_DEATH);
+		} else if (o->oDeathSound > 0) {
+			spawn_mist_particles_with_sound(o->oDeathSound);
+		} else {
+			spawn_mist_particles();
+		}
 
-        if ((s32)o->oNumLootCoins < 0) {
-            spawn_object(o, MODEL_BLUE_COIN, bhvMrIBlueCoin);
-        } else {
-            obj_spawn_loot_yellow_coins(o, o->oNumLootCoins, 20.0f);
-        }
-        // This doesn't do anything
-        obj_spawn_loot_yellow_coins(o, o->oNumLootCoins, 20.0f);
+		if ((s32)o->oNumLootCoins < 0) {
+			spawn_object(o, MODEL_BLUE_COIN, bhvMrIBlueCoin);
+		} else {
+			obj_spawn_loot_yellow_coins(o, o->oNumLootCoins, 20.0f);
+		}
+		// This doesn't do anything
+		obj_spawn_loot_yellow_coins(o, o->oNumLootCoins, 20.0f);
 
-        if (o->oHealth < 0) {
-            cur_obj_hide();
-            cur_obj_become_intangible();
-        } else {
-            obj_mark_for_deletion(o);
-        }
-    }
+		if (o->oHealth < 0) {
+			cur_obj_hide();
+			cur_obj_become_intangible();
+		} else {
+			obj_mark_for_deletion(o);
+		}
+	}
 }
 
 static void obj_unused_die(void) {
@@ -934,23 +934,26 @@ static void treat_far_home_as_mario(f32 threshold) {
 /**
  * Used by bowser, fly guy, piranha plant, and fire spitters.
  */
-#ifdef BUFFED_ENEMIES
-#define FIRE_SPEED_MULTIPLIER 2.5f
-#define FIRE_SPEED_MULTIPLIER_INT 3
-#else
 #define FIRE_SPEED_MULTIPLIER 1.0f
 #define FIRE_SPEED_MULTIPLIER_INT 1
-#endif
 void obj_spit_fire(s16 relativePosX, s16 relativePosY, s16 relativePosZ, f32 scale, s32 model,
                    f32 startSpeed, f32 endSpeed, s16 movePitch) {
     struct Object *obj = spawn_object_relative_with_scale(1, relativePosX, relativePosY, relativePosZ,
                                                            scale, o, model, bhvSmallPiranhaFlame);
 
     if (obj != NULL) {
-        obj->oSmallPiranhaFlameStartSpeed = startSpeed*FIRE_SPEED_MULTIPLIER;
-        obj->oSmallPiranhaFlameEndSpeed = endSpeed*FIRE_SPEED_MULTIPLIER;
-        obj->oSmallPiranhaFlameModel = model;
-        obj->oMoveAnglePitch = movePitch*FIRE_SPEED_MULTIPLIER_INT;
+		if(configBE){
+			obj->oSmallPiranhaFlameStartSpeed = startSpeed*FIRE_SPEED_MULTIPLIER;
+			obj->oSmallPiranhaFlameEndSpeed = endSpeed*FIRE_SPEED_MULTIPLIER;
+			obj->oSmallPiranhaFlameModel = model;
+			obj->oMoveAnglePitch = movePitch*FIRE_SPEED_MULTIPLIER_INT;
+		}else{
+			obj->oSmallPiranhaFlameStartSpeed = startSpeed*2.5f;
+			obj->oSmallPiranhaFlameEndSpeed = endSpeed*2.5f;
+			obj->oSmallPiranhaFlameModel = model;
+			obj->oMoveAnglePitch = movePitch*3;
+
+		}
     }
 }
 

@@ -21,9 +21,9 @@ void bhv_explosion_loop(void) {
     }
 
     o->oOpacity -= 14;
-#ifdef BUFFED_ENEMIES
+if(configBE){
     cur_obj_scale((f32) o->oTimer + 1.0);
-#else
+}else{
     cur_obj_scale((f32) o->oTimer / 9.0f + 1.0);
-#endif
+}
 }

@@ -77,9 +77,9 @@ void bobomb_act_patrol(void) {
         && (obj_check_if_facing_toward_angle(o->oMoveAngleYaw, o->oAngleToMario, 0x2000) == TRUE)) {
         o->oBobombFuseLit = 1;
         o->oAction = BOBOMB_ACT_CHASE_MARIO;
-		#ifdef BUFFED_ENEMIES
+		if(configBE){
 		o->oThwompRandomTimer= (u32)(random_float() * 30.0f + 40.0f);
-		#endif
+		}
     }
     obj_check_floor_death(collisionFlags, sObjFloor);
 }
@@ -89,25 +89,25 @@ void bobomb_act_chase_mario(void) {
     s16 sp1a, collisionFlags;
 
     sp1a = ++o->header.gfx.animInfo.animFrame;
-#ifdef BUFFED_ENEMIES
-    o->oForwardVel = 40.0;
-	//a random jump will really get people good
-	if (o->oTimer==o->oThwompRandomTimer){
-		o->oVelY = 30.0;
-		cur_obj_play_sound_2(SOUND_OBJ_GOOMBA_ALERT);
+	if(configBE){
+		o->oForwardVel = 40.0;
+		//a random jump will really get people good
+		if (o->oTimer==o->oThwompRandomTimer){
+			o->oVelY = 15.0;
+			cur_obj_play_sound_2(SOUND_OBJ_GOOMBA_ALERT);
+		}
+	}else{
+		o->oForwardVel = 20.0;
 	}
-#else
-    o->oForwardVel = 20.0;
-#endif
     collisionFlags = object_step();
 
     if (sp1a == 5 || sp1a == 16)
         cur_obj_play_sound_2(SOUND_OBJ_BOBOMB_WALK);
-	#ifdef BUFFED_ENEMIES
+			if(configBE){
 	obj_turn_toward_object(o, gMarioObject, 16, 0x1000);
-	#else
+	}else{
 	obj_turn_toward_object(o, gMarioObject, 16, 0x800);
-	#endif
+	}
 
     obj_check_floor_death(collisionFlags, sObjFloor);
 }

@@ -199,7 +199,12 @@ void newcam_init_settings(void) {
 	newcam_analogue     = (s16)configCameraAnalog;
 #endif    
     newcam_degrade      = (f32)configCameraDegrade;
-    newcam_active      = configEnableCamera;
+	#ifdef TARGET_N64
+    newcam_active      = save_file_get_camera();
+    configEnableCamera      = save_file_get_camera();
+	#else
+	newcam_active      = configEnableCamera;
+	#endif
     newcam_toggle(configEnableCamera);
 }
 
