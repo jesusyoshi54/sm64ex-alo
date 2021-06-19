@@ -60,6 +60,7 @@ sm64_save_file.bin
 sm64config.txt
 
 # Assets. Generally ignored, but ones with "custom" in the name are fine.
+__pycache__/.
 /levels/**/*.png
 /actors/**/*.png
 /textures/**/*.png

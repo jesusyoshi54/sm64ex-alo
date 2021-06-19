@@ -4,6 +4,7 @@ import TE_defs as t
 import sys
 import importlib as IL
 from pathlib import Path
+import time
 a = lambda s: functools.partial(struct.pack,s)
 Types = "bBhHlLf"
 for c in Types:
@@ -13,6 +14,11 @@ def p(x):
 	global Ptrs
 	Ptrs.append(str(x))
 	return H(Place)+H(len(Ptrs)-1)
+def z(args):
+	res=b''
+	for a in args:
+		res+=p(a)
+	return res
 def Pack(*Bytes):
 	return b''.join(*Bytes)
 def Ret(Funcs,MSB,*args):
@@ -79,27 +85,64 @@ Funcs = {
 	'DisDropShadow':(0x9A,),
 	'EndBoxTransition':(0x9B,B,B,B,B),
 	'StartBoxTransition':(0x9C,B,B,B,B),
+	'CallOnce':(0xA0,B,p,B,z),
+	'CallLoop':(0xA1,B,p,B,z),
+	'DisplayMatchReturn':(0xA2,B,l),
 }
+def FindEnd(string):
+	cnt=0
+	x=0
+	start=0
+	if '[' not in string:
+		return None
+	for c in string:
+		if '[' in c:
+			cnt+=1
+			start=1
+		if ']' in c:
+			cnt-=1
+		if cnt==0 and start:
+			break
+		x+=1
+	return x
+
 def Write(out,Test,name):
 	global Place
 	global Ptrs
 	E='char %s[] = {\n'%name
 	Z = 'u32 %s[] = {\n'%(name+'_ptrlist')
+	cmt = "/* %s interpreted string\n"%name
 	for cmd in Test:
-		try:
-			Ecmd=eval(cmd)
-			Place+=len(Ecmd)
-			E+=SF(Ecmd.hex())+','
-		except:
-			iter=0
-			while(iter<len(cmd)):
-				if '[' in cmd[iter]:
-					c=cmd.find(']')
-					c = cmd[iter:c+1]
-					Q=t.Ascii.get(c,'0x9e')+','
-					iter+=len(c)
+		iter=0
+		while(iter<len(cmd)):
+			if '[' in cmd[iter]:
+				c=FindEnd(cmd[iter:])+iter
+				if c>0:
+					try:
+						q = cmd[iter+1:c]
+						Ecmd=eval(q)
+						cmt+=' '+q
+						Place+=len(Ecmd)
+						E+=SF(Ecmd.hex())+','
+						iter+=len(q)+2
+					except:
+						q = cmd[iter:c+1]
+						Q=t.Ascii.get(q)
+						if Q:
+							cmt+= cmd[iter+1:c]
+							Q+=','
+							E+=Q
+						iter+=len(q)
+						Place+=1
 				else:
 					Q=t.Ascii.get(cmd[iter],'0x9e')+','
+					cmt+=cmd[iter]
+					E+=Q
+					Place+=1
+					iter+=1
+			else:
+				Q=t.Ascii.get(cmd[iter],'0x9e')+','
+				cmt+=cmd[iter]
 				E+=Q
 				Place+=1
 				iter+=1
@@ -110,6 +153,7 @@ def Write(out,Test,name):
 		o.write(Z + '\n};\n')
 		o.write("u32 %s = &%s;\n"%(name+'_ptrptr',name+'_ptrlist'))
 	o.write(E)
+	o.write(cmt+'*/\n')
 
 if __name__ == "__main__":
 	global Place
@@ -121,7 +165,7 @@ if __name__ == "__main__":
 	r = Path(sys.path[0]).parent / Path(f).parent
 	sys.path.append(str(r))
 	f = IL.import_module(q)
-	o = sys.argv[2].replace(".py",".h")
+	o = sys.argv[2]
 	o = open(o,'w')
 	for k,v in Funcs.items():
 		globals()[k] = Make(*v)

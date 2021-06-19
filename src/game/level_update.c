@@ -992,7 +992,7 @@ void basic_update(UNUSED s16 *arg) {
         update_camera(gCurrentArea->camera);
     }
 }
-
+#include "text_engine.h"
 int gPressedStart = 0;
 s32 play_mode_normal(void) {
     if (gCurrDemoInput != NULL) {
@@ -1023,6 +1023,9 @@ s32 play_mode_normal(void) {
 
     initiate_painting_warp();
     initiate_delayed_warp();
+	if (gPlayer1Controller->buttonPressed&L_TRIG){
+        SetupTextEngine(32,32,&te_test,0);
+	}
     // If either initiate_painting_warp or initiate_delayed_warp initiated a
     // warp, change play mode accordingly.
     if (sCurrPlayMode == PLAY_MODE_NORMAL) {

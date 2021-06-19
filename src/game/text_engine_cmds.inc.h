@@ -168,6 +168,15 @@ s8 TE_jump_cmds(struct TEState *CurEng,u8 cmd,u8 *str){
 		case 0x9D:
 			Loop = TE_advBlen(CurEng,1);
 			break;
+		case 0xA0:
+			Loop = TE_call_once(CurEng,str);
+			break;
+		case 0xA1:
+			Loop = TE_call_loop(CurEng,str);
+			break;
+		case 0xA2:
+			Loop = TE_function_response(CurEng,str);
+			break;
 		case 0xAA:
 			Loop = TE_box_transition(CurEng,str);
 			break;
@@ -955,6 +964,61 @@ s8 TE_enable_start_transition(struct TEState *CurEng,u8 *str){
 	CurEng->TrStart.TransDir = str[3];
 	CurEng->TrStart.TransSpeed = str[4];
 	return TE_advBlen(CurEng,5);
+}
+//a0 cmd works
+s8 TE_call_once(struct TEState *CurEng,u8 *str){
+	u8 ID = str[1];
+	u32 (*function)(u32,...) = TE_get_ptr(str+1,str);
+	u8 i;
+	u8 num = str[6];
+	u32 args[num];
+	for(i=0;i<num;i++){
+		args[i] = TE_get_ptr(str+6+4*i,str);
+	}
+	u32 res = function(args[0],args[1],args[2],args[3]);
+	FunctionReturns[CurEng->state][ID] = res;
+	TE_add_to_cmd_buffer(CurEng,str,num*4+7);
+	return TE_advBlen(CurEng,num*4+7);
+}
+//a1 cmd works
+s8 TE_call_loop(struct TEState *CurEng,u8 *str){
+	u8 ID = str[1];
+	u32 (*function)(u32,...) = TE_get_ptr(str+1,str);
+	u8 i;
+	u8 num = str[6];
+	u32 args[num];
+	for(i=0;i<num;i++){
+		args[i] = TE_get_ptr(str+6+4*i,str);
+	}
+	u32 res = function(args[0],args[1],args[2],args[3]);
+	FunctionReturns[CurEng->state][ID] = res;
+	return TE_advBlen(CurEng,num*4+7);
+}
+//a2 cmd works
+s8 TE_function_response(struct TEState *CurEng,u8 *str){
+	u32 key = FunctionReturns[CurEng->state][str[1]];
+	if(key == TE_get_u32(str+2)){
+		return TE_advBlen(CurEng,6);
+	}else{
+		str += 6;
+		CurEng->TempStr += 6;
+		while(1){
+			if(str[0] == 0x87){
+				return TE_advBlen(CurEng,1);
+			}else if(str[0] != 0xA2){
+				str += 1;
+				CurEng->TempStr += 1;
+			}else{
+				key = FunctionReturns[CurEng->state][str[1]];
+				if(key == TE_get_u32(str+2)){
+					return TE_advBlen(CurEng,2);
+				}else{
+					str += 6;
+					CurEng->TempStr += 6;
+				}
+			}
+		}
+	}
 }
 //aa cmd works
 s8 TE_box_transition(struct TEState *CurEng,u8 *str){

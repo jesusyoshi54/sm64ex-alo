@@ -6,6 +6,7 @@
 #include "sm64.h"
 #include "main.h"
 #include "mario.h"
+#include "level_update.h"
 #include "engine/math_util.h"
 #include "object_list_processor.h"
 #include "area.h"
@@ -28,11 +29,11 @@ u8 CmdBuffer[NumEngines][0x400];
 u32 TimerBuffer[NumEngines][64];
 u8 UserInputs[NumEngines][16][16]; //16 length 16 strings
 //object array
-//asm return values
+u32 FunctionReturns[NumEngines][8];
 
 
 //my char and ptr arrays
-#include "src/game/Keyboard_te.h"
+#include "src/game/Keyboard_te.py"
 
 
 void SetupTextEngine(s16 x, s16 y, u8 *str, u8 state){
@@ -429,5 +430,5 @@ u32 TE_get_ptr(u8 *strArgs,u8 *str){
 	u16 ptr = TE_get_u16(strArgs+2);
 	str = (u32)str-4-pos;
 	u32 **Ptrptr = str;
-	return *Ptrptr[ptr];
+	return (*Ptrptr)[ptr];
 }

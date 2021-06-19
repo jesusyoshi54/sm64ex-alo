@@ -1359,13 +1359,13 @@ DUMMY != mkdir -p $(ALL_DIRS)
 # TE files
 TE_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*_te.py))
 # TE h files
-TEH_FILES := $(foreach file,$(TE_FILES),$(BUILD_DIR)/$(file:.te.h=.py))
+TEH_FILES := $(foreach file,$(TE_FILES),$(BUILD_DIR)/$(file:.h=.py))
 #create text engine encoded strings
-$(TEH_FILES): $(TE_FILES)
+$(TEH_FILES):$(TE_FILES)
 	$(call print,Converting TE string:,$<,$@)
 	python3 $(TECONV) $< $@
 #make menu strings dependent on TE files so they're built into final file
-$(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_menu_strings.h $(TEH_FILES) $(TE_FILES)
+$(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_menu_strings.h
 $(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_options_strings.h
 
 ifeq ($(VERSION),eu)
@@ -1383,7 +1383,7 @@ else
 $(BUILD_DIR)/src/menu/file_select.o: $(BUILD_DIR)/include/text_strings.h
 $(BUILD_DIR)/src/menu/star_select.o: $(BUILD_DIR)/include/text_strings.h
 $(BUILD_DIR)/src/game/ingame_menu.o: $(BUILD_DIR)/include/text_strings.h
-$(BUILD_DIR)/src/game/options_menu.o: $(BUILD_DIR)/include/text_strings.h
+$(BUILD_DIR)/src/game/options_menu.o: $(BUILD_DIR)/include/text_strings.h $(TEH_FILES)
 ifeq ($(TARGET_GAME_CONSOLE),0)
   ifeq ($(DISCORDRPC),1)
     $(BUILD_DIR)/src/pc/discord/discordrpc.o: $(BUILD_DIR)/include/text_strings.h

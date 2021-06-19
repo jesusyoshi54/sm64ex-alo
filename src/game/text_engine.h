@@ -107,6 +107,7 @@ union WordByte{
 
 extern const Texture sky_09000000[];
 extern const Gfx dl_draw_text_bg_box_TE[];
+extern char te_test[];
 extern char TE_KEYBOARD_lower[];
 extern char TE_KEYBOARD_upper[];
 extern u8 StrBuffer[NumEngines][0x100];
@@ -202,6 +203,9 @@ s8 TE_disable_plaintext(struct TEState *CurEng,u8 *str);
 s8 TE_enable_end_transition(struct TEState *CurEng,u8 *str);
 s8 TE_enable_start_transition(struct TEState *CurEng,u8 *str);
 s8 TE_box_transition(struct TEState *CurEng,u8 *str);
+s8 TE_call_once(struct TEState *CurEng,u8 *str);
+s8 TE_call_loop(struct TEState *CurEng,u8 *str);
+s8 TE_function_response(struct TEState *CurEng,u8 *str);
 s8 TE_line_break(struct TEState *CurEng,u8 *str);
 s8 TE_terminator(struct TEState *CurEng,u8 *str);
 #endif
