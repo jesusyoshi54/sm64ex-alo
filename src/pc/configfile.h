@@ -32,6 +32,22 @@ extern unsigned int configMasterVolume;
 extern unsigned int configMusicVolume;
 extern unsigned int configSfxVolume;
 extern unsigned int configEnvVolume;
+
+extern bool configBE;
+extern bool configCNH;
+extern bool configDHP;
+extern bool configDLD;
+extern bool configDKS;
+extern bool configCL;
+extern bool configABC;
+extern bool configBBC;
+extern bool configZBC;
+extern bool configHC;
+extern bool configDD;
+extern bool configGD;
+extern bool configMB;
+extern bool configSM;
+
 #ifdef TARGET_WII_U
 extern bool configN64FaceButtons;
 #else

@@ -186,7 +186,7 @@ s8 TE_jump_cmds(struct TEState *CurEng,u8 cmd,u8 *str){
 		case 0xFF:
 			Loop = TE_terminator(CurEng,str);
 			break;
-		//more camera/object cmds + function cmds
+		//more camera/object cmds
 	}
 	return Loop;
 }

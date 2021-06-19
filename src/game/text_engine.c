@@ -1,3 +1,4 @@
+#ifdef TE
 #include <PR/ultratypes.h>
 #include <PR/gbi.h>
 #include "gfx_dimensions.h"
@@ -432,3 +433,4 @@ u32 TE_get_ptr(u8 *strArgs,u8 *str){
 	u32 **Ptrptr = str;
 	return (*Ptrptr)[ptr];
 }
+#endif

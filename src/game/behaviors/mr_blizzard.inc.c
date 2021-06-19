@@ -2,11 +2,7 @@
 struct ObjectHitbox sMrBlizzardHitbox = {
     /* interactType:      */ INTERACT_MR_BLIZZARD,
     /* downOffset:        */ 24,
-#ifdef BUFFED_ENEMIES
-    /* damageOrCoinValue: */ 4,
-#else
     /* damageOrCoinValue: */ 2,
-#endif
     /* health:            */ 99,
     /* numLootCoins:      */ 3,
     /* radius:            */ 65,
@@ -424,17 +420,17 @@ static void mr_blizzard_snowball_act_1(void) {
             if (marioDist > 800.0f) {
                 marioDist = 800.0f;
             }
-#ifdef BUFFED_ENEMIES
+if(configBE){
             // Launch the snowball relative to Mario's distance from the snowball.
             o->oMoveAngleYaw = (s32)(o->parentObj->oMoveAngleYaw + 4000 - marioDist * 4.0f);
             o->oForwardVel = 80.0f;
             o->oVelY = 0.0f;
-#else
+}else{
             // Launch the snowball relative to Mario's distance from the snowball.
             o->oMoveAngleYaw = (s32)(o->parentObj->oMoveAngleYaw + 4000 - marioDist * 4.0f);
             o->oForwardVel = 40.0f;
             o->oVelY = -20.0f + marioDist * 0.075f;
-#endif
+}
         }
 
         o->oAction = 2;

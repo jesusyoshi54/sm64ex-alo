@@ -212,7 +212,9 @@ static void geo_process_master_list(struct GraphNodeMasterList *node) {
         geo_process_master_list_sub(node);
         gCurGraphNodeMasterList = NULL;
     }
+	#ifdef TE
 	RunTextEngine();
+	#endif
 }
 
 /**

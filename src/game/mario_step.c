@@ -8,7 +8,7 @@
 #include "game_init.h"
 #include "interaction.h"
 #include "mario_step.h"
-
+#include "pc/configfile.h"
 static s16 sMovingSandSpeeds[] = { 12, 8, 4, 0 };
 
 struct Surface gWaterSurfacePseudoFloor = {
@@ -633,12 +633,12 @@ s32 perform_air_step(struct MarioState *m, u32 stepArg) {
         if (quarterStepResult == AIR_STEP_LANDED || quarterStepResult == AIR_STEP_GRABBED_LEDGE
             || quarterStepResult == AIR_STEP_GRABBED_CEILING
             || quarterStepResult == AIR_STEP_HIT_LAVA_WALL) {
-				#ifdef SUPER_MODE
-			   extern u8 Super_Jump_Count;
-			   extern u8 Super_Can_Jump;
-			   Super_Can_Jump=0;
-			   Super_Jump_Count=0;
-			   #endif
+				if(configSM){
+					extern u8 Super_Jump_Count;
+					extern u8 Super_Can_Jump;
+					Super_Can_Jump=0;
+					Super_Jump_Count=0;
+				}
             break;
         }
     }
@@ -650,21 +650,21 @@ s32 perform_air_step(struct MarioState *m, u32 stepArg) {
     m->terrainSoundAddend = mario_get_terrain_sound_addend(m);
 
      if (m->action != ACT_FLYING) {
-               #ifdef CHAOS_LITE
-               extern u8 Grav_Timer;
-               if (m->Chaos_Vals[0]==6 | m->Chaos_Vals[1]==6){
-                       if (Grav_Timer){
-                               apply_gravity(m);
-                       }
-               }else if (m->Chaos_Vals[0]==7 | m->Chaos_Vals[1]==7){
-                       apply_gravity(m);
-                       apply_gravity(m);
-               }else{
-                       apply_gravity(m);
-               }
-               #else
-         apply_gravity(m);
-               #endif
+		if(configCL){
+			extern u8 Grav_Timer;
+			if (m->Chaos_Vals[0]==6 | m->Chaos_Vals[1]==6){
+				if (Grav_Timer){
+					apply_gravity(m);
+				}
+			}else if (m->Chaos_Vals[0]==7 | m->Chaos_Vals[1]==7){
+				apply_gravity(m);
+				apply_gravity(m);
+			}else{
+				apply_gravity(m);
+			}
+		}else{
+			apply_gravity(m);
+		}
      }
     apply_vertical_wind(m);
 

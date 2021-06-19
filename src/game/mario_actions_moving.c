@@ -439,20 +439,27 @@ void update_walking_speed(struct MarioState *m) {
     f32 maxTargetSpeed;
     f32 targetSpeed;
 
-    #ifdef CHAOS_LITE
-	if (m->Chaos_Vals[0]==13 | m->Chaos_Vals[1]==13){
-		if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
-			maxTargetSpeed = 12.0f;
-		} else {
-			maxTargetSpeed = 16.0f;
-		}
-	}else if (m->Chaos_Vals[0]==12 | m->Chaos_Vals[1]==12){
-		m->intendedMag*=2;
-		m->forwardVel+=2;
-		if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
-			maxTargetSpeed = 36.0f;
-		} else {
-			maxTargetSpeed = 64.0f;
+    if(configCL){
+		if (m->Chaos_Vals[0]==13 | m->Chaos_Vals[1]==13){
+			if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
+				maxTargetSpeed = 12.0f;
+			} else {
+				maxTargetSpeed = 16.0f;
+			}
+		}else if (m->Chaos_Vals[0]==12 | m->Chaos_Vals[1]==12){
+			m->intendedMag*=2;
+			m->forwardVel+=2;
+			if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
+				maxTargetSpeed = 36.0f;
+			} else {
+				maxTargetSpeed = 64.0f;
+			}
+		}else{
+			if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
+				maxTargetSpeed = 24.0f;
+			} else {
+				maxTargetSpeed = 32.0f;
+			}
 		}
 	}else{
 		if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
@@ -461,13 +468,6 @@ void update_walking_speed(struct MarioState *m) {
 			maxTargetSpeed = 32.0f;
 		}
 	}
-	#else
-	if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
-        maxTargetSpeed = 24.0f;
-    } else {
-        maxTargetSpeed = 32.0f;
-    }
-	#endif
 
     targetSpeed = m->intendedMag < maxTargetSpeed ? m->intendedMag : maxTargetSpeed;
 
@@ -483,25 +483,25 @@ void update_walking_speed(struct MarioState *m) {
         m->forwardVel -= 1.0f;
     }
 
-    #ifdef CHAOS_LITE
-	if (m->Chaos_Vals[0]==13 | m->Chaos_Vals[1]==13){
-		if (m->forwardVel > 24.0f) {
-			m->forwardVel = 24.0f;
-		}
-	}else if (m->Chaos_Vals[0]==12 | m->Chaos_Vals[1]==12){
-		if (m->forwardVel > 64.0f) {
-			m->forwardVel = 64.0f;
+    if(configCL){
+		if (m->Chaos_Vals[0]==13 | m->Chaos_Vals[1]==13){
+			if (m->forwardVel > 24.0f) {
+				m->forwardVel = 24.0f;
+			}
+		}else if (m->Chaos_Vals[0]==12 | m->Chaos_Vals[1]==12){
+			if (m->forwardVel > 64.0f) {
+				m->forwardVel = 64.0f;
+			}
+		}else{
+			if (m->forwardVel > 48.0f) {
+				m->forwardVel = 48.0f;
+			}
 		}
 	}else{
 		if (m->forwardVel > 48.0f) {
 			m->forwardVel = 48.0f;
 		}
 	}
-	#else
-	if (m->forwardVel > 48.0f) {
-        m->forwardVel = 48.0f;
-    }
-	#endif
 
 #ifdef CHEATS_ACTIONS
     /* Handles the "Super responsive controls" cheat. The content of the "else" is Mario's original code for turning around.*/

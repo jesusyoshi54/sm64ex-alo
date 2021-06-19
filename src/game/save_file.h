@@ -24,9 +24,10 @@ struct SaveFile
     // cap can always be found in a fixed spot within the course
     u8 capLevel;
     u8 capArea;
-    Vec3s capPos;
 
-    u32 flags;
+    u16 Challenges;
+	u8 Camera;
+	u32 flags;
 
     // Star flags for each course.
     // The most significant bit of the byte *following* each course is set if the
@@ -82,6 +83,22 @@ extern u8 gCurrCourseStarFlags;
 extern u8 gSpecialTripleJump;
 extern s8 gLevelToCourseNumTable[];
 
+// challenge flags
+#define CHALLENGE_BE            /* 0x00000001 */ (1 << 0)
+#define CHALLENGE_CNH          /* 0x00000002 */ (1 << 1)
+#define CHALLENGE_DHP         /* 0x00000004 */ (1 << 2)
+#define CHALLENGE_DLD        /* 0x00000008 */ (1 << 3)
+#define CHALLENGE_DKS             /* 0x00000010 */ (1 << 4)
+#define CHALLENGE_CL             /* 0x00000020 */ (1 << 5)
+#define CHALLENGE_ABC /* 0x00000040 */ (1 << 6)
+#define CHALLENGE_BBC /* 0x00000080 */ (1 << 7)
+#define CHALLENGE_ZBC         /* 0x00000100 */ (1 << 8)
+#define CHALLENGE_HC           /* 0x00000200 */ (1 << 9)
+#define CHALLENGE_GD      /* 0x00000400 */ (1 << 10)
+#define CHALLENGE_MB       /* 0x00000800 */ (1 << 11)
+#define CHALLENGE_SM      /* 0x00001000 */ (1 << 12)
+#define CHALLENGE_DD      /* 0x00002000 */ (1 << 13)
+
 // game progress flags
 #define SAVE_FLAG_FILE_EXISTS            /* 0x00000001 */ (1 << 0)
 #define SAVE_FLAG_HAVE_WING_CAP          /* 0x00000002 */ (1 << 1)
@@ -129,6 +146,10 @@ extern struct WarpCheckpoint gWarpCheckpoint;
 extern s8 gMainMenuDataModified;
 extern s8 gSaveFileModified;
 
+void save_file_set_challenges(void);
+s32 save_file_get_challenge(u32 flag);
+void save_file_init_challenges(void);
+s32 save_file_get_camera(void);
 void save_file_do_save(s32 fileIndex);
 void save_file_erase(s32 fileIndex);
 BAD_RETURN(s32) save_file_copy(s32 srcFileIndex, s32 destFileIndex);
