@@ -76,6 +76,7 @@ bool         configHC = false;
 bool         configGD = false;
 bool         configMB = false;
 bool         configSM = false;
+bool         configDD = false;
 
 #ifdef TARGET_WII_U
 bool configN64FaceButtons = 0;

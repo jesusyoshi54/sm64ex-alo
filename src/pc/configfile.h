@@ -47,6 +47,7 @@ extern bool configDD;
 extern bool configGD;
 extern bool configMB;
 extern bool configSM;
+extern bool configDD;
 
 #ifdef TARGET_WII_U
 extern bool configN64FaceButtons;
