@@ -1968,7 +1968,11 @@ s32 execute_mario_action(UNUSED struct Object *o) {
         update_mario_health(gMarioState);
         update_mario_info_for_cam(gMarioState);
         mario_update_hitbox_and_cap_model(gMarioState);
-
+		if((gMarioState->action & ACT_GROUP_MASK)==ACT_GROUP_AIRBORNE) {
+			gMarioState->framesSinceGround++;
+		}else{
+			gMarioState->framesSinceGround=0;
+		}
         // Both of the wind handling portions play wind audio only in
         // non-Japanese releases.
         if (gMarioState->floor->type == SURFACE_HORIZONTAL_WIND) {
