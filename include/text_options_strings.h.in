@@ -11,6 +11,7 @@
 #define TEXT_OPT_VIDEO     _("DISPLAY")
 #define TEXT_OPT_AUDIO     _("SOUND")
 #define TEXT_OPT_CHEATS    _("CHEATS")
+#define TEXT_OPT_CHALLENGE    _("CHALLENGES")
 
 // Markers
 
@@ -159,6 +160,22 @@
 #define TEXT_OPT_CHEAT7    _("Exit course at any time")
 #define TEXT_OPT_CHEAT8    _("Huge Mario")
 #define TEXT_OPT_CHEAT9    _("Tiny Mario")
+
+//challenges
+#define TEXT_OPT_CHALLENGE1    _("Buffed Enemies")
+#define TEXT_OPT_CHALLENGE2    _("Coins Don't Heal")
+#define TEXT_OPT_CHALLENGE3    _("Drain HP")
+#define TEXT_OPT_CHALLENGE4    _("Double Lava Dmg")
+#define TEXT_OPT_CHALLENGE5    _("Double Koopa Speed")
+#define TEXT_OPT_CHALLENGE6    _("Chaos Lite")
+#define TEXT_OPT_CHALLENGE7    _("A Button Challenge")
+#define TEXT_OPT_CHALLENGE8    _("B Button Challenge")
+#define TEXT_OPT_CHALLENGE9    _("Z Button Challenge")
+#define TEXT_OPT_CHALLENGE10    _("HardCore")
+#define TEXT_OPT_CHALLENGE11    _("Green Demon")
+#define TEXT_OPT_CHALLENGE12    _("Move Badges")
+#define TEXT_OPT_CHALLENGE13    _("Super Mode")
+#define TEXT_OPT_CHALLENGE14    _("Daredevil")
 
 #endif // VERSION
 

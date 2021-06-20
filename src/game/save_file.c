@@ -12,6 +12,7 @@
 #include "rumble_init.h"
 #include "macros.h"
 #include "pc/ini.h"
+#include "pc/configfile.h"
 
 #define MENU_DATA_MAGIC 0x4849
 #define SAVE_FILE_MAGIC 0x4441
@@ -90,9 +91,7 @@ static inline void bswap_menudata(struct MainMenuSaveData *data) {
  * Byteswap all multibyte fields in a SaveFile.
  */
 static inline void bswap_savefile(struct SaveFile *data) {
-    data->capPos[0] = BSWAP16(data->capPos[0]);
-    data->capPos[1] = BSWAP16(data->capPos[1]);
-    data->capPos[2] = BSWAP16(data->capPos[2]);
+    data->Challenges = BSWAP16(data->Challenges);
     data->flags = BSWAP32(data->flags);
     bswap_signature(&data->signature);
 }
@@ -385,11 +384,10 @@ static void save_file_bswap(struct SaveBuffer *buf) {
 #endif
 
 void save_file_do_save(s32 fileIndex) {
-	#ifndef HARDCORE
     if (fileIndex < 0 || fileIndex >= NUM_SAVE_FILES)
         return;
 
-    if (gSaveFileModified)
+    if (gSaveFileModified & !configHC)
 #ifdef TEXTSAVES
     {
         // Write to text file
@@ -416,7 +414,6 @@ void save_file_do_save(s32 fileIndex) {
         gSaveFileModified = FALSE;
     }
     save_main_menu_data();
-#endif
 #endif
 }
 
@@ -636,7 +633,49 @@ s32 save_file_get_total_star_count(s32 fileIndex, s32 minCourse, s32 maxCourse) 
     // Add castle secret star count.
     return save_file_get_course_star_count(fileIndex, -1) + count;
 }
-
+void save_file_set_challenges(void) {
+	u32 flag = 0;
+	flag |= configBE;
+	flag |= (configCNH<<1);
+	flag |= (configDHP<<2);
+	flag |= (configDLD<<3);
+	flag |= (configDKS<<4);
+	flag |= (configCL<<5);
+	flag |= (configABC<<6);
+	flag |= (configBBC<<7);
+	flag |= (configZBC<<8);
+	flag |= (configHC<<9);
+	flag |= (configGD<<10);
+	flag |= (configMB<<11);
+	flag |= (configSM<<12);
+	flag |= (configDD<<13);
+	gSaveBuffer.files[gCurrSaveFileNum - 1][0].Challenges = flag;
+	gSaveBuffer.files[gCurrSaveFileNum - 1][0].Camera = configEnableCamera;
+	gSaveFileModified = TRUE;
+	save_file_do_save(gCurrSaveFileNum - 1);
+}
+s32 save_file_get_challenge(u32 flag) {
+	return ((gSaveBuffer.files[gCurrSaveFileNum - 1][0].Challenges&flag)!=0);
+}
+void save_file_init_challenges(void){
+	configBE = save_file_get_challenge(CHALLENGE_BE);
+	configCNH = save_file_get_challenge(CHALLENGE_CNH);
+	configDHP = save_file_get_challenge(CHALLENGE_DHP);
+	configDLD = save_file_get_challenge(CHALLENGE_DLD);
+	configDKS = save_file_get_challenge(CHALLENGE_DKS);
+	configCL = save_file_get_challenge(CHALLENGE_CL);
+	configABC = save_file_get_challenge(CHALLENGE_ABC);
+	configBBC = save_file_get_challenge(CHALLENGE_BBC);
+	configZBC = save_file_get_challenge(CHALLENGE_ZBC);
+	configHC = save_file_get_challenge(CHALLENGE_HC);
+	configGD = save_file_get_challenge(CHALLENGE_GD);
+	configMB = save_file_get_challenge(CHALLENGE_MB);
+	configSM = save_file_get_challenge(CHALLENGE_SM);
+	configDD = save_file_get_challenge(CHALLENGE_DD);
+}
+s32 save_file_get_camera(void) {
+	return gSaveBuffer.files[gCurrSaveFileNum - 1][0].Camera;
+}
 void save_file_set_flags(u32 flags) {
     gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags |= (flags | SAVE_FLAG_FILE_EXISTS);
     gSaveFileModified = TRUE;
@@ -718,7 +757,6 @@ void save_file_set_cap_pos(s16 x, s16 y, s16 z) {
 
     saveFile->capLevel = gCurrLevelNum;
     saveFile->capArea = gCurrAreaIndex;
-    vec3s_set(saveFile->capPos, x, y, z);
     save_file_set_flags(SAVE_FLAG_CAP_ON_GROUND);
 }
 
@@ -728,7 +766,6 @@ s32 save_file_get_cap_pos(Vec3s capPos) {
 
     if (saveFile->capLevel == gCurrLevelNum && saveFile->capArea == gCurrAreaIndex
         && (flags & SAVE_FLAG_CAP_ON_GROUND)) {
-        vec3s_copy(capPos, saveFile->capPos);
         return TRUE;
     }
     return FALSE;

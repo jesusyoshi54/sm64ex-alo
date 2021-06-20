@@ -202,9 +202,14 @@ void bhv_penguin_race_finish_line_update(void) {
 }
 //This is used as a 2d camera object in hacks
 #ifdef RM2C
+extern u16 newcam_mode;
 void bhv_penguin_race_shortcut_check_update(void) {
 	gMarioState->pos[0] = 0.0f;
-	gCurrentArea->camera->mode = CAMERA_MODE_2_DIRECTIONS;
+	if(gCurrentArea->camera->mode == CAMERA_MODE_NEWCAM){
+		newcam_mode = NC_MODE_2D;
+	}else{
+		gCurrentArea->camera->mode = CAMERA_MODE_2_DIRECTIONS;
+	}
 }
 #else
 void bhv_penguin_race_shortcut_check_update(void) {

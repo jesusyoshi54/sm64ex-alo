@@ -23,7 +23,7 @@
 #include "sm64.h"
 #include "sound_init.h"
 #include "rumble_init.h"
-
+#include "pc/configfile.h"
 #define INT_GROUND_POUND_OR_TWIRL (1 << 0) // 0x01
 #define INT_PUNCH                 (1 << 1) // 0x02
 #define INT_KICK                  (1 << 2) // 0x04
@@ -349,7 +349,6 @@ void mario_blow_off_cap(struct MarioState *m, f32 capSpeed) {
     struct Object *capObject;
 
     if (does_mario_have_normal_cap_on_head(m)) {
-        save_file_set_cap_pos(m->pos[0], m->pos[1], m->pos[2]);
 
         m->flags &= ~(MARIO_NORMAL_CAP | MARIO_CAP_ON_HEAD);
 
@@ -679,7 +678,17 @@ u32 should_push_or_pull_door(struct MarioState *m, struct Object *o) {
 
 u32 take_damage_from_interact_object(struct MarioState *m) {
     s32 shake;
-    s32 damage = m->interactObj->oDamageOrCoinValue;
+    s32 damage;
+	if(configBE){
+		if(m->interactObj->oDamageOrCoinValue==1)
+			damage=3;
+		else if(m->interactObj->oDamageOrCoinValue==2)
+			damage=4;
+		else if(m->interactObj->oDamageOrCoinValue>2)
+			damage = 5;
+	}else{
+		damage = m->interactObj->oDamageOrCoinValue;
+	}
 
     if (damage >= 4) {
         shake = SHAKE_LARGE_DAMAGE;
@@ -741,9 +750,9 @@ void reset_mario_pitch(struct MarioState *m) {
 
 u32 interact_coin(struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
     m->numCoins += o->oDamageOrCoinValue;
-	#ifndef COINS_NO_HEAL
-    m->healCounter += 4 * o->oDamageOrCoinValue;
-	#endif
+	if(!configCNH){
+		m->healCounter += 4 * o->oDamageOrCoinValue;
+	}
 
     o->oInteractStatus = INT_STATUS_INTERACTED;
 
@@ -1518,7 +1527,9 @@ u32 interact_pole(struct MarioState *m, UNUSED u32 interactType, struct Object *
 
             marioObj->oMarioPoleUnk108 = 0;
             marioObj->oMarioPoleYawVel = 0;
-            marioObj->oMarioPolePos = m->pos[1] - o->oPosY;
+            marioObj->oMarioPolePos = (m->pos[1] - o->oPosY) < 0
+                ? -o->hitboxDownOffset
+                : (m->pos[1] - o->oPosY);
 
             if (lowSpeed) {
                 return set_mario_action(m, ACT_GRAB_POLE_SLOW, 0);

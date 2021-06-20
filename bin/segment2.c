@@ -2169,9 +2169,9 @@ const Gfx dl_rgba16_text_end[] = {
 
 // 0x0200EDA8 - 0x0200EDE8
 static const Vtx vertex_text_bg_box[] = {
-    {{{     0,    -80,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   130,    -80,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   130,      0,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{     0,    -80,      0}, 0, {     0,   1000}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{   130,    -80,      0}, 0, {  1000,   1000}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{   130,      0,      0}, 0, {  1000,      0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     0,      0,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
@@ -2181,6 +2181,12 @@ const Gfx dl_draw_text_bg_box[] = {
     gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_FADE, G_CC_FADE),
     gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+    gsSPVertex(vertex_text_bg_box, 4, 0),
+    gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
+    gsSPEndDisplayList(),
+};
+
+const Gfx dl_draw_text_bg_box_TE[] = {
     gsSPVertex(vertex_text_bg_box, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
     gsSPEndDisplayList(),
