@@ -11,11 +11,7 @@
 static struct ObjectHitbox sGoombaHitbox = {
     /* interactType:      */ INTERACT_BOUNCE_TOP,
     /* downOffset:        */ 0,
-#ifdef BUFFED_ENEMIES
-    /* damageOrCoinValue: */ 3,
-#else
     /* damageOrCoinValue: */ 1,
-#endif
     /* health:            */ 0,
     /* numLootCoins:      */ 1,
     /* radius:            */ 72,
@@ -197,11 +193,11 @@ static void goomba_act_walk(void) {
                 }
 
                 o->oGoombaTargetYaw = o->oAngleToMario;
-				#ifdef BUFFED_ENEMIES
+				if(configBE){
                 o->oGoombaRelativeSpeed = 80.0f;
-				#else
+				}else{
                 o->oGoombaRelativeSpeed = 20.0f;
-				#endif
+				}
             } else {
                 // If mario is far away, walk at a normal pace, turning randomly
                 // and occasionally jumping

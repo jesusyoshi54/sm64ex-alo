@@ -8,11 +8,7 @@
 static struct ObjectHitbox sAmpHitbox = {
     /* interactType:      */ INTERACT_SHOCK,
     /* downOffset:        */ 40,
-#ifdef BUFFED_ENEMIES
-    /* damageOrCoinValue: */ 3,
-#else
     /* damageOrCoinValue: */ 1,
-#endif
     /* health:            */ 0,
     /* numLootCoins:      */ 0,
     /* radius:            */ 40,
@@ -113,11 +109,11 @@ static void homing_amp_chase_loop(void) {
     // If the amp is locked on to Mario, start "chasing" him by moving
     // in a straight line at 15 units/second for 32 frames.
     if (o->oHomingAmpLockedOn == TRUE) {
-#ifdef BUFFED_ENEMIES
-        o->oForwardVel = 30.0f;
-#else
-        o->oForwardVel = 15.0f;
-#endif
+		if(configBE){
+			o->oForwardVel = 30.0f;
+		}else{
+			o->oForwardVel = 15.0f;
+		}
         // Move the amp's average Y (the Y value it oscillates around) to align with
         // Mario's head. Mario's graphics' Y + 150 is around the top of his head.
         // Note that the average Y will slowly go down to approach his head if the amp
@@ -134,11 +130,11 @@ static void homing_amp_chase_loop(void) {
     } else {
         // If the amp is not locked on to Mario, move forward at 10 units/second
         // while curving towards him.
-#ifdef BUFFED_ENEMIES
-        o->oForwardVel = 20.0f;
-#else
-        o->oForwardVel = 10.0f;
-#endif
+		if(configBE){
+			o->oForwardVel = 20.0f;
+		}else{
+			o->oForwardVel = 10.0f;
+		}
 
         obj_turn_toward_object(o, gMarioObject, 16, 0x400);
 
@@ -320,11 +316,11 @@ static void circling_amp_idle_loop(void) {
     o->oPosX = o->oHomeX + sins(o->oMoveAngleYaw) * o->oAmpRadiusOfRotation;
     o->oPosZ = o->oHomeZ + coss(o->oMoveAngleYaw) * o->oAmpRadiusOfRotation;
     o->oPosY = o->oHomeY + coss(o->oAmpYPhase * 0x8B0) * 30.0f;
-#ifdef BUFFED_ENEMIES
-        o->oMoveAngleYaw += 0x700;
-#else
-        o->oMoveAngleYaw += 0x400;
-#endif
+	if(configBE){
+		o->oMoveAngleYaw += 0x700;
+	}else{
+		o->oMoveAngleYaw += 0x400;
+	}
     o->oFaceAngleYaw = o->oMoveAngleYaw + 0x4000;
 
     // Handle attacks

@@ -97,7 +97,7 @@ static void fire_piranha_plant_act_hide(void) {
 
 static void fire_piranha_plant_act_grow(void) {
     cur_obj_init_anim_extend(4);
-#ifdef BUFFED_ENEMIES
+if(configBE){
     if (approach_f32_ptr(&o->oFirePiranhaPlantScale, o->oFirePiranhaPlantNeutralScale,
                          0.08f * o->oFirePiranhaPlantNeutralScale)) {
         if (o->oTimer > 40) {
@@ -120,7 +120,7 @@ static void fire_piranha_plant_act_grow(void) {
     } else if (o->oFirePiranhaPlantScale > o->oFirePiranhaPlantNeutralScale / 2) {
         cur_obj_become_tangible();
     }
-#else
+}else{
     if (approach_f32_ptr(&o->oFirePiranhaPlantScale, o->oFirePiranhaPlantNeutralScale,
                          0.04f * o->oFirePiranhaPlantNeutralScale)) {
         if (o->oTimer > 80) {
@@ -143,7 +143,7 @@ static void fire_piranha_plant_act_grow(void) {
     } else if (o->oFirePiranhaPlantScale > o->oFirePiranhaPlantNeutralScale / 2) {
         cur_obj_become_tangible();
     }
-#endif
+}
 }
 
 void bhv_fire_piranha_plant_update(void) {
