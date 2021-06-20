@@ -36,9 +36,8 @@
 #ifndef TARGET_N64
 #include "pc/pc_main.h"
 #include "pc/cliopts.h"
-#include "pc/configfile.h"
 #endif
-
+#include "pc/configfile.h"
 #define PLAY_MODE_NORMAL 0
 #define PLAY_MODE_PAUSED 2
 #define PLAY_MODE_CHANGE_AREA 3
@@ -759,7 +758,11 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                 break;
 
             case WARP_OP_DEATH:
-                if (m->numLives == 0 && !INFINITE_LIVES) {
+				//crash the plane with no survivors
+				if(configHC){
+					int i=1/0;
+				}
+				if (m->numLives == 0 && INFINITE_LIVES) {
                     sDelayedWarpOp = WARP_OP_GAME_OVER;
                 }
                 sDelayedWarpTimer = 48;
@@ -988,9 +991,8 @@ void basic_update(UNUSED s16 *arg) {
         update_camera(gCurrentArea->camera);
     }
 }
-
+#include "text_engine.h"
 int gPressedStart = 0;
-
 s32 play_mode_normal(void) {
     if (gCurrDemoInput != NULL) {
         print_intro_text();
@@ -1020,7 +1022,11 @@ s32 play_mode_normal(void) {
 
     initiate_painting_warp();
     initiate_delayed_warp();
-
+	#ifdef TE
+	if (gPlayer1Controller->buttonPressed&L_TRIG){
+        SetupTextEngine(32,32,&te_test,0);
+	}
+	#endif
     // If either initiate_painting_warp or initiate_delayed_warp initiated a
     // warp, change play mode accordingly.
     if (sCurrPlayMode == PLAY_MODE_NORMAL) {
@@ -1040,7 +1046,18 @@ s32 play_mode_normal(void) {
 
     return 0;
 }
-
+#ifdef LEVEL_SELECT
+static char buf[32];
+static u8 LevelWarp=9;
+static u8 AreaWarp=1;
+static u8 WarpID=10;
+static u8 SelIndex=0;
+static u8 *LSScrolls[]={
+	&LevelWarp,
+	&AreaWarp,
+	&WarpID,
+};
+#endif
 s32 play_mode_paused(void) {
     if (gPauseScreenMode == 0) {
         set_menu_mode(RENDER_PAUSE_SCREEN);
@@ -1072,7 +1089,22 @@ s32 play_mode_paused(void) {
         game_exit();
     }
 #endif
-
+	//very cringe code
+	#ifdef LEVEL_SELECT
+	handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, &SelIndex, 0, 2);
+	handle_menu_scrolling(MENU_SCROLL_VERTICAL, LSScrolls[SelIndex], 0, 255);
+	sprintf(buf,"DEBUG L-L SELECT DUP to Warp\n");
+	print_text(32,188,buf);
+	sprintf(buf," LE-EL %d   AREA %d   ID %d",LevelWarp,AreaWarp,WarpID);
+	print_text(32,160,buf);
+	//star glyph
+	sprintf(buf,"-");
+	print_text(32+110*SelIndex,160,buf);
+	if (gPlayer1Controller->buttonPressed&U_JPAD){
+        initiate_warp(LevelWarp,AreaWarp,WarpID, 0);
+        fade_into_special_warp(0, 0);
+	}
+	#endif
     return 0;
 }
 
@@ -1269,6 +1301,10 @@ s32 init_level(void) {
     if (gMarioState->action == ACT_INTRO_CUTSCENE) {
         sound_banks_disable(SEQ_PLAYER_SFX, SOUND_BANKS_DISABLED_DURING_INTRO_CUTSCENE);
     }
+	if(configGD){
+		extern const BehaviorScript bhvHidden1upInPole[];
+		spawn_object(gMarioObject, MODEL_1UP, bhvHidden1upInPole);
+	}
 
     return 1;
 }
@@ -1329,6 +1365,7 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
     gSpecialTripleJump = FALSE;
 
     init_mario_from_save_file();
+    save_file_init_challenges();
     disable_warp_checkpoint();
     save_file_move_cap_to_default_location();
     select_mario_cam_mode();

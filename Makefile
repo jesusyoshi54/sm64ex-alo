@@ -29,6 +29,11 @@ COMPILER_N64 ?= gcc
 
 # Accept RM2C level folder output
 RM2C ?= 1
+#add in text engine
+TE ?= 0
+#Debug stuff to make testing easier
+#inside pause menu of levels
+LEVEL_SELECT ?= 0
 
 # Build for original N64 (no pc code)
 TARGET_N64 = 1
@@ -55,7 +60,7 @@ NODRAWINGDISTANCE ?= 0
 # Disable QoL fixes by default (helps with them purists)
 QOL_FIXES ?= 1
 # Enable extended options menu by default
-EXT_OPTIONS_MENU ?= 1
+EXT_OPTIONS_MENU ?= 0
 # Disable text-based save-files by default
 TEXTSAVES ?= 0
 # Load resources from external files
@@ -65,13 +70,13 @@ DISCORDRPC ?= 0
 # Enable rumble functions (Originally in Shindou)
 RUMBLE_FEEDBACK ?= 0
 # Enable PC Port defines
-PC_PORT_DEFINES ?= 1
+PC_PORT_DEFINES ?= 0
 
 # Various workarounds for weird toolchains
 NO_BZERO_BCOPY ?= 0
 NO_LDIV ?= 0
 # Check if is compiling on a console
-TARGET_GAME_CONSOLE ?= 1
+TARGET_GAME_CONSOLE ?= 0
 
 # Backend selection
 
@@ -88,7 +93,7 @@ CONTROLLER_API ?= SDL2
 .PHONY: RM2CPC
 RM2CPC:
 	$(info "Running make -j4 TARGET_N64=0 TARGET_ARCH=native WINDOWS_BUILD=1 TARGET_GAME_CONSOLE=0 DEBUG=1 NODRAWINGDISTANCE=1")
-	make -j4 TARGET_N64=0 TARGET_ARCH=native WINDOWS_BUILD=1 TARGET_GAME_CONSOLE=0 DEBUG=1 NODRAWINGDISTANCE=1
+	make TARGET_N64=0 TARGET_ARCH=native WINDOWS_BUILD=1 TARGET_GAME_CONSOLE=0 DEBUG=1 NODRAWINGDISTANCE=1 -j4 
 
 
 ifeq ($(TARGET_WII_U),1)
@@ -620,7 +625,7 @@ ifeq ($(COMPILER_N64),gcc)
 endif
 
 N64_CFLAGS := -nostdinc -I include/libc -DTARGET_N64 -D_LANGUAGE_C -DNO_LDIV
-CC_CFLAGS := -fno-builtin
+CC_CFLAGS := -fno-builtin -fno-toplevel-reorder
 
 INCLUDE_CFLAGS := -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I .
 
@@ -638,7 +643,7 @@ LDFLAGS := -T undefined_syms.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/
 ENDIAN_BITWIDTH := $(BUILD_DIR)/endian-and-bitwidth
 
 ifeq ($(COMPILER_N64),gcc)
-  CFLAGS := -march=vr4300 -mfix4300 -mabi=32 -mno-shared -G 0 $(COMMON_CFLAGS) -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I . -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
+  CFLAGS := -march=vr4300 -mfix4300 -mabi=32 -mno-shared -G 0 $(COMMON_CFLAGS) -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I . -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra -fno-toplevel-reorder
 endif
 
 # Check for Puppycam option
@@ -652,6 +657,15 @@ endif
 ifeq ($(RM2C),1)
   CC_CHECK += -DRM2C
   CFLAGS += -DRM2C
+endif
+ifeq ($(TE),1)
+  CC_CHECK += -DTE
+  CFLAGS += -DTE
+endif
+
+ifeq ($(LEVEL_SELECT),1)
+  CC_CHECK += -DLEVEL_SELECT
+  CFLAGS += -DLEVEL_SELECT
 endif
 
 # Check for extended options menu option
@@ -832,22 +846,22 @@ endif
 
 ifeq ($(WINDOWS_BUILD),1)
   CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
-  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv
+  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -fno-toplevel-reorder
 
 else ifeq ($(TARGET_WEB),1)
   CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -s USE_SDL=2
-  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -s USE_SDL=2
+  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -s USE_SDL=2 -fno-toplevel-reorder
 
 # Linux / Other builds below
 else
   CC_CHECK := $(CC) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
-  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv
+  CFLAGS := $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -fwrapv -fno-toplevel-reorder
 
 endif
 
 ifeq ($(TARGET_WII_U),1)
   CC_CHECK += -ffunction-sections $(MACHDEP) -ffast-math -D__WIIU__ -D__WUT__ $(INCLUDE)
-  CFLAGS += -ffunction-sections $(MACHDEP) -ffast-math -D__WIIU__ -D__WUT__ $(INCLUDE)
+  CFLAGS += -ffunction-sections $(MACHDEP) -ffast-math -D__WIIU__ -D__WUT__ $(INCLUDE) -fno-toplevel-reorder
 endif
 
 ifeq ($(TARGET_N3DS),1)
@@ -855,12 +869,12 @@ ifeq ($(TARGET_N3DS),1)
   LIBDIRS  := $(CTRULIB)
   export LIBPATHS  :=  $(foreach dir,$(LIBDIRS),-L$(dir)/lib)
   CC_CHECK += -mtp=soft -DARM11 -DosGetTime=n64_osGetTime -D_3DS -march=armv6k -mtune=mpcore -mfloat-abi=hard -mword-relocations -fomit-frame-pointer -ffast-math $(foreach dir,$(LIBDIRS),-I$(dir)/include)
-  CFLAGS += -mtp=soft -DARM11 -DosGetTime=n64_osGetTime -D_3DS -march=armv6k -mtune=mpcore -mfloat-abi=hard -mword-relocations -fomit-frame-pointer -ffast-math $(foreach dir,$(LIBDIRS),-I$(dir)/include)
+  CFLAGS += -mtp=soft -DARM11 -DosGetTime=n64_osGetTime -D_3DS -march=armv6k -mtune=mpcore -mfloat-abi=hard -mword-relocations -fomit-frame-pointer -ffast-math $(foreach dir,$(LIBDIRS),-I$(dir)/include) -fno-toplevel-reorder
 endif
 
 ifeq ($(TARGET_SWITCH),1)
   CC_CHECK := $(CC) $(NXARCH) -fsyntax-only -fsigned-char $(BACKEND_CFLAGS) $(INCLUDE_CFLAGS) -Wall -Wextra -Wno-format-security $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -D__SWITCH__=1
-  CFLAGS := $(NXARCH) $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -ftls-model=local-exec -fPIE -fwrapv -D__SWITCH__=1
+  CFLAGS := $(NXARCH) $(OPT_FLAGS) $(INCLUDE_CFLAGS) $(BACKEND_CFLAGS) $(VERSION_CFLAGS) $(GRUCODE_CFLAGS) -fno-strict-aliasing -ftls-model=local-exec -fPIE -fwrapv -D__SWITCH__=1 -fno-toplevel-reorder
 endif
 
 # Check for enhancement options
@@ -876,6 +890,11 @@ endif
 ifeq ($(RM2C),1)
   CC_CHECK += -DRM2C
   CFLAGS += -DRM2C
+endif
+
+ifeq ($(LEVEL_SELECT),1)
+  CC_CHECK += -DLEVEL_SELECT
+  CFLAGS += -DLEVEL_SELECT
 endif
 
 ifeq ($(TEXTSAVES),1)
@@ -1005,6 +1024,7 @@ N64CKSUM = $(TOOLS_DIR)/n64cksum
 N64GRAPHICS = $(TOOLS_DIR)/n64graphics
 N64GRAPHICS_CI = $(TOOLS_DIR)/n64graphics_ci
 BINPNG = $(TOOLS_DIR)/BinPNG.py
+TECONV = $(TOOLS_DIR)/TE_encode.py
 TEXTCONV = $(TOOLS_DIR)/textconv
 AIFF_EXTRACT_CODEBOOK = $(TOOLS_DIR)/aiff_extract_codebook
 VADPCM_ENC = $(TOOLS_DIR)/vadpcm_enc
@@ -1169,7 +1189,17 @@ ALL_DIRS := $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(ASM_DIRS) $(GOD
 
 # Make sure build directory exists before compiling anything
 DUMMY != mkdir -p $(ALL_DIRS)
-
+ifeq ($(TE),1)
+	# TE files
+	TE_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*_te.py))
+	# TE h files
+	TEH_FILES := $(foreach file,$(TE_FILES),$(BUILD_DIR)/$(file:.h=.py))
+	#create text engine encoded strings
+	$(TEH_FILES):$(TE_FILES)
+		$(call print,Converting TE string:,$<,$@)
+		python3 $(TECONV) $< $@
+endif
+#make menu strings dependent on TE files so they're built into final file
 $(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_menu_strings.h
 $(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_options_strings.h
 
@@ -1188,7 +1218,11 @@ else
 $(BUILD_DIR)/src/menu/file_select.o: $(BUILD_DIR)/include/text_strings.h
 $(BUILD_DIR)/src/menu/star_select.o: $(BUILD_DIR)/include/text_strings.h
 $(BUILD_DIR)/src/game/ingame_menu.o: $(BUILD_DIR)/include/text_strings.h
+ifeq ($(TE),1)
+$(BUILD_DIR)/src/game/options_menu.o: $(BUILD_DIR)/include/text_strings.h $(TEH_FILES)
+else
 $(BUILD_DIR)/src/game/options_menu.o: $(BUILD_DIR)/include/text_strings.h
+endif
 ifeq ($(TARGET_GAME_CONSOLE),0)
   ifeq ($(DISCORDRPC),1)
     $(BUILD_DIR)/src/pc/discord/discordrpc.o: $(BUILD_DIR)/include/text_strings.h

@@ -81,7 +81,11 @@ void chuckya_act_0(void) {
         case 0:
             o->oForwardVel = 0;
             if (cur_obj_lateral_dist_from_mario_to_home() < 2000.0f) {
+				if(configBE){
+                cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x1000);
+				}else{
                 cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x400);
+				}
                 if (o->oChuckyaUnkFC > 40
                     || abs_angle_diff(o->oMoveAngleYaw, o->oAngleToMario) < 0x1000)
                     o->oSubAction = 1;
@@ -89,16 +93,25 @@ void chuckya_act_0(void) {
                 o->oSubAction = 3;
             break;
         case 1:
+			if(configBE){
+			approach_forward_vel(&o->oForwardVel, 60.0f, 8.0f);
+			}else{
             approach_forward_vel(&o->oForwardVel, 30.0f, 4.0f);
+			}
             if (abs_angle_diff(o->oMoveAngleYaw, o->oAngleToMario) > 0x4000)
                 o->oSubAction = 2;
             if (cur_obj_lateral_dist_from_mario_to_home() > 2000.0f)
                 o->oSubAction = 3;
             break;
         case 2:
-            approach_forward_vel(&o->oForwardVel, 0, 4.0f);
-            if (o->oChuckyaUnkFC > 48)
-                o->oSubAction = 0;
+            if(configBE){
+				approach_forward_vel(&o->oForwardVel, 0, 30.0f);
+            }else{
+			if (o->oChuckyaUnkFC > 12)
+				approach_forward_vel(&o->oForwardVel, 0, 4.0f);
+            }
+			if (o->oChuckyaUnkFC > 48)
+					o->oSubAction = 0;
             break;
         case 3:
             if (cur_obj_lateral_dist_to_home() < 500.0f)
@@ -106,7 +119,11 @@ void chuckya_act_0(void) {
             else {
                 approach_forward_vel(&o->oForwardVel, 10.0f, 4.0f);
                 o->oAngleToMario = cur_obj_angle_to_home();
+				if(configBE){
+                cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x1000);
+				}else{
                 cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x800);
+				}
             }
             if (cur_obj_lateral_dist_from_mario_to_home() < 1900.0f)
                 o->oSubAction = 0;

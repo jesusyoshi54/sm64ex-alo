@@ -77,13 +77,18 @@ void snufit_act_idle(void) {
     // if the game would not have already crashed.
     marioDist = (s32)(o->oDistanceToMario / 10.0f);
     if (o->oTimer > marioDist && o->oDistanceToMario < 800.0f) {
-        
+        	if(configBE){
         // Controls an alternating scaling factor in a cos.
+        o->oSnufitBodyScalePeriod
+            = approach_s16_symmetric(o->oSnufitBodyScalePeriod, 0, 4000);
+        o->oSnufitBodyBaseScale
+            = approach_s16_symmetric(o->oSnufitBodyBaseScale, 600, 60);
+			}else{
         o->oSnufitBodyScalePeriod
             = approach_s16_symmetric(o->oSnufitBodyScalePeriod, 0, 1500);
         o->oSnufitBodyBaseScale
             = approach_s16_symmetric(o->oSnufitBodyBaseScale, 600, 15);
-
+			}
         if ((s16) o->oSnufitBodyScalePeriod == 0 && o->oSnufitBodyBaseScale == 600) {
             o->oAction = SNUFIT_ACT_SHOOT;
             o->oSnufitBullets = 0;

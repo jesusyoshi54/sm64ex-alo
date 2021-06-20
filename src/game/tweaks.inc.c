@@ -8,6 +8,19 @@
 #define EXIT_COURSE 26, 1, 10
 #define FALL_DAMAGE 192
 #define STAR_MILESTONES 1, 3, 8, 30, 50, 70
+
+#define KING_BOMB_FVEL 3.0f
+#define KING_BOMB_YAWVEL 0x100
+#define KING_BOMB_HEALTH 3
+#define KING_WHOMP_HEALTH 3
+#define KOOPA_SPEED_RACE_END 8.0f
+#define KOOPA_SPEED_BOB 4.0f
+#define KOOPA_SPEED_THI 6.0f
+
+//whether coins are 3d or not. Changes bhv scripts and pause menu reds rendering
+#define USE3DCOINS 0
+#define INCLUDE_MOP 0
+
 #define MIPS1_STAR_REQ 15
 #define MIPS2_STAR_REQ 50
 #define TOAD_STAR_1_REQUIREMENT 12

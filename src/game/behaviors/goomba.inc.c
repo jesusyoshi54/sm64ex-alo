@@ -193,7 +193,11 @@ static void goomba_act_walk(void) {
                 }
 
                 o->oGoombaTargetYaw = o->oAngleToMario;
+				if(configBE){
+                o->oGoombaRelativeSpeed = 80.0f;
+				}else{
                 o->oGoombaRelativeSpeed = 20.0f;
+				}
             } else {
                 // If mario is far away, walk at a normal pace, turning randomly
                 // and occasionally jumping

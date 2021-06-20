@@ -457,6 +457,7 @@ s32 update_boss_fight_camera(struct Camera *c, Vec3f, Vec3f);
 s32 update_parallel_tracking_camera(struct Camera *c, Vec3f, Vec3f);
 s32 update_fixed_camera(struct Camera *c, Vec3f, Vec3f);
 s32 update_8_directions_camera(struct Camera *c, Vec3f, Vec3f);
+s32 update_2_directions_camera(struct Camera *c, Vec3f, Vec3f);
 s32 update_slide_or_0f_camera(struct Camera *c, Vec3f, Vec3f);
 s32 update_spiral_stairs_camera(struct Camera *c, Vec3f, Vec3f);
 
@@ -477,6 +478,7 @@ CameraTransition sModeTransitions[] = {
     update_parallel_tracking_camera,
     update_fixed_camera,
     update_8_directions_camera,
+    update_2_directions_camera,
     update_slide_or_0f_camera,
     update_mario_camera,
     update_spiral_stairs_camera
@@ -908,6 +910,25 @@ s32 update_radial_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
 
     return camYaw;
 }
+/**
+ * Update the camera during 2 directional mode
+ */
+s32 update_2_directions_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
+    s16 camYaw = s8DirModeBaseYaw + s8DirModeYawOffset;
+    s16 pitch = 0x300;//look_down_slopes(camYaw);
+    f32 posY;
+    f32 focusY;
+    f32 yOff = 125.f;
+    f32 baseDist = 1000.f;
+	
+
+    sAreaYaw = camYaw;
+    calc_y_to_curr_floor(&posY, 1.f, 200.f, &focusY, 0.9f, 200.f);
+    focus_on_mario(focus, pos, posY + yOff, focusY + yOff, sLakituDist + baseDist, pitch, camYaw);
+    // pan_ahead_of_player(c);
+
+    return camYaw;
+}
 
 /**
  * Update the camera during 8 directional mode
@@ -916,7 +937,7 @@ s32 update_8_directions_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     UNUSED f32 cenDistX = sMarioCamState->pos[0] - c->areaCenX;
     UNUSED f32 cenDistZ = sMarioCamState->pos[2] - c->areaCenZ;
     s16 camYaw = s8DirModeBaseYaw + s8DirModeYawOffset;
-    s16 pitch = look_down_slopes(camYaw);
+    s16 pitch = 0x400; //look_down_slopes(camYaw);
     f32 posY;
     f32 focusY;
     UNUSED f32 unused1;
@@ -928,7 +949,7 @@ s32 update_8_directions_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     sAreaYaw = camYaw;
     calc_y_to_curr_floor(&posY, 1.f, 200.f, &focusY, 0.9f, 200.f);
     focus_on_mario(focus, pos, posY + yOff, focusY + yOff, sLakituDist + baseDist, pitch, camYaw);
-    pan_ahead_of_player(c);
+    // pan_ahead_of_player(c);
     // if (gCurrLevelArea == AREA_DDD_SUB) {
         // camYaw = clamp_positions_and_find_yaw(pos, focus, 6839.f, 995.f, 5994.f, -3945.f);
     // }
@@ -1079,15 +1100,19 @@ void radial_camera_move(struct Camera *c) {
  */
 void lakitu_zoom(f32 rangeDist, s16 rangePitch) {
     if (sLakituDist < 0) {
-        if ((sLakituDist += 30) > 0) {
+        if ((sLakituDist += 60) > 0) {
             sLakituDist = 0;
         }
-    } else if (rangeDist < sLakituDist) {
-        if ((sLakituDist -= 30) < rangeDist) {
+    } else if ((rangeDist < sLakituDist) && !(gCameraMovementFlags & CAM_MOVE_ULTRA_ZOOM_OUT)) {
+        if ((sLakituDist -= 60) < rangeDist) {
             sLakituDist = rangeDist;
         }
+    } else if (gCameraMovementFlags & CAM_MOVE_ULTRA_ZOOM_OUT) {
+        if ((sLakituDist += 60) > rangeDist*2) {
+            sLakituDist = rangeDist*2;
+        }
     } else if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
-        if ((sLakituDist += 30) > rangeDist) {
+        if ((sLakituDist += 60) > rangeDist) {
             sLakituDist = rangeDist;
         }
     } else {
@@ -1096,19 +1121,28 @@ void lakitu_zoom(f32 rangeDist, s16 rangePitch) {
         }
     }
 
-    if (gCurrLevelArea == AREA_SSL_PYRAMID && gCamera->mode == CAMERA_MODE_OUTWARD_RADIAL) {
-        rangePitch /= 2;
-    }
-
-    if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
-        if ((sLakituPitch += rangePitch / 13) > rangePitch) {
-            sLakituPitch = rangePitch;
-        }
-    } else {
-        if ((sLakituPitch -= rangePitch / 13) < 0) {
-            sLakituPitch = 0;
-        }
-    }
+    // if (gCurrLevelArea == AREA_SSL_PYRAMID && gCamera->mode == CAMERA_MODE_OUTWARD_RADIAL) {
+        // rangePitch /= 2;
+    // }
+    if (gCameraMovementFlags & CAM_MOVE_PITCH) {
+		if ((sLakituPitch += rangePitch) > rangePitch+0x1950) {
+				sLakituPitch = rangePitch+0x1950;
+			}
+	}else{
+		if (gCameraMovementFlags & CAM_MOVE_ULTRA_ZOOM_OUT) {
+			if ((sLakituPitch += rangePitch / 4) > rangePitch+50) {
+				sLakituPitch = rangePitch+50;
+			}
+		}else if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
+			if ((sLakituPitch += rangePitch / 4) > rangePitch) {
+				sLakituPitch = rangePitch;
+			}
+		} else {
+			if ((sLakituPitch -= rangePitch) < 0) {
+				sLakituPitch = 0;
+			}
+		}
+	}
 }
 
 void radial_camera_input_default(struct Camera *c) {
@@ -1157,6 +1191,36 @@ void mode_radial_camera(struct Camera *c) {
     set_camera_height(c, pos[1]);
     pan_ahead_of_player(c);
 }
+/**
+ * A mode that only has 3 camera angle.
+ */
+void mode_2_directions_camera(struct Camera *c) {
+    Vec3f pos;
+    s16 oldAreaYaw = sAreaYaw;
+
+    radial_camera_input(c, 0.f);
+	
+    if ((gPlayer1Controller->buttonPressed & R_CBUTTONS)&&s8DirModeYawOffset!=-0x2000) {
+        s8DirModeYawOffset += DEGREES(45);
+        play_sound_cbutton_side();
+    }
+    else if ((gPlayer1Controller->buttonPressed & L_CBUTTONS)&&s8DirModeYawOffset!=-0x6000) {
+        s8DirModeYawOffset -= DEGREES(45);
+        play_sound_cbutton_side();
+    }
+    lakitu_zoom(800.f, 0x1150);
+	
+	if (gPlayer1Controller->buttonPressed & R_TRIG){
+	gCameraMovementFlags ^= CAM_MOVE_PITCH;
+	}
+	s8DirModeYawOffset=0xC000;
+    c->nextYaw = update_2_directions_camera(c, c->focus, pos);
+	// s8DirModeYawOffset=0xC000;
+    c->pos[0] = pos[0];
+    c->pos[2] = pos[2];
+    sAreaYawChange = sAreaYaw - oldAreaYaw;
+    set_camera_height(c, pos[1]);
+}
 
 /**
  * A mode that only has 8 camera angles, 45 degrees apart
@@ -1172,11 +1236,23 @@ void mode_8_directions_camera(struct Camera *c) {
         s8DirModeYawOffset += DEGREES(45);
         play_sound_cbutton_side();
     }
-    if (gPlayer1Controller->buttonPressed & L_CBUTTONS) {
+    else if (gPlayer1Controller->buttonPressed & L_CBUTTONS) {
         s8DirModeYawOffset -= DEGREES(45);
         play_sound_cbutton_side();
     }
-
+	// extra functionality
+    else if (gPlayer1Controller->buttonDown & L_JPAD) {
+        s8DirModeYawOffset -= DEGREES(2);
+    }
+    else if (gPlayer1Controller->buttonDown & R_JPAD) {
+        s8DirModeYawOffset += DEGREES(2);
+    }
+    else if (gPlayer1Controller->buttonPressed & U_JPAD) {
+        s8DirModeYawOffset = (gMarioState->faceAngle[1]+0x9000)&0xE000;
+    }
+    else if (gPlayer1Controller->buttonPressed & D_JPAD) {
+        s8DirModeYawOffset = (s8DirModeYawOffset+0x1000)&0xE000;
+    }
     lakitu_zoom(400.f, 0x900);
     c->nextYaw = update_8_directions_camera(c, c->focus, pos);
     c->pos[0] = pos[0];
@@ -3017,13 +3093,14 @@ void update_camera(struct Camera *c) {
 
     gCamera = c;
     update_camera_hud_status(c);
+	newcam_toggle(configEnableCamera);
     if (c->cutscene == 0) {
         // Only process R_TRIG if 'fixed' is not selected in the menu
-        if (cam_select_alt_mode(0) == CAM_SELECTION_MARIO
+        if ((cam_select_alt_mode(0) == CAM_SELECTION_MARIO)
 #ifdef BETTERCAMERA
-            && c->mode != CAMERA_MODE_NEWCAM
+            && (c->mode != CAMERA_MODE_NEWCAM)
 #endif
-            ) {
+            && (c->mode != CAMERA_MODE_2_DIRECTIONS)) {
             if (gPlayer1Controller->buttonPressed & R_TRIG) {
                 if (set_cam_angle(0) == CAM_ANGLE_LAKITU) {
                     set_cam_angle(CAM_ANGLE_MARIO);
@@ -3140,6 +3217,9 @@ void update_camera(struct Camera *c) {
 
                 case CAMERA_MODE_8_DIRECTIONS:
                     mode_8_directions_camera(c);
+                    break;
+				case CAMERA_MODE_2_DIRECTIONS:
+                    mode_2_directions_camera(c);
                     break;
 
                 case CAMERA_MODE_RADIAL:
@@ -4965,7 +5045,10 @@ s32 radial_camera_input(struct Camera *c, UNUSED f32 unused) {
 
     // Zoom in / enter C-Up
     if (gPlayer1Controller->buttonPressed & U_CBUTTONS) {
-        if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
+        if (gCameraMovementFlags & CAM_MOVE_ULTRA_ZOOM_OUT) {
+            gCameraMovementFlags &= ~CAM_MOVE_ULTRA_ZOOM_OUT;
+            play_sound_cbutton_up();
+        } else if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
             gCameraMovementFlags &= ~CAM_MOVE_ZOOMED_OUT;
             play_sound_cbutton_up();
         } else {
@@ -4976,10 +5059,10 @@ s32 radial_camera_input(struct Camera *c, UNUSED f32 unused) {
     // Zoom out
     if (gPlayer1Controller->buttonPressed & D_CBUTTONS) {
         if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
-            gCameraMovementFlags |= CAM_MOVE_ALREADY_ZOOMED_OUT;
-#ifndef VERSION_JP
-            play_camera_buzz_if_cdown();
-#endif
+            gCameraMovementFlags |= CAM_MOVE_ULTRA_ZOOM_OUT;
+// #ifndef VERSION_JP
+            // play_camera_buzz_if_cdown();
+// #endif
         } else {
             gCameraMovementFlags |= CAM_MOVE_ZOOMED_OUT;
             play_sound_cbutton_down();
@@ -5013,7 +5096,10 @@ void handle_c_button_movement(struct Camera *c) {
 
     // Zoom in
     if (gPlayer1Controller->buttonPressed & U_CBUTTONS) {
-        if (c->mode != CAMERA_MODE_FIXED && (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT)) {
+        if (c->mode != CAMERA_MODE_FIXED && (gCameraMovementFlags & CAM_MOVE_ULTRA_ZOOM_OUT)) {
+            gCameraMovementFlags &= ~CAM_MOVE_ULTRA_ZOOM_OUT;
+            play_sound_cbutton_up();
+        } else if (c->mode != CAMERA_MODE_FIXED && (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT)) {
             gCameraMovementFlags &= ~CAM_MOVE_ZOOMED_OUT;
             play_sound_cbutton_up();
         } else {
@@ -5029,11 +5115,11 @@ void handle_c_button_movement(struct Camera *c) {
         // Zoom out
         if (gPlayer1Controller->buttonPressed & D_CBUTTONS) {
             if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
-                gCameraMovementFlags |= CAM_MOVE_ALREADY_ZOOMED_OUT;
+                gCameraMovementFlags |= CAM_MOVE_ULTRA_ZOOM_OUT;
                 sZoomAmount = gCameraZoomDist + 400.f;
-#ifndef VERSION_JP
-                play_camera_buzz_if_cdown();
-#endif
+// #ifndef VERSION_JP
+                // play_camera_buzz_if_cdown();
+// #endif
             } else {
                 gCameraMovementFlags |= CAM_MOVE_ZOOMED_OUT;
                 sZoomAmount = gCameraZoomDist + 400.f;
@@ -6222,13 +6308,7 @@ struct CameraTrigger sCamTHI[] = {
  * start the cutscene for entering the CotMC pool.
  */
 struct CameraTrigger sCamHMC[] = {
-    { 1, cam_hmc_enter_maze, 1996, 102, 0, 205, 100, 205, 0 },
-    { 1, cam_castle_hmc_start_pool_cutscene, 3350, -4689, 4800, 600, 50, 600, 0 },
-    { 1, cam_hmc_elevator_black_hole, -3278, 1236, 1379, 358, 200, 358, 0 },
-    { 1, cam_hmc_elevator_maze_emergency_exit, -2816, 2055, -2560, 358, 200, 358, 0 },
-    { 1, cam_hmc_elevator_lake, -3532, 1543, -7040, 358, 200, 358, 0 },
-    { 1, cam_hmc_elevator_maze, -972, 1543, -7347, 358, 200, 358, 0 },
-    NULL_TRIGGER
+	NULL_TRIGGER
 };
 
 /**
@@ -6266,9 +6346,7 @@ struct CameraTrigger sCamRR[] = {
  * to free_roam when Mario is not walking up the tower.
  */
 struct CameraTrigger sCamBOB[] = {
-    {  1, cam_bob_tower, 2468, 2720, -4608, 3263, 1696, 3072, 0 },
-    { -1, cam_bob_default_free_roam, 0, 0, 0, 0, 0, 0, 0 },
-    NULL_TRIGGER
+	NULL_TRIGGER
 };
 
 /**
@@ -6283,9 +6361,7 @@ struct CameraTrigger sCamCotMC[] = {
  * The CCM triggers are used to set the flag that says when Mario is in the slide shortcut.
  */
 struct CameraTrigger sCamCCM[] = {
-    { 2, cam_ccm_enter_slide_shortcut, -4846, 2061, 27, 1229, 1342, 396, 0 },
-    { 2, cam_ccm_leave_slide_shortcut, -6412, -3917, -6246, 307, 185, 132, 0 },
-    NULL_TRIGGER
+	NULL_TRIGGER
 };
 
 /**
@@ -6296,43 +6372,7 @@ struct CameraTrigger sCamCCM[] = {
  * and one trigger that starts the enter pool cutscene when Mario enters HMC.
  */
 struct CameraTrigger sCamCastle[] = {
-    { 1, cam_castle_close_mode, -1100, 657, -1346, 300, 150, 300, 0 },
-    { 1, cam_castle_enter_lobby, -1099, 657, -803, 300, 150, 300, 0 },
-    { 1, cam_castle_close_mode, -2304, -264, -4072, 140, 150, 140, 0 },
-    { 1, cam_castle_close_mode, -2304, 145, -1344, 140, 150, 140, 0 },
-    { 1, cam_castle_enter_lobby, -2304, 145, -802, 140, 150, 140, 0 },
-    //! Sets the camera mode when leaving secret aquarium
-    { 1, cam_castle_close_mode, 2816, 1200, -256, 100, 100, 100, 0 },
-    { 1, cam_castle_close_mode, 256, -161, -4226, 140, 150, 140, 0 },
-    { 1, cam_castle_close_mode, 256, 145, -1344, 140, 150, 140, 0 },
-    { 1, cam_castle_enter_lobby, 256, 145, -802, 140, 150, 140, 0 },
-    { 1, cam_castle_close_mode, -1023, 44, -4870, 140, 150, 140, 0 },
-    { 1, cam_castle_close_mode, -459, 145, -1020, 140, 150, 140, 0x6000 },
-    { 1, cam_castle_enter_lobby, -85, 145, -627, 140, 150, 140, 0 },
-    { 1, cam_castle_close_mode, -1589, 145, -1020, 140, 150, 140, -0x6000 },
-    { 1, cam_castle_enter_lobby, -1963, 145, -627, 140, 150, 140, 0 },
-    { 1, cam_castle_leave_lobby_sliding_door, -2838, 657, -1659, 200, 150, 150, 0x2000 },
-    { 1, cam_castle_enter_lobby_sliding_door, -2319, 512, -1266, 300, 150, 300, 0x2000 },
-    { 1, cam_castle_close_mode, 844, 759, -1657, 40, 150, 40, -0x2000 },
-    { 1, cam_castle_enter_lobby, 442, 759, -1292, 140, 150, 140, -0x2000 },
-    { 2, cam_castle_enter_spiral_stairs, -1000, 657, 1740, 200, 300, 200, 0 },
-    { 2, cam_castle_enter_spiral_stairs, -996, 1348, 1814, 200, 300, 200, 0 },
-    { 2, cam_castle_close_mode, -946, 657, 2721, 50, 150, 50, 0 },
-    { 2, cam_castle_close_mode, -996, 1348, 907, 50, 150, 50, 0 },
-    { 2, cam_castle_close_mode, -997, 1348, 1450, 140, 150, 140, 0 },
-    { 1, cam_castle_close_mode, -4942, 452, -461, 140, 150, 140, 0x4000 },
-    { 1, cam_castle_close_mode, -3393, 350, -793, 140, 150, 140, 0x4000 },
-    { 1, cam_castle_enter_lobby, -2851, 350, -792, 140, 150, 140, 0x4000 },
-    { 1, cam_castle_enter_lobby, 803, 350, -228, 140, 150, 140, -0x4000 },
-    //! Duplicate camera trigger outside JRB door
-    { 1, cam_castle_enter_lobby, 803, 350, -228, 140, 150, 140, -0x4000 },
-    { 1, cam_castle_close_mode, 1345, 350, -229, 140, 150, 140, 0x4000 },
-    { 1, cam_castle_close_mode, -946, -929, 622, 300, 150, 300, 0 },
-    { 2, cam_castle_look_upstairs, -205, 1456, 2508, 210, 928, 718, 0 },
-    { 1, cam_castle_basement_look_downstairs, -1027, -587, -718, 318, 486, 577, 0 },
-    { 1, cam_castle_lobby_entrance, -1023, 376, 1830, 300, 400, 300, 0 },
-    { 3, cam_castle_hmc_start_pool_cutscene, 2485, -1689, -2659, 600, 50, 600, 0 },
-    NULL_TRIGGER
+	NULL_TRIGGER
 };
 
 /**
@@ -6342,67 +6382,7 @@ struct CameraTrigger sCamCastle[] = {
  * The triggers are also responsible for warping the camera below platforms.
  */
 struct CameraTrigger sCamBBH[] = {
-    { 1, cam_bbh_enter_front_door, 742, 0, 2369, 200, 200, 200, 0 },
-    { 1, cam_bbh_leave_front_door, 741, 0, 1827, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_1, 222, 0, 1458, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_1, 222, 0, 639, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_1, 435, 0, 222, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_1, 1613, 0, 222, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_1, 1827, 0, 1459, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_1, -495, 819, 1407, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_1, -495, 819, 640, 250, 200, 200, 0 },
-    { 1, cam_bbh_room_1, 179, 819, 222, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_1, 1613, 819, 222, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_1, 1827, 819, 486, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_1, 1827, 819, 1818, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_2_lower, 2369, 0, 1459, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_2_lower, 3354, 0, 1347, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_2_lower, 2867, 514, 1843, 512, 102, 409, 0 },
-    { 1, cam_bbh_room_4, 3354, 0, 804, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_4, 1613, 0, -320, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_8, 435, 0, -320, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_5_library, -2021, 0, 803, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_5_library, -320, 0, 640, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_5_library_to_hidden_transition, -1536, 358, -254, 716, 363, 102, 0 },
-    { 1, cam_bbh_room_5_hidden_to_library_transition, -1536, 358, -459, 716, 363, 102, 0 },
-    { 1, cam_bbh_room_5_hidden, -1560, 0, -1314, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_3, -320, 0, 1459, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_3, -2021, 0, 1345, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_2_library, 2369, 819, 486, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_2_library, 2369, 1741, 486, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_2_library_to_trapdoor_transition, 2867, 1228, 1174, 716, 414, 102, 0 },
-    { 1, cam_bbh_room_2_trapdoor_transition, 2867, 1228, 1378, 716, 414, 102, 0 },
-    { 1, cam_bbh_room_2_trapdoor, 2369, 819, 1818, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_9_attic, 1829, 1741, 486, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_9_attic, 741, 1741, 1587, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_9_attic_transition, 102, 2048, -191, 100, 310, 307, 0 },
-    { 1, cam_bbh_room_9_mr_i_transition, 409, 2048, -191, 100, 310, 307, 0 },
-    { 1, cam_bbh_room_13_balcony, 742, 1922, 2164, 200, 200, 200, 0 },
-    { 1, cam_bbh_fall_off_roof, 587, 1322, 2677, 1000, 400, 600, 0 },
-    { 1, cam_bbh_room_3, -1037, 819, 1408, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_3, -1970, 1024, 1345, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_8, 179, 819, -320, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_7_mr_i, 1613, 819, -320, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_7_mr_i_to_coffins_transition, 2099, 1228, -819, 102, 414, 716, 0 },
-    { 1, cam_bbh_room_7_coffins_to_mr_i_transition, 2304, 1228, -819, 102, 414, 716, 0 },
-    { 1, cam_bbh_room_6, -1037, 819, 640, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_6, -1970, 1024, 803, 200, 200, 200, 0 },
-    { 1, cam_bbh_room_1, 1827, 819, 1818, 200, 200, 200, 0 },
-    { 1, cam_bbh_fall_into_pool, 2355, -1112, -193, 1228, 500, 1343, 0 },
-    { 1, cam_bbh_fall_into_pool, 2355, -1727, 1410, 1228, 500, 705, 0 },
-    { 1, cam_bbh_elevator_room_lower, 0, -2457, 1827, 250, 200, 250, 0 },
-    { 1, cam_bbh_elevator_room_lower, 0, -2457, 2369, 250, 200, 250, 0 },
-    { 1, cam_bbh_elevator_room_lower, 0, -2457, 4929, 250, 200, 250, 0 },
-    { 1, cam_bbh_elevator_room_lower, 0, -2457, 4387, 250, 200, 250, 0 },
-    { 1, cam_bbh_room_0_back_entrance, 1887, -2457, 204, 250, 200, 250, 0 },
-    { 1, cam_bbh_room_0, 1272, -2457, 204, 250, 200, 250, 0 },
-    { 1, cam_bbh_room_0, -1681, -2457, 204, 250, 200, 250, 0 },
-    { 1, cam_bbh_room_0_back_entrance, -2296, -2457, 204, 250, 200, 250, 0 },
-    { 1, cam_bbh_elevator, -2939, -605, 5367, 800, 100, 800, 0 },
-    { 1, cam_bbh_room_12_upper, -2939, -205, 5367, 300, 100, 300, 0 },
-    { 1, cam_bbh_room_12_upper, -2332, -204, 4714, 250, 200, 250, 0x6000 },
-    { 1, cam_bbh_room_0_back_entrance, -1939, -204, 4340, 250, 200, 250, 0x6000 },
-    NULL_TRIGGER
+	NULL_TRIGGER
 };
 
 #define _ NULL
@@ -6417,6 +6397,27 @@ struct CameraTrigger sCamBBH[] = {
  *
  * Each table is terminated with NULL_TRIGGER
  */
+struct CameraTrigger sCamCastleGrounds[] = {
+	NULL_TRIGGER
+};
+struct CameraTrigger sCamWF[] = {
+	NULL_TRIGGER
+};
+struct CameraTrigger sCamJRB[] = {
+	NULL_TRIGGER
+};
+struct CameraTrigger sCamLLL[] = {
+	NULL_TRIGGER
+};
+struct CameraTrigger sCamBitDW[] = {
+	NULL_TRIGGER
+};
+struct CameraTrigger sCamBowser_1[] = {
+	NULL_TRIGGER
+};
+struct CameraTrigger sCamSA[] = {
+	NULL_TRIGGER
+};
 struct CameraTrigger *sCameraTriggers[LEVEL_COUNT + 1] = {
     NULL,
     #include "levels/level_defines.h"
@@ -10884,26 +10885,26 @@ u8 sDanceCutsceneIndexTable[][4] = {
  * and if the result is non-zero, the camera will zoom out.
  */
 u8 sZoomOutAreaMasks[] = {
-    ZOOMOUT_AREA_MASK(0,0,0,0, 0,0,0,0), // Unused         | Unused
-    ZOOMOUT_AREA_MASK(0,0,0,0, 0,0,0,0), // Unused         | Unused
-    ZOOMOUT_AREA_MASK(0,0,0,0, 1,0,0,0), // BBH            | CCM
-    ZOOMOUT_AREA_MASK(0,0,0,0, 0,0,0,0), // CASTLE_INSIDE  | HMC
-    ZOOMOUT_AREA_MASK(1,0,0,0, 1,0,0,0), // SSL            | BOB
-    ZOOMOUT_AREA_MASK(1,0,0,0, 1,0,0,0), // SL             | WDW
-    ZOOMOUT_AREA_MASK(0,0,0,0, 1,1,0,0), // JRB            | THI
-    ZOOMOUT_AREA_MASK(0,0,0,0, 1,0,0,0), // TTC            | RR
-    ZOOMOUT_AREA_MASK(1,0,0,0, 1,0,0,0), // CASTLE_GROUNDS | BITDW
-    ZOOMOUT_AREA_MASK(0,0,0,0, 1,0,0,0), // VCUTM          | BITFS
-    ZOOMOUT_AREA_MASK(0,0,0,0, 1,0,0,0), // SA             | BITS
-    ZOOMOUT_AREA_MASK(1,0,0,0, 0,0,0,0), // LLL            | DDD
-    ZOOMOUT_AREA_MASK(1,0,0,0, 0,0,0,0), // WF             | ENDING
-    ZOOMOUT_AREA_MASK(0,0,0,0, 0,0,0,0), // COURTYARD      | PSS
-    ZOOMOUT_AREA_MASK(0,0,0,0, 1,0,0,0), // COTMC          | TOTWC
-    ZOOMOUT_AREA_MASK(1,0,0,0, 1,0,0,0), // BOWSER_1       | WMOTR
-    ZOOMOUT_AREA_MASK(0,0,0,0, 1,0,0,0), // Unused         | BOWSER_2
-    ZOOMOUT_AREA_MASK(1,0,0,0, 0,0,0,0), // BOWSER_3       | Unused
-    ZOOMOUT_AREA_MASK(1,0,0,0, 0,0,0,0), // TTM            | Unused
-    ZOOMOUT_AREA_MASK(0,0,0,0, 0,0,0,0), // Unused         | Unused
+	ZOOMOUT_AREA_MASK(0, 0, 0, 0, 0, 0, 0, 0), // Unused         | Unused
+	ZOOMOUT_AREA_MASK(0, 0, 0, 0, 0, 0, 0, 0), // Unused         | Unused
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // BBH            | CCM
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // CASTLE_INSIDE  | HMC
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 1, 0, 0), // SSL            | BOB
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // SL             | WDW
+	ZOOMOUT_AREA_MASK(0, 1, 0, 0, 1, 1, 0, 0), // JRB            | THI
+	ZOOMOUT_AREA_MASK(0, 0, 0, 0, 1, 0, 0, 0), // TTC            | RR
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 1, 0, 0), // CASTLE_GROUNDS | BITDW
+	ZOOMOUT_AREA_MASK(0, 0, 0, 0, 1, 0, 0, 0), // VCUTM          | BITFS
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // SA             | BITS
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 0, 0, 0, 0), // LLL            | DDD
+	ZOOMOUT_AREA_MASK(0, 1, 1, 0, 0, 0, 0, 0), // WF             | ENDING
+	ZOOMOUT_AREA_MASK(0, 0, 0, 0, 0, 0, 0, 0), // COURTYARD      | PSS
+	ZOOMOUT_AREA_MASK(0, 0, 0, 0, 1, 0, 0, 0), // COTMC          | TOTWC
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // BOWSER_1       | WMOTR
+	ZOOMOUT_AREA_MASK(0, 0, 0, 0, 1, 0, 0, 0), // Unused         | BOWSER_2
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 0, 0, 0, 0), // BOWSER_3       | Unused
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 0, 0, 0, 0), // TTM            | Unused
+	ZOOMOUT_AREA_MASK(0, 0, 0, 0, 0, 0, 0, 0), // Unused         | Unused
 };
 
 STATIC_ASSERT(ARRAY_COUNT(sZoomOutAreaMasks) - 1 == LEVEL_MAX / 2, "Make sure you edit sZoomOutAreaMasks when adding / removing courses.");

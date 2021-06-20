@@ -40,7 +40,10 @@ When using the data from RM2C, make sure to set RM2C to 1 in the makefile.
 
  1. WINDOWS_BUILD
 	* make clean && make RM2CPC
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
  2. N64 BUILD
 	* make -j4 RM2C=1
 

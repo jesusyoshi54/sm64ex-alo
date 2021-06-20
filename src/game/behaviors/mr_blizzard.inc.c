@@ -420,11 +420,17 @@ static void mr_blizzard_snowball_act_1(void) {
             if (marioDist > 800.0f) {
                 marioDist = 800.0f;
             }
-
+if(configBE){
+            // Launch the snowball relative to Mario's distance from the snowball.
+            o->oMoveAngleYaw = (s32)(o->parentObj->oMoveAngleYaw + 4000 - marioDist * 4.0f);
+            o->oForwardVel = 80.0f;
+            o->oVelY = 0.0f;
+}else{
             // Launch the snowball relative to Mario's distance from the snowball.
             o->oMoveAngleYaw = (s32)(o->parentObj->oMoveAngleYaw + 4000 - marioDist * 4.0f);
             o->oForwardVel = 40.0f;
             o->oVelY = -20.0f + marioDist * 0.075f;
+}
         }
 
         o->oAction = 2;

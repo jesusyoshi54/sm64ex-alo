@@ -39,6 +39,12 @@ void bhv_flamethrower_loop(void) {
     s32 sp34;
     s32 model;
     UNUSED u8 pad[8];
+	u32 timePlus;
+	if(configBE){
+		timePlus = 50;
+	}else{
+		timePlus = 0;
+	}
     if (o->oAction == 0) {
         if (gCurrLevelNum != LEVEL_BBH || gMarioOnMerryGoRound == TRUE)
             if (o->oDistanceToMario < 2000.0f)
@@ -61,7 +67,7 @@ void bhv_flamethrower_loop(void) {
         flame = spawn_object_relative(o->oBehParams2ndByte, 0, 0, 0, o, model, bhvFlamethrowerFlame);
         flame->oForwardVel = flameVel;
         cur_obj_play_sound_1(SOUND_AIR_BLOW_FIRE);
-    } else if (o->oTimer > 60)
+    } else if (o->oTimer > (60-timePlus))
         o->oAction = 0;
 }
 

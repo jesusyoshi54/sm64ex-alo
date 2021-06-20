@@ -21,6 +21,9 @@ void bhv_explosion_loop(void) {
     }
 
     o->oOpacity -= 14;
-
+if(configBE){
+    cur_obj_scale((f32) o->oTimer + 1.0);
+}else{
     cur_obj_scale((f32) o->oTimer / 9.0f + 1.0);
+}
 }

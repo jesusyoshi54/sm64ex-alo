@@ -54,7 +54,7 @@ static uintptr_t *sStackBase = NULL;
 
 static s16 sScriptStatus;
 static s32 sRegister;
-static struct LevelCommand *sCurrentCmd;
+struct LevelCommand *sCurrentCmd;
 
 #ifdef USE_SYSTEM_MALLOC
 static struct MemoryPool *sMemPoolForGoddard;
