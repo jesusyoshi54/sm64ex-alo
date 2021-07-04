@@ -1242,10 +1242,10 @@ void mode_8_directions_camera(struct Camera *c) {
     }
 	// extra functionality
     else if (gPlayer1Controller->buttonDown & L_JPAD) {
-        s8DirModeYawOffset -= DEGREES(2);
+        s8DirModeYawOffset -= DEGREES(1);
     }
     else if (gPlayer1Controller->buttonDown & R_JPAD) {
-        s8DirModeYawOffset += DEGREES(2);
+        s8DirModeYawOffset += DEGREES(1);
     }
     else if (gPlayer1Controller->buttonPressed & U_JPAD) {
         s8DirModeYawOffset = (gMarioState->faceAngle[1]+0x9000)&0xE000;
@@ -3399,6 +3399,7 @@ void init_camera(struct Camera *c) {
     gCurrLevelArea = gCurrLevelNum * 16 + gCurrentArea->index;
     sSelectionFlags &= CAM_MODE_MARIO_SELECTED;
     sFramesPaused = 0;
+    c->mode = CAMERA_MODE_8_DIRECTIONS;
     gLakituState.mode = c->mode;
     gLakituState.defMode = c->defMode;
     gLakituState.posHSpeed = 0.3f;
@@ -3471,7 +3472,7 @@ void init_camera(struct Camera *c) {
             if (is_within_100_units_of_mario(5408.f, 4500.f, 3637.f) == 1) {
                 start_cutscene(c, CUTSCENE_EXIT_FALL_WMOTR);
             }
-            gLakituState.mode = CAMERA_MODE_FREE_ROAM;
+            // gLakituState.mode = CAMERA_MODE_FREE_ROAM;
             break;
         case LEVEL_SA:
             marioOffset[2] = 200.f;

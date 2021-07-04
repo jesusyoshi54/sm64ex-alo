@@ -1197,7 +1197,7 @@ s32 set_water_plunge_action(struct MarioState *m) {
     m->forwardVel = m->forwardVel / 4.0f;
     m->vel[1] = m->vel[1] / 2.0f;
 
-    m->pos[1] = m->waterLevel - 100;
+    // m->pos[1] = m->waterLevel - 100;
 
     m->faceAngle[2] = 0;
 
@@ -2037,7 +2037,9 @@ void init_mario(void) {
     gMarioState->riddenObj = NULL;
     gMarioState->usedObj = NULL;
 
-    gMarioState->waterLevel =
+    gMarioObject->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
+    gMarioObject->header.gfx.node.flags |= GRAPH_RENDER_ACTIVE;
+	gMarioState->waterLevel =
         find_water_level(gMarioSpawnInfo->startPos[0], gMarioSpawnInfo->startPos[2]);
 
     gMarioState->area = gCurrentArea;
